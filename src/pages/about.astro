@@ -1,0 +1,29 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="About" description="About me, my skills, and experience">
+  <div class="max-w-2xl mx-auto space-y-8">
+    <div>
+      <h1 class="text-3xl font-extrabold tracking-tight mb-4">About Me</h1>
+      <p class="text-zinc-600 dark:text-zinc-400 leading-relaxed">
+        I am a software engineer focused on crafting thoughtful digital experiences and scalable backends.
+        I value code maintainability, clean systems design, and continuous learning.
+      </p>
+    </div>
+
+    <div>
+      <h2 class="text-xl font-bold tracking-tight mb-3">Core Skills</h2>
+      <div class="grid grid-cols-2 gap-4 text-sm">
+        <div class="p-4 border border-zinc-200 dark:border-zinc-800 rounded bg-white dark:bg-zinc-900">
+          <h3 class="font-semibold mb-2">Languages</h3>
+          <p class="text-zinc-600 dark:text-zinc-400">TypeScript, JavaScript, Go, Python, SQL</p>
+        </div>
+        <div class="p-4 border border-zinc-200 dark:border-zinc-800 rounded bg-white dark:bg-zinc-900">
+          <h3 class="font-semibold mb-2">Frameworks & Tools</h3>
+          <p class="text-zinc-600 dark:text-zinc-400">React, Astro, Next.js, Docker, Tailwind CSS</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
