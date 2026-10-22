@@ -13,6 +13,7 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 const { Content } = await render(entry);
 const { data } = entry;
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 
 const sectionLinks = [
   { id: 'summary', label: 'Summary & Objectives' },
@@ -28,7 +29,7 @@ const sectionLinks = [
     <!-- Breadcrumb -->
     <nav class="mb-6">
       <a
-        href="/projects"
+        href={`${base}/projects`}
         class="inline-flex items-center text-sm font-medium text-blue-600 dark:text-blue-400 hover:underline gap-1"
       >
         <span>←</span>
@@ -245,7 +246,7 @@ const sectionLinks = [
 
     <!-- Bottom Navigation Footer -->
     <div class="mt-12 pt-6 border-t border-zinc-200 dark:border-zinc-800 flex justify-between items-center text-sm font-medium">
-      <a href="/projects" class="text-blue-600 dark:text-blue-400 hover:underline">
+      <a href={`${base}/projects`} class="text-blue-600 dark:text-blue-400 hover:underline">
         ← Back to all projects
       </a>
       <a href="#summary" class="text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-200">
@@ -253,6 +254,4 @@ const sectionLinks = [
       </a>
     </div>
   </div>
-</BaseLayout>
-
 </BaseLayout>

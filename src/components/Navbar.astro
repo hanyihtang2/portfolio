@@ -1,27 +1,28 @@
 ---
 const pathname = new URL(Astro.request.url).pathname;
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 const currentPath = pathname.replace(/\/$/, "");
 
 const navItems = [
-  { name: "Home", href: "" },
-  { name: "Projects", href: "/projects" },
-  { name: "About", href: "/about" },
-  { name: "Contact", href: "/contact" },
+  { name: "Home", href: `${base}/` },
+  { name: "Projects", href: `${base}/projects` },
+  { name: "About", href: `${base}/about` },
+  { name: "Contact", href: `${base}/contact` },
 ];
 ---
 
 <header class="sticky top-0 z-50 bg-white/80 dark:bg-zinc-950/80 backdrop-blur-md border-b border-zinc-200 dark:border-zinc-800">
   <nav class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
-    <a href="/" class="font-bold text-lg text-zinc-900 dark:text-zinc-100 tracking-tight">
+    <a href={`${base}/`} class="font-bold text-lg text-zinc-900 dark:text-zinc-100 tracking-tight">
       Developer<span class="text-blue-500">.</span>
     </a>
 
     <div class="flex items-center gap-6 text-sm font-medium">
       {navItems.map((item) => {
-        const isActive = currentPath === item.href;
+        const isActive = currentPath === item.href.replace(/\/$/, "");
         return (
           <a
-            href={item.href || "/"}
+            href={item.href}
             class={`transition-colors hover:text-blue-500 ${
               isActive 
                 ? "text-blue-600 dark:text-blue-400 font-semibold" 

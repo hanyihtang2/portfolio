@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 const featuredProjects = await getCollection('projects', ({ data }) => data.featured);
 ---
 
@@ -14,10 +15,10 @@ const featuredProjects = await getCollection('projects', ({ data }) => data.feat
       I build scalable web apps, developer tools, and distributed services. Currently crafting showcase systems and documenting the process.
     </p>
     <div class="flex gap-4 pt-2">
-      <a href="/projects" class="px-5 py-2.5 bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 rounded-md font-medium text-sm hover:opacity-90">
+      <a href={`${base}/projects`} class="px-5 py-2.5 bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 rounded-md font-medium text-sm hover:opacity-90">
         View Projects
       </a>
-      <a href="/contact" class="px-5 py-2.5 border border-zinc-300 dark:border-zinc-700 rounded-md font-medium text-sm hover:bg-zinc-100 dark:hover:bg-zinc-900">
+      <a href={`${base}/contact`} class="px-5 py-2.5 border border-zinc-300 dark:border-zinc-700 rounded-md font-medium text-sm hover:bg-zinc-100 dark:hover:bg-zinc-900">
         Get in Touch
       </a>
     </div>
@@ -26,12 +27,12 @@ const featuredProjects = await getCollection('projects', ({ data }) => data.feat
   <section class="mt-16">
     <div class="flex justify-between items-center mb-6">
       <h2 class="text-2xl font-bold tracking-tight">Featured Projects</h2>
-      <a href="/projects" class="text-sm text-blue-500 hover:underline">All projects →</a>
+      <a href={`${base}/projects`} class="text-sm text-blue-500 hover:underline">All projects →</a>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
       {featuredProjects.map(project => (
-        <a href={`/projects/${project.id}`} class="block p-6 border border-zinc-200 dark:border-zinc-800 rounded-lg hover:border-zinc-400 dark:hover:border-zinc-600 transition-colors bg-white dark:bg-zinc-900">
+        <a href={`${base}/projects/${project.id}`} class="block p-6 border border-zinc-200 dark:border-zinc-800 rounded-lg hover:border-zinc-400 dark:hover:border-zinc-600 transition-colors bg-white dark:bg-zinc-900">
           <div class="flex justify-between items-start mb-2">
             <h3 class="text-lg font-semibold">{project.data.title}</h3>
             <span class="text-xs px-2 py-0.5 rounded bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400">{project.data.status}</span>
