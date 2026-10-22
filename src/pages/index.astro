@@ -31,7 +31,7 @@ const featuredProjects = await getCollection('projects', ({ data }) => data.feat
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
       {featuredProjects.map(project => (
-        <a href={`/projects/${project.slug}`} class="block p-6 border border-zinc-200 dark:border-zinc-800 rounded-lg hover:border-zinc-400 dark:hover:border-zinc-600 transition-colors bg-white dark:bg-zinc-900">
+        <a href={`/projects/${project.id}`} class="block p-6 border border-zinc-200 dark:border-zinc-800 rounded-lg hover:border-zinc-400 dark:hover:border-zinc-600 transition-colors bg-white dark:bg-zinc-900">
           <div class="flex justify-between items-start mb-2">
             <h3 class="text-lg font-semibold">{project.data.title}</h3>
             <span class="text-xs px-2 py-0.5 rounded bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400">{project.data.status}</span>

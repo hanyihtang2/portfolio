@@ -1,0 +1,37 @@
+import { defineCollection, z } from 'astro:content';
+import { glob } from 'astro/loaders';
+
+const projects = defineCollection({
+  loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/projects" }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    publishDate: z.date(),
+    tags: z.array(z.string()),
+    githubUrl: z.string().url(),
+    liveUrl: z.string().url().optional(),
+    featured: z.boolean().default(false),
+    status: z.enum(['Completed', 'In Progress', 'Concept']).default('Completed'),
+    role: z.string().optional(),
+    timeline: z.string().optional(),
+    metrics: z
+      .array(
+        z.object({
+          label: z.string(),
+          value: z.string(),
+          description: z.string().optional(),
+        })
+      )
+      .optional(),
+    techStack: z
+      .object({
+        languages: z.array(z.string()).optional(),
+        frameworks: z.array(z.string()).optional(),
+        tools: z.array(z.string()).optional(),
+        infrastructure: z.array(z.string()).optional(),
+      })
+      .optional(),
+  }),
+});
+
+export const collections = { projects };

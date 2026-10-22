@@ -1,1 +1,266 @@
 @import "tailwindcss";
+
+/* Base document enhancements */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Scroll margin for section anchors with sticky navigation */
+[id] {
+  scroll-margin-top: 6rem;
+}
+
+/* Markdown prose styling */
+.project-prose {
+  color: rgb(75 85 99);
+  line-height: 1.75;
+}
+
+:is(.dark .project-prose) {
+  color: rgb(209 213 219);
+}
+
+.project-prose h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgb(229 231 235);
+  color: rgb(17 24 39);
+}
+
+:is(.dark .project-prose h2) {
+  border-bottom-color: rgb(39 39 42);
+  color: rgb(244 244 245);
+}
+
+.project-prose h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin-top: 1.75rem;
+  margin-bottom: 0.75rem;
+  color: rgb(17 24 39);
+}
+
+:is(.dark .project-prose h3) {
+  color: rgb(244 244 245);
+}
+
+.project-prose p {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.project-prose ul {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.project-prose ol {
+  list-style-type: decimal;
+  padding-left: 1.5rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.project-prose li {
+  margin-top: 0.35rem;
+  margin-bottom: 0.35rem;
+}
+
+.project-prose blockquote {
+  border-left: 4px solid rgb(59 130 246);
+  padding-left: 1rem;
+  font-style: italic;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  color: rgb(75 85 99);
+}
+
+:is(.dark .project-prose blockquote) {
+  color: rgb(156 163 175);
+}
+
+.project-prose code:not(pre code) {
+  background-color: rgb(243 244 246);
+  color: rgb(31 41 55);
+  padding: 0.2rem 0.4rem;
+  border-radius: 0.25rem;
+  font-size: 0.875em;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+:is(.dark .project-prose code:not(pre code)) {
+  background-color: rgb(24 24 27);
+  color: rgb(228 228 231);
+}
+
+.project-prose pre {
+  background-color: rgb(24 24 27);
+  color: rgb(244 244 245);
+  padding: 1rem 1.25rem;
+  border-radius: 0.5rem;
+  overflow-x: auto;
+  font-size: 0.875rem;
+  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
+  border: 1px solid rgb(39 39 42);
+}
+
+.project-prose hr {
+  border: 0;
+  border-top: 1px solid rgb(229 231 235);
+  margin-top: 2.5rem;
+  margin-bottom: 2.5rem;
+}
+
+:is(.dark .project-prose hr) {
+  border-top-color: rgb(39 39 42);
+}
+
+.project-prose strong {
+  font-weight: 600;
+  color: rgb(17 24 39);
+}
+
+:is(.dark .project-prose strong) {
+  color: rgb(250 250 250);
+}
+
+/* Base document enhancements */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Scroll margin for section anchors with sticky navigation */
+[id] {
+  scroll-margin-top: 6rem;
+}
+
+/* Markdown prose styling */
+.project-prose {
+  color: rgb(75 85 99);
+  line-height: 1.75;
+}
+
+:is(.dark .project-prose) {
+  color: rgb(209 213 219);
+}
+
+.project-prose h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgb(229 231 235);
+  color: rgb(17 24 39);
+}
+
+:is(.dark .project-prose h2) {
+  border-bottom-color: rgb(39 39 42);
+  color: rgb(244 244 245);
+}
+
+.project-prose h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin-top: 1.75rem;
+  margin-bottom: 0.75rem;
+  color: rgb(17 24 39);
+}
+
+:is(.dark .project-prose h3) {
+  color: rgb(244 244 245);
+}
+
+.project-prose p {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.project-prose ul {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.project-prose ol {
+  list-style-type: decimal;
+  padding-left: 1.5rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.project-prose li {
+  margin-top: 0.35rem;
+  margin-bottom: 0.35rem;
+}
+
+.project-prose blockquote {
+  border-left: 4px solid rgb(59 130 246);
+  padding-left: 1rem;
+  font-style: italic;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  color: rgb(75 85 99);
+}
+
+:is(.dark .project-prose blockquote) {
+  color: rgb(156 163 175);
+}
+
+.project-prose code:not(pre code) {
+  background-color: rgb(243 244 246);
+  color: rgb(31 41 55);
+  padding: 0.2rem 0.4rem;
+  border-radius: 0.25rem;
+  font-size: 0.875em;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+:is(.dark .project-prose code:not(pre code)) {
+  background-color: rgb(24 24 27);
+  color: rgb(228 228 231);
+}
+
+.project-prose pre {
+  background-color: rgb(24 24 27);
+  color: rgb(244 244 245);
+  padding: 1rem 1.25rem;
+  border-radius: 0.5rem;
+  overflow-x: auto;
+  font-size: 0.875rem;
+  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
+  border: 1px solid rgb(39 39 42);
+}
+
+.project-prose hr {
+  border: 0;
+  border-top: 1px solid rgb(229 231 235);
+  margin-top: 2.5rem;
+  margin-bottom: 2.5rem;
+}
+
+:is(.dark .project-prose hr) {
+  border-top-color: rgb(39 39 42);
+}
+
+.project-prose strong {
+  font-weight: 600;
+  color: rgb(17 24 39);
+}
+
+:is(.dark .project-prose strong) {
+  color: rgb(250 250 250);
+}
+@import "tailwindcss";
