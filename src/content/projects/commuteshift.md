@@ -1,34 +1,36 @@
 ---
 title: "CommuteShift"
-description: "A London hybrid commute fare optimizer that compares TfL Contactless Pay-As-You-Go (PAYG) daily/weekly caps against Monthly Travelcards to surface instant monthly savings in under 60 seconds."
+description: "A London hybrid commute fare optimizer built with React 18, TypeScript, and Tailwind CSS that compares TfL Contactless Pay-As-You-Go (PAYG) daily caps against Monthly Travelcards to surface instant monthly savings in under 60 seconds."
 publishDate: 2026-10-23
-tags: ["Product Management", "Next.js", "TypeScript", "Tailwind CSS", "TfL Fare Engine", "Consumer FinTech"]
+tags: ["Product Management", "React 18", "TypeScript", "Vite", "Tailwind CSS", "Consumer FinTech"]
+githubUrl: "https://github.com/hanyihtang2/CommuteShift"
+liveUrl: "https://commute-shift.vercel.app/"
 mockupImage: "/images/projects/commuteshift-mockup.png"
 mockupCaption: "Two-column interactive layout pairing 3-step commute routine inputs (Left) with an instant, zero-signup PAYG vs. Travelcard savings verdict and Slack/link viral sharing actions (Right)."
 mobileMockupImage: "/images/projects/commuteshift-mobile-mockup.png"
 mobileMockupCaption: "Single-column progressive disclosure optimized for the 60%+ mobile traffic arriving from Slack and LinkedIn shares, stacking From/To Zone inputs and thumb-friendly day toggles."
 featured: true
-status: "Concept"
-role: "Product Manager"
-timeline: "v1.0 MVP (Ready for Development)"
+status: "Completed"
+role: "Product Manager & Builder"
+timeline: "2026 (v1.0 MVP Live)"
 metrics:
   - label: "Activation Target"
     value: "> 75%"
     description: "Calculator completion rate"
   - label: "Time to Insight"
     value: "< 45s"
-    description: "Max 3 simple user inputs"
-  - label: "Core Value KPI"
-    value: "> £10,000"
-    description: "Aggregate identified savings"
+    description: "Zero-signup reactive calculation"
+  - label: "Zone Coverage"
+    value: "Zones 1–6"
+    description: "Peak, Off-Peak, Daily Cap & Railcard"
   - label: "Viral Share Rate"
     value: "> 8%"
-    description: "Copy link / Share to Slack"
+    description: "URL state link & Slack report copy"
 techStack:
-  languages: ["TypeScript", "JSON"]
-  frameworks: ["Next.js", "Tailwind CSS"]
-  infrastructure: ["Vercel / Netlify (Zero-Cost Static Edge)"]
-  tools: ["Static TfL Fare Matrix (fares.json)", "Progressive Disclosure UI"]
+  languages: ["TypeScript", "JavaScript (ES Modules)", "CSS"]
+  frameworks: ["React 18", "Tailwind CSS", "Vite 5"]
+  infrastructure: ["Vercel", "GitHub"]
+  tools: ["Lucide React", "Automated Fare Math Suite (test-all.mjs)", "URL Query State Sync"]
 ---
 
 <h2 id="summary">1. Executive Summary, Problem Statement & Personas</h2>
@@ -55,50 +57,46 @@ Provide London hybrid workers with an instant, clear, and mathematically accurat
 
 ### Goals & Non-Goals
 - **Goals:**
-  - Deliver an accurate cost comparison between Contactless Pay-As-You-Go (PAYG) and TfL Monthly Travelcard.
-  - Calculate the exact monthly financial delta (£ saved/lost).
-  - Keep time-to-insight under 60 seconds (max 3 simple user inputs).
+  - Deliver an accurate cost comparison between Contactless Pay-As-You-Go (PAYG) and TfL Monthly Travelcard across **Zones 1–6**.
+  - Calculate the exact monthly financial delta (£ saved/lost) and dynamic weekly break-even threshold.
+  - Keep time-to-insight under 60 seconds (max 3 simple user inputs plus optional Railcard toggle and quick presets).
 - **Non-Goals (Out of Scope for v1):**
   - **National Rail / Out-of-boundary splitting:** Excluded to avoid API complexity; focus strictly on TfL Underground, Overground, and DLR.
   - **Bus-only passes and Cycle hires:** Excluded to keep comparison clean and binary.
-  - **User Accounts / Auth:** No login required for MVP to minimize top-of-funnel drop-off.
+  - **User Accounts / Auth:** No login required for MVP to minimize top-of-funnel drop-off; state is persisted directly in shareable URL query parameters.
 
 ---
 
 <h2 id="design-process">2. UI Design, Scope & Functional Requirements</h2>
 
 ### UI Mockup & Interaction Architecture
-The **CommuteShift London** interface (*"Stop Overpaying TfL."*) is designed around a split-panel reactive layout that eliminates page reloads and delivers an answer in under 45 seconds:
+Built with a high-trust UK fintech aesthetic (inspired by Monzo and Wise) using emerald green savings highlights and TfL blue (`#0019A8`) accents, the **CommuteShift London** interface (*"Stop Overpaying TfL."*) uses a purely reactive split-panel layout on desktop and a stacked progressive flow on mobile:
 
-1. **Left Panel — `STEP 1: YOUR COMMUTE ROUTINE` (3 Frictionless Inputs + Fast-Follow Railcard Toggle):**
-   - **1. Select Zones:** Side-by-side `From` (`Zone 2`) and `To` (`Zone 1`) selectors defaulting to the most common inner-London hybrid corridor.
-   - **2. Office Days per Week:** Interactive `M` `T` `W` `Th` `F` toggle pills with a live counter (`3 days selected`), pre-selected to a 3-day hybrid pattern.
-   - **3. Commute Times:** Separate **Morning Commute** (`Peak 06:30–09:30` vs. `Off-Peak`) and **Evening Commute** (`Peak 16:00–19:00` vs. `Off-Peak`) radio groups to accurately model asymmetric routines (such as *Hybrid Harry* travelling in during morning peak and returning after 19:00 off-peak).
-   - **Railcard Discount Modifier (P1):** Checkbox for `16-25 / 26-30 Railcard` applying a 1/3 discount to off-peak Oyster/Contactless single fares and daily caps.
+1. **Left Panel — `STEP 1: YOUR COMMUTE ROUTINE` (Reactive Inputs + Presets):**
+   - **1. Select Zones:** Side-by-side `From` and `To` selectors supporting **Zones 1 to 6** into Zone 1 (defaulting to `Zone 2` → `Zone 1`).
+   - **2. Office Days per Week:** Interactive `M` `T` `W` `Th` `F` toggle pills with a live counter (`3 days selected`) and quick test presets for 3-day hybrid (Tue–Thu), 2-day flexible, and 5-day full-time schedules.
+   - **3. Commute Times:** Separate **Morning Commute** (`Peak 06:30–09:30` vs. `Off-Peak`) and **Evening Commute** (`Peak 16:00–19:00` vs. `Off-Peak`) radio groups to accurately model asymmetric routines.
+   - **National Railcard Integration:** Checkbox for `16-25 / 26-30 Railcard` applying TfL's **1/3 (34%) discount** to off-peak single fares when linked to Oyster/Contactless.
 2. **Right Panel — `YOUR RECOMMENDATION` (High-Contrast Verdict & Viral Loop):**
    - **Winning Strategy Banner:** Highlights `BEST CHOICE — Contactless Pay-As-You-Go` at **£80.54 / month** with a high-visibility green pill: `YOU SAVE £84.56 / month (51% cheaper)`.
    - **Itemized Cost Breakdown (Monthly):** Transparently compares the daily return cost (`£6.20`, noting it sits under the `£8.50` daily cap) against the fixed `Monthly Travelcard (Zone 1-2)` at `£165.10`.
-   - **Strategic Break-even Rule Callout:** Plain-English guidance (*"A Monthly Travelcard only becomes cheaper if you commute 6 full peak days every week"*).
-   - **Growth & Viral Sharing Actions:** Dedicated `Copy Shareable Link` and `Share to Slack` CTAs driving the `> 8%` Result Share Rate KPI.
+   - **Dynamic Break-Even Rule Callout:** Calculates the exact number of full peak commute days per week required before a Monthly Travelcard becomes cheaper than PAYG (*"A Monthly Travelcard only becomes cheaper if you commute 6 full peak days every week"*).
+   - **One-Click Sharing:**
+     - **Copy Shareable Link:** Encodes all active user selections into URL query parameters (`from`, `days`, `am`, `pm`, `railcard`) for instant deep-linking.
+     - **Share to Slack:** Generates and copies a formatted Slack summary of the monthly commute breakdown for team channels.
 
 ### MoSCoW Prioritization
 
-- **Must Have (P0 — MVP):**
-  - Zone selector (Zones 1 to 4).
-  - Weekly office day selector (Monday–Friday toggles).
-  - Peak vs. Off-Peak commute time selector.
-  - Automated calculation engine comparing PAYG (with Daily Caps) vs. Monthly Travelcard.
-  - Recommendation banner showing:
-    1. Winning method.
-    2. £ saved per month.
-    3. Breakeven threshold (e.g., *"A Travelcard only saves money if you travel 4+ days/week"*).
-- **Should Have (P1 — Fast Follow):**
-  - Railcard discount toggle (1/3 off off-peak Oyster fares).
+- **Delivered in Baseline MVP (P0 & P1):**
+  - Zone selector across **Zones 1 to 6** inbound to Zone 1.
+  - Weekly office day selector (Monday–Friday toggles) + interactive schedule presets.
+  - Separate Morning and Evening Peak vs. Off-Peak commute time selectors.
+  - Automated calculation engine comparing PAYG (with Daily Cap enforcement) vs. Monthly Travelcard.
+  - **National Railcard discount toggle** (1/3 off off-peak fares) and **URL query parameter serialization** + **Share to Slack** clipboard generator.
+- **Future Fast-Follow / Backlog (P2):**
   - Annual Travelcard comparison toggle (factoring in the 12-for-10 month discount).
-- **Could Have (P2 — Backlog):**
-  - Employer Slack bot / Shareable team dashboard.
-  - Carbon footprint comparison (Tube vs. Uber/Driving).
-- **Won't Have (P3 — Explicit Trade-offs):**
+  - Employer Slack bot / Shareable team dashboard and carbon footprint comparison.
+- **Explicit Trade-offs / Won't Have (P3):**
   - Real-time disruption alerts or live journey routing (unnecessary scope creep for a financial calculation tool).
 
 ### Functional Requirements & User Stories
@@ -110,8 +108,8 @@ The **CommuteShift London** interface (*"Stop Overpaying TfL."*) is designed aro
 
 - **Acceptance Criteria:**
   - Default state: `Start = Zone 2`, `End = Zone 1`.
-  - Day selector allows multi-selection of `Mon`, `Tue`, `Wed`, `Thu`, `Fri` (default: `Tue`, `Wed`, `Thu` selected).
-  - Peak/Off-peak toggle clearly displays TfL peak definitions (**Peak:** `06:30–09:30` & `16:00–19:00`).
+  - Day selector allows multi-selection of `Mon`, `Tue`, `Wed`, `Thu`, `Fri` (default: 3 days selected).
+  - Peak/Off-peak toggles clearly display TfL peak definitions (**Peak:** `06:30–09:30` & `16:00–19:00`).
 
 #### Story 2: Calculation Engine & Comparison
 > **As a** cost-conscious commuter,  
@@ -121,7 +119,7 @@ The **CommuteShift London** interface (*"Stop Overpaying TfL."*) is designed aro
 - **Acceptance Criteria:**
   - Uses the standardized monthly formula:
     `Monthly Cost = (Daily Cost) × (Days Commuted / Week) × 4.33`
-  - `Daily Cost` respects the TfL Daily Cap for the chosen zone boundary.
+  - `Daily Cost` enforces the TfL Daily Cap (`Math.min(amFare + pmFare, dailyCap)`) for the chosen zone boundary.
   - Compares PAYG total against the fixed standard TfL Monthly Travelcard price.
 
 #### Story 3: High-Impact Recommendation Card
@@ -130,9 +128,9 @@ The **CommuteShift London** interface (*"Stop Overpaying TfL."*) is designed aro
 > **So that** I know exactly what action to take without analyzing raw numbers.
 
 - **Acceptance Criteria:**
-  - Highlights the cheaper option with a clear badge: **RECOMMENDED**.
-  - Displays the net monthly difference in green (e.g., **Save £46.20 / month**).
-  - Displays the strategic rule: *"Break-even Point: You would need to commute at least 4 peak days every week for a Travelcard to be worth it."*
+  - Highlights the cheaper option with a clear badge: **BEST CHOICE / RECOMMENDED**.
+  - Displays the net monthly difference and percentage saved in emerald green.
+  - Displays the dynamic strategic rule showing the exact weekly peak-day break-even point.
 
 ---
 
@@ -142,60 +140,49 @@ The **CommuteShift London** interface (*"Stop Overpaying TfL."*) is designed aro
 | :--- | :--- | :--- | :--- |
 | **Activation** | Calculator Completion Rate | **> 75%** | % of landed users who select inputs and view the recommendation. |
 | **Core Value** | "Total £ Identified Savings" | **> £10,000 in aggregate** | Proves tangible commercial impact to end users. |
-| **Viral / Growth** | Result Share Rate | **> 8%** | % of users clicking "Copy Link / Share to Slack" to tell teammates. |
-| **Speed** | Time to Recommendation | **< 45 seconds** | Validation of frictionless UX. |
+| **Viral / Growth** | Result Share Rate | **> 8%** | % of users clicking "Copy Shareable Link" or "Share to Slack" to tell teammates. |
+| **Speed** | Time to Recommendation | **< 45 seconds** | Validation of frictionless, purely reactive UX. |
 
 ---
 
-<h2 id="technical-details">4. Edge Cases, Technical Assumptions & Next Steps</h2>
+<h2 id="technical-details">4. Technical Implementation, Fare Matrix & Edge Cases</h2>
 
-### Edge Cases & Handling
-1. **User works 5 days a week during Peak:**
-   - *Engine Behavior:* Ensure Weekly Cap and Monthly Travelcard are properly balanced; Monthly Travelcard should emerge as the winner or dead heat.
-2. **Reverse Commuting (Zone 1 to Zone 3):**
-   - *Engine Behavior:* TfL treats Zone 1–3 and Zone 3–1 travel symmetrically for capping; clarify this in an informational tooltip.
-3. **Month Duration Fluctuations:**
-   - *Engine Behavior:* Standardize on **4.33 weeks per month** (`52 weeks / 12 months`) and state this transparency note in the footer.
+### TfL Fare Data Matrix (Zone 1 Inbound)
+Rather than calling the external TfL Unified API on every keystroke, CommuteShift embeds the verified TfL Underground fare matrix directly in the client bundle. Since TfL fares adjust once per year (typically in March), static edge data eliminates network latency, prevents rate-limiting, and enables zero-cost static hosting on **Vercel**.
 
-### Technical Assumptions & Architectural Trade-offs
-- **Static Data Table (`fares.json`) vs. Live TfL Unified API:**
-  - *Decision:* Fare data will be stored locally in a static `fares.json` file rather than hitting the live TfL Unified API.
-  - *PM Justification:* TfL fares only adjust once per year (typically in March). Hardcoding fares eliminates external API latency, removes rate-limiting risks, and allows zero-cost hosting on Vercel/Netlify.
-- **Responsive Mobile-First Design:**
-  - Over 60% of traffic is expected via mobile links shared on LinkedIn or Slack, requiring a mobile-first 3-step progressive disclosure layout.
+| Origin Route | Peak Single | Off-Peak Single | Daily Cap | Monthly Travelcard |
+| :--- | :---: | :---: | :---: | :---: |
+| **Within Zone 1** | £2.80 | £2.70 | £8.50 | £165.10 |
+| **Zone 1 to 2** | £3.40 | £2.80 | £8.50 | £165.10 |
+| **Zone 1 to 3** | £4.00 | £3.40 | £10.00 | £194.00 |
+| **Zone 1 to 4** | £4.70 | £3.60 | £12.30 | £237.00 |
+| **Zone 1 to 5** | £5.10 | £3.50 | £14.60 | £280.40 |
+| **Zone 1 to 6** | £5.60 | £3.60 | £15.60 | £301.40 |
 
-```json
-{
-  "effectiveDate": "2026-03-01",
-  "weeksPerMonth": 4.33,
-  "zones": {
-    "1-2": {
-      "peakSingle": 3.50,
-      "offPeakSingle": 2.90,
-      "dailyCap": 8.90,
-      "weeklyCap": 44.70,
-      "monthlyTravelcard": 171.70
-    },
-    "1-3": {
-      "peakSingle": 3.80,
-      "offPeakSingle": 3.10,
-      "dailyCap": 10.50,
-      "weeklyCap": 52.50,
-      "monthlyTravelcard": 201.60
-    },
-    "1-4": {
-      "peakSingle": 4.60,
-      "offPeakSingle": 3.40,
-      "dailyCap": 12.80,
-      "weeklyCap": 64.20,
-      "monthlyTravelcard": 246.60
-    }
-  }
-}
-```
+### Edge Cases & Automated Math Verification
+1. **Daily Cap Enforcement:** Ensures any combination of peak/off-peak morning and evening single fares is automatically capped at the zone's `dailyCap`.
+2. **Railcard Off-Peak Discounting:** Applies TfL's 34% (`1/3`) discount strictly to off-peak single legs when the `16-25 / 26-30 Railcard` option is active.
+3. **Month Duration Standardization:** Standardizes on **4.33 working weeks per month** (`52 weeks / 12 months`) with full formula transparency in the UI breakdown.
+4. **Automated Fare Math Test Suite:** Validated via `npm test` (`node test-all.mjs`) to verify daily cap boundaries, asymmetric peak/off-peak journeys, Railcard discounts, and break-even thresholds.
 
-### Next Steps & Implementation Roadmap
-1. **Wireframe UI Flow:** 3-step progressive disclosure screen (Zones → Office Days & Peak/Off-Peak → Instant Recommendation Card).
-2. **Setup Fare Matrix:** Populate `fares.json` with current London Underground Zone 1–4 Peak, Off-Peak, Daily Cap, Weekly Cap, and Monthly Travelcard values.
-3. **Build Prototype:** Code MVP frontend using Next.js and Tailwind CSS.
+---
 
+<h2 id="repository">5. Live Application & GitHub Repository</h2>
+
+The baseline v1.0 application is deployed on **Vercel** and the source code is available on **GitHub**:
+
+- **Live Web App:** [https://commute-shift.vercel.app/](https://commute-shift.vercel.app/)
+- **GitHub Repository:** [https://github.com/hanyihtang2/CommuteShift](https://github.com/hanyihtang2/CommuteShift)
+- **Local Quickstart:**
+  ```bash
+  # Clone the repository
+  git clone https://github.com/hanyihtang2/CommuteShift.git
+
+  # Install dependencies and start the Vite dev server
+  cd CommuteShift
+  npm install
+  npm run dev
+
+  # Run automated fare math verification tests
+  npm test
+  ```
