@@ -39,7 +39,9 @@ const allProjects = (await getCollection('projects')).sort(
         </div>
         <div class="flex items-center gap-4 text-sm font-medium border-t border-zinc-100 dark:border-zinc-800 pt-4">
           <a href={`${base}/projects/${project.id}`} class="text-blue-500 hover:underline">Read Case Study →</a>
-          <a href={project.data.githubUrl} target="_blank" rel="noopener noreferrer" class="text-zinc-500 hover:underline">GitHub ↗</a>
+          {project.data.githubUrl && (
+            <a href={project.data.githubUrl} target="_blank" rel="noopener noreferrer" class="text-zinc-500 hover:underline">GitHub ↗</a>
+          )}
           {project.data.liveUrl && (
             <a href={project.data.liveUrl} target="_blank" rel="noopener noreferrer" class="text-zinc-500 hover:underline">Live Demo ↗</a>
           )}

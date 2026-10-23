@@ -1,0 +1,117 @@
+---
+title: "PawPulse"
+description: "A collaborative household pet care platform for scheduling veterinary checkups, coordinating shared medication logs to prevent double-dosing, and integrating with vet prescription providers."
+publishDate: 2026-10-20
+tags: ["TypeScript", "React Native", "Next.js", "PostgreSQL", "Real-Time Sync", "Healthcare"]
+featured: true
+status: "Concept"
+role: "Product Architect & Full-Stack Engineer"
+timeline: "Concept Stage (Planned)"
+metrics:
+  - label: "Core Pillar"
+    value: "Zero Double-Dose"
+    description: "Household-wide atomic med logs"
+  - label: "Sharing Model"
+    value: "Multi-User"
+    description: "Synced family & sitter households"
+  - label: "Care Cadence"
+    value: "End-to-End"
+    description: "Checkups, dental, blood work & meds"
+  - label: "Future Roadmap"
+    value: "Vet API"
+    description: "Direct prescription & clinic sync"
+techStack:
+  languages: ["TypeScript", "SQL"]
+  frameworks: ["Next.js", "Expo / React Native", "Tailwind CSS"]
+  infrastructure: ["PostgreSQL", "WebSockets / Real-Time Subscriptions", "Push Notifications"]
+  tools: ["Zod", "Idempotency Locks", "Calendar / iCal Feeds"]
+---
+
+<h2 id="summary">1. Project Summary & Objectives</h2>
+
+### Product Concept & Problem Statement
+Pet owners managing complex or recurring care routines—from routine wellness exams, dental cleanings, and blood work panels to daily or twice-daily medications—often coordinate care across multiple people in a home (partners, family members, roommates, or pet sitters). Relying on memory, paper charts, or group chats creates two major risks: **missed appointments/doses** and **accidental double-dosing** when one person medicates a pet without realizing another household member already did.
+
+**PawPulse** is a collaborative pet health and care management platform currently in the **Concept** stage. It gives pet owners centralized, effortless control over every aspect of their pets' health schedules while keeping every member of a household synchronized in real time.
+
+### Core Objectives
+1. **Prevent Duplicate Medication Administration:** Provide real-time, household-wide medication check-offs with optimistic locking and instant push notifications so no pet is accidentally given a second dose.
+2. **Proactive Appointment & Preventative Care Scheduling:** Track and remind owners of specific veterinary care milestones—including general health checkups, dental procedures, vaccinations, and blood work—with customizable lead-time alerts.
+3. **Shared Household Workspaces:** Allow users to create personal accounts, form shared **Households**, invite family members or temporary caregivers, and manage multiple pets under a unified dashboard.
+4. **Veterinary & Prescription Integration (Long-Term Vision):** Connect directly with veterinary care providers and pet pharmacies to import verified medication regimens, automate prescription refills, and share adherence logs with a pet's vet prior to appointments.
+
+---
+
+<h2 id="design-process">2. Design Process & Planned Architecture</h2>
+
+### Domain Model & Household Synchronization
+The system is designed around a multi-tenant **Household** graph where accounts share read/write access to pet profiles, medical schedules, and immutable dose administration events:
+
+```
+[ Household Members (Owners, Family, Sitters) ]
+                      │
+                      ▼
+       [ Real-Time Care Coordinator API ]
+       ├── Idempotent Dose Guard (Anti-Double-Dose Lock)
+       ├── Appointment & Preventative Care Scheduler
+       └── Push Notification & Reminder Dispatcher
+                      │
+        ┌─────────────┼─────────────┐
+        ▼             ▼             ▼
+  [ Pet Profiles ] [ Dose Ledger ] [ Future: Vet Clinic / Rx API ]
+  (Checkups,       (Timestamped    (Prescription Sync,
+   Dental, Labs)    Who/When Log)   Refills & Vet Records)
+```
+
+### Key Architectural Decisions (Planned)
+- **Idempotent Dose Windows vs. Simple Checkboxes:** A basic to-do list allows race conditions if two people open the app at the same time. PawPulse models each scheduled medication dose as a state machine (`UPCOMING` → `ADMINISTERED` / `SKIPPED`) guarded by a database-level uniqueness constraint on `(pet_id, schedule_id, dose_window_id)`. Once claimed by one household member, any concurrent attempt immediately surfaces a warning showing *who* gave the medication and *when*.
+- **Role-Based Household Access:** Households support distinct permission tiers—**Primary Owners** (who can modify medication dosages, schedules, and vet records) and **Caregivers / Sitters** (who can view instructions, log completed doses, and receive reminders).
+- **Extensible Provider Adapter Layer:** To prepare for future veterinary clinic and pharmacy integrations, prescriptions and lab reminders are modeled with standardized clinical metadata (dosage units, frequency intervals, prescribing clinic ID, and refill counts).
+
+---
+
+<h2 id="key-metrics">3. Key Capabilities & Target Outcomes</h2>
+
+| Capability Area | Common Pain Point | Planned PawPulse Solution | Target Outcome |
+| :--- | :--- | :--- | :--- |
+| **Medication Tracking** | Uncertainty over whether a pet was already medicated | Real-time household dose ledger with instant push broadcast | **Eliminate accidental double-dosing** |
+| **Preventative Appointments** | Forgotten annual blood work, dental cleanings, or boosters | Categorized clinical reminders (General, Dental, Blood Work, Vaccines) | **On-time preventative care compliance** |
+| **Household Collaboration** | Siloed reminders on a single owner's phone | Multi-account Households with shared calendars & live activity feeds | **Seamless handoffs between family members** |
+| **Veterinary Integration** | Manual data entry from paper discharge sheets | Future Vet Provider & e-Prescription sync API | **Automated regimen setup & refill alerts** |
+
+---
+
+<h2 id="technical-details">4. Planned Technical Details</h2>
+
+### Proposed Stack & Tooling
+- **Cross-Platform Clients:** **Expo / React Native** for iOS and Android (supporting interactive lock-screen notifications for quick dose logging) paired with a **Next.js** web dashboard.
+- **Database & Real-Time Layer:** **PostgreSQL** with Row-Level Security (RLS) scoped to `household_id` memberships, plus real-time WebSocket subscriptions so household dashboards update the instant a dose or appointment is logged.
+- **Scheduling & Notification Engine:** Time-zone-aware cron/queue workers dispatching escalating reminders if a time-sensitive medication window is approaching expiration without a logged confirmation from any household member.
+
+### Anti-Double-Dose Ledger Schema (Draft)
+```sql
+CREATE TABLE medication_dose_logs (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    household_id UUID NOT NULL REFERENCES households(id) ON DELETE CASCADE,
+    pet_id UUID NOT NULL REFERENCES pets(id) ON DELETE CASCADE,
+    medication_schedule_id UUID NOT NULL REFERENCES medication_schedules(id),
+    scheduled_window_start TIMESTAMPTZ NOT NULL,
+    administered_by_user_id UUID NOT NULL REFERENCES users(id),
+    administered_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    notes TEXT,
+    -- Guarantees two household members cannot log the same scheduled dose twice
+    UNIQUE (pet_id, medication_schedule_id, scheduled_window_start)
+);
+```
+
+---
+
+<h2 id="repository">5. Project Status & Roadmap</h2>
+
+**Current Stage:** `Concept` (Not yet started)
+
+1. **Phase 1 — Core Accounts, Households & Pet Profiles:** Authentication, household invite flows, and pet health profiles.
+2. **Phase 2 — Appointment & Preventative Care Scheduler:** Recurring scheduling and reminders for general checkups, dental care, and blood work.
+3. **Phase 3 — Group Medication Tracker:** Real-time dose logging, anti-double-dose locking, and household push notifications.
+4. **Phase 4 — Veterinary & Prescription Provider Integration:** Partner APIs for automated prescription imports, refill ordering, and vet record sharing.
+
