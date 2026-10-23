@@ -25,6 +25,46 @@ techStack:
   frameworks: ["Next.js", "Expo / React Native", "Tailwind CSS"]
   infrastructure: ["PostgreSQL", "WebSockets / Real-Time Subscriptions", "Push Notifications"]
   tools: ["Zod", "Idempotency Locks", "Calendar / iCal Feeds"]
+roadmap:
+  - phase: "Phase 1"
+    title: "Core Accounts, Households & Pet Profiles"
+    status: "Planned"
+    targetQuarter: "Q1 2027"
+    summary: "Establish the multi-tenant Household graph, secure role-based access control, and comprehensive pet medical profile creation."
+    deliverables:
+      - "Multi-user Household data model with invite code and link onboarding"
+      - "Primary Owner vs. Caregiver/Sitter role-based permission tiers"
+      - "Pet health profiles tracking species, breed, target weight, allergies, and chronic conditions"
+      - "Baseline Supabase PostgreSQL schema with household-scoped Row-Level Security (RLS)"
+  - phase: "Phase 2"
+    title: "Appointment & Preventative Care Scheduler"
+    status: "Planned"
+    targetQuarter: "Q2 2027"
+    summary: "Proactive compliance scheduler for veterinary wellness checkups, dental cleanings, vaccinations, and periodic blood work panels."
+    deliverables:
+      - "Categorized clinical appointment types (General Exam, Dental, Blood Work, Vaccines)"
+      - "Customizable lead-time alert engine (30-day, 7-day, and 24-hour notifications)"
+      - "Two-way calendar sync via iCal and Google Calendar feeds for household members"
+      - "Historical appointment log with downloadable PDF care summaries for vet visits"
+  - phase: "Phase 3"
+    title: "Real-Time Group Medication Tracker & Anti-Double-Dose Ledger"
+    status: "Planned"
+    targetQuarter: "Q3 2027"
+    summary: "High-concurrency dose administration tracking with idempotent database locking to eliminate accidental double-dosing across family members."
+    deliverables:
+      - "Atomic dose ledger with uniqueness constraint on (pet_id, schedule_id, dose_window_id)"
+      - "Instant household-wide push broadcasts when a medication is administered"
+      - "Interactive mobile lock-screen widgets (Expo / React Native) for one-tap logging"
+      - "Escalating missed-dose warning system for critical time-sensitive regimens"
+  - phase: "Phase 4"
+    title: "Veterinary Clinic & e-Prescription Provider Integration"
+    status: "Planned"
+    targetQuarter: "Q4 2027"
+    summary: "Direct clinic integrations for automatic prescription ingestion, digital refills, and seamless pre-appointment adherence exports."
+    deliverables:
+      - "Extensible Provider Adapter Layer for veterinary practice management systems"
+      - "Automated prescription refill triggers linked to verified pharmacy partners"
+      - "Secure one-click adherence report export for veterinary consultations"
 ---
 
 <h2 id="summary">1. Project Summary & Objectives</h2>
@@ -106,12 +146,13 @@ CREATE TABLE medication_dose_logs (
 
 ---
 
-<h2 id="repository">5. Project Status & Roadmap</h2>
+<h2 id="repository">5. Project Status & Roadmap Overview</h2>
 
-**Current Stage:** `Concept` (Not yet started)
+**Current Stage:** `Concept` (Architecture & Domain Model Designed)
 
-1. **Phase 1 — Core Accounts, Households & Pet Profiles:** Authentication, household invite flows, and pet health profiles.
-2. **Phase 2 — Appointment & Preventative Care Scheduler:** Recurring scheduling and reminders for general checkups, dental care, and blood work.
-3. **Phase 3 — Group Medication Tracker:** Real-time dose logging, anti-double-dose locking, and household push notifications.
-4. **Phase 4 — Veterinary & Prescription Provider Integration:** Partner APIs for automated prescription imports, refill ordering, and vet record sharing.
+PawPulse is structured into 4 major engineering phases spanning multi-user household synchronization, preventative care scheduling, real-time medication idempotency locking, and veterinary clinic integration.
+
+> [!NOTE]
+> Detailed milestone deliverables, acceptance criteria, and target release quarters are maintained on the dedicated **[PawPulse Product Roadmap Subpage](/portfolio/projects/pawpulse/roadmap)**.
+
 

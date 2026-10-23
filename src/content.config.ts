@@ -35,6 +35,18 @@ const projects = defineCollection({
         infrastructure: z.array(z.string()).optional(),
       })
       .optional(),
+    roadmap: z
+      .array(
+        z.object({
+          phase: z.string(),
+          title: z.string(),
+          status: z.enum(['Completed', 'In Progress', 'Planned']),
+          targetQuarter: z.string().optional(),
+          summary: z.string(),
+          deliverables: z.array(z.string()),
+        })
+      )
+      .optional(),
   }),
 });
 

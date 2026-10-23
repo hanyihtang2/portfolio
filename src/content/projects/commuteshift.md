@@ -31,6 +31,35 @@ techStack:
   frameworks: ["React 18", "Tailwind CSS", "Vite 5"]
   infrastructure: ["Vercel", "GitHub"]
   tools: ["Lucide React", "Automated Fare Math Suite (test-all.mjs)", "URL Query State Sync"]
+roadmap:
+  - phase: "Phase 1"
+    title: "MVP Launch & Core Fare Calculation"
+    status: "Completed"
+    targetQuarter: "Q4 2026"
+    summary: "Baseline London hybrid commute calculator comparing TfL Contactless PAYG against Monthly Travelcards across Zones 1–6."
+    deliverables:
+      - "Zero-signup reactive fare calculation under 45 seconds"
+      - "Zones 1–6 Peak/Off-Peak fare matrix and daily cap enforcement"
+      - "Railcard 1/3 off-peak discount integration"
+      - "URL query state persistence and Slack report viral share generator"
+  - phase: "Phase 2"
+    title: "Multi-Modal Transit & National Rail Integration (Placeholder)"
+    status: "Planned"
+    targetQuarter: "Q1 2027"
+    summary: "Planned expansion covering Elizabeth line special fare structures, DLR, London Overground, and National Rail boundary extensions."
+    deliverables:
+      - "[Placeholder] National Rail boundary zone extension models"
+      - "[Placeholder] Off-peak Friday fare adjustments and weekend travel additions"
+      - "[Placeholder] Employer hybrid policy preset configurations"
+  - phase: "Phase 3"
+    title: "Commute Intelligence & Annual Season Card Analytics (Placeholder)"
+    status: "Planned"
+    targetQuarter: "Q2 2027"
+    summary: "Planned milestone for annual holiday calendar adjustments, bank holiday deductions, and corporate benefits analysis."
+    deliverables:
+      - "[Placeholder] Bank holiday and annual leave deduction simulator"
+      - "[Placeholder] Annual vs. Monthly Travelcard cash-flow break-even analysis"
+      - "[Placeholder] CSV / PDF expense report export for corporate reimbursement"
 ---
 
 <h2 id="summary">1. Executive Summary, Problem Statement & Personas</h2>

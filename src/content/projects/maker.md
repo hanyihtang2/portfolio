@@ -27,6 +27,43 @@ techStack:
   frameworks: ["Next.js", "React 19", "Expo / React Native", "Tailwind CSS"]
   infrastructure: ["Supabase (PostgreSQL & Auth)", "GitHub Pages", "GitHub Actions"]
   tools: ["Turborepo", "Zod", "Lucide Icons", "npm Workspaces"]
+roadmap:
+  - phase: "Phase 1"
+    title: "Turborepo Scaffolding & Unified Domain Models"
+    status: "Completed"
+    targetQuarter: "Q3 2026"
+    summary: "Monorepo architecture sharing core TypeScript types, Zod validators, and Supabase database clients across web and mobile."
+    deliverables:
+      - "Turborepo setup with 5 packages (2 apps + 3 shared libraries)"
+      - "Relational Supabase PostgreSQL schema with RLS security policies"
+      - "Shared Zod blueprint schemas and PL/pgSQL rating triggers"
+  - phase: "Phase 2"
+    title: "Next.js Web Blueprint Discovery & Creator Studio (Placeholder)"
+    status: "In Progress"
+    targetQuarter: "Q4 2026"
+    summary: "Planned roadmap milestone for web-based blueprint authoring, video step embedding, cut list calculators, and community reviews."
+    deliverables:
+      - "[Placeholder] Interactive cut list optimizer and lumber yield calculator"
+      - "[Placeholder] Creator dashboard with draft/publish workflow"
+      - "[Placeholder] User reviews, build photos, and community question threads"
+  - phase: "Phase 3"
+    title: "Expo Mobile Offline Workshop Mode (Placeholder)"
+    status: "Planned"
+    targetQuarter: "Q1 2027"
+    summary: "Planned roadmap milestone for offline mobile experience in garages and workshops without internet connectivity."
+    deliverables:
+      - "[Placeholder] Local caching with expo-file-system and SQLite"
+      - "[Placeholder] High-contrast workbench mode with large touch targets"
+      - "[Placeholder] Hands-free voice navigation for step-by-step instructions"
+  - phase: "Phase 4"
+    title: "Universal Cross-Platform Entitlements (Placeholder)"
+    status: "Planned"
+    targetQuarter: "Q2 2027"
+    summary: "Planned roadmap milestone for unified subscriptions and paid blueprint purchases synchronized between Stripe and App Stores."
+    deliverables:
+      - "[Placeholder] Stripe web checkout webhook synchronization"
+      - "[Placeholder] Apple StoreKit 2 and Google Play Billing integration"
+      - "[Placeholder] Unified entitlement resolution via Supabase Edge Functions"
 ---
 
 <h2 id="summary">1. Project Summary & Objectives</h2>
