@@ -3,7 +3,9 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
-const allProjects = await getCollection('projects');
+const allProjects = (await getCollection('projects')).sort(
+  (a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
+);
 ---
 
 <BaseLayout title="Projects" description="All past projects and open source work">
@@ -18,7 +20,13 @@ const allProjects = await getCollection('projects');
         <div>
           <div class="flex justify-between items-start mb-2">
             <h2 class="text-xl font-bold">{project.data.title}</h2>
-            <span class="text-xs px-2 py-0.5 rounded bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400">{project.data.status}</span>
+            <span class={`text-xs px-2 py-0.5 rounded font-medium ${
+              project.data.status === 'Completed'
+                ? 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300'
+                : project.data.status === 'In Progress'
+                ? 'bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300'
+                : 'bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400'
+            }`}>{project.data.status}</span>
           </div>
           <p class="text-sm text-zinc-600 dark:text-zinc-400 mb-4">{project.data.description}</p>
           <div class="flex flex-wrap gap-2 mb-6">
@@ -32,6 +40,9 @@ const allProjects = await getCollection('projects');
         <div class="flex items-center gap-4 text-sm font-medium border-t border-zinc-100 dark:border-zinc-800 pt-4">
           <a href={`${base}/projects/${project.id}`} class="text-blue-500 hover:underline">Read Case Study →</a>
           <a href={project.data.githubUrl} target="_blank" rel="noopener noreferrer" class="text-zinc-500 hover:underline">GitHub ↗</a>
+          {project.data.liveUrl && (
+            <a href={project.data.liveUrl} target="_blank" rel="noopener noreferrer" class="text-zinc-500 hover:underline">Live Demo ↗</a>
+          )}
         </div>
       </div>
     ))}
