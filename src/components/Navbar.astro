@@ -6,6 +6,7 @@ const currentPath = pathname.replace(/\/$/, "");
 const navItems = [
   { name: "Home", href: `${base}/` },
   { name: "Projects", href: `${base}/projects` },
+  { name: "Learning", href: `${base}/learning` },
   { name: "Contact", href: `${base}/contact` },
 ];
 ---
@@ -25,7 +26,7 @@ const navItems = [
       </svg>
     </a>
 
-    <div class="flex items-center gap-6 text-sm font-medium">
+    <div class="flex items-center gap-3 sm:gap-6 text-sm font-medium">
       {navItems.map((item) => {
         const isActive = currentPath === item.href.replace(/\/$/, "");
         return (

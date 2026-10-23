@@ -1,0 +1,574 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+
+interface LearningItem {
+  id: string;
+  title: string;
+  phase: 'current' | 'future' | 'past';
+  status: 'In Progress' | 'Target / Upcoming' | 'Completed';
+  period: string;
+  provider: string;
+  category: 'Networking & Systems' | 'AI & Agentic Systems' | 'Cloud & Architecture' | 'Security & Governance' | 'Product & UX' | 'Computer Science';
+  what: string;
+  why: string;
+  topics: string[];
+  link?: {
+    label: string;
+    url: string;
+    external?: boolean;
+  };
+}
+
+const learningItems: LearningItem[] = [
+  // --- CURRENT PURSUITS ---
+  {
+    id: "ccna-200-301",
+    title: "Cisco Certified Network Associate (CCNA 200-301 v1.1)",
+    phase: "current",
+    status: "In Progress",
+    period: "Late 2026 – Present (Target Exam: Q1 2027)",
+    provider: "Cisco & Pearson VUE",
+    category: "Networking & Systems",
+    what: "In-depth study and hands-on packet-level labbing across Layer 2 and Layer 3 network architecture. Topics include IPv4/IPv6 VLSM subnetting, packet life-cycle analysis, single-area OSPFv2/v3 routing, VLANs, 802.1Q trunking, Rapid Spanning Tree Protocol (RSTP), EtherChannel link aggregation, NAT/PAT, ACL security perimeters, QoS traffic queuing, and modern network programmability (RESTCONF, NETCONF, Cisco DNA Center APIs).",
+    why: "Having delivered 2FA microservice platforms and high-availability digital portals, software reliability and security are inextricably tied to network mechanics. Understanding low-level packet traversal, DNS latency, TLS handshake overhead, and subnet segmentation enables high-conviction architectural debates with network engineering teams and prevents premature abstraction leaks.",
+    topics: ["IPv4 / IPv6 Subnetting", "OSPFv2 Routing", "VLANs & 802.1Q", "Spanning Tree (RSTP)", "ACLs & NAT", "RESTCONF / Python Automation"],
+    link: {
+      label: "View Cisco 200-301 Exam Blueprint ↗",
+      url: "https://www.cisco.com/c/en/us/training-events/training-certifications/certifications/associate/ccna.html",
+      external: true,
+    },
+  },
+  {
+    id: "agentic-ai-systems",
+    title: "Agentic AI Architectures & Model Context Protocol (MCP)",
+    phase: "current",
+    status: "In Progress",
+    period: "Late 2026 – Present",
+    provider: "Open Source Ecosystem & Applied Engineering",
+    category: "AI & Agentic Systems",
+    what: "Architecting autonomous agent loops, tool-calling schemas, and context window orchestration using the Model Context Protocol (MCP). Investigating deterministic verification harnesses, ReAct reasoning loops, long-term memory persistence (vector databases and structured state stores), and guardrail architectures to prevent hallucination cascades.",
+    why: "Software UX is undergoing a foundational transition from reactive point-and-click graphical interfaces to proactive, autonomous agent workflows. As a product builder, mastering agent orchestration primitives, tool interfaces, and evaluative guardrails is vital to designing software that operates autonomously without sacrificing user trust or deterministic reliability.",
+    topics: ["Model Context Protocol (MCP)", "ReAct Loops", "Deterministic Tool Calling", "Vector Retrieval & Memory", "Guardrails & Evals", "Multi-Agent Orchestration"],
+  },
+
+  // --- FUTURE HORIZONS ---
+  {
+    id: "aws-solutions-architect",
+    title: "AWS Solutions Architect (Associate) & Resilient Cloud Topologies",
+    phase: "future",
+    status: "Target / Upcoming",
+    period: "Target: Q2 – Q3 2027",
+    provider: "Amazon Web Services (AWS)",
+    category: "Cloud & Architecture",
+    what: "Designing multi-tier, highly available, and cost-optimized distributed systems across AWS infrastructure. Key study domains will include multi-AZ VPC topologies, Transit Gateways, route propagation, serverless event orchestrations (Lambda, Step Functions), distributed data stores (DynamoDB global tables, RDS Multi-AZ Aurora), SQS/SNS decoupling, and least-privilege IAM policies.",
+    why: "Strategic product roadmaps must be co-designed with cloud infrastructure economics (FinOps) and fault domains. Deepening cloud architecture acumen enables evaluating real-world operational tradeoffs between serverless simplicity and containerized throughput, reducing total cost of ownership while maximizing uptime for enterprise clients.",
+    topics: ["Multi-AZ Resilience", "VPC Transit Gateways", "Event-Driven Serverless", "Aurora & DynamoDB", "FinOps & Cloud Economics", "IAM Least-Privilege"],
+    link: {
+      label: "AWS Certified Solutions Architect Overview ↗",
+      url: "https://aws.amazon.com/certification/certified-solutions-architect-associate/",
+      external: true,
+    },
+  },
+  {
+    id: "distributed-systems",
+    title: "High-Throughput Distributed Systems & Event Sourcing",
+    phase: "future",
+    status: "Target / Upcoming",
+    period: "Target: Q3 – Q4 2027",
+    provider: "Independent Systems Research & Practical Prototyping",
+    category: "Cloud & Architecture",
+    what: "Advanced investigation into distributed data patterns, event sourcing, CQRS (Command Query Responsibility Segregation), distributed log systems (Apache Kafka), database sharding patterns, CAP theorem edge cases, and consensus algorithms (Raft). Implementing working prototypes to measure replication lag and partition tolerance under simulated stress.",
+    why: "Enterprise platforms handling sensitive transactional workflows (such as payment authorization or property asset ledgers) require uncompromising consistency guarantees and immutable audit trails. Understanding the subtleties between eventual and strong consistency allows product managers to specify realistic non-functional requirements and prevent costly data integrity defects.",
+    topics: ["Event Sourcing & CQRS", "Apache Kafka Streams", "Database Partitioning", "CAP Theorem Tradeoffs", "Distributed Consensus", "OpenTelemetry Tracing"],
+  },
+  {
+    id: "quantitative-product-experimentation",
+    title: "Quantitative Product Experimentation & Causal Inference at Scale",
+    phase: "future",
+    status: "Target / Upcoming",
+    period: "Target: Late 2027 & Beyond",
+    provider: "Advanced Product Leadership Frameworks",
+    category: "Product & UX",
+    what: "Advanced statistical methodologies for evaluating product interventions when standard A/B randomized control trials are unfeasible. Includes quasi-experimental design, synthetic control methods for enterprise client rollouts, difference-in-differences analysis, multi-armed bandits for real-time feature allocation, and lifetime value cohort survival models.",
+    why: "In complex B2B and institutional ecosystems, sample sizes are constrained and network interference makes naive A/B testing unreliable. Mastering econometric and causal inference techniques ensures product leaders allocate engineering capital toward provably accretive features rather than chasing noisy vanity metrics.",
+    topics: ["Causal Inference", "Synthetic Controls", "Difference-in-Differences", "Multi-Armed Bandits", "Platform Retention Modeling", "Bayesian Experimentation"],
+  },
+
+  // --- PAST MILESTONES ---
+  {
+    id: "google-ai-cert",
+    title: "Google AI & Applied Machine Learning",
+    phase: "past",
+    status: "Completed",
+    period: "October 2026",
+    provider: "Google Professional Certificate",
+    category: "AI & Agentic Systems",
+    what: "Completed formal training on applied machine learning pipelines, deep learning intuitions, model validation metrics (precision, recall, ROC-AUC, F1-score), vector embeddings for semantic retrieval, and organizational AI governance frameworks.",
+    why: "Grounded technical product intuition in empirical machine learning principles, allowing for a sharp distinction between deterministic software challenges and probabilistic model behaviors during product discovery and feasibility scoping.",
+    topics: ["Model Evaluation Metrics", "Embeddings & Vectors", "ML Lifecycle", "AI Governance & Ethics", "Production AI APIs"],
+    link: {
+      label: "Verified on Resume ↗",
+      url: `${base}/resume`,
+    },
+  },
+  {
+    id: "google-cybersecurity",
+    title: "Google Cybersecurity Professional",
+    phase: "past",
+    status: "Completed",
+    period: "October 2026",
+    provider: "Google Professional Certificate",
+    category: "Security & Governance",
+    what: "Comprehensive training covering network security, threat vectors (OWASP Top 10), packet analysis using Wireshark and tcpdump, Security Information and Event Management (SIEM) log analysis, symmetric/asymmetric cryptography, and incident response frameworks (NIST CSF).",
+    why: "Directly complements earlier professional experience delivering 2FA authentication microservices and PSD2 SCA compliance for banking apps. Ensures security, compliance, and threat mitigation are embedded as early-stage product requirements rather than retrofitted at release.",
+    topics: ["OWASP Top 10", "SIEM Log Analysis", "Packet Inspection", "NIST CSF Framework", "Zero-Trust Architecture", "Incident Triage"],
+    link: {
+      label: "Verified on Resume ↗",
+      url: `${base}/resume`,
+    },
+  },
+  {
+    id: "google-ux-design",
+    title: "Google UX Design Professional",
+    phase: "past",
+    status: "Completed",
+    period: "July 2026",
+    provider: "Google Professional Certificate (7-Course Series)",
+    category: "Product & UX",
+    what: "End-to-end design lifecycle execution: empathetic user research syntheses, persona empathy mapping, information architecture, wireframing, high-fidelity responsive component design in Figma, WCAG AA/AAA accessibility audits, and iterative usability testing sessions.",
+    why: "Eliminated the traditional hand-off friction between product management and product design. Enables rapid translation of business rules into tangible Figma prototypes and ensures accessibility is prioritized from the earliest design sprint.",
+    topics: ["Figma Component Systems", "WCAG AAA Accessibility", "User Empathy Mapping", "Usability Testing", "Information Architecture", "Wireframing & Prototyping"],
+    link: {
+      label: "Verified on Resume ↗",
+      url: `${base}/resume`,
+    },
+  },
+  {
+    id: "pspo-1",
+    title: "Professional Scrum Product Owner I (PSPO I)",
+    phase: "past",
+    status: "Completed",
+    period: "June 2026",
+    provider: "Scrum.org Certified",
+    category: "Product & UX",
+    what: "Rigorous certification in empirical agile product management, Evidence-Based Management (EBM), backlog prioritization strategies, user story mapping, release forecasting, sprint goal formulation, and balancing technical debt against business velocity.",
+    why: "Codified best-practice frameworks for leading cross-functional engineering pods, aligning multi-stakeholder expectations, and pivoting from feature factory output metrics to quantifiable outcome-driven business impact.",
+    topics: ["Empirical Process Control", "Evidence-Based Management", "Story Mapping", "Release Forecasting", "Technical Debt Negotiation"],
+    link: {
+      label: "Verified on Resume ↗",
+      url: `${base}/resume`,
+    },
+  },
+  {
+    id: "google-ai-essentials",
+    title: "Google AI Essentials & Prompting Essentials",
+    phase: "past",
+    status: "Completed",
+    period: "January 2026",
+    provider: "Google Professional Certificates",
+    category: "AI & Agentic Systems",
+    what: "Foundational training in generative model behaviors, few-shot prompting patterns, persona conditioning, chain-of-thought prompt design, temperature tuning, and mitigating hallucination risks in everyday workflow automation.",
+    why: "Established the conceptual baseline for leveraging modern LLM APIs effectively, enabling immediate productivity enhancements and laying the groundwork for downstream agentic architecture engineering.",
+    topics: ["Few-Shot Prompting", "Chain-of-Thought", "Context Tuning", "Workflow Automation", "Hallucination Mitigation"],
+    link: {
+      label: "Verified on Resume ↗",
+      url: `${base}/resume`,
+    },
+  },
+  {
+    id: "bsc-degrees",
+    title: "BSc (Hons) Computer Science & Computer Systems Engineering",
+    phase: "past",
+    status: "Completed",
+    period: "2013 – 2017",
+    provider: "Kingston University & University of Kent",
+    category: "Computer Science",
+    what: "Full academic degree foundation in computer science and systems engineering. Core curriculum: Data Structures & Algorithms (Big-O analysis), operating systems internals, memory management, computer architecture, network protocols, relational database design (3NF), and software engineering principles.",
+    why: "Formed the foundational bedrock of technical literacy, enabling deep systems thinking, code reading fluency across multiple languages, and empathetic, high-credibility partnerships with senior engineering teams.",
+    topics: ["Algorithms & Data Structures", "Computer Architecture", "Operating Systems", "Relational Databases", "Networking Fundamentals"],
+    link: {
+      label: "Verified on Resume ↗",
+      url: `${base}/resume`,
+    },
+  },
+];
+
+const counts = {
+  all: learningItems.length,
+  current: learningItems.filter((i) => i.phase === 'current').length,
+  future: learningItems.filter((i) => i.phase === 'future').length,
+  past: learningItems.filter((i) => i.phase === 'past').length,
+};
+
+const categories = Array.from(new Set(learningItems.map((i) => i.category)));
+---
+
+<BaseLayout
+  title="Learning Objectives & Timeline"
+  description="Personal learning roadmap, technical objectives, and continuous growth timeline spanning past milestones, active pursuits, and future horizons."
+>
+  <div class="max-w-4xl mx-auto space-y-12">
+    <!-- Header / Mission Hero -->
+    <header class="space-y-4">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-800/80">
+        <span class="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>
+        <span>Continuous Technical Growth</span>
+      </div>
+
+      <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-zinc-900 dark:text-zinc-50">
+        Learning Objectives <span class="text-blue-500">&amp;</span> Timeline
+      </h1>
+
+      <p class="text-base sm:text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed max-w-3xl">
+        As a technical product manager and hands-on builder, I believe high-leverage product leadership is rooted in deep systems intuition. This live log tracks my technical learning roadmap across <span class="text-zinc-900 dark:text-zinc-100 font-medium">networking</span>, <span class="text-zinc-900 dark:text-zinc-100 font-medium">agentic AI systems</span>, <span class="text-zinc-900 dark:text-zinc-100 font-medium">distributed architecture</span>, and <span class="text-zinc-900 dark:text-zinc-100 font-medium">product leadership</span>—articulating what I learn, the strategic motivation behind it, and the timeline of each milestone.
+      </p>
+
+      <!-- Quick Metrics Grid -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-3">
+        <div class="p-3.5 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/60 shadow-xs">
+          <div class="text-2xl font-bold text-amber-500 dark:text-amber-400 font-mono">{counts.current}</div>
+          <div class="text-xs font-medium text-zinc-500 dark:text-zinc-400 mt-0.5">Active Pursuits</div>
+        </div>
+        <div class="p-3.5 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/60 shadow-xs">
+          <div class="text-2xl font-bold text-indigo-500 dark:text-indigo-400 font-mono">{counts.future}</div>
+          <div class="text-xs font-medium text-zinc-500 dark:text-zinc-400 mt-0.5">Future Horizons</div>
+        </div>
+        <div class="p-3.5 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/60 shadow-xs">
+          <div class="text-2xl font-bold text-emerald-500 dark:text-emerald-400 font-mono">{counts.past}</div>
+          <div class="text-xs font-medium text-zinc-500 dark:text-zinc-400 mt-0.5">Completed Milestones</div>
+        </div>
+        <div class="p-3.5 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/60 shadow-xs">
+          <div class="text-2xl font-bold text-blue-500 dark:text-blue-400 font-mono">{counts.all}</div>
+          <div class="text-xs font-medium text-zinc-500 dark:text-zinc-400 mt-0.5">Total Documented</div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Controls Bar: Phase Filters & Category Dropdown -->
+    <section class="sticky top-16 z-30 py-3 bg-zinc-50/90 dark:bg-zinc-950/90 backdrop-blur-md border-y border-zinc-200 dark:border-zinc-800 flex flex-wrap items-center justify-between gap-3">
+      <!-- Phase Filter Tabs -->
+      <div id="phase-filters" class="flex flex-wrap items-center gap-1.5" role="tablist" aria-label="Filter timeline by phase">
+        <button
+          type="button"
+          data-filter="all"
+          class="filter-tab active px-3 py-1.5 rounded-lg text-xs font-semibold cursor-pointer transition-all bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 shadow-xs"
+        >
+          All ({counts.all})
+        </button>
+        <button
+          type="button"
+          data-filter="current"
+          class="filter-tab px-3 py-1.5 rounded-lg text-xs font-semibold cursor-pointer transition-all bg-white dark:bg-zinc-900 text-zinc-700 dark:text-zinc-300 border border-zinc-200 dark:border-zinc-800 hover:border-amber-400 dark:hover:border-amber-500"
+        >
+          <span class="inline-block w-2 h-2 rounded-full bg-amber-500 mr-1.5 animate-pulse"></span>
+          Current ({counts.current})
+        </button>
+        <button
+          type="button"
+          data-filter="future"
+          class="filter-tab px-3 py-1.5 rounded-lg text-xs font-semibold cursor-pointer transition-all bg-white dark:bg-zinc-900 text-zinc-700 dark:text-zinc-300 border border-zinc-200 dark:border-zinc-800 hover:border-indigo-400 dark:hover:border-indigo-500"
+        >
+          <span class="inline-block w-2 h-2 rounded-full bg-indigo-500 mr-1.5"></span>
+          Future ({counts.future})
+        </button>
+        <button
+          type="button"
+          data-filter="past"
+          class="filter-tab px-3 py-1.5 rounded-lg text-xs font-semibold cursor-pointer transition-all bg-white dark:bg-zinc-900 text-zinc-700 dark:text-zinc-300 border border-zinc-200 dark:border-zinc-800 hover:border-emerald-400 dark:hover:border-emerald-500"
+        >
+          <span class="inline-block w-2 h-2 rounded-full bg-emerald-500 mr-1.5"></span>
+          Past ({counts.past})
+        </button>
+      </div>
+
+      <!-- Category Filter Select -->
+      <div class="flex items-center gap-2">
+        <label for="category-select" class="text-xs font-medium text-zinc-500 dark:text-zinc-400">Domain:</label>
+        <select
+          id="category-select"
+          class="text-xs font-medium px-2.5 py-1.5 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-zinc-800 dark:text-zinc-200 focus:outline-none focus:ring-2 focus:ring-blue-500 cursor-pointer"
+        >
+          <option value="all">All Domains</option>
+          {categories.map((cat) => (
+            <option value={cat}>{cat}</option>
+          ))}
+        </select>
+      </div>
+    </section>
+
+    <!-- Visual Timeline Container -->
+    <section class="relative pt-4" aria-label="Learning Timeline">
+      <div id="timeline-list" class="relative space-y-10 sm:space-y-12">
+        <!-- Continuous Vertical Timeline Spine (Rail) -->
+        <div
+          class="absolute left-4 sm:left-5 -translate-x-1/2 top-4 bottom-6 w-0.5 bg-gradient-to-b from-amber-400 via-indigo-400 to-zinc-300 dark:to-zinc-800 pointer-events-none"
+          aria-hidden="true"
+        ></div>
+
+        {learningItems.map((item) => {
+          const isCurrent = item.phase === 'current';
+          const isFuture = item.phase === 'future';
+          const isPast = item.phase === 'past';
+
+          const phaseTheme = isCurrent
+            ? {
+                badgeBg: 'bg-amber-100 text-amber-800 dark:bg-amber-950/80 dark:text-amber-300 border-amber-300 dark:border-amber-800',
+                nodeBg: 'bg-amber-500 ring-4 ring-amber-100 dark:ring-amber-950/60',
+                borderAccent: 'border-l-4 border-l-amber-500',
+                phaseLabel: 'Current Focus',
+              }
+            : isFuture
+            ? {
+                badgeBg: 'bg-indigo-100 text-indigo-800 dark:bg-indigo-950/80 dark:text-indigo-300 border-indigo-300 dark:border-indigo-800',
+                nodeBg: 'bg-indigo-500 ring-4 ring-indigo-100 dark:ring-indigo-950/60',
+                borderAccent: 'border-l-4 border-l-indigo-500',
+                phaseLabel: 'Target Horizon',
+              }
+            : {
+                badgeBg: 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950/80 dark:text-emerald-300 border-emerald-300 dark:border-emerald-800',
+                nodeBg: 'bg-emerald-500 ring-4 ring-emerald-100 dark:ring-emerald-950/60',
+                borderAccent: 'border-l-4 border-l-emerald-500',
+                phaseLabel: 'Completed Milestone',
+              };
+
+          return (
+            <article
+              id={item.id}
+              data-phase={item.phase}
+              data-category={item.category}
+              class="timeline-card relative flex items-start gap-3 sm:gap-6 transition-all duration-300"
+            >
+              <!-- Timeline Node Marker in Center-Aligned Rail -->
+              <div class="relative flex justify-center shrink-0 w-8 sm:w-10 pt-6">
+                <div
+                  class={`relative z-10 w-5 h-5 rounded-full ${phaseTheme.nodeBg} flex items-center justify-center text-white shadow-xs`}
+                  aria-hidden="true"
+                >
+                  {isCurrent && (
+                    <span class="absolute -inset-1 rounded-full bg-amber-400/40 animate-ping pointer-events-none"></span>
+                  )}
+                  {isPast ? (
+                    <svg class="w-3 h-3 text-white stroke-[2.5]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                    </svg>
+                  ) : isCurrent ? (
+                    <span class="w-2 h-2 rounded-full bg-white"></span>
+                  ) : (
+                    <svg class="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
+                    </svg>
+                  )}
+                </div>
+              </div>
+
+              <!-- Main Card Container -->
+              <div class={`flex-1 min-w-0 rounded-xl p-5 sm:p-7 border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/90 shadow-xs hover:border-zinc-300 dark:hover:border-zinc-700 transition-colors ${phaseTheme.borderAccent}`}>
+                <!-- Meta Row: Period, Status, Category -->
+                <div class="flex flex-wrap items-center justify-between gap-2.5 pb-3 border-b border-zinc-100 dark:border-zinc-800/80 text-xs">
+                  <div class="flex flex-wrap items-center gap-2">
+                    <span class="font-mono font-semibold text-zinc-900 dark:text-zinc-100 flex items-center gap-1.5">
+                      <svg class="w-3.5 h-3.5 text-zinc-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                      </svg>
+                      {item.period}
+                    </span>
+                    <span class="text-zinc-300 dark:text-zinc-700">•</span>
+                    <span class="text-zinc-500 dark:text-zinc-400 font-medium">
+                      {item.provider}
+                    </span>
+                  </div>
+
+                  <div class="flex items-center gap-2">
+                    <span class="text-xs px-2.5 py-0.5 rounded-full font-medium border bg-zinc-50 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-300 border-zinc-200 dark:border-zinc-700">
+                      {item.category}
+                    </span>
+                    <span class={`text-xs px-2.5 py-0.5 rounded-full font-medium border ${phaseTheme.badgeBg}`}>
+                      {item.status}
+                    </span>
+                  </div>
+                </div>
+
+                <!-- Title & Header -->
+                <div class="pt-4 pb-2">
+                  <h2 class="text-xl sm:text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
+                    {item.title}
+                  </h2>
+                </div>
+
+                <!-- Content Block 1: "The What" -->
+                <div class="space-y-1.5 mt-3">
+                  <div class="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
+                    <svg class="w-3.5 h-3.5 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
+                    <span>The Technical Objective (What)</span>
+                  </div>
+                  <p class="text-sm sm:text-base text-zinc-700 dark:text-zinc-300 leading-relaxed">
+                    {item.what}
+                  </p>
+                </div>
+
+                <!-- Content Block 2: "The Why" (Rationale & Strategic Product Impact) -->
+                <div class="mt-4 p-4 rounded-lg bg-zinc-50 dark:bg-zinc-950/60 border border-zinc-200/80 dark:border-zinc-800/80 space-y-1.5">
+                  <div class="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-zinc-700 dark:text-zinc-300">
+                    <svg class="w-3.5 h-3.5 text-amber-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                    </svg>
+                    <span>Strategic Motivation &amp; Builder Impact (Why)</span>
+                  </div>
+                  <p class="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed italic">
+                    "{item.why}"
+                  </p>
+                </div>
+
+                <!-- Key Topics Tag Pills -->
+                <div class="mt-5 pt-4 border-t border-zinc-100 dark:border-zinc-800/80 flex flex-wrap items-center justify-between gap-3">
+                  <div class="flex flex-wrap items-center gap-1.5">
+                    {item.topics.map((topic) => (
+                      <span class="text-xs font-mono px-2 py-0.5 rounded-md bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 border border-zinc-200/60 dark:border-zinc-700/60">
+                        {topic}
+                      </span>
+                    ))}
+                  </div>
+
+                  {item.link && (
+                    <a
+                      href={item.link.url}
+                      target={item.link.external ? "_blank" : undefined}
+                      rel={item.link.external ? "noopener noreferrer" : undefined}
+                      class="inline-flex items-center gap-1 text-xs font-semibold text-blue-600 dark:text-blue-400 hover:underline shrink-0"
+                    >
+                      <span>{item.link.label}</span>
+                    </a>
+                  )}
+                </div>
+              </div>
+            </article>
+          );
+        })}
+      </div>
+
+      <!-- No items found state (dynamically shown if filters match nothing) -->
+      <div id="no-results" class="hidden text-center py-16 px-4 space-y-3">
+        <p class="text-zinc-500 dark:text-zinc-400 text-sm">
+          No learning objectives match the selected filter combination.
+        </p>
+        <button
+          id="reset-filters-btn"
+          type="button"
+          class="px-4 py-2 text-xs font-semibold rounded-md bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 cursor-pointer"
+        >
+          Reset Filters
+        </button>
+      </div>
+    </section>
+
+    <!-- Bottom Learning Philosophy Footer -->
+    <section class="mt-16 p-6 sm:p-8 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/40 text-center space-y-3">
+      <h3 class="text-lg font-bold text-zinc-900 dark:text-zinc-100">
+        Lifelong Learning as a Product Discipline
+      </h3>
+      <p class="text-sm text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto leading-relaxed">
+        Technical breadth combined with vertical depth creates resilient software leaders. Whether debugging packet drops in a home lab or shaping enterprise roadmaps, staying hands-on keeps product strategy grounded in engineering reality.
+      </p>
+      <div class="pt-2 flex flex-wrap justify-center gap-3">
+        <a
+          href={`${base}/resume`}
+          class="px-4 py-2 text-xs font-semibold rounded-md border border-zinc-300 dark:border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-colors"
+        >
+          View Full Resume &amp; Experience →
+        </a>
+        <a
+          href={`${base}/projects`}
+          class="px-4 py-2 text-xs font-semibold rounded-md bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 hover:opacity-90 transition-opacity"
+        >
+          Explore Built Projects →
+        </a>
+      </div>
+    </section>
+  </div>
+</BaseLayout>
+
+<script is:inline>
+  (function () {
+    const tabButtons = document.querySelectorAll('.filter-tab');
+    const categorySelect = document.getElementById('category-select');
+    const cards = document.querySelectorAll('.timeline-card');
+    const noResults = document.getElementById('no-results');
+    const resetBtn = document.getElementById('reset-filters-btn');
+
+    let currentPhase = 'all';
+    let currentCategory = 'all';
+
+    function applyFilters() {
+      let visibleCount = 0;
+
+      cards.forEach((card) => {
+        const cardPhase = card.getAttribute('data-phase');
+        const cardCat = card.getAttribute('data-category');
+
+        const phaseMatch = currentPhase === 'all' || cardPhase === currentPhase;
+        const categoryMatch = currentCategory === 'all' || cardCat === currentCategory;
+
+        if (phaseMatch && categoryMatch) {
+          card.classList.remove('hidden');
+          visibleCount++;
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+
+      if (noResults) {
+        if (visibleCount === 0) {
+          noResults.classList.remove('hidden');
+        } else {
+          noResults.classList.add('hidden');
+        }
+      }
+    }
+
+    tabButtons.forEach((tab) => {
+      tab.addEventListener('click', () => {
+        tabButtons.forEach((btn) => {
+          btn.classList.remove('active', 'bg-zinc-900', 'text-white', 'dark:bg-zinc-100', 'dark:text-zinc-900');
+          btn.classList.add('bg-white', 'dark:bg-zinc-900', 'text-zinc-700', 'dark:text-zinc-300');
+        });
+
+        tab.classList.add('active', 'bg-zinc-900', 'text-white', 'dark:bg-zinc-100', 'dark:text-zinc-900');
+        tab.classList.remove('bg-white', 'dark:bg-zinc-900', 'text-zinc-700', 'dark:text-zinc-300');
+
+        currentPhase = tab.getAttribute('data-filter') || 'all';
+        applyFilters();
+      });
+    });
+
+    if (categorySelect) {
+      categorySelect.addEventListener('change', (e) => {
+        currentCategory = e.target.value;
+        applyFilters();
+      });
+    }
+
+    if (resetBtn) {
+      resetBtn.addEventListener('click', () => {
+        currentPhase = 'all';
+        currentCategory = 'all';
+        if (categorySelect) categorySelect.value = 'all';
+
+        tabButtons.forEach((btn, idx) => {
+          if (idx === 0) {
+            btn.classList.add('active', 'bg-zinc-900', 'text-white', 'dark:bg-zinc-100', 'dark:text-zinc-900');
+            btn.classList.remove('bg-white', 'dark:bg-zinc-900', 'text-zinc-700', 'dark:text-zinc-300');
+          } else {
+            btn.classList.remove('active', 'bg-zinc-900', 'text-white', 'dark:bg-zinc-100', 'dark:text-zinc-900');
+            btn.classList.add('bg-white', 'dark:bg-zinc-900', 'text-zinc-700', 'dark:text-zinc-300');
+          }
+        });
+
+        applyFilters();
+      });
+    }
+  })();
+</script>
