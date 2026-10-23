@@ -25,18 +25,18 @@ const learningItems: LearningItem[] = [
   // --- CURRENT PURSUITS ---
   {
     id: "ccna-200-301",
-    title: "Cisco Certified Network Associate (CCNA 200-301 v1.1)",
+    title: "CCNA 200-301 Version 1.1 Specialization",
     phase: "current",
     status: "In Progress",
-    period: "Late 2026 – Present (Target Exam: Q1 2027)",
-    provider: "Cisco & Pearson VUE",
+    period: "Late 2026 – Present (Exam Target: Q1 2027)",
+    provider: "Pearson (7-Course Specialization on Coursera)",
     category: "Networking & Systems",
-    what: "In-depth study and hands-on packet-level labbing across Layer 2 and Layer 3 network architecture. Topics include IPv4/IPv6 VLSM subnetting, packet life-cycle analysis, single-area OSPFv2/v3 routing, VLANs, 802.1Q trunking, Rapid Spanning Tree Protocol (RSTP), EtherChannel link aggregation, NAT/PAT, ACL security perimeters, QoS traffic queuing, and modern network programmability (RESTCONF, NETCONF, Cisco DNA Center APIs).",
-    why: "Having delivered 2FA microservice platforms and high-availability digital portals, software reliability and security are inextricably tied to network mechanics. Understanding low-level packet traversal, DNS latency, TLS handshake overhead, and subnet segmentation enables high-conviction architectural debates with network engineering teams and prevents premature abstraction leaks.",
-    topics: ["IPv4 / IPv6 Subnetting", "OSPFv2 Routing", "VLANs & 802.1Q", "Spanning Tree (RSTP)", "ACLs & NAT", "RESTCONF / Python Automation"],
+    what: "Pursuing the comprehensive 7-course Pearson specialization aligned with the updated Cisco CCNA 200-301 v1.1 blueprint. Curriculum spans network components and topologies (spine-leaf, three-tier, SOHO), inter-switch communication (VLANs, 802.1Q trunking, Rapid PVST+, EtherChannel), IPv4/IPv6 VLSM subnetting and dynamic routing (OSPFv2), wireless architecture (WLCs, 802.11, WPA3), essential IP services (NAT/PAT, DHCP, DNS, NTP, SNMP, QoS queuing), network security (ACLs, Layer 2 port security/DAI/DHCP snooping, AAA, VPNs), and network automation (SDN, Cisco DNA/Catalyst Center, REST APIs with JSON/YAML).",
+    why: "Having delivered 2FA microservice platforms and high-availability digital portals, software reliability and security are inextricably tied to network mechanics. Mastering low-level packet traversal, DNS latency, TLS handshake overhead, and subnet segmentation enables high-conviction architectural debates with network engineering teams and prevents premature abstraction leaks.",
+    topics: ["IPv4 / IPv6 Subnetting", "OSPFv2 Dynamic Routing", "VLANs & 802.1Q Trunking", "Spanning Tree & EtherChannel", "ACLs & Layer 2 Security", "SDN & Network Automation"],
     link: {
-      label: "View Cisco 200-301 Exam Blueprint ↗",
-      url: "https://www.cisco.com/c/en/us/training-events/training-certifications/certifications/associate/ccna.html",
+      label: "View Pearson Coursera Specialization ↗",
+      url: "https://www.coursera.org/specializations/pearson-ccna-200-301-version-1-1",
       external: true,
     },
   },
@@ -55,94 +55,73 @@ const learningItems: LearningItem[] = [
 
   // --- FUTURE HORIZONS ---
   {
-    id: "aws-solutions-architect",
-    title: "AWS Solutions Architect (Associate) & Resilient Cloud Topologies",
+    id: "ztca-zero-trust",
+    title: "ZTCA — Zero Trust Cyber Associate",
     phase: "future",
     status: "Target / Upcoming",
-    period: "Target: Q2 – Q3 2027",
-    provider: "Amazon Web Services (AWS)",
-    category: "Cloud & Architecture",
-    what: "Designing multi-tier, highly available, and cost-optimized distributed systems across AWS infrastructure. Key study domains will include multi-AZ VPC topologies, Transit Gateways, route propagation, serverless event orchestrations (Lambda, Step Functions), distributed data stores (DynamoDB global tables, RDS Multi-AZ Aurora), SQS/SNS decoupling, and least-privilege IAM policies.",
-    why: "Strategic product roadmaps must be co-designed with cloud infrastructure economics (FinOps) and fault domains. Deepening cloud architecture acumen enables evaluating real-world operational tradeoffs between serverless simplicity and containerized throughput, reducing total cost of ownership while maximizing uptime for enterprise clients.",
-    topics: ["Multi-AZ Resilience", "VPC Transit Gateways", "Event-Driven Serverless", "Aurora & DynamoDB", "FinOps & Cloud Economics", "IAM Least-Privilege"],
+    period: "Target: 2027",
+    provider: "Zscaler Cyber Academy",
+    category: "Security & Governance",
+    what: "Pursuing the industry-recognized ZTCA credential focusing on modern cloud-native Zero Trust Architecture (ZTA) and the Zscaler Zero Trust Exchange™ platform. Core syllabus covers the paradigm shift from legacy network perimeters (VPNs, firewalls) to identity-brokered least-privilege connectivity, application microsegmentation to eliminate lateral attack movement, cloud proxy architectures (Zscaler Internet Access / ZIA, Zscaler Private Access / ZPA, Zscaler Digital Experience / ZDX), and secure SSL/TLS traffic inspection at scale.",
+    why: "Having designed PSD2 SCA authentication frameworks and microservices, enterprise application security is fundamentally shifting from perimeter network trust to identity-brokered Zero Trust Network Access (ZTNA). Mastering Zero Trust blueprints bridges network security directly into digital product strategy, enabling friction-free user access while eliminating legacy VPN vulnerabilities.",
+    topics: ["Zero Trust Architecture (ZTA)", "Zscaler Zero Trust Exchange", "ZTNA & Private Access (ZPA)", "Cloud Security Proxy (ZIA)", "Application Microsegmentation", "Identity-Based Least Privilege"],
     link: {
-      label: "AWS Certified Solutions Architect Overview ↗",
-      url: "https://aws.amazon.com/certification/certified-solutions-architect-associate/",
+      label: "View Zscaler ZTCA Certification ↗",
+      url: "https://www.zscaler.com/zscaler-cyber-academy/ztca-zero-trust-cyber-associate",
       external: true,
     },
-  },
-  {
-    id: "distributed-systems",
-    title: "High-Throughput Distributed Systems & Event Sourcing",
-    phase: "future",
-    status: "Target / Upcoming",
-    period: "Target: Q3 – Q4 2027",
-    provider: "Independent Systems Research & Practical Prototyping",
-    category: "Cloud & Architecture",
-    what: "Advanced investigation into distributed data patterns, event sourcing, CQRS (Command Query Responsibility Segregation), distributed log systems (Apache Kafka), database sharding patterns, CAP theorem edge cases, and consensus algorithms (Raft). Implementing working prototypes to measure replication lag and partition tolerance under simulated stress.",
-    why: "Enterprise platforms handling sensitive transactional workflows (such as payment authorization or property asset ledgers) require uncompromising consistency guarantees and immutable audit trails. Understanding the subtleties between eventual and strong consistency allows product managers to specify realistic non-functional requirements and prevent costly data integrity defects.",
-    topics: ["Event Sourcing & CQRS", "Apache Kafka Streams", "Database Partitioning", "CAP Theorem Tradeoffs", "Distributed Consensus", "OpenTelemetry Tracing"],
-  },
-  {
-    id: "quantitative-product-experimentation",
-    title: "Quantitative Product Experimentation & Causal Inference at Scale",
-    phase: "future",
-    status: "Target / Upcoming",
-    period: "Target: Late 2027 & Beyond",
-    provider: "Advanced Product Leadership Frameworks",
-    category: "Product & UX",
-    what: "Advanced statistical methodologies for evaluating product interventions when standard A/B randomized control trials are unfeasible. Includes quasi-experimental design, synthetic control methods for enterprise client rollouts, difference-in-differences analysis, multi-armed bandits for real-time feature allocation, and lifetime value cohort survival models.",
-    why: "In complex B2B and institutional ecosystems, sample sizes are constrained and network interference makes naive A/B testing unreliable. Mastering econometric and causal inference techniques ensures product leaders allocate engineering capital toward provably accretive features rather than chasing noisy vanity metrics.",
-    topics: ["Causal Inference", "Synthetic Controls", "Difference-in-Differences", "Multi-Armed Bandits", "Platform Retention Modeling", "Bayesian Experimentation"],
   },
 
   // --- PAST MILESTONES ---
   {
     id: "google-ai-cert",
-    title: "Google AI & Applied Machine Learning",
+    title: "Google AI Professional Certificate",
     phase: "past",
     status: "Completed",
     period: "October 2026",
-    provider: "Google Professional Certificate",
+    provider: "Google (8-Course Professional Series on Coursera)",
     category: "AI & Agentic Systems",
-    what: "Completed formal training on applied machine learning pipelines, deep learning intuitions, model validation metrics (precision, recall, ROC-AUC, F1-score), vector embeddings for semantic retrieval, and organizational AI governance frameworks.",
-    why: "Grounded technical product intuition in empirical machine learning principles, allowing for a sharp distinction between deterministic software challenges and probabilistic model behaviors during product discovery and feasibility scoping.",
-    topics: ["Model Evaluation Metrics", "Embeddings & Vectors", "ML Lifecycle", "AI Governance & Ethics", "Production AI APIs"],
+    what: "Completed the comprehensive 8-course professional program covering end-to-end applied generative AI across modern software and product workflows: foundational AI principles, research synthesis (NotebookLM), data analysis with AI-generated queries and formulas, multimodal asset creation, rapid natural language software prototyping, AI-assisted code generation and debugging, and application deployment from sandbox to production.",
+    why: "Mastering practical generative AI workflows—from rapid app prototyping and code assistance to deployment and data synthesis—bridges product discovery directly into functional software. Enables rapidly prototyping working MVPs, analyzing operational data, and evaluating technical feasibility in close collaboration with engineering pods.",
+    topics: ["Prompt-Driven App Building", "AI-Assisted Prototyping", "Data Analysis & Query Generation", "Research Synthesis (NotebookLM)", "AI App Deployment", "Multimodal Generative Workflows"],
     link: {
-      label: "Verified on Resume ↗",
-      url: `${base}/resume`,
+      label: "View Coursera Certificate Program ↗",
+      url: "https://www.coursera.org/professional-certificates/google-ai",
+      external: true,
     },
   },
   {
     id: "google-cybersecurity",
-    title: "Google Cybersecurity Professional",
+    title: "Google Cybersecurity Professional Certificate",
     phase: "past",
     status: "Completed",
     period: "October 2026",
-    provider: "Google Professional Certificate",
+    provider: "Google (8-Course Specialization on Coursera)",
     category: "Security & Governance",
-    what: "Comprehensive training covering network security, threat vectors (OWASP Top 10), packet analysis using Wireshark and tcpdump, Security Information and Event Management (SIEM) log analysis, symmetric/asymmetric cryptography, and incident response frameworks (NIST CSF).",
-    why: "Directly complements earlier professional experience delivering 2FA authentication microservices and PSD2 SCA compliance for banking apps. Ensures security, compliance, and threat mitigation are embedded as early-stage product requirements rather than retrofitted at release.",
-    topics: ["OWASP Top 10", "SIEM Log Analysis", "Packet Inspection", "NIST CSF Framework", "Zero-Trust Architecture", "Incident Triage"],
+    what: "Completed the comprehensive 8-course professional specialization covering defensive security operations and risk management. Core syllabus includes the NIST Cybersecurity Framework (CSF) and CISSP security domains, threat modeling and vulnerability assessment (Nmap, Nessus), network architecture defense and packet inspection with Wireshark, hands-on Linux CLI administration and SQL log extraction, Security Operations Center (SOC) incident response playbooks, SIEM log monitoring (Chronicle, Splunk), and automated security scripting with Python.",
+    why: "Directly complements earlier professional experience delivering 2FA authentication microservices and PSD2 SCA compliance for high-traffic banking applications. Grounding product requirements in NIST frameworks, threat modeling, and zero-trust principles ensures security and regulatory compliance are baked into system architectures from initial discovery rather than retrofitted post-launch.",
+    topics: ["NIST CSF & Risk Management", "SIEM & SOC Incident Response", "Packet Inspection (Wireshark)", "Linux CLI & SQL Log Querying", "Threat Modeling & Vulnerability Scans", "Python Security Automation"],
     link: {
-      label: "Verified on Resume ↗",
-      url: `${base}/resume`,
+      label: "View Coursera Specialization ↗",
+      url: "https://www.coursera.org/specializations/google-cybersecurity",
+      external: true,
     },
   },
   {
     id: "google-ux-design",
-    title: "Google UX Design Professional",
+    title: "Google UX Design Professional Certificate",
     phase: "past",
     status: "Completed",
     period: "July 2026",
-    provider: "Google Professional Certificate (7-Course Series)",
+    provider: "Google (7-Course Series on Coursera)",
     category: "Product & UX",
-    what: "End-to-end design lifecycle execution: empathetic user research syntheses, persona empathy mapping, information architecture, wireframing, high-fidelity responsive component design in Figma, WCAG AA/AAA accessibility audits, and iterative usability testing sessions.",
-    why: "Eliminated the traditional hand-off friction between product management and product design. Enables rapid translation of business rules into tangible Figma prototypes and ensures accessibility is prioritized from the earliest design sprint.",
-    topics: ["Figma Component Systems", "WCAG AAA Accessibility", "User Empathy Mapping", "Usability Testing", "Information Architecture", "Wireframing & Prototyping"],
+    what: "Completed the comprehensive 7-course professional curriculum covering the complete user experience design lifecycle: foundational user-centered design principles, conducting user research and empathy interviews, creating personas, empathy maps, and user journey maps, developing storyboards and information architecture, paper and digital wireframing in Figma, moderated and unmoderated usability studies with affinity diagrams, building design systems with reusable UI components and styles, responsive cross-device web design, WCAG accessibility compliance, and developer hand-off documentation.",
+    why: "Eliminated hand-off friction between product management, UI/UX design, and engineering pods. Enables rapidly converting complex business requirements into tangible, interactive Figma prototypes, running empirical usability tests to de-risk feature bets, and maintaining a high standard of accessibility across enterprise digital products.",
+    topics: ["Figma Component Systems", "Usability Testing & Studies", "Wireframing & Prototyping", "Information Architecture", "WCAG Accessibility", "Design Systems & Hand-off"],
     link: {
-      label: "Verified on Resume ↗",
-      url: `${base}/resume`,
+      label: "View Coursera Specialization ↗",
+      url: "https://www.coursera.org/specializations/google-ux-design",
+      external: true,
     },
   },
   {
@@ -151,30 +130,49 @@ const learningItems: LearningItem[] = [
     phase: "past",
     status: "Completed",
     period: "June 2026",
-    provider: "Scrum.org Certified",
+    provider: "Scrum.org Industry Assessment",
     category: "Product & UX",
-    what: "Rigorous certification in empirical agile product management, Evidence-Based Management (EBM), backlog prioritization strategies, user story mapping, release forecasting, sprint goal formulation, and balancing technical debt against business velocity.",
-    why: "Codified best-practice frameworks for leading cross-functional engineering pods, aligning multi-stakeholder expectations, and pivoting from feature factory output metrics to quantifiable outcome-driven business impact.",
-    topics: ["Empirical Process Control", "Evidence-Based Management", "Story Mapping", "Release Forecasting", "Technical Debt Negotiation"],
+    what: "Earned the globally recognized Professional Scrum Product Owner I (PSPO I) certification validating mastery of Scrum framework mechanics and agile product management. Tested on the Scrum.org Professional Scrum Competencies: Understanding and Applying the Scrum Framework (empiricism, Scrum accountabilities, events, artifacts, and Definition of Done), Managing Products with Agility (product vision, outcome-driven value maximization, ordering and refining the Product Backlog), Forecasting and Release Planning, collaborating with self-managing cross-functional teams, and balancing stakeholder demands.",
+    why: "Codified the discipline of empirical product ownership. Ensures product roadmaps are driven by measurable customer and business value rather than feature factory output metrics, enabling effective collaboration with software developers on 'what' to build while empowering engineering autonomy on 'how' to build it.",
+    topics: ["Product Value Maximization", "Empirical Process Control", "Product Backlog Management", "Release Forecasting", "Sprint Goal Alignment", "Stakeholder Collaboration"],
     link: {
-      label: "Verified on Resume ↗",
-      url: `${base}/resume`,
+      label: "View Scrum.org Certification Assessment ↗",
+      url: "https://www.scrum.org/assessments/professional-scrum-product-owner-i-certification",
+      external: true,
+    },
+  },
+  {
+    id: "google-prompting-essentials",
+    title: "Google Prompting Essentials Specialization",
+    phase: "past",
+    status: "Completed",
+    period: "January 2026",
+    provider: "Google (4-Course Series on Coursera)",
+    category: "AI & Agentic Systems",
+    what: "Completed the hands-on 4-course specialization mastering Google's structured 5-step prompt framework (Task, Context, References, Evaluate, Iterate). Key areas covered include multimodal prompting (combining text, image, and tabular inputs), advanced prompt chaining across multi-step analytical workflows, designing prompts for data analysis and slide structuring, AI roleplaying for collaborative problem-solving, and building a reusable personal prompt library.",
+    why: "Elevated prompting from ad-hoc chatting into an empirical, structured engineering framework. Mastering prompt chaining, multi-step logic decomposition, and systematic context framing dramatically accelerates drafting PRDs, synthesizing complex stakeholder feedback, and designing predictable LLM feature prototypes.",
+    topics: ["5-Step Prompt Framework", "Prompt Chaining & Multi-Step Logic", "Multimodal Prompting", "Context & Persona Framing", "Reusable Prompt Libraries", "Output Evaluation & Iteration"],
+    link: {
+      label: "View Coursera Specialization ↗",
+      url: "https://www.coursera.org/specializations/prompting-essentials-google",
+      external: true,
     },
   },
   {
     id: "google-ai-essentials",
-    title: "Google AI Essentials & Prompting Essentials",
+    title: "Google AI Essentials Specialization",
     phase: "past",
     status: "Completed",
     period: "January 2026",
-    provider: "Google Professional Certificates",
+    provider: "Google (5-Course Series on Coursera)",
     category: "AI & Agentic Systems",
-    what: "Foundational training in generative model behaviors, few-shot prompting patterns, persona conditioning, chain-of-thought prompt design, temperature tuning, and mitigating hallucination risks in everyday workflow automation.",
-    why: "Established the conceptual baseline for leveraging modern LLM APIs effectively, enabling immediate productivity enhancements and laying the groundwork for downstream agentic architecture engineering.",
-    topics: ["Few-Shot Prompting", "Chain-of-Thought", "Context Tuning", "Workflow Automation", "Hallucination Mitigation"],
+    what: "Completed the foundational 5-course specialization exploring how artificial intelligence and machine learning function beneath the surface. Focuses on integrating generative AI tools (Google Gemini) into workplace workflows to automate tasks and summarize long-form documents, understanding core model mechanics and capabilities/limitations, and practicing responsible AI through bias detection, privacy protection, and hallucination fact-checking.",
+    why: "Established the conceptual and operational baseline for evaluating generative AI systems. Provided a clear understanding of probabilistic model boundaries and human-in-the-loop validation, setting the foundation for responsible AI adoption in production product ecosystems.",
+    topics: ["Workplace AI Integration", "Document Summarization", "Responsible AI & Bias Mitigation", "Hallucination Fact-Checking", "AI Productivity Automation", "Machine Learning Fundamentals"],
     link: {
-      label: "Verified on Resume ↗",
-      url: `${base}/resume`,
+      label: "View Coursera Specialization ↗",
+      url: "https://www.coursera.org/specializations/ai-essentials-google",
+      external: true,
     },
   },
   {
@@ -222,19 +220,21 @@ const categories = Array.from(new Set(learningItems.map((i) => i.category)));
       </h1>
 
       <p class="text-base sm:text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed max-w-3xl">
-        As a technical product manager and hands-on builder, I believe high-leverage product leadership is rooted in deep systems intuition. This live log tracks my technical learning roadmap across <span class="text-zinc-900 dark:text-zinc-100 font-medium">networking</span>, <span class="text-zinc-900 dark:text-zinc-100 font-medium">agentic AI systems</span>, <span class="text-zinc-900 dark:text-zinc-100 font-medium">distributed architecture</span>, and <span class="text-zinc-900 dark:text-zinc-100 font-medium">product leadership</span>—articulating what I learn, the strategic motivation behind it, and the timeline of each milestone.
+        As a technical product manager and hands-on builder, I believe high-leverage product leadership is rooted in deep systems intuition. This live log tracks my technical learning roadmap across <span class="text-zinc-900 dark:text-zinc-100 font-medium">networking</span>, <span class="text-zinc-900 dark:text-zinc-100 font-medium">agentic AI systems</span>, <span class="text-zinc-900 dark:text-zinc-100 font-medium">security</span>, and <span class="text-zinc-900 dark:text-zinc-100 font-medium">product leadership</span>—articulating what I learn, the strategic motivation behind it, and the timeline of each milestone.
       </p>
 
       <!-- Quick Metrics Grid -->
-      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-3">
+      <div class={`grid gap-3 pt-3 ${counts.future > 0 ? "grid-cols-2 sm:grid-cols-4" : "grid-cols-3"}`}>
         <div class="p-3.5 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/60 shadow-xs">
           <div class="text-2xl font-bold text-amber-500 dark:text-amber-400 font-mono">{counts.current}</div>
           <div class="text-xs font-medium text-zinc-500 dark:text-zinc-400 mt-0.5">Active Pursuits</div>
         </div>
-        <div class="p-3.5 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/60 shadow-xs">
-          <div class="text-2xl font-bold text-indigo-500 dark:text-indigo-400 font-mono">{counts.future}</div>
-          <div class="text-xs font-medium text-zinc-500 dark:text-zinc-400 mt-0.5">Future Horizons</div>
-        </div>
+        {counts.future > 0 && (
+          <div class="p-3.5 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/60 shadow-xs">
+            <div class="text-2xl font-bold text-indigo-500 dark:text-indigo-400 font-mono">{counts.future}</div>
+            <div class="text-xs font-medium text-zinc-500 dark:text-zinc-400 mt-0.5">Future Horizons</div>
+          </div>
+        )}
         <div class="p-3.5 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/60 shadow-xs">
           <div class="text-2xl font-bold text-emerald-500 dark:text-emerald-400 font-mono">{counts.past}</div>
           <div class="text-xs font-medium text-zinc-500 dark:text-zinc-400 mt-0.5">Completed Milestones</div>
@@ -265,14 +265,16 @@ const categories = Array.from(new Set(learningItems.map((i) => i.category)));
           <span class="inline-block w-2 h-2 rounded-full bg-amber-500 mr-1.5 animate-pulse"></span>
           Current ({counts.current})
         </button>
-        <button
-          type="button"
-          data-filter="future"
-          class="filter-tab px-3 py-1.5 rounded-lg text-xs font-semibold cursor-pointer transition-all bg-white dark:bg-zinc-900 text-zinc-700 dark:text-zinc-300 border border-zinc-200 dark:border-zinc-800 hover:border-indigo-400 dark:hover:border-indigo-500"
-        >
-          <span class="inline-block w-2 h-2 rounded-full bg-indigo-500 mr-1.5"></span>
-          Future ({counts.future})
-        </button>
+        {counts.future > 0 && (
+          <button
+            type="button"
+            data-filter="future"
+            class="filter-tab px-3 py-1.5 rounded-lg text-xs font-semibold cursor-pointer transition-all bg-white dark:bg-zinc-900 text-zinc-700 dark:text-zinc-300 border border-zinc-200 dark:border-zinc-800 hover:border-indigo-400 dark:hover:border-indigo-500"
+          >
+            <span class="inline-block w-2 h-2 rounded-full bg-indigo-500 mr-1.5"></span>
+            Future ({counts.future})
+          </button>
+        )}
         <button
           type="button"
           data-filter="past"
