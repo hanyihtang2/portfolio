@@ -208,6 +208,84 @@ const sectionLinks = [
       </div>
     )}
 
+    <!-- UI Mockup Preview (if defined in frontmatter) -->
+    {(data.mockupImage || data.mobileMockupImage) && (
+      <section id="ui-mockup" class="my-8 space-y-4">
+        <div class={`grid grid-cols-1 ${data.mockupImage && data.mobileMockupImage ? 'lg:grid-cols-3 items-start' : ''} gap-6`}>
+          {data.mockupImage && (
+            <figure class={`${data.mobileMockupImage ? 'lg:col-span-2' : ''} rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 overflow-hidden shadow-xs`}>
+              <div class="flex items-center justify-between px-4 py-2.5 border-b border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-950/60">
+                <div class="flex items-center gap-1.5">
+                  <span class="w-2.5 h-2.5 rounded-full bg-red-400/80"></span>
+                  <span class="w-2.5 h-2.5 rounded-full bg-amber-400/80"></span>
+                  <span class="w-2.5 h-2.5 rounded-full bg-emerald-400/80"></span>
+                </div>
+                <span class="text-xs font-mono text-zinc-500 dark:text-zinc-400">
+                  Desktop UI — {data.title}
+                </span>
+                <a
+                  href={`${base}${data.mockupImage}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-xs font-medium text-blue-600 dark:text-blue-400 hover:underline"
+                >
+                  Full Size ↗
+                </a>
+              </div>
+              <div class="p-2 sm:p-4 bg-zinc-100/60 dark:bg-zinc-950/40">
+                <img
+                  src={`${base}${data.mockupImage}`}
+                  alt={`${data.title} Desktop UI Mockup`}
+                  loading="lazy"
+                  class="w-full h-auto rounded-lg border border-zinc-200/80 dark:border-zinc-800/80"
+                />
+              </div>
+              {data.mockupCaption && (
+                <figcaption class="px-5 py-3 text-xs text-zinc-600 dark:text-zinc-400 border-t border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900">
+                  <strong class="text-zinc-800 dark:text-zinc-200">Desktop Layout:</strong> {data.mockupCaption}
+                </figcaption>
+              )}
+            </figure>
+          )}
+
+          {data.mobileMockupImage && (
+            <figure class="rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 overflow-hidden shadow-xs max-w-xs mx-auto lg:max-w-none w-full">
+              <div class="flex items-center justify-between px-4 py-2.5 border-b border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-950/60">
+                <span class="inline-flex items-center gap-1.5 text-xs font-mono text-zinc-500 dark:text-zinc-400">
+                  <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <rect x="7" y="2" width="10" height="20" rx="2" ry="2" />
+                    <line x1="12" y1="18" x2="12.01" y2="18" />
+                  </svg>
+                  Mobile UI
+                </span>
+                <a
+                  href={`${base}${data.mobileMockupImage}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-xs font-medium text-blue-600 dark:text-blue-400 hover:underline"
+                >
+                  Full Size ↗
+                </a>
+              </div>
+              <div class="p-3 bg-zinc-100/60 dark:bg-zinc-950/40 flex justify-center">
+                <img
+                  src={`${base}${data.mobileMockupImage}`}
+                  alt={`${data.title} Mobile UI Mockup`}
+                  loading="lazy"
+                  class="max-h-96 w-auto rounded-lg border border-zinc-200/80 dark:border-zinc-800/80 shadow-xs"
+                />
+              </div>
+              {data.mobileMockupCaption && (
+                <figcaption class="px-5 py-3 text-xs text-zinc-600 dark:text-zinc-400 border-t border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900">
+                  <strong class="text-zinc-800 dark:text-zinc-200">Mobile-First View:</strong> {data.mobileMockupCaption}
+                </figcaption>
+              )}
+            </figure>
+          )}
+        </div>
+      </section>
+    )}
+
     <!-- Markdown Narrative (Single Scrollable Case Study Body) -->
     <article class="project-prose mt-8">
       <Content />

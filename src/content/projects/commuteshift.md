@@ -3,6 +3,10 @@ title: "CommuteShift"
 description: "A London hybrid commute fare optimizer that compares TfL Contactless Pay-As-You-Go (PAYG) daily/weekly caps against Monthly Travelcards to surface instant monthly savings in under 60 seconds."
 publishDate: 2026-10-23
 tags: ["Product Management", "Next.js", "TypeScript", "Tailwind CSS", "TfL Fare Engine", "Consumer FinTech"]
+mockupImage: "/images/projects/commuteshift-mockup.png"
+mockupCaption: "Two-column interactive layout pairing 3-step commute routine inputs (Left) with an instant, zero-signup PAYG vs. Travelcard savings verdict and Slack/link viral sharing actions (Right)."
+mobileMockupImage: "/images/projects/commuteshift-mobile-mockup.png"
+mobileMockupCaption: "Single-column progressive disclosure optimized for the 60%+ mobile traffic arriving from Slack and LinkedIn shares, stacking From/To Zone inputs and thumb-friendly day toggles."
 featured: true
 status: "Concept"
 role: "Product Manager"
@@ -61,7 +65,21 @@ Provide London hybrid workers with an instant, clear, and mathematically accurat
 
 ---
 
-<h2 id="design-process">2. Scope, Prioritization & Functional Requirements</h2>
+<h2 id="design-process">2. UI Design, Scope & Functional Requirements</h2>
+
+### UI Mockup & Interaction Architecture
+The **CommuteShift London** interface (*"Stop Overpaying TfL."*) is designed around a split-panel reactive layout that eliminates page reloads and delivers an answer in under 45 seconds:
+
+1. **Left Panel — `STEP 1: YOUR COMMUTE ROUTINE` (3 Frictionless Inputs + Fast-Follow Railcard Toggle):**
+   - **1. Select Zones:** Side-by-side `From` (`Zone 2`) and `To` (`Zone 1`) selectors defaulting to the most common inner-London hybrid corridor.
+   - **2. Office Days per Week:** Interactive `M` `T` `W` `Th` `F` toggle pills with a live counter (`3 days selected`), pre-selected to a 3-day hybrid pattern.
+   - **3. Commute Times:** Separate **Morning Commute** (`Peak 06:30–09:30` vs. `Off-Peak`) and **Evening Commute** (`Peak 16:00–19:00` vs. `Off-Peak`) radio groups to accurately model asymmetric routines (such as *Hybrid Harry* travelling in during morning peak and returning after 19:00 off-peak).
+   - **Railcard Discount Modifier (P1):** Checkbox for `16-25 / 26-30 Railcard` applying a 1/3 discount to off-peak Oyster/Contactless single fares and daily caps.
+2. **Right Panel — `YOUR RECOMMENDATION` (High-Contrast Verdict & Viral Loop):**
+   - **Winning Strategy Banner:** Highlights `BEST CHOICE — Contactless Pay-As-You-Go` at **£80.54 / month** with a high-visibility green pill: `YOU SAVE £84.56 / month (51% cheaper)`.
+   - **Itemized Cost Breakdown (Monthly):** Transparently compares the daily return cost (`£6.20`, noting it sits under the `£8.50` daily cap) against the fixed `Monthly Travelcard (Zone 1-2)` at `£165.10`.
+   - **Strategic Break-even Rule Callout:** Plain-English guidance (*"A Monthly Travelcard only becomes cheaper if you commute 6 full peak days every week"*).
+   - **Growth & Viral Sharing Actions:** Dedicated `Copy Shareable Link` and `Share to Slack` CTAs driving the `> 8%` Result Share Rate KPI.
 
 ### MoSCoW Prioritization
 
