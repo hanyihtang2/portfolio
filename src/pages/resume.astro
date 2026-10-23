@@ -1,0 +1,322 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+---
+
+<BaseLayout title="Resume — Han-Yih Tang" description="CV and professional experience of Han-Yih Tang, Technical Product Manager & Builder">
+  <div class="max-w-4xl mx-auto">
+    <!-- Top Action Bar (Hidden when printing) -->
+    <div class="print-hidden flex flex-wrap items-center justify-between gap-4 mb-8 pb-4 border-b border-zinc-200 dark:border-zinc-800">
+      <a
+        href={`${base}/`}
+        class="inline-flex items-center gap-1.5 text-sm font-medium text-zinc-600 dark:text-zinc-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+      >
+        <span>←</span>
+        <span>Back to Home</span>
+      </a>
+
+      <div class="flex items-center gap-3">
+        <a
+          href={`${base}/contact`}
+          class="px-4 py-2 rounded-md border border-zinc-300 dark:border-zinc-700 text-xs font-semibold text-zinc-800 dark:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-colors"
+        >
+          Contact Me
+        </a>
+        <button
+          id="print-resume-btn"
+          type="button"
+          class="inline-flex items-center gap-1.5 px-4 py-2 rounded-md bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 text-xs font-semibold hover:opacity-90 transition-opacity cursor-pointer"
+        >
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
+          </svg>
+          <span>Print / Save as PDF</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Resume Sheet -->
+    <div class="resume-sheet bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl p-6 sm:p-10 shadow-xs space-y-8">
+      <!-- Header -->
+      <header class="pb-2 flex flex-col md:flex-row md:items-start justify-between gap-6">
+        <div>
+          <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-zinc-900 dark:text-zinc-50">
+            Han-Yih Tang
+          </h1>
+          <p class="text-lg font-semibold text-zinc-700 dark:text-zinc-300 mt-1">
+             Product Manager | Product Owner
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-[max-content_max-content] gap-x-8 gap-y-1.5 text-xs sm:text-sm text-zinc-600 dark:text-zinc-400">
+          <!-- Column 1: Location, LinkedIn, GitHub -->
+          <div class="flex flex-col gap-1.5">
+            <span class="inline-flex items-center gap-2 whitespace-nowrap">
+              <svg class="w-4 h-4 text-zinc-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+              <span>London, UK</span>
+            </span>
+
+            <a
+              href="https://www.linkedin.com/in/hanyih-tang"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 whitespace-nowrap text-blue-600 dark:text-blue-400 hover:underline font-medium"
+            >
+              <svg class="w-4 h-4 fill-current text-zinc-900 dark:text-zinc-100 shrink-0" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+              </svg>
+              <span>linkedin.com/in/hanyih-tang ↗</span>
+            </a>
+
+            <a
+              href="https://github.com/hanyihtang2"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 whitespace-nowrap text-blue-600 dark:text-blue-400 hover:underline font-medium"
+            >
+              <svg class="w-4 h-4 fill-current text-zinc-900 dark:text-zinc-100 shrink-0" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
+              </svg>
+              <span>github.com/hanyihtang2 ↗</span>
+            </a>
+          </div>
+
+          <!-- Column 2: Email & Telephone -->
+          <div class="flex flex-col gap-1.5">
+            <span class="inline-flex items-center gap-2 whitespace-nowrap">
+              <svg class="w-4 h-4 text-zinc-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+              <span>hanyih.tang@gmail.com</span>
+            </span>
+
+            <span class="inline-flex items-center gap-2 whitespace-nowrap">
+              <svg class="w-4 h-4 text-zinc-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+              </svg>
+              <span>+44 7545 138704</span>
+            </span>
+          </div>
+        </div>
+      </header>
+
+      <!-- Executive Summary -->
+      <section class="space-y-3">
+        <h2 class="text-xs font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 border-b border-zinc-200 dark:border-zinc-800 pb-2">
+          Profile Summary
+        </h2>
+        <p class="text-sm sm:text-base text-zinc-700 dark:text-zinc-200 leading-relaxed">
+          A technical product leader and hands-on builder with over 7 years of experience designing and delivering multi-factor authentication (2FA / PSD2 SCA), microservice API platforms, design systems, and high-traffic self-service digital products. Thrives on complex socio-technical problems, collaborating across engineering, UX, and commercial functions to deliver measurable outcomes. Experienced across the full technology spectrum—Consultant, Test Engineer, Business Analyst, Product Owner, and senior Product Manager—most recently leading a Product and UX team responsible for strategy and delivery across the homeowner customer segment.
+        </p>
+      </section>
+
+      <!-- Work Experience -->
+      <section class="space-y-6">
+        <h2 class="text-xs font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 border-b border-zinc-200 dark:border-zinc-800 pb-2">
+          Work Experience
+        </h2>
+
+        <!-- Role 1: Product Manager @ Clarion -->
+        <div class="space-y-2">
+          <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
+            <div>
+              <h3 class="text-base font-bold text-zinc-900 dark:text-zinc-100">Product Manager</h3>
+              <p class="text-sm font-medium text-zinc-700 dark:text-zinc-300">
+                Clarion Housing Group <span class="text-zinc-400 dark:text-zinc-500 font-normal">• London, UK</span>
+              </p>
+            </div>
+            <span class="text-xs font-mono text-zinc-500 dark:text-zinc-400 shrink-0">06/2024 – 03/2026</span>
+          </div>
+          <p class="text-xs sm:text-sm italic text-zinc-600 dark:text-zinc-300">
+            Responsible for strategy, roadmap, and delivery across all homeowner customer products, managing a cross-functional Product &amp; UX team post-restructure.
+          </p>
+          <ul class="list-disc pl-5 space-y-1.5 text-sm text-zinc-700 dark:text-zinc-200">
+            <li>Led the adoption of agile ways of working between Product and Software Engineering following an organisational restructure.</li>
+            <li>Directed the greenfield re-platforming of the corporate website serving <strong>~35,000 monthly viewers</strong>.</li>
+            <li>Implemented a greenfield design system in close collaboration with the Lead UX/UI Designer and website engineering pod.</li>
+            <li>Delivered a regulatory-compliant self-service product for Shared Owner customer repairs.</li>
+            <li>Delivered online staircasing customer journeys, enabling an estimated <strong>~£3m per annum</strong> in revenue.</li>
+            <li>Led initial technical and domain discovery for a new enterprise asset data model spanning <strong>~125,000 properties</strong> as part of long-term organisational strategy.</li>
+            <li>Renegotiated external agency contracts, achieving recurring cost savings of <strong>~£40,000 per month</strong> (£480k/yr).</li>
+          </ul>
+        </div>
+
+        <!-- Role 2: Digital Business Analyst @ Clarion -->
+        <div class="space-y-2 pt-2">
+          <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
+            <div>
+              <h3 class="text-base font-bold text-zinc-900 dark:text-zinc-100">Digital Business Analyst</h3>
+              <p class="text-sm font-medium text-zinc-700 dark:text-zinc-300">
+                Clarion Housing Group <span class="text-zinc-400 dark:text-zinc-500 font-normal">• London, UK</span>
+              </p>
+            </div>
+            <span class="text-xs font-mono text-zinc-500 dark:text-zinc-400 shrink-0">08/2021 – 06/2024</span>
+          </div>
+          <ul class="list-disc pl-5 space-y-1.5 text-sm text-zinc-700 dark:text-zinc-200">
+            <li>Launched the corporate website, attracting <strong>35,000 monthly viewers</strong>.</li>
+            <li>Improved the online self-service repairs product conversion from <strong>under 10% to over 25%</strong> of all eligible repairs.</li>
+            <li>Delivered automated self-service account unlock, eliminating <strong>~100 inbound support calls per month</strong>.</li>
+          </ul>
+        </div>
+
+        <!-- Role 3: Consultant @ Wipro / Lloyds Banking Group -->
+        <div class="space-y-4 pt-2">
+          <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
+            <div>
+              <h3 class="text-base font-bold text-zinc-900 dark:text-zinc-100">Consultant</h3>
+              <p class="text-sm font-medium text-zinc-700 dark:text-zinc-300">
+                Wipro <span class="text-zinc-400 dark:text-zinc-500 font-normal">• London, UK</span>
+              </p>
+            </div>
+            <span class="text-xs font-mono text-zinc-500 dark:text-zinc-400 shrink-0">09/2017 – 06/2021</span>
+          </div>
+          <p class="text-xs sm:text-sm italic text-zinc-600 dark:text-zinc-300">
+            Consulted across high-scale Financial Services digital transformation programmes with <strong>Lloyds Banking Group</strong>:
+          </p>
+
+          <div class="pl-4 border-l-2 border-zinc-200 dark:border-zinc-800 space-y-4">
+            <!-- Sub-role: BA @ Lloyds -->
+            <div class="space-y-1.5">
+              <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
+                <h4 class="text-sm font-bold text-zinc-900 dark:text-zinc-100">
+                  Business Analyst (Product Owner &amp; Scrum Master) — <span class="font-medium text-zinc-600 dark:text-zinc-300">Lloyds Banking Group</span>
+                </h4>
+                <span class="text-xs font-mono text-zinc-500 dark:text-zinc-400 shrink-0">02/2019 – 06/2021</span>
+              </div>
+              <ul class="list-disc pl-5 space-y-1 text-sm text-zinc-700 dark:text-zinc-200">
+                <li>Undertook responsibilities of Product Owner and Scrum Master across an agile delivery squad.</li>
+                <li>Delivered mobile app 2FA microservice API platform for debit cards MVP, achieving <strong>PSD2 SCA compliance</strong> and an estimated reduction of <strong>~9,000 inbound calls per month</strong>.</li>
+                <li>Delivered telephony authentication enhancements, saving <strong>~£4.5m per annum</strong> and reducing inbound call contacts by <strong>1.6m per month</strong>.</li>
+              </ul>
+            </div>
+
+            <!-- Sub-role: Test Engineer @ Lloyds -->
+            <div class="space-y-1.5">
+              <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
+                <h4 class="text-sm font-bold text-zinc-900 dark:text-zinc-100">
+                  Test Engineer — <span class="font-medium text-zinc-600 dark:text-zinc-300">Lloyds Banking Group</span>
+                </h4>
+                <span class="text-xs font-mono text-zinc-500 dark:text-zinc-400 shrink-0">01/2018 – 02/2019</span>
+              </div>
+              <ul class="list-disc pl-5 space-y-1 text-sm text-zinc-700 dark:text-zinc-200">
+                <li>Enabled 2FA authentication via the mobile banking app for PSD2 SCA compliance, driving run-cost savings of <strong>~£2m per month</strong>.</li>
+                <li>Simplified customer payment management and internet banking access workflows, delivering call-centre efficiency improvements of <strong>~17.5 FTE</strong>.</li>
+                <li>Enabled mobile app 2FA for payment authorisation, resulting in <strong>~£150,000 per annum</strong> in savings.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Personal Engineering & Product Projects -->
+      <section class="space-y-4">
+        <div class="flex items-center justify-between border-b border-zinc-200 dark:border-zinc-800 pb-2">
+          <h2 class="text-xs font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
+            Personal Projects
+          </h2>
+        </div>
+
+        <div class="space-y-3">
+          <div>
+            <div class="flex flex-wrap items-baseline justify-between gap-2">
+              <h3 class="text-sm font-bold">
+                  MAKER — Cross-Platform Woodworking &amp; DIY Blueprint Platform
+              </h3>
+            </div>
+            <p class="text-sm text-zinc-700 dark:text-zinc-200 mt-1">
+              Architected a full-stack monorepo sharing TypeScript models and Zod validators across a Next.js web app and an offline-first Expo mobile workshop app, backed by PostgreSQL Row-Level Security paywalls and automated rating triggers.
+            </p>
+          </div>
+
+          <div>
+            <div class="flex flex-wrap items-baseline justify-between gap-2">
+              <h3 class="text-sm font-bold">
+                  PawPulse — Collaborative Household Pet Care &amp; Medication Tracker (Concept)
+              </h3>
+            </div>
+            <p class="text-sm text-zinc-700 dark:text-zinc-200 mt-1">
+              Designing a multi-user household pet health platform with atomic anti-double-dose medication ledgers, clinical appointment reminders (wellness, dental, blood work), and future veterinary e-prescription integration.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Education & Certifications Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 pt-2">
+        <!-- Education -->
+        <section class="space-y-3">
+          <h2 class="text-xs font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 border-b border-zinc-200 dark:border-zinc-800 pb-2">
+            Education
+          </h2>
+          <div class="space-y-3">
+            <div>
+              <div class="flex justify-between items-baseline gap-2">
+                <h3 class="text-sm font-bold text-zinc-900 dark:text-zinc-100">Kingston University</h3>
+                <span class="text-xs font-mono text-zinc-500 dark:text-zinc-400">09/2016 – 07/2017</span>
+              </div>
+              <p class="text-sm text-zinc-700 dark:text-zinc-300">BSc. (Hons) in Computer Science</p>
+            </div>
+            <div>
+              <div class="flex justify-between items-baseline gap-2">
+                <h3 class="text-sm font-bold text-zinc-900 dark:text-zinc-100">University of Kent</h3>
+                <span class="text-xs font-mono text-zinc-500 dark:text-zinc-400">09/2013 – 07/2016</span>
+              </div>
+              <p class="text-sm text-zinc-700 dark:text-zinc-300">BSc. (Hons) in Computer Systems Engineering</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Certifications -->
+        <section class="space-y-3">
+          <h2 class="text-xs font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 border-b border-zinc-200 dark:border-zinc-800 pb-2">
+            Certifications
+          </h2>
+          <ul class="space-y-2 text-sm">
+            <li class="flex justify-between items-baseline gap-2">
+              <span class="font-semibold text-zinc-900 dark:text-zinc-100">CCNA 200-301 Version 1.1</span>
+              <span class="text-xs font-mono text-amber-600 dark:text-amber-400 shrink-0">Pearson • In Progress</span>
+            </li>
+            <li class="flex justify-between items-baseline gap-2">
+              <span class="font-semibold text-zinc-900 dark:text-zinc-100">Google AI</span>
+              <span class="text-xs font-mono text-zinc-500 dark:text-zinc-400 shrink-0">Google, Oct 2026</span>
+            </li>
+            <li class="flex justify-between items-baseline gap-2">
+              <span class="font-semibold text-zinc-900 dark:text-zinc-100">Google Cybersecurity</span>
+              <span class="text-xs font-mono text-zinc-500 dark:text-zinc-400 shrink-0">Google, Oct 2026</span>
+            </li>
+            <li class="flex justify-between items-baseline gap-2">
+              <span class="font-semibold text-zinc-900 dark:text-zinc-100">Google UX Design</span>
+              <span class="text-xs font-mono text-zinc-500 dark:text-zinc-400 shrink-0">Google, Jul 2026</span>
+            </li>
+            <li class="flex justify-between items-baseline gap-2">
+              <span class="font-semibold text-zinc-900 dark:text-zinc-100">Professional Scrum Product Owner I (PSPO I)</span>
+              <span class="text-xs font-mono text-zinc-500 dark:text-zinc-400 shrink-0">Scrum.org, Jun 2026</span>
+            </li>
+            <li class="flex justify-between items-baseline gap-2">
+              <span class="font-semibold text-zinc-900 dark:text-zinc-100">Google AI Essentials</span>
+              <span class="text-xs font-mono text-zinc-500 dark:text-zinc-400 shrink-0">Google, Jan 2026</span>
+            </li>
+            <li class="flex justify-between items-baseline gap-2">
+              <span class="font-semibold text-zinc-900 dark:text-zinc-100">Google Prompting Essentials</span>
+              <span class="text-xs font-mono text-zinc-500 dark:text-zinc-400 shrink-0">Google, Jan 2026</span>
+            </li>
+          </ul>
+        </section>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<script is:inline>
+  (function () {
+    const printBtn = document.getElementById('print-resume-btn');
+    if (printBtn) {
+      printBtn.addEventListener('click', () => window.print());
+    }
+  })();
+</script>
+

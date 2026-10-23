@@ -184,3 +184,136 @@ html {
   background-color: rgb(24 24 27); /* zinc-900 */
   color: rgb(250 250 250); /* zinc-50 */
 }
+
+/* Single-Page A4 Print / Save-as-PDF styles for /resume */
+@page {
+  size: A4 portrait;
+  margin: 8mm 12mm;
+}
+
+@media print {
+  header:not(.resume-sheet header),
+  footer,
+  .print-hidden {
+    display: none !important;
+  }
+
+  html,
+  body,
+  main {
+    background: #ffffff !important;
+    color: #18181b !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    min-height: 0 !important;
+  }
+
+  .resume-sheet {
+    background: #ffffff !important;
+    color: #18181b !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: 100% !important;
+    font-size: 8.5pt !important;
+    line-height: 1.25 !important;
+  }
+
+  /* Reset Tailwind v4 space-y-* (which uses margin-block-end on :not(:last-child)) */
+  .resume-sheet :where(* > :not(:last-child)) {
+    margin-block-end: 0 !important;
+    margin-bottom: 0 !important;
+  }
+
+  /* Controlled, compact vertical spacing between major sections */
+  .resume-sheet > * + * {
+    margin-top: 0.45rem !important;
+  }
+
+  .resume-sheet header {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: flex-start !important;
+    justify-content: space-between !important;
+    padding-bottom: 0.2rem !important;
+    border-bottom: none !important;
+  }
+
+  .resume-sheet h1 {
+    font-size: 16pt !important;
+    line-height: 1.1 !important;
+    color: #09090b !important;
+  }
+
+  .resume-sheet header p {
+    font-size: 9.5pt !important;
+    margin-top: 0.1rem !important;
+    color: #3f3f46 !important;
+  }
+
+  .resume-sheet h2 {
+    font-size: 7.5pt !important;
+    padding-bottom: 0.1rem !important;
+    margin-bottom: 0.2rem !important;
+    color: #52525b !important;
+    border-color: #d4d4d8 !important;
+  }
+
+  .resume-sheet h3 {
+    font-size: 9pt !important;
+    line-height: 1.2 !important;
+    color: #09090b !important;
+  }
+
+  .resume-sheet h4 {
+    font-size: 8.5pt !important;
+    line-height: 1.2 !important;
+    color: #09090b !important;
+  }
+
+  .resume-sheet p,
+  .resume-sheet li,
+  .resume-sheet span {
+    font-size: 8.25pt !important;
+    line-height: 1.24 !important;
+    color: #27272a !important;
+  }
+
+  .resume-sheet a {
+    color: #2563eb !important;
+    text-decoration: none !important;
+  }
+
+  .resume-sheet ul {
+    margin-top: 0.12rem !important;
+    margin-bottom: 0 !important;
+  }
+
+  .resume-sheet li + li {
+    margin-top: 0.06rem !important;
+  }
+
+  .resume-sheet section > * + * {
+    margin-top: 0.3rem !important;
+    padding-top: 0 !important;
+  }
+
+  .resume-sheet .pl-4 > * + * {
+    margin-top: 0.25rem !important;
+  }
+
+  /* Keep Education & Certifications side-by-side at the bottom of the A4 page */
+  .resume-sheet > div.grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 1.25rem !important;
+    padding-top: 0.1rem !important;
+  }
+
+  .resume-sheet > div.grid ul > li + li {
+    margin-top: 0.12rem !important;
+  }
+}
