@@ -6,6 +6,18 @@ html {
   scroll-behavior: smooth;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Accessible High-Contrast Focus Indicators (WCAG 2.4.7) */
+:focus-visible {
+  outline: 2px solid rgb(37 99 235);
+  outline-offset: 2px;
+}
+
 /* Scroll margin for section anchors with sticky navigation */
 [id] {
   scroll-margin-top: 6rem;

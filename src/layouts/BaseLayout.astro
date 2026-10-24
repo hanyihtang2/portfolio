@@ -29,11 +29,18 @@ const { title, description = "Professional Portfolio" } = Astro.props;
     </script>
   </head>
   <body class="bg-zinc-50 dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 min-h-screen flex flex-col font-sans antialiased">
+    <!-- Accessible Skip to Content Link (WCAG 2.4.1) -->
+    <a
+      href="#main-content"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-blue-600 focus:text-white focus:rounded-md focus:shadow-lg focus:outline-none text-sm font-semibold"
+    >
+      Skip to main content
+    </a>
     <Navbar />
-    <main class="flex-1 max-w-5xl w-full mx-auto px-6 py-12">
+    <main id="main-content" class="flex-1 max-w-5xl w-full mx-auto px-6 py-12">
       <slot />
     </main>
-    <footer class="border-t border-zinc-200 dark:border-zinc-800 py-8 text-center text-xs text-zinc-500">
+    <footer class="border-t border-zinc-200 dark:border-zinc-800 py-8 text-center text-xs text-zinc-600 dark:text-zinc-400">
       © {new Date().getFullYear()} Built with Astro & Tailwind.
     </footer>
   </body>
