@@ -3,6 +3,7 @@ title: "MAKER"
 description: "A cross-platform woodworking and DIY blueprint platform with step-by-step build plans, bills of materials, tool checklists, universal entitlements, and an offline mobile workshop mode."
 publishDate: 2026-10-23
 tags: ["Next.js", "Expo / React Native", "TypeScript", "Supabase", "PostgreSQL", "Turborepo"]
+liveUrl: "https://maker.hanyihtang2.workers.dev/"
 featured: true
 status: "In Progress"
 role: "Full-Stack Engineer & Architect"
@@ -23,7 +24,7 @@ metrics:
 techStack:
   languages: ["TypeScript", "SQL (PL/pgSQL)", "CSS"]
   frameworks: ["Next.js", "React 19", "Expo / React Native", "Tailwind CSS"]
-  infrastructure: ["Supabase (PostgreSQL & Auth)", "GitHub Actions", "Cloud Hosting (Evaluating)"]
+  infrastructure: ["Cloudflare Pages", "Supabase (PostgreSQL & Auth)", "GitHub Actions"]
   tools: ["Turborepo", "Zod", "Lucide Icons", "npm Workspaces"]
 roadmap:
   - phase: "Phase 1"
@@ -41,6 +42,7 @@ roadmap:
     targetQuarter: "Q4 2026"
     summary: "Planned roadmap milestone for web-based blueprint authoring, video step embedding, cut list calculators, and community reviews."
     deliverables:
+      - "Cloudflare Pages production deployment & continuous delivery pipeline"
       - "[Placeholder] Interactive cut list optimizer and lumber yield calculator"
       - "[Placeholder] Creator dashboard with draft/publish workflow"
       - "[Placeholder] User reviews, build photos, and community question threads"
@@ -118,6 +120,7 @@ MAKER (Turborepo Workspace)
 
 ### Languages, Frameworks & Tooling
 - **Web Application (`@maker/web`):** Built with **Next.js**, **React 19**, **Tailwind CSS**, and **Lucide React**, featuring a custom workshop blueprint design system (`canvas`, `surface`, `draft`, `blueprint`, and `action` tokens) with dark/light theme persistence.
+- **Edge Deployment & Hosting:** The web client is continuously deployed to **Cloudflare Pages** ([maker.hanyihtang2.workers.dev](https://maker.hanyihtang2.workers.dev/)), leveraging Cloudflare's global edge network for sub-second blueprint delivery and zero cold-start latency.
 - **Mobile Application (`@maker/mobile`):** Built with **Expo SDK 58**, **React Native**, `expo-router`, and `expo-file-system` for offline blueprint caching and step-by-step shop mode navigation.
 - **Backend & Persistence (`@maker/database`):** Powered by **Supabase** (**PostgreSQL**, **Supabase Auth**), with 4 declarative SQL migrations covering relational tables, trigram GIN indexes, RLS policies, auth profile triggers, and seed data.
 - **Validation (`@maker/validators`):** Strict **Zod** schemas (`createProjectSchema`, `materialSchema`, `toolSchema`, `stepSchema`, `reviewSchema`) enforcing constraints before database mutations.
@@ -156,10 +159,11 @@ export function mapProjectDetailFromDb(row: any): ProjectDetail {
 
 <h2 id="repository">5. Repository & Deployment Status</h2>
 
-The MAKER codebase is currently maintained in a **private GitHub repository** while alternative hosting configurations are being evaluated to support private repository deployments with continuous integration.
+The MAKER web application is actively deployed to production via **Cloudflare Pages**, featuring automated Git integration and edge distribution. The monorepo codebase is maintained in a **private GitHub repository**.
 
+- **Live Web Application:** [maker.hanyihtang2.workers.dev ↗](https://maker.hanyihtang2.workers.dev/)
+- **Deployment Platform:** Cloudflare Pages (Continuous deployment pipeline with edge delivery)
 - **Repository Status:** Private (Code access or architecture walkthrough available upon request)
-- **Deployment Status:** Evaluating alternative hosting solutions (migrating from GitHub Pages to maintain private repository workflows)
 - **Local Architecture & Workspace Commands:**
   ```bash
   # Install dependencies across all Turborepo workspaces
