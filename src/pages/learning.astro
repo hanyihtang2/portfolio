@@ -10,7 +10,7 @@ interface LearningItem {
   status: 'In Progress' | 'Target / Upcoming' | 'Completed';
   period: string;
   provider: string;
-  category: 'Networking & Systems' | 'AI & Agentic Systems' | 'Cloud & Architecture' | 'Security & Governance' | 'Product & UX' | 'Computer Science';
+  category: 'Networking & Systems' | 'AI & Agentic Systems' | 'Cloud & Architecture' | 'Security & Governance' | 'Product & UX' | 'Computer Science' | 'Creative Writing' | 'Language Learning' | 'Automotive & Mechanical' | 'Home Systems & Maintenance' | 'Woodworking & Carpentry';
   what: string;
   why: string;
   topics: string[];
@@ -70,6 +70,102 @@ const learningItems: LearningItem[] = [
       url: "https://www.zscaler.com/zscaler-cyber-academy/ztca-zero-trust-cyber-associate",
       external: true,
     },
+  },
+  {
+    id: "fiction-book-writing",
+    title: "Writing a Fictional Book (Sci-Fi & Fantasy)",
+    phase: "future",
+    status: "Target / Upcoming",
+    period: "Future Horizon",
+    provider: "Self-Directed Creative Project",
+    category: "Creative Writing",
+    what: "Drafting an original long-form speculative fiction novel rooted in science fiction and fantasy. The project explores narrative architecture, immersive worldbuilding and lore, character development arcs, pacing, and navigating the end-to-end discipline of drafting and revising a full-length manuscript.",
+    why: "At face value, this is very different from the structured learning and technology-focused certifications that make up the rest of my roadmap. Having grown up reading a lot of fantasy and science fiction, writing a book is something deeply personal and engaging. It is pursued not for commercial success, but for the creative experience, narrative craft, and personal growth.",
+    topics: ["Speculative Fiction", "Science Fiction & Fantasy", "Worldbuilding & Lore", "Narrative Architecture", "Character Development", "Creative Discipline"],
+  },
+  {
+    id: "mandarin-language-acquisition",
+    title: "Mandarin Chinese Language Acquisition",
+    phase: "future",
+    status: "Target / Upcoming",
+    period: "Future Horizon",
+    provider: "Self-Directed & Immersive Language Study",
+    category: "Language Learning",
+    what: "Rebuilding and systematically advancing proficiency in Mandarin Chinese from the ground up: mastering tones and Pinyin pronunciation, conversational fluency for daily and family life, core vocabulary acquisition, and reading/writing Chinese characters (Hanzi). Moving beyond elementary familiarity toward confident, natural spoken communication.",
+    why: "I learned basic Mandarin and French when I was younger, but never pursued them properly and have forgotten much of what I learned. Learning Mandarin properly is a deeply personal and meaningful priority, especially with much of my extended family living in Malaysia. Rebuilding fluency is about reconnecting with heritage and engaging authentically with family across generations.",
+    topics: ["Mandarin Chinese", "Conversational Fluency", "Tones & Pinyin", "Character Literacy (Hanzi)", "Heritage & Family Connection", "Language Acquisition"],
+  },
+  {
+    id: "basic-car-maintenance",
+    title: "Basic Car Maintenance & Mechanical Systems",
+    phase: "future",
+    status: "Target / Upcoming",
+    period: "Future Horizon",
+    provider: "Hands-On Practical Study & Workshop Experience",
+    category: "Automotive & Mechanical",
+    what: "Mastering practical automotive maintenance for internal combustion engine (ICE) platforms: essential fluid checks and service (engine oil, coolant, brake fluid), brake inspection and pad replacement, battery diagnostics and electrical basics, tire maintenance and rotations, spark plug and filter changes, and introductory OBD-II diagnostic scanning.",
+    why: "While electric vehicles are growing massively, there are still thousands of internal combustion engine platform cars on the road. Understanding basic maintenance remains a valuable, enduring life skill that demystifies mechanical systems and builds a grounded electro-mechanical baseline that can be adapted to future drivetrain platforms.",
+    topics: ["ICE Platforms", "Fluid Systems & Filters", "Brake & Tire Servicing", "OBD-II Diagnostics", "Electromechanical Basics", "Drivetrain Fundamentals"],
+  },
+  {
+    id: "electric-vehicle-foundations",
+    title: "Foundations of Electric Vehicles (EVs)",
+    phase: "future",
+    status: "Target / Upcoming",
+    period: "Future Horizon",
+    provider: "Self-Directed Technical Study & Industry Research",
+    category: "Automotive & Mechanical",
+    what: "Exploring the foundational engineering and operating principles of electric vehicles (EVs): high-voltage battery pack architecture, electric drivetrain mechanics, power electronics and inverters, thermal management loops, charging standards, and regenerative braking. Scope is intentionally kept adaptable and will be refined as study progresses.",
+    why: "Directly builds upon practical car maintenance and mechanical systems fundamentals. As automotive platforms transition toward electrification and software-defined architectures, developing a structured understanding of EV powertrains bridges physical hardware intuition with modern high-voltage and embedded systems.",
+    topics: ["Electric Vehicles (EVs)", "High-Voltage Systems", "Battery Architecture", "Electric Drivetrains", "Power Electronics", "Charging Infrastructure"],
+  },
+  {
+    id: "residential-plumbing",
+    title: "Foundations of Residential Plumbing",
+    phase: "future",
+    status: "Target / Upcoming",
+    period: "Future Horizon",
+    provider: "Hands-On Practical Study & Home Maintenance",
+    category: "Home Systems & Maintenance",
+    what: "Developing a functional understanding of domestic plumbing systems: supply line materials (copper, PEX) and shutoff valves, pressure regulation, fixture maintenance and installation (faucets, showerheads, toilet valves), drain-waste-vent (DWV) piping and P-traps, unblocking clogs, diagnosing leaks, and basic pipe joining techniques.",
+    why: "A foundational homeownership and self-reliance skill. Understanding how pressurized water enters and gravity-fed wastewater leaves a home demystifies residential infrastructure, ensures rapid and calm response to household leaks, and enables routine repairs and fixture updates without defaulting to emergency call-outs.",
+    topics: ["Residential Plumbing", "Supply Lines & PEX/Copper", "DWV & P-Traps", "Fixture Maintenance", "Leak Diagnostics & Shutoffs", "Home Maintenance"],
+  },
+  {
+    id: "residential-electrical-wiring",
+    title: "Residential Electrical Systems & Small Wiring",
+    phase: "future",
+    status: "Target / Upcoming",
+    period: "Future Horizon",
+    provider: "Hands-On Practical Study & Electrical Safety Codes",
+    category: "Home Systems & Maintenance",
+    what: "Gaining a practical understanding of domestic electrical safety and circuit fundamentals: consumer units and circuit breakers, isolation and testing procedures (voltage testers, multimeters), residential wiring standards (live, neutral, ground/earth), and safely wiring or replacing small fixtures including light fixtures, light switches (1-way and 2-way), and power outlets.",
+    why: "An essential homeownership and practical life skill. Knowing how home electrical distribution operates—and strictly adhering to isolation safety procedures—enables confident, safe troubleshooting and small-scale wiring upgrades while demystifying domestic electrical infrastructure.",
+    topics: ["Domestic Electrical Safety", "Circuit Breakers & Consumer Units", "Lighting & Switch Wiring", "Socket Replacement", "Safe Voltage Isolation", "Home Maintenance"],
+  },
+  {
+    id: "woodworking-foundations",
+    title: "Foundations of Woodworking & Freestanding Furniture",
+    phase: "future",
+    status: "Target / Upcoming",
+    period: "Future Horizon",
+    provider: "Hands-On Workshop Practice & Progressive Builds",
+    category: "Woodworking & Carpentry",
+    what: "Developing foundational woodworking and joinery skills through progressive standalone builds: timber selection, grain reading, stock milling and squaring, edge and end-grain glue-ups, basic and traditional joinery (pocket screws, dowels, half-laps, and mortise & tenon), sanding grit sequences, and oil/wax finishing. Progression advances from small flat items (cutting boards, serving trays) to functional standalone furniture (stools, side tables, and occasional chairs).",
+    why: "Starting with small, manageable builds develops essential tool safety, muscle memory, and a working respect for wood movement and tolerances. Building standalone pieces provides high-repetition, low-risk opportunities to master joinery and finish quality before tackling large-scale architectural projects.",
+    topics: ["Woodworking Fundamentals", "Timber Milling & Squaring", "Joinery (Dowels / Mortise & Tenon)", "Glue-Ups & Clamping", "Standalone Furniture (Tables & Chairs)", "Finishing & Sanding"],
+  },
+  {
+    id: "bespoke-built-in-cabinetry",
+    title: "Custom Built-In Cabinetry & Architectural Joinery",
+    phase: "future",
+    status: "Target / Upcoming",
+    period: "Future Horizon",
+    provider: "Self-Directed Home Renovation & Joinery",
+    category: "Woodworking & Carpentry",
+    what: "Mastering the design, fabrication, and installation of fitted, bespoke furniture tailored to domestic spaces: breaking down sheet goods (hardwood plywood and MDF) with track saws, cabinet carcass construction (pocket hole, dado, and dowel joinery), face frames, precision scribing against out-of-square walls and uneven floors, and installing integrated hardware (concealed soft-close European cup hinges, undermount drawer runners, and adjustable shelving systems). Target projects include alcove cabinetry, fitted wardrobes, and custom media units.",
+    why: "The culmination of practical woodworking for homeownership: crafting high-utility, custom-fitted furniture that maximizes living space and complements home architecture far better than mass-produced flat-pack furniture. Directly applies standalone furniture joinery to deliver high-durability, permanent home improvements.",
+    topics: ["Bespoke Built-Ins", "Sheet Goods & Track Saws", "Carcass & Cabinet Construction", "Precision Scribing", "Concealed Hinges & Drawer Runners", "Architectural Fitting"],
   },
 
   // --- PAST MILESTONES ---
@@ -220,7 +316,7 @@ const categories = Array.from(new Set(learningItems.map((i) => i.category)));
       </h1>
 
       <p class="text-base sm:text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed max-w-3xl">
-        As a technical product manager and hands-on builder, I believe high-leverage product leadership is rooted in deep systems intuition. This live log tracks my technical learning roadmap across <span class="text-zinc-900 dark:text-zinc-100 font-medium">networking</span>, <span class="text-zinc-900 dark:text-zinc-100 font-medium">agentic AI systems</span>, <span class="text-zinc-900 dark:text-zinc-100 font-medium">security</span>, and <span class="text-zinc-900 dark:text-zinc-100 font-medium">product leadership</span>—articulating what I learn, the strategic motivation behind it, and the timeline of each milestone.
+        As a technical product manager and hands-on builder, I believe high-leverage product leadership is rooted in deep systems intuition and broad creative curiosity. This live log tracks my learning roadmap across <span class="text-zinc-900 dark:text-zinc-100 font-medium">networking</span>, <span class="text-zinc-900 dark:text-zinc-100 font-medium">agentic AI systems</span>, <span class="text-zinc-900 dark:text-zinc-100 font-medium">security</span>, <span class="text-zinc-900 dark:text-zinc-100 font-medium">product leadership</span>, <span class="text-zinc-900 dark:text-zinc-100 font-medium">creative writing</span>, <span class="text-zinc-900 dark:text-zinc-100 font-medium">languages</span>, and <span class="text-zinc-900 dark:text-zinc-100 font-medium">practical craft &amp; mechanical systems</span>—articulating what I learn, the motivation behind it, and the timeline of each milestone.
       </p>
 
       <!-- Quick Metrics Grid -->
@@ -409,20 +505,20 @@ const categories = Array.from(new Set(learningItems.map((i) => i.category)));
                     <svg class="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
                       <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                     </svg>
-                    <span>The Technical Objective (What)</span>
+                    <span>{item.category === 'Creative Writing' ? 'The Creative Objective (What)' : item.category === 'Language Learning' ? 'The Language Objective (What)' : item.category === 'Automotive & Mechanical' || item.category === 'Home Systems & Maintenance' || item.category === 'Woodworking & Carpentry' ? 'The Practical Objective (What)' : 'The Technical Objective (What)'}</span>
                   </div>
                   <p class="text-sm sm:text-base text-zinc-700 dark:text-zinc-300 leading-relaxed">
                     {item.what}
                   </p>
                 </div>
 
-                <!-- Content Block 2: "The Why" (Rationale & Strategic Product Impact) -->
+                <!-- Content Block 2: "The Why" (Rationale & Strategic Product Impact / Personal Motivation) -->
                 <div class="mt-4 p-4 rounded-lg bg-zinc-50 dark:bg-zinc-950/60 border border-zinc-200/80 dark:border-zinc-800/80 space-y-1.5">
                   <div class="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-zinc-700 dark:text-zinc-300">
                     <svg class="w-3.5 h-3.5 text-amber-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
                       <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
                     </svg>
-                    <span>Strategic Motivation &amp; Builder Impact (Why)</span>
+                    <span>{item.category === 'Creative Writing' ? 'Personal Motivation & Creative Growth (Why)' : item.category === 'Language Learning' ? 'Personal Motivation & Heritage Connection (Why)' : item.category === 'Automotive & Mechanical' ? 'Practical Value & Systems Foundation (Why)' : item.category === 'Home Systems & Maintenance' || item.category === 'Woodworking & Carpentry' ? 'Practical Value & Self-Reliance (Why)' : 'Strategic Motivation & Builder Impact (Why)'}</span>
                   </div>
                   <p class="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed italic">
                     "{item.why}"
