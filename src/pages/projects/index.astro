@@ -1,8 +1,8 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
 import { getCollection } from 'astro:content';
 
-const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 const allProjects = (await getCollection('projects')).sort(
   (a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
 );
@@ -16,66 +16,7 @@ const allProjects = (await getCollection('projects')).sort(
 
   <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
     {allProjects.map(project => (
-      <div class="p-6 border border-zinc-200 dark:border-zinc-800 rounded-lg bg-white dark:bg-zinc-900 flex flex-col justify-between">
-        <div>
-          <div class="flex justify-between items-start mb-2">
-            <h2 class="text-xl font-bold">{project.data.title}</h2>
-            <span class={`text-xs px-2 py-0.5 rounded font-medium ${
-              project.data.status === 'Completed'
-                ? 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300'
-                : project.data.status === 'In Progress'
-                ? 'bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300'
-                : 'bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400'
-            }`}>{project.data.status}</span>
-          </div>
-          <p class="text-sm text-zinc-600 dark:text-zinc-400 mb-4">{project.data.description}</p>
-          <div class="flex flex-wrap gap-2 mb-6">
-            {project.data.tags.map(tag => (
-              <span class="text-xs font-mono bg-zinc-100 dark:bg-zinc-800 px-2 py-1 rounded text-zinc-600 dark:text-zinc-300">
-                {tag}
-              </span>
-            ))}
-          </div>
-        </div>
-        <div class="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm font-medium border-t border-zinc-100 dark:border-zinc-800 pt-4">
-          <a
-            href={`${base}/projects/${project.id}`}
-            class="py-1 text-blue-600 dark:text-blue-400 hover:underline"
-            aria-label={`Read case study for ${project.data.title}`}
-          >
-            Read Case Study →
-          </a>
-          <a
-            href={`${base}/projects/${project.id}/roadmap`}
-            class="py-1 text-zinc-600 dark:text-zinc-400 hover:text-blue-600 dark:hover:text-blue-400 hover:underline"
-            aria-label={`View roadmap for ${project.data.title}`}
-          >
-            Roadmap ↗
-          </a>
-          {project.data.githubUrl && (
-            <a
-              href={project.data.githubUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="py-1 text-zinc-600 dark:text-zinc-400 hover:underline"
-              aria-label={`GitHub repository for ${project.data.title}`}
-            >
-              GitHub ↗
-            </a>
-          )}
-          {project.data.liveUrl && (
-            <a
-              href={project.data.liveUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="py-1 text-zinc-600 dark:text-zinc-400 hover:underline"
-              aria-label={`Live demo for ${project.data.title}`}
-            >
-              Live Demo ↗
-            </a>
-          )}
-        </div>
-      </div>
+      <ProjectCard project={project} headingLevel="h2" />
     ))}
   </div>
 </BaseLayout>
