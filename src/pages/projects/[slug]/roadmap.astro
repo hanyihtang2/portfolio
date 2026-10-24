@@ -115,7 +115,7 @@ const plannedCount = roadmapItems.filter((i) => i.status === 'Planned').length;
     </header>
 
     <!-- Sub-Navigation Tabs -->
-    <ProjectTabs slug={entry.id} activeTab="roadmap" roadmapCount={roadmapItems.length} />
+    <ProjectTabs slug={entry.id} activeTab="roadmap" />
 
     <!-- Roadmap Statistics Summary -->
     {roadmapItems.length > 0 && (
