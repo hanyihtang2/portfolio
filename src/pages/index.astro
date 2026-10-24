@@ -16,17 +16,6 @@ const featuredProjects = (await getCollection('projects', ({ data }) => data.fea
     <p class="text-xl text-zinc-600 dark:text-zinc-400 max-w-2xl">
       Currently crafting showcase systems and documenting the process.
     </p>
-    <div class="flex flex-wrap gap-4 pt-2">
-      <a href={`${base}/projects`} class="px-5 py-2.5 bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 rounded-md font-medium text-sm hover:opacity-90">
-        View Projects
-      </a>
-      <a href={`${base}/resume`} class="px-5 py-2.5 border border-zinc-300 dark:border-zinc-700 rounded-md font-medium text-sm hover:bg-zinc-100 dark:hover:bg-zinc-900">
-        View Resume
-      </a>
-      <a href={`${base}/contact`} class="px-5 py-2.5 border border-zinc-300 dark:border-zinc-700 rounded-md font-medium text-sm hover:bg-zinc-100 dark:hover:bg-zinc-900">
-        Get in Touch
-      </a>
-    </div>
   </section>
 
   <section id="about" class="mt-12 space-y-8">
