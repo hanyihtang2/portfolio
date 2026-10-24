@@ -3,8 +3,6 @@ title: "MAKER"
 description: "A cross-platform woodworking and DIY blueprint platform with step-by-step build plans, bills of materials, tool checklists, universal entitlements, and an offline mobile workshop mode."
 publishDate: 2026-10-23
 tags: ["Next.js", "Expo / React Native", "TypeScript", "Supabase", "PostgreSQL", "Turborepo"]
-githubUrl: "https://github.com/hanyihtang2/MAKER"
-liveUrl: "https://hanyihtang2.github.io/MAKER/"
 featured: true
 status: "In Progress"
 role: "Full-Stack Engineer & Architect"
@@ -25,7 +23,7 @@ metrics:
 techStack:
   languages: ["TypeScript", "SQL (PL/pgSQL)", "CSS"]
   frameworks: ["Next.js", "React 19", "Expo / React Native", "Tailwind CSS"]
-  infrastructure: ["Supabase (PostgreSQL & Auth)", "GitHub Pages", "GitHub Actions"]
+  infrastructure: ["Supabase (PostgreSQL & Auth)", "GitHub Actions", "Cloud Hosting (Evaluating)"]
   tools: ["Turborepo", "Zod", "Lucide Icons", "npm Workspaces"]
 roadmap:
   - phase: "Phase 1"
@@ -156,25 +154,21 @@ export function mapProjectDetailFromDb(row: any): ProjectDetail {
 
 ---
 
-<h2 id="repository">5. GitHub Repository & Code Access</h2>
+<h2 id="repository">5. Repository & Deployment Status</h2>
 
-The project source code and live web deployment are available on GitHub:
+The MAKER codebase is currently maintained in a **private GitHub repository** while alternative hosting configurations are being evaluated to support private repository deployments with continuous integration.
 
-- **Live Web App:** [https://hanyihtang2.github.io/MAKER/](https://hanyihtang2.github.io/MAKER/)
-- **Repository Link:** [https://github.com/hanyihtang2/MAKER](https://github.com/hanyihtang2/MAKER)
-- **Local Quickstart:**
+- **Repository Status:** Private (Code access or architecture walkthrough available upon request)
+- **Deployment Status:** Evaluating alternative hosting solutions (migrating from GitHub Pages to maintain private repository workflows)
+- **Local Architecture & Workspace Commands:**
   ```bash
-  # Clone the repository
-  git clone https://github.com/hanyihtang2/MAKER.git
-
-  # Navigate into the workspace and install dependencies
-  cd MAKER
+  # Install dependencies across all Turborepo workspaces
   npm install
 
-  # Start the Next.js web app
+  # Start the Next.js web application
   npm run dev --workspace=@maker/web
 
-  # Or run all Turborepo workspaces concurrently
+  # Or run all Turborepo workspaces (web, mobile, shared libraries) concurrently
   npm run dev
   ```
 
