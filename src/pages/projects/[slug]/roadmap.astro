@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import ProjectTabs from '../../../components/ProjectTabs.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
 
 export async function getStaticPaths() {
   const projectEntries = await getCollection('projects');
@@ -19,6 +20,18 @@ const roadmapItems = data.roadmap || [];
 const completedCount = roadmapItems.filter((i) => i.status === 'Completed').length;
 const inProgressCount = roadmapItems.filter((i) => i.status === 'In Progress').length;
 const plannedCount = roadmapItems.filter((i) => i.status === 'Planned').length;
+
+const statusBadgeClasses: Record<string, string> = {
+  'Completed': 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950/80 dark:text-emerald-300 border border-emerald-300/60 dark:border-emerald-800/60',
+  'In Progress': 'bg-amber-100 text-amber-800 dark:bg-amber-950/80 dark:text-amber-300 border border-amber-300/60 dark:border-amber-800/60',
+  'Concept': 'bg-zinc-100 text-zinc-700 dark:bg-zinc-800 dark:text-zinc-300 border border-zinc-200 dark:border-zinc-700',
+};
+
+const statusDotClasses: Record<string, string> = {
+  'Completed': 'bg-emerald-500',
+  'In Progress': 'bg-amber-500',
+  'Concept': 'bg-zinc-400',
+};
 ---
 
 <BaseLayout
@@ -27,36 +40,29 @@ const plannedCount = roadmapItems.filter((i) => i.status === 'Planned').length;
 >
   <div>
     <!-- Breadcrumb -->
-    <nav class="mb-6 flex items-center gap-2 text-sm text-zinc-500 dark:text-zinc-400" aria-label="Breadcrumb">
-      <a href={`${base}/projects`} class="hover:underline hover:text-blue-600 dark:hover:text-blue-400">
-        Projects
-      </a>
-      <span>/</span>
-      <a href={`${base}/projects/${entry.id}`} class="hover:underline hover:text-blue-600 dark:hover:text-blue-400">
-        {data.title}
-      </a>
-      <span>/</span>
-      <span class="text-zinc-900 dark:text-zinc-100 font-medium">Roadmap</span>
-    </nav>
+    <Breadcrumb
+      items={[
+        { label: "Projects", href: `${base}/projects` },
+        { label: data.title, href: `${base}/projects/${entry.id}` },
+        { label: "Roadmap" },
+      ]}
+    />
 
     <!-- Project Header Hero -->
-    <header class="pb-6 border-b border-zinc-200 dark:border-zinc-800 space-y-4">
-      <div class="flex flex-wrap items-center gap-3">
-        <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-zinc-900 dark:text-zinc-50">
-          {data.title} Roadmap
-        </h1>
-        <span class={`text-xs px-2.5 py-1 rounded-full font-semibold ${
-          data.status === 'Completed' 
-            ? 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300' 
-            : data.status === 'In Progress' 
-            ? 'bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300'
-            : 'bg-zinc-100 text-zinc-700 dark:bg-zinc-800 dark:text-zinc-300'
-        }`}>
+    <header class="pb-6 border-b border-zinc-200 dark:border-zinc-800 space-y-3">
+      <!-- Status Eyebrow Badge -->
+      <div>
+        <span class={`inline-flex items-center gap-1.5 text-xs px-2.5 py-1 rounded-full font-medium ${statusBadgeClasses[data.status] || ''}`}>
+          <span class={`w-1.5 h-1.5 rounded-full ${statusDotClasses[data.status] || 'bg-zinc-400'}`} aria-hidden="true"></span>
           {data.status}
         </span>
       </div>
 
-      <p class="text-xl text-zinc-600 dark:text-zinc-400 max-w-3xl leading-relaxed">
+      <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-zinc-900 dark:text-zinc-50">
+        {data.title} Roadmap
+      </h1>
+
+      <p class="text-xl text-zinc-600 dark:text-zinc-400 max-w-3xl leading-relaxed pt-1">
         Planned architectural phases, key deliverables, and target milestone trajectory for {data.title}.
       </p>
 
