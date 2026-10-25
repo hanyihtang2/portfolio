@@ -11,7 +11,7 @@ mobileMockupImage: "/images/projects/commuteshift-mobile-mockup.png"
 mobileMockupCaption: "Single-column progressive disclosure optimized for the 60%+ mobile traffic arriving from Slack and LinkedIn shares, stacking From/To Zone inputs and thumb-friendly day toggles."
 featured: true
 status: "Completed"
-role: "Product Manager & Builder"
+role: "Product Engineer"
 timeline: "2026 (v1.0 MVP Live)"
 metrics:
   - label: "Activation Target"

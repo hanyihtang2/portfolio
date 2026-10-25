@@ -6,7 +6,7 @@ tags: ["Next.js", "Expo / React Native", "TypeScript", "Supabase", "PostgreSQL",
 liveUrl: "https://maker.hanyihtang2.workers.dev/"
 featured: true
 status: "In Progress"
-role: "Full-Stack Engineer & Architect"
+role: "Product Engineer"
 timeline: "2026 – Present"
 metrics:
   - label: "Monorepo Packages"

@@ -5,7 +5,7 @@ publishDate: 2026-10-20
 tags: ["TypeScript", "React Native", "Next.js", "PostgreSQL", "Real-Time Sync", "Healthcare"]
 featured: true
 status: "Concept"
-role: "Product Architect & Full-Stack Engineer"
+role: "Product Engineer"
 timeline: "Concept Stage (Planned)"
 metrics:
   - label: "Core Pillar"
