@@ -568,13 +568,10 @@ html {
   letter-spacing: var(--tracking-tight);
   margin-top: 2.5rem;
   margin-bottom: 1rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 1px solid var(--color-zinc-200);
   color: var(--color-zinc-900);
 }
 
 :is(.dark .project-prose h2) {
-  border-bottom-color: var(--color-zinc-800);
   color: var(--color-zinc-50);
 }
 
