@@ -3,7 +3,7 @@ title: "PawPulse"
 description: "A collaborative household pet care platform for scheduling veterinary checkups, coordinating shared medication logs to prevent double-dosing, and integrating with vet prescription providers."
 publishDate: 2026-10-20
 tags: ["TypeScript", "React Native", "Next.js", "PostgreSQL", "Real-Time Sync", "Healthcare"]
-featured: true
+featured: false
 status: "Concept"
 role: "Product Engineer"
 timeline: "Concept Stage (Planned)"
