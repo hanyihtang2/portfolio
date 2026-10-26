@@ -66,7 +66,7 @@ roadmap:
       - "[Placeholder] Unified entitlement resolution via Supabase Edge Functions"
 ---
 
-<h2 id="summary">1. Project Summary & Objectives</h2>
+## 1. Project Summary & Objectives
 
 ### Product Purpose
 Woodworkers, craftspeople, and DIY builders frequently rely on fragmented PDFs, forum threads, or long-form videos that are difficult to reference at a workbench. Furthermore, workshops located in garages or basements often suffer from poor internet connectivity.
@@ -81,7 +81,7 @@ Woodworkers, craftspeople, and DIY builders frequently rely on fragmented PDFs, 
 
 ---
 
-<h2 id="design-process">2. Design Process & Architecture</h2>
+## 2. Design Process & Architecture
 
 ### System Topology & Monorepo Structure
 The platform separates public discovery, SEO, and blueprint authoring on the web from hands-on, offline-capable execution in the workshop on mobile, while sharing 100% of business logic and data contracts through internal workspace packages:
@@ -105,7 +105,7 @@ MAKER (Turborepo Workspace)
 
 ---
 
-<h2 id="key-metrics">3. Key Metrics & Architecture Highlights</h2>
+## 3. Key Metrics & Architecture Highlights
 
 | Architectural Dimension | Design Target | Implementation in MAKER | Outcome |
 | :--- | :--- | :--- | :--- |
@@ -116,7 +116,7 @@ MAKER (Turborepo Workspace)
 
 ---
 
-<h2 id="technical-details">4. Technical Details & Implementation</h2>
+## 4. Technical Details & Implementation
 
 ### Languages, Frameworks & Tooling
 - **Web Application (`@maker/web`):** Built with **Next.js**, **React 19**, **Tailwind CSS**, and **Lucide React**, featuring a custom workshop blueprint design system (`canvas`, `surface`, `draft`, `blueprint`, and `action` tokens) with dark/light theme persistence.
@@ -157,7 +157,7 @@ export function mapProjectDetailFromDb(row: any): ProjectDetail {
 
 ---
 
-<h2 id="quickstart">5. Deployment & Workspace Commands</h2>
+## 5. Deployment & Workspace Commands
 
 The MAKER web application is actively deployed to production via **Cloudflare Pages**, featuring automated Git integration and edge distribution. The monorepo codebase is maintained in a **private GitHub repository**.
 

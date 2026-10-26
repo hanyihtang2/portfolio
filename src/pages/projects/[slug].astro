@@ -12,15 +12,30 @@ export async function getStaticPaths() {
 }
 
 const { entry } = Astro.props;
-const { Content } = await render(entry);
+const { Content, headings } = await render(entry);
 const { data } = entry;
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 
+function formatNavLabel(text: string): string {
+  const cleaned = text.replace(/^\d+[\.\)]\s*/, '').trim();
+  if (/summary|overview|problem/i.test(cleaned)) return 'Summary & Objectives';
+  if (/design|architecture|ui design/i.test(cleaned)) return 'Design Process';
+  if (/metric|outcome|kpi|capabilities/i.test(cleaned)) return 'Key Metrics';
+  if (/technical|implementation/i.test(cleaned)) return 'Technical Details';
+  if (/quickstart|deployment|workspace/i.test(cleaned)) return 'Quickstart';
+  if (/roadmap|status/i.test(cleaned)) return 'Roadmap';
+  return cleaned.split(/[,&]/)[0].trim();
+}
+
+const navHeadings = headings
+  .filter((h) => h.depth === 2)
+  .map((h) => ({
+    id: h.slug,
+    label: formatNavLabel(h.text),
+  }));
+
 const sectionLinks = [
-  { id: 'summary', label: 'Summary & Objectives' },
-  { id: 'design-process', label: 'Design Process' },
-  { id: 'key-metrics', label: 'Key Metrics' },
-  { id: 'technical-details', label: 'Technical Details' },
+  ...navHeadings,
   { id: 'repository', label: 'Repository & Code' },
 ];
 ---
@@ -29,8 +44,8 @@ const sectionLinks = [
 
     <!-- Sticky Single-Scroll Section Quick Navigation -->
     <div class="sticky top-16 z-40 bg-zinc-50/90 dark:bg-zinc-950/90 backdrop-blur-md py-3 border-b border-default -mx-6 px-6 sm:mx-0 sm:px-0">
-      <nav class="flex items-center gap-2 sm:gap-4 overflow-x-auto text-xs sm:text-sm font-medium no-scrollbar" aria-label="Section navigation">
-        <span class="text-zinc-400 text-xs uppercase tracking-wider font-semibold mr-1 hidden md:inline">Jump to:</span>
+      <nav class="flex items-center gap-2 sm:gap-4 overflow-x-auto text-xs sm:text-sm font-medium no-scrollbar py-0.5" aria-label="Section navigation">
+        <span class="text-zinc-400 text-xs uppercase tracking-wider font-semibold mr-1 hidden md:inline shrink-0 whitespace-nowrap">Jump to:</span>
         {sectionLinks.map((sec) => (
           <a
             href={`#${sec.id}`}
@@ -297,7 +312,7 @@ const sectionLinks = [
       <a href={`${base}/projects`} class="text-blue-600 dark:text-blue-400 hover:underline">
         ← Back to All Projects &amp; Concepts
       </a>
-      <a href="#summary" class="text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-200">
+      <a href="#main-content" class="text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-200">
         ↑ Back to top
       </a>
     </div>

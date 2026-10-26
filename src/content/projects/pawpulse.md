@@ -67,7 +67,7 @@ roadmap:
       - "Secure one-click adherence report export for veterinary consultations"
 ---
 
-<h2 id="summary">1. Project Summary & Objectives</h2>
+## 1. Project Summary & Objectives
 
 ### Product Concept & Problem Statement
 Pet owners managing complex or recurring care routines—from routine wellness exams, dental cleanings, and blood work panels to daily or twice-daily medications—often coordinate care across multiple people in a home (partners, family members, roommates, or pet sitters). Relying on memory, paper charts, or group chats creates two major risks: **missed appointments/doses** and **accidental double-dosing** when one person medicates a pet without realizing another household member already did.
@@ -82,7 +82,7 @@ Pet owners managing complex or recurring care routines—from routine wellness e
 
 ---
 
-<h2 id="design-process">2. Design Process & Planned Architecture</h2>
+## 2. Design Process & Planned Architecture
 
 ### Domain Model & Household Synchronization
 The system is designed around a multi-tenant **Household** graph where accounts share read/write access to pet profiles, medical schedules, and immutable dose administration events:
@@ -110,7 +110,7 @@ The system is designed around a multi-tenant **Household** graph where accounts 
 
 ---
 
-<h2 id="key-metrics">3. Key Capabilities & Target Outcomes</h2>
+## 3. Key Capabilities & Target Outcomes
 
 | Capability Area | Common Pain Point | Planned PawPulse Solution | Target Outcome |
 | :--- | :--- | :--- | :--- |
@@ -121,7 +121,7 @@ The system is designed around a multi-tenant **Household** graph where accounts 
 
 ---
 
-<h2 id="technical-details">4. Planned Technical Details</h2>
+## 4. Planned Technical Details
 
 ### Proposed Stack & Tooling
 - **Cross-Platform Clients:** **Expo / React Native** for iOS and Android (supporting interactive lock-screen notifications for quick dose logging) paired with a **Next.js** web dashboard.
@@ -146,7 +146,7 @@ CREATE TABLE medication_dose_logs (
 
 ---
 
-<h2 id="status-roadmap">5. Project Status & Roadmap Overview</h2>
+## 5. Project Status & Roadmap Overview
 
 **Current Stage:** `Concept` (Architecture & Domain Model Designed)
 

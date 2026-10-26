@@ -68,7 +68,7 @@ roadmap:
       - "Export capability to Apple Maps Guides and Google Maps Saved Lists"
 ---
 
-<h2 id="summary">1. Project Summary & Objectives</h2>
+## 1. Project Summary & Objectives
 
 ### Product Concept & Problem Statement
 Anyone who loves exploring food and drink culture faces a familiar friction: saved locations quickly turn into unnavigable graveyards across Google Maps stars, Instagram bookmarks, Apple Maps guides, and notes apps. When asked for a dinner recommendation or deciding where to go for Friday evening drinks, answering two critical questions is frustratingly slow:
@@ -88,7 +88,7 @@ Existing mapping apps prioritize commercial discovery and ad placements over per
 
 ---
 
-<h2 id="design-process">2. Design Process & Planned Architecture</h2>
+## 2. Design Process & Planned Architecture
 
 ### Geospatial System Architecture
 The application architecture is optimized for sub-second spatial queries, fluid vector map rendering, and fast client-side filtering:
@@ -117,7 +117,7 @@ The application architecture is optimized for sub-second spatial queries, fluid 
 
 ---
 
-<h2 id="key-metrics">3. Key Capabilities & Target Outcomes</h2>
+## 3. Key Capabilities & Target Outcomes
 
 | Capability Area | Common Frustration | Planned Platemark Solution | Target Outcome |
 | :--- | :--- | :--- | :--- |
@@ -128,7 +128,7 @@ The application architecture is optimized for sub-second spatial queries, fluid 
 
 ---
 
-<h2 id="technical-details">4. Planned Technical Details</h2>
+## 4. Planned Technical Details
 
 ### Proposed Stack & Tooling
 - **Client & Mapping Canvas:** **Next.js 15** with **React 19**, **Tailwind CSS**, and **MapLibre GL** using vector map tiles (Protomaps / Stadia Maps) for clean typography and custom dark/light map styling.
@@ -164,7 +164,7 @@ CREATE INDEX idx_places_user_status_category ON places (user_id, status, categor
 
 ---
 
-<h2 id="status-roadmap">5. Project Status & Roadmap Overview</h2>
+## 5. Project Status & Roadmap Overview
 
 **Current Stage:** `Concept` (Ideation & Spatial Architecture Designed)
 

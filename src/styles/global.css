@@ -167,6 +167,15 @@
     border: 1px solid var(--border-default);
     border-radius: 0.5rem; /* rounded-lg */
   }
+
+  /* Utility to hide native scrollbar while retaining scrollability */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
 }
 
 /* Semantic Typography Tokens */
@@ -534,6 +543,13 @@ html {
 /* Scroll margin for section anchors with sticky navigation */
 [id] {
   scroll-margin-top: 6rem;
+}
+
+/* Two stacked sticky headers on project case study pages (Navbar 4rem + QuickNav ~3.5rem + breathing room) */
+.project-prose [id],
+#repository,
+#ui-mockup {
+  scroll-margin-top: 8.75rem;
 }
 
 /* Markdown prose styling (WCAG AAA high-contrast palette) */
