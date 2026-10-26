@@ -3,6 +3,7 @@ import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ProjectTabs from '../../components/ProjectTabs.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
+import StatusBadge from '../../components/StatusBadge.astro';
 
 export async function getStaticPaths() {
   const projectEntries = await getCollection('projects');
@@ -24,18 +25,6 @@ const sectionLinks = [
   { id: 'technical-details', label: 'Technical Details' },
   { id: 'repository', label: 'Repository & Code' },
 ];
-
-const statusBadgeClasses: Record<string, string> = {
-  'Completed': 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950/80 dark:text-emerald-300 border border-emerald-300/60 dark:border-emerald-800/60',
-  'In Progress': 'bg-amber-100 text-amber-800 dark:bg-amber-950/80 dark:text-amber-300 border border-amber-300/60 dark:border-amber-800/60',
-  'Concept': 'bg-zinc-100 text-zinc-700 dark:bg-zinc-800 dark:text-zinc-300 border border-zinc-200 dark:border-zinc-700',
-};
-
-const statusDotClasses: Record<string, string> = {
-  'Completed': 'bg-emerald-500',
-  'In Progress': 'bg-amber-500',
-  'Concept': 'bg-zinc-400',
-};
 ---
 
 <BaseLayout title={data.title} description={data.description}>
@@ -52,10 +41,7 @@ const statusDotClasses: Record<string, string> = {
     <header class="pb-8 border-b border-zinc-200 dark:border-zinc-800 space-y-3">
       <!-- Status Eyebrow Badge -->
       <div>
-        <span class={`inline-flex items-center gap-1.5 text-xs px-2.5 py-1 rounded-full font-medium ${statusBadgeClasses[data.status] || ''}`}>
-          <span class={`w-1.5 h-1.5 rounded-full ${statusDotClasses[data.status] || 'bg-zinc-400'}`} aria-hidden="true"></span>
-          {data.status}
-        </span>
+        <StatusBadge status={data.status} size="md" showDot={true} />
       </div>
 
       <h1 class="type-h1">

@@ -1,5 +1,6 @@
 ---
 import type { CollectionEntry } from 'astro:content';
+import StatusBadge from './StatusBadge.astro';
 
 interface Props {
   project: CollectionEntry<'projects'>;
@@ -23,17 +24,7 @@ const HeadingTag = headingLevel;
           {project.data.title}
         </a>
       </HeadingTag>
-      <span
-        class={`shrink-0 text-xs px-2 py-0.5 rounded font-medium ${
-          project.data.status === 'Completed'
-            ? 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300'
-            : project.data.status === 'In Progress'
-            ? 'bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300'
-            : 'bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400'
-        }`}
-      >
-        {project.data.status}
-      </span>
+      <StatusBadge status={project.data.status} size="sm" />
     </div>
     <p class="text-sm text-zinc-600 dark:text-zinc-400 mb-4">{project.data.description}</p>
     <div class="flex flex-wrap gap-2 mb-6">
