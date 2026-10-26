@@ -62,7 +62,7 @@ roadmap:
       - "[Placeholder] CSV / PDF expense report export for corporate reimbursement"
 ---
 
-## 1. Executive Summary, Problem Statement & Personas
+## 1. Executive Summary
 
 ### Context
 Post-pandemic, over **70% of London knowledge workers** commute on a hybrid pattern (typically 2–3 days a week). Transport for London (TfL) operates a complex tiered fare structure consisting of Peak vs. Off-Peak single fares, Daily Caps, Monday–Sunday Weekly Caps, and Monthly/Annual Travelcards.
@@ -96,7 +96,7 @@ Provide London hybrid workers with an instant, clear, and mathematically accurat
 
 ---
 
-## 2. UI Design, Scope & Functional Requirements
+## 2. Design Process
 
 ### UI Mockup & Interaction Architecture
 Built with a high-trust UK fintech aesthetic (inspired by Monzo and Wise) using emerald green savings highlights and TfL blue (`#0019A8`) accents, the **CommuteShift London** interface (*"Stop Overpaying TfL."*) uses a purely reactive split-panel layout on desktop and a stacked progressive flow on mobile:
@@ -168,7 +168,7 @@ Built with a high-trust UK fintech aesthetic (inspired by Monzo and Wise) using 
 
 ---
 
-## 3. Success Metrics (KPI Framework)
+## 3. Success Metrics
 
 | Category | Metric | Target | Rationale |
 | :--- | :--- | :--- | :--- |
@@ -179,7 +179,7 @@ Built with a high-trust UK fintech aesthetic (inspired by Monzo and Wise) using 
 
 ---
 
-## 4. Technical Implementation, Fare Matrix & Edge Cases
+## 4. Technical Implementation
 
 ### TfL Fare Data Matrix (Zone 1 Inbound)
 Rather than calling the external TfL Unified API on every keystroke, CommuteShift embeds the verified TfL Underground fare matrix directly in the client bundle. Since TfL fares adjust once per year (typically in March), static edge data eliminates network latency, prevents rate-limiting, and enables zero-cost static hosting on **Vercel**.
@@ -201,7 +201,7 @@ Rather than calling the external TfL Unified API on every keystroke, CommuteShif
 
 ---
 
-## 5. Deployment & Local Quickstart
+## 5. Quickstart
 
 The baseline v1.0 application is deployed on **Vercel** and the source code is available on **GitHub**:
 

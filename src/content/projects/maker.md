@@ -9,18 +9,18 @@ status: "In Progress"
 role: "Product Engineer"
 timeline: "2026 – Present"
 metrics:
-  - label: "Monorepo Packages"
-    value: "5"
-    description: "2 apps + 3 shared libraries"
-  - label: "Database Migrations"
-    value: "4 SQL"
-    description: "RLS policies & rating triggers"
-  - label: "Target Platforms"
-    value: "Web + Mobile"
-    description: "Next.js SSR & Expo iOS/Android"
-  - label: "Type Safety"
+  - label: "Activation Target"
+    value: "> 60%"
+    description: "Material & tool checklist check"
+  - label: "Workshop Adoption"
+    value: "> 50%"
+    description: "Mobile workshop mode usage"
+  - label: "Reliability"
     value: "100%"
-    description: "End-to-end TypeScript & Zod"
+    description: "Offline cached step resilience"
+  - label: "Unlock Conversion"
+    value: "> 4.5%"
+    description: "Paid blueprint purchase rate"
 techStack:
   languages: ["TypeScript", "SQL (PL/pgSQL)", "CSS"]
   frameworks: ["Next.js", "React 19", "Expo / React Native", "Tailwind CSS"]
@@ -66,7 +66,7 @@ roadmap:
       - "[Placeholder] Unified entitlement resolution via Supabase Edge Functions"
 ---
 
-## 1. Project Summary & Objectives
+## 1. Summary & Objectives
 
 ### Product Purpose
 Woodworkers, craftspeople, and DIY builders frequently rely on fragmented PDFs, forum threads, or long-form videos that are difficult to reference at a workbench. Furthermore, workshops located in garages or basements often suffer from poor internet connectivity.
@@ -81,7 +81,7 @@ Woodworkers, craftspeople, and DIY builders frequently rely on fragmented PDFs, 
 
 ---
 
-## 2. Design Process & Architecture
+## 2. Design Process
 
 ### System Topology & Monorepo Structure
 The platform separates public discovery, SEO, and blueprint authoring on the web from hands-on, offline-capable execution in the workshop on mobile, while sharing 100% of business logic and data contracts through internal workspace packages:
@@ -105,18 +105,18 @@ MAKER (Turborepo Workspace)
 
 ---
 
-## 3. Key Metrics & Architecture Highlights
+## 3. Success Metrics
 
-| Architectural Dimension | Design Target | Implementation in MAKER | Outcome |
+| Category | Metric | Target | Rationale |
 | :--- | :--- | :--- | :--- |
-| **Code Sharing** | Shared domain & validation | `@maker/types`, `@maker/validators`, `@maker/database` | **Zero schema duplication across Web & Mobile** |
-| **Search Indexing** | Fast fuzzy blueprint & tool lookup | PostgreSQL `pg_trgm` GIN indexes on project titles & tool names | **Sub-millisecond full-text & trigram filtering** |
-| **Paywall Security** | Fine-grained step protection | Declarative PostgreSQL RLS policies across 6 core tables | **Database-enforced authorization** |
-| **Rating Consistency** | Atomic star-rating rollups | PL/pgSQL triggers on `project_reviews` & `project_likes` | **Real-time aggregate accuracy** |
+| **Activation** | Material & Tool Readiness Check | **> 60%** | % of landed users inspecting the BOM and cut list before starting or purchasing a plan. |
+| **Workshop Adoption** | Mobile "Workshop Mode" Usage | **> 50%** | % of mobile users launching high-contrast workbench mode while building. |
+| **Reliability** | Zero-Connectivity Resilience | **100% Cached Uptime** | Uninterrupted offline step navigation in basement and garage Wi-Fi dead zones. |
+| **Monetization** | Blueprint Unlock Conversion | **> 4.5%** | % of users reviewing a paid blueprint who convert to unlocking step-by-step instructions. |
 
 ---
 
-## 4. Technical Architecture & Edge Cases
+## 4. Technical Implementation
 
 ### 1. Cross-Platform Validation without Type Drift
 Instead of maintaining duplicate validation logic across the Next.js web studio and the React Native mobile app, authoring constraints (cut list dimensions, tool requirements, and step instructions) are centralized in `@maker/validators`. Both platforms validate against the same runtime Zod schemas, guaranteeing zero schema drift between authoring on the web and building in the shop.
@@ -131,7 +131,7 @@ To protect creator monetization without exposing build steps through API leaks, 
 
 ---
 
-## 5. Deployment & Live Application
+## 5. Deployment
 
 The MAKER web application is actively deployed to production via **Cloudflare Pages**, featuring automated Git integration and edge distribution. The monorepo codebase is maintained in a **private GitHub repository**.
 

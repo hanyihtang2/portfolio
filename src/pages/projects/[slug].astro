@@ -16,22 +16,11 @@ const { Content, headings } = await render(entry);
 const { data } = entry;
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 
-function formatNavLabel(text: string): string {
-  const cleaned = text.replace(/^\d+[\.\)]\s*/, '').trim();
-  if (/summary|overview|problem/i.test(cleaned)) return 'Summary & Objectives';
-  if (/design|architecture|ui design/i.test(cleaned)) return 'Design Process';
-  if (/metric|outcome|kpi|capabilities/i.test(cleaned)) return 'Key Metrics';
-  if (/technical|implementation/i.test(cleaned)) return 'Technical Details';
-  if (/quickstart|deployment|workspace/i.test(cleaned)) return 'Quickstart';
-  if (/roadmap|status/i.test(cleaned)) return 'Roadmap';
-  return cleaned.split(/[,&]/)[0].trim();
-}
-
 const navHeadings = headings
   .filter((h) => h.depth === 2)
   .map((h) => ({
     id: h.slug,
-    label: formatNavLabel(h.text),
+    label: h.text.replace(/^\d+[\.\)]\s*/, '').trim(),
   }));
 
 const sectionLinks = [

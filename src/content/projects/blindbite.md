@@ -68,7 +68,7 @@ roadmap:
       - "Auto-generated digital event cookbook with guest recipes, photos, and group memories"
 ---
 
-## 1. Project Summary & Objectives
+## 1. Summary & Objectives
 
 ### Product Concept & Problem Statement
 Hosting or attending a group potluck is one of the best ways to bring friends together, but the coordination process is notoriously flawed:
@@ -88,7 +88,7 @@ Hosting or attending a group potluck is one of the best ways to bring friends to
 
 ---
 
-## 2. Design Process & Planned Architecture
+## 2. Design Process
 
 ### Social Dining & Verification Architecture
 The BlindBite platform coordinates asynchronous party planning and synchronous real-time celebration:
@@ -122,7 +122,7 @@ The BlindBite platform coordinates asynchronous party planning and synchronous r
 
 ---
 
-## 3. Key Capabilities & Target Outcomes
+## 3. Key Capabilities
 
 | Capability Area | Potluck Pain Point | Planned BlindBite Solution | Target Outcome |
 | :--- | :--- | :--- | :--- |
@@ -133,7 +133,7 @@ The BlindBite platform coordinates asynchronous party planning and synchronous r
 
 ---
 
-## 4. Planned Technical Details
+## 4. Technical Details
 
 ### Proposed Stack & Tooling
 - **Frontend & Presentation:** **Next.js 15 (App Router)** with **React 19**, **Tailwind CSS**, and **Framer Motion** for celebratory course reveal cards and animations.
@@ -183,7 +183,7 @@ CREATE TABLE dish_lockbox (
 
 ---
 
-## 5. Project Status & Roadmap Overview
+## 5. Status & Roadmap
 
 **Current Stage:** `Concept` (Ideation & Social Mechanics Designed)
 
