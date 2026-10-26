@@ -116,17 +116,22 @@ Built with a high-trust UK fintech aesthetic (inspired by Monzo and Wise) using 
 
 ### MoSCoW Prioritization
 
-- **Delivered in Baseline MVP (P0 & P1):**
-  - Zone selector across **Zones 1 to 6** inbound to Zone 1.
-  - Weekly office day selector (Monday–Friday toggles) + interactive schedule presets.
-  - Separate Morning and Evening Peak vs. Off-Peak commute time selectors.
-  - Automated calculation engine comparing PAYG (with Daily Cap enforcement) vs. Monthly Travelcard.
-  - **National Railcard discount toggle** (1/3 off off-peak fares) and **URL query parameter serialization** + **Share to Slack** clipboard generator.
-- **Future Fast-Follow / Backlog (P2):**
-  - Annual Travelcard comparison toggle (factoring in the 12-for-10 month discount).
-  - Employer Slack bot / Shareable team dashboard and carbon footprint comparison.
-- **Explicit Trade-offs / Won't Have (P3):**
-  - Real-time disruption alerts or live journey routing (unnecessary scope creep for a financial calculation tool).
+- **Must Have (Phase 1 — Shipped MVP):**
+  - Zones 1–6 fare calculation engine comparing Contactless PAYG against Monthly Travelcards.
+  - Automated TfL daily cap enforcement (`Math.min(amFare + pmFare, dailyCap)`).
+  - Weekly office day selector (`Mon`–`Fri`) with separate Morning & Evening Peak/Off-Peak toggles.
+  - National Railcard discount integration (1/3 off off-peak caps) and dynamic break-even rule calculator.
+  - Frictionless URL query state persistence and one-click "Share to Slack" report generator.
+- **Should Have (Phase 2 — Multi-Modal & Boundary Zones):**
+  - National Rail boundary zone extension models and special Elizabeth line fare structures.
+  - Off-peak Friday fare adjustments and weekend travel additions.
+  - Employer hybrid policy preset configurations (e.g. 2-day vs 3-day team mandates).
+- **Could Have (Phase 3 — Commute Intelligence & Annual Analytics):**
+  - Annual Travelcard cash-flow analysis (factoring in the 12-for-10 month discount).
+  - UK bank holiday and annual leave deduction simulator.
+  - CSV / PDF expense summary export for employer reimbursement.
+- **Won't Have (Explicit Out of Scope):**
+  - Real-time transit disruption alerts or turn-by-turn GPS journey planning (preserves focus as a fast financial decision engine without operational scope creep).
 
 ### Functional Requirements & User Stories
 
