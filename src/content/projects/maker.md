@@ -116,44 +116,18 @@ MAKER (Turborepo Workspace)
 
 ---
 
-## 4. Technical Details & Implementation
+## 4. Technical Architecture & Edge Cases
 
-### Languages, Frameworks & Tooling
-- **Web Application (`@maker/web`):** Built with **Next.js**, **React 19**, **Tailwind CSS**, and **Lucide React**, featuring a custom workshop blueprint design system (`canvas`, `surface`, `draft`, `blueprint`, and `action` tokens) with dark/light theme persistence.
-- **Edge Deployment & Hosting:** The web client is continuously deployed to **Cloudflare Pages** ([maker.hanyihtang2.workers.dev](https://maker.hanyihtang2.workers.dev/)), leveraging Cloudflare's global edge network for sub-second blueprint delivery and zero cold-start latency.
-- **Mobile Application (`@maker/mobile`):** Built with **Expo SDK 58**, **React Native**, `expo-router`, and `expo-file-system` for offline blueprint caching and step-by-step shop mode navigation.
-- **Backend & Persistence (`@maker/database`):** Powered by **Supabase** (**PostgreSQL**, **Supabase Auth**), with 4 declarative SQL migrations covering relational tables, trigram GIN indexes, RLS policies, auth profile triggers, and seed data.
-- **Validation (`@maker/validators`):** Strict **Zod** schemas (`createProjectSchema`, `materialSchema`, `toolSchema`, `stepSchema`, `reviewSchema`) enforcing constraints before database mutations.
+### 1. Cross-Platform Validation without Type Drift
+Instead of maintaining duplicate validation logic across the Next.js web studio and the React Native mobile app, authoring constraints (cut list dimensions, tool requirements, and step instructions) are centralized in `@maker/validators`. Both platforms validate against the same runtime Zod schemas, guaranteeing zero schema drift between authoring on the web and building in the shop.
 
-### Relational Data Mapping & Validation
-Every database query result is normalized through typed mapping functions in `@maker/database` so UI components consume clean camelCase domain objects with sorted build steps:
+### 2. Offline-First Mobile Workshop Sync
+Workshops in basements and garages frequently suffer from dead zones. Rather than relying on uninterrupted connectivity, the mobile client pre-caches blueprint step data, high-resolution cut diagrams, and tool checklists locally (`expo-file-system` + SQLite) so builders can reference dimensions without network dropouts.
 
-```typescript
-export function mapProjectDetailFromDb(row: any): ProjectDetail {
-  const project = mapProjectFromDb(row);
-  const steps: ProjectStep[] = (row.project_steps || [])
-    .map((s: any) => ({
-      id: s.id,
-      projectId: s.project_id,
-      stepNumber: Number(s.step_number),
-      title: s.title,
-      instructions: s.instructions,
-      videoStreamId: s.video_stream_id,
-      photoUrls: s.photo_urls || [],
-      tips: s.tips,
-      createdAt: s.created_at,
-    }))
-    .sort((a: ProjectStep, b: ProjectStep) => a.stepNumber - b.stepNumber);
-
-  return {
-    ...project,
-    steps,
-    materials: mapMaterials(row.project_materials),
-    tools: mapTools(row.project_tools),
-    hasAccess: row.visibility === 'PUBLIC' || Boolean(row.has_access),
-  };
-}
-```
+### 3. Database-Enforced Paywall Boundaries
+To protect creator monetization without exposing build steps through API leaks, access control is enforced directly at the database layer via Supabase Row-Level Security (RLS):
+- **Public Metadata:** Project overviews, bills of materials, and tool checklists remain publicly inspectable so prospective builders can review lumber lists and required equipment before purchasing.
+- **Protected Steps:** Step-by-step assembly instructions, photos, and video streams require an active purchase entitlement record (`entitlements`) verified directly within PostgreSQL queries.
 
 ---
 
