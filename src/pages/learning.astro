@@ -468,7 +468,7 @@ const categories = Array.from(new Set(learningItems.map((i) => i.category)));
                   </div>
 
                   <div class="flex items-center gap-2">
-                    <span class="text-xs px-2.5 py-0.5 rounded-full font-medium border bg-zinc-50 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-300 border-zinc-200 dark:border-zinc-700">
+                    <span class="category-pill">
                       {item.category}
                     </span>
                     <span class={`text-xs px-2.5 py-0.5 rounded-full font-medium border ${phaseTheme.badgeBg}`}>
@@ -514,7 +514,7 @@ const categories = Array.from(new Set(learningItems.map((i) => i.category)));
                 <div class="mt-5 pt-4 border-t border-zinc-100 dark:border-zinc-800/80 flex flex-wrap items-center justify-between gap-3">
                   <div class="flex flex-wrap items-center gap-1.5">
                     {item.topics.map((topic) => (
-                      <span class="text-xs font-mono px-2 py-0.5 rounded-md bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 border border-zinc-200/60 dark:border-zinc-700/60">
+                      <span class="tag-pill">
                         {topic}
                       </span>
                     ))}

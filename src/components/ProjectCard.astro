@@ -29,9 +29,7 @@ const HeadingTag = headingLevel;
     <p class="text-sm text-zinc-600 dark:text-zinc-400 mb-4">{project.data.description}</p>
     <div class="flex flex-wrap gap-2 mb-6">
       {project.data.tags.map(tag => (
-        <span class="text-xs font-mono bg-zinc-100 dark:bg-zinc-800 px-2 py-1 rounded text-zinc-600 dark:text-zinc-300">
-          {tag}
-        </span>
+        <span class="tag-pill">{tag}</span>
       ))}
     </div>
   </div>

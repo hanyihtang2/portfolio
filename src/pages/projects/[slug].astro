@@ -108,9 +108,7 @@ const sectionLinks = [
       <!-- Tag badges -->
       <div class="flex flex-wrap gap-2 pt-2">
         {data.tags.map((tag: string) => (
-          <span class="text-xs font-mono bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 px-2.5 py-1 rounded text-zinc-700 dark:text-zinc-300">
-            {tag}
-          </span>
+          <span class="tag-pill">{tag}</span>
         ))}
       </div>
     </header>
@@ -166,9 +164,7 @@ const sectionLinks = [
               <span class="text-xs font-semibold text-zinc-900 dark:text-zinc-100 block mb-1.5">Languages</span>
               <div class="flex flex-wrap gap-1.5">
                 {data.techStack.languages.map((item: string) => (
-                  <span class="text-xs px-2 py-0.5 rounded bg-zinc-100 dark:bg-zinc-800 font-mono text-zinc-700 dark:text-zinc-300 border border-zinc-200/60 dark:border-zinc-700/60">
-                    {item}
-                  </span>
+                  <span class="tag-pill">{item}</span>
                 ))}
               </div>
             </div>
@@ -178,9 +174,7 @@ const sectionLinks = [
               <span class="text-xs font-semibold text-zinc-900 dark:text-zinc-100 block mb-1.5">Frameworks & Libs</span>
               <div class="flex flex-wrap gap-1.5">
                 {data.techStack.frameworks.map((item: string) => (
-                  <span class="text-xs px-2 py-0.5 rounded bg-zinc-100 dark:bg-zinc-800 font-mono text-zinc-700 dark:text-zinc-300 border border-zinc-200/60 dark:border-zinc-700/60">
-                    {item}
-                  </span>
+                  <span class="tag-pill">{item}</span>
                 ))}
               </div>
             </div>
@@ -190,9 +184,7 @@ const sectionLinks = [
               <span class="text-xs font-semibold text-zinc-900 dark:text-zinc-100 block mb-1.5">Infrastructure</span>
               <div class="flex flex-wrap gap-1.5">
                 {data.techStack.infrastructure.map((item: string) => (
-                  <span class="text-xs px-2 py-0.5 rounded bg-zinc-100 dark:bg-zinc-800 font-mono text-zinc-700 dark:text-zinc-300 border border-zinc-200/60 dark:border-zinc-700/60">
-                    {item}
-                  </span>
+                  <span class="tag-pill">{item}</span>
                 ))}
               </div>
             </div>
@@ -202,9 +194,7 @@ const sectionLinks = [
               <span class="text-xs font-semibold text-zinc-900 dark:text-zinc-100 block mb-1.5">Tools & Testing</span>
               <div class="flex flex-wrap gap-1.5">
                 {data.techStack.tools.map((item: string) => (
-                  <span class="text-xs px-2 py-0.5 rounded bg-zinc-100 dark:bg-zinc-800 font-mono text-zinc-700 dark:text-zinc-300 border border-zinc-200/60 dark:border-zinc-700/60">
-                    {item}
-                  </span>
+                  <span class="tag-pill">{item}</span>
                 ))}
               </div>
             </div>
