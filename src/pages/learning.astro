@@ -14,7 +14,6 @@ interface LearningItem {
   category: 'Networking & Systems' | 'AI & Agentic Systems' | 'Cloud & Architecture' | 'Security & Governance' | 'Product & UX' | 'Computer Science' | 'Creative Writing' | 'Language Learning' | 'Automotive & Mechanical' | 'Home Systems & Maintenance' | 'Woodworking & Carpentry' | 'Game Development';
   what: string;
   why: string;
-  topics?: string[];
   link?: {
     label: string;
     url: string;
@@ -34,7 +33,6 @@ const learningItems: LearningItem[] = [
     category: "Networking & Systems",
     what: "Pursuing the comprehensive 7-course Pearson specialization aligned with the updated Cisco CCNA 200-301 v1.1 blueprint. Curriculum spans network components and topologies (spine-leaf, three-tier, SOHO), inter-switch communication (VLANs, 802.1Q trunking, Rapid PVST+, EtherChannel), IPv4/IPv6 VLSM subnetting and dynamic routing (OSPFv2), wireless architecture (WLCs, 802.11, WPA3), essential IP services (NAT/PAT, DHCP, DNS, NTP, SNMP, QoS queuing), network security (ACLs, Layer 2 port security/DAI/DHCP snooping, AAA, VPNs), and network automation (SDN, Cisco DNA/Catalyst Center, REST APIs with JSON/YAML).",
     why: "Having delivered 2FA microservice platforms and high-availability digital portals, software reliability and security are inextricably tied to network mechanics. Mastering low-level packet traversal, DNS latency, TLS handshake overhead, and subnet segmentation enables high-conviction architectural debates with network engineering teams and prevents premature abstraction leaks.",
-    topics: ["IPv4 / IPv6 Subnetting", "OSPFv2 Dynamic Routing", "VLANs & 802.1Q Trunking", "Spanning Tree & EtherChannel", "ACLs & Layer 2 Security", "SDN & Network Automation"],
     link: {
       label: "View Pearson Coursera Specialization ↗",
       url: "https://www.coursera.org/specializations/pearson-ccna-200-301-version-1-1",
@@ -51,7 +49,6 @@ const learningItems: LearningItem[] = [
     category: "AI & Agentic Systems",
     what: "Architecting autonomous agent loops, tool-calling schemas, and context window orchestration using the Model Context Protocol (MCP). Investigating deterministic verification harnesses, ReAct reasoning loops, long-term memory persistence (vector databases and structured state stores), and guardrail architectures to prevent hallucination cascades.",
     why: "Software UX is undergoing a foundational transition from reactive point-and-click graphical interfaces to proactive, autonomous agent workflows. As a product builder, mastering agent orchestration primitives, tool interfaces, and evaluative guardrails is vital to designing software that operates autonomously without sacrificing user trust or deterministic reliability.",
-    topics: ["Model Context Protocol (MCP)", "ReAct Loops", "Deterministic Tool Calling", "Vector Retrieval & Memory", "Guardrails & Evals", "Multi-Agent Orchestration"],
   },
 
   // --- FUTURE HORIZONS ---
@@ -65,7 +62,6 @@ const learningItems: LearningItem[] = [
     category: "Game Development",
     what: "Exploring the foundational technical architectures, engine pipelines, and real-time systems behind 2D top-down action games (inspired by titles like The Binding of Isaac). Prototyping core mechanics in a modern lightweight engine (such as Godot 4): real-time game loops, deterministic tick management, 2D kinematic movement and collision detection, object pooling for high-density projectile patterns, room-graph procedural dungeon generation, finite state machines (FSM) for enemy AI, and extensible data-driven item synergy/modifier pipelines.",
     why: "Unlike the distributed cloud services, web applications, and AI agent architectures that dominate my software work, game development operates on fundamentally different systems intuition: hard 16.6ms frame budgets, continuous spatial math, and deeply compounded state interactions where dozens of dynamic modifiers alter base stats and projectile behaviors simultaneously. Venturing into game systems engineering is a creative and technical pursuit to master real-time interactive paradigms from the ground up.",
-    topics: ["2D Game Engines (Godot 4)", "Procedural Dungeon Generation", "Item Synergy Architectures", "Finite State Machines (FSM)", "Object Pooling & Frame Budgets", "2D Physics & Collision"],
   },
   {
     id: "ztca-zero-trust",
@@ -77,7 +73,6 @@ const learningItems: LearningItem[] = [
     category: "Security & Governance",
     what: "Pursuing the industry-recognized ZTCA credential focusing on modern cloud-native Zero Trust Architecture (ZTA) and the Zscaler Zero Trust Exchange™ platform. Core syllabus covers the paradigm shift from legacy network perimeters (VPNs, firewalls) to identity-brokered least-privilege connectivity, application microsegmentation to eliminate lateral attack movement, cloud proxy architectures (Zscaler Internet Access / ZIA, Zscaler Private Access / ZPA, Zscaler Digital Experience / ZDX), and secure SSL/TLS traffic inspection at scale.",
     why: "Having designed PSD2 SCA authentication frameworks and microservices, enterprise application security is fundamentally shifting from perimeter network trust to identity-brokered Zero Trust Network Access (ZTNA). Mastering Zero Trust blueprints bridges network security directly into digital product strategy, enabling friction-free user access while eliminating legacy VPN vulnerabilities.",
-    topics: ["Zero Trust Architecture (ZTA)", "Zscaler Zero Trust Exchange", "ZTNA & Private Access (ZPA)", "Cloud Security Proxy (ZIA)", "Application Microsegmentation", "Identity-Based Least Privilege"],
     link: {
       label: "View Zscaler ZTCA Certification ↗",
       url: "https://www.zscaler.com/zscaler-cyber-academy/ztca-zero-trust-cyber-associate",
@@ -94,7 +89,6 @@ const learningItems: LearningItem[] = [
     category: "Creative Writing",
     what: "Drafting an original long-form speculative fiction novel rooted in science fiction and fantasy. The project explores narrative architecture, immersive worldbuilding and lore, character development arcs, pacing, and navigating the end-to-end discipline of drafting and revising a full-length manuscript.",
     why: "At face value, this is very different from the structured learning and technology-focused certifications that make up the rest of my roadmap. Having grown up reading a lot of fantasy and science fiction, writing a book is something deeply personal and engaging. It is pursued not for commercial success, but for the creative experience, narrative craft, and personal growth.",
-    topics: ["Speculative Fiction", "Science Fiction & Fantasy", "Worldbuilding & Lore", "Narrative Architecture", "Character Development", "Creative Discipline"],
   },
   {
     id: "mandarin-language-acquisition",
@@ -106,7 +100,6 @@ const learningItems: LearningItem[] = [
     category: "Language Learning",
     what: "Rebuilding and systematically advancing proficiency in Mandarin Chinese from the ground up: mastering tones and Pinyin pronunciation, conversational fluency for daily and family life, core vocabulary acquisition, and reading/writing Chinese characters (Hanzi). Moving beyond elementary familiarity toward confident, natural spoken communication.",
     why: "I learned basic Mandarin and French when I was younger, but never pursued them properly and have forgotten much of what I learned. Learning Mandarin properly is a deeply personal and meaningful priority, especially with much of my extended family living in Malaysia. Rebuilding fluency is about reconnecting with heritage and engaging authentically with family across generations.",
-    topics: ["Mandarin Chinese", "Conversational Fluency", "Tones & Pinyin", "Character Literacy (Hanzi)", "Heritage & Family Connection", "Language Acquisition"],
   },
   {
     id: "basic-car-maintenance",
@@ -118,7 +111,6 @@ const learningItems: LearningItem[] = [
     category: "Automotive & Mechanical",
     what: "Mastering practical automotive maintenance for internal combustion engine (ICE) platforms: essential fluid checks and service (engine oil, coolant, brake fluid), brake inspection and pad replacement, battery diagnostics and electrical basics, tire maintenance and rotations, spark plug and filter changes, and introductory OBD-II diagnostic scanning.",
     why: "While electric vehicles are growing massively, there are still thousands of internal combustion engine platform cars on the road. Understanding basic maintenance remains a valuable, enduring life skill that demystifies mechanical systems and builds a grounded electro-mechanical baseline that can be adapted to future drivetrain platforms.",
-    topics: ["ICE Platforms", "Fluid Systems & Filters", "Brake & Tire Servicing", "OBD-II Diagnostics", "Electromechanical Basics", "Drivetrain Fundamentals"],
   },
   {
     id: "electric-vehicle-foundations",
@@ -130,7 +122,6 @@ const learningItems: LearningItem[] = [
     category: "Automotive & Mechanical",
     what: "Exploring the foundational engineering and operating principles of electric vehicles (EVs): high-voltage battery pack architecture, electric drivetrain mechanics, power electronics and inverters, thermal management loops, charging standards, and regenerative braking. Scope is intentionally kept adaptable and will be refined as study progresses.",
     why: "Directly builds upon practical car maintenance and mechanical systems fundamentals. As automotive platforms transition toward electrification and software-defined architectures, developing a structured understanding of EV powertrains bridges physical hardware intuition with modern high-voltage and embedded systems.",
-    topics: ["Electric Vehicles (EVs)", "High-Voltage Systems", "Battery Architecture", "Electric Drivetrains", "Power Electronics", "Charging Infrastructure"],
   },
   {
     id: "residential-plumbing",
@@ -142,7 +133,6 @@ const learningItems: LearningItem[] = [
     category: "Home Systems & Maintenance",
     what: "Developing a functional understanding of domestic plumbing systems: supply line materials (copper, PEX) and shutoff valves, pressure regulation, fixture maintenance and installation (faucets, showerheads, toilet valves), drain-waste-vent (DWV) piping and P-traps, unblocking clogs, diagnosing leaks, and basic pipe joining techniques.",
     why: "A foundational homeownership and self-reliance skill. Understanding how pressurized water enters and gravity-fed wastewater leaves a home demystifies residential infrastructure, ensures rapid and calm response to household leaks, and enables routine repairs and fixture updates without defaulting to emergency call-outs.",
-    topics: ["Residential Plumbing", "Supply Lines & PEX/Copper", "DWV & P-Traps", "Fixture Maintenance", "Leak Diagnostics & Shutoffs", "Home Maintenance"],
   },
   {
     id: "residential-electrical-wiring",
@@ -154,7 +144,6 @@ const learningItems: LearningItem[] = [
     category: "Home Systems & Maintenance",
     what: "Gaining a practical understanding of domestic electrical safety and circuit fundamentals: consumer units and circuit breakers, isolation and testing procedures (voltage testers, multimeters), residential wiring standards (live, neutral, ground/earth), and safely wiring or replacing small fixtures including light fixtures, light switches (1-way and 2-way), and power outlets.",
     why: "An essential homeownership and practical life skill. Knowing how home electrical distribution operates—and strictly adhering to isolation safety procedures—enables confident, safe troubleshooting and small-scale wiring upgrades while demystifying domestic electrical infrastructure.",
-    topics: ["Domestic Electrical Safety", "Circuit Breakers & Consumer Units", "Lighting & Switch Wiring", "Socket Replacement", "Safe Voltage Isolation", "Home Maintenance"],
   },
   {
     id: "woodworking-foundations",
@@ -166,7 +155,6 @@ const learningItems: LearningItem[] = [
     category: "Woodworking & Carpentry",
     what: "Developing foundational woodworking and joinery skills through progressive standalone builds: timber selection, grain reading, stock milling and squaring, edge and end-grain glue-ups, basic and traditional joinery (pocket screws, dowels, half-laps, and mortise & tenon), sanding grit sequences, and oil/wax finishing. Progression advances from small flat items (cutting boards, serving trays) to functional standalone furniture (stools, side tables, and occasional chairs).",
     why: "Starting with small, manageable builds develops essential tool safety, muscle memory, and a working respect for wood movement and tolerances. Building standalone pieces provides high-repetition, low-risk opportunities to master joinery and finish quality before tackling large-scale architectural projects.",
-    topics: ["Woodworking Fundamentals", "Timber Milling & Squaring", "Joinery (Dowels / Mortise & Tenon)", "Glue-Ups & Clamping", "Standalone Furniture (Tables & Chairs)", "Finishing & Sanding"],
   },
   {
     id: "bespoke-built-in-cabinetry",
@@ -178,7 +166,6 @@ const learningItems: LearningItem[] = [
     category: "Woodworking & Carpentry",
     what: "Mastering the design, fabrication, and installation of fitted, bespoke furniture tailored to domestic spaces: breaking down sheet goods (hardwood plywood and MDF) with track saws, cabinet carcass construction (pocket hole, dado, and dowel joinery), face frames, precision scribing against out-of-square walls and uneven floors, and installing integrated hardware (concealed soft-close European cup hinges, undermount drawer runners, and adjustable shelving systems). Target projects include alcove cabinetry, fitted wardrobes, and custom media units.",
     why: "The culmination of practical woodworking for homeownership: crafting high-utility, custom-fitted furniture that maximizes living space and complements home architecture far better than mass-produced flat-pack furniture. Directly applies standalone furniture joinery to deliver high-durability, permanent home improvements.",
-    topics: ["Bespoke Built-Ins", "Sheet Goods & Track Saws", "Carcass & Cabinet Construction", "Precision Scribing", "Concealed Hinges & Drawer Runners", "Architectural Fitting"],
   },
 
   // --- PAST MILESTONES ---
@@ -192,7 +179,6 @@ const learningItems: LearningItem[] = [
     category: "AI & Agentic Systems",
     what: "Completed the comprehensive 8-course professional program covering end-to-end applied generative AI across modern software and product workflows: foundational AI principles, research synthesis (NotebookLM), data analysis with AI-generated queries and formulas, multimodal asset creation, rapid natural language software prototyping, AI-assisted code generation and debugging, and application deployment from sandbox to production.",
     why: "Mastering practical generative AI workflows—from rapid app prototyping and code assistance to deployment and data synthesis—bridges product discovery directly into functional software. Enables rapidly prototyping working MVPs, analyzing operational data, and evaluating technical feasibility in close collaboration with engineering pods.",
-    topics: ["Prompt-Driven App Building", "AI-Assisted Prototyping", "Data Analysis & Query Generation", "Research Synthesis (NotebookLM)", "AI App Deployment", "Multimodal Generative Workflows"],
     link: {
       label: "View Coursera Certificate Program ↗",
       url: "https://www.coursera.org/professional-certificates/google-ai",
@@ -209,7 +195,6 @@ const learningItems: LearningItem[] = [
     category: "Security & Governance",
     what: "Completed the comprehensive 8-course professional specialization covering defensive security operations and risk management. Core syllabus includes the NIST Cybersecurity Framework (CSF) and CISSP security domains, threat modeling and vulnerability assessment (Nmap, Nessus), network architecture defense and packet inspection with Wireshark, hands-on Linux CLI administration and SQL log extraction, Security Operations Center (SOC) incident response playbooks, SIEM log monitoring (Chronicle, Splunk), and automated security scripting with Python.",
     why: "Directly complements earlier professional experience delivering 2FA authentication microservices and PSD2 SCA compliance for high-traffic banking applications. Grounding product requirements in NIST frameworks, threat modeling, and zero-trust principles ensures security and regulatory compliance are baked into system architectures from initial discovery rather than retrofitted post-launch.",
-    topics: ["NIST CSF & Risk Management", "SIEM & SOC Incident Response", "Packet Inspection (Wireshark)", "Linux CLI & SQL Log Querying", "Threat Modeling & Vulnerability Scans", "Python Security Automation"],
     link: {
       label: "View Coursera Specialization ↗",
       url: "https://www.coursera.org/specializations/google-cybersecurity",
@@ -226,7 +211,6 @@ const learningItems: LearningItem[] = [
     category: "Product & UX",
     what: "Completed the comprehensive 7-course professional curriculum covering the complete user experience design lifecycle: foundational user-centered design principles, conducting user research and empathy interviews, creating personas, empathy maps, and user journey maps, developing storyboards and information architecture, paper and digital wireframing in Figma, moderated and unmoderated usability studies with affinity diagrams, building design systems with reusable UI components and styles, responsive cross-device web design, WCAG accessibility compliance, and developer hand-off documentation.",
     why: "Eliminated hand-off friction between product management, UI/UX design, and engineering pods. Enables rapidly converting complex business requirements into tangible, interactive Figma prototypes, running empirical usability tests to de-risk feature bets, and maintaining a high standard of accessibility across enterprise digital products.",
-    topics: ["Figma Component Systems", "Usability Testing & Studies", "Wireframing & Prototyping", "Information Architecture", "WCAG Accessibility", "Design Systems & Hand-off"],
     link: {
       label: "View Coursera Specialization ↗",
       url: "https://www.coursera.org/specializations/google-ux-design",
@@ -243,7 +227,6 @@ const learningItems: LearningItem[] = [
     category: "Product & UX",
     what: "Earned the globally recognized Professional Scrum Product Owner I (PSPO I) certification validating mastery of Scrum framework mechanics and agile product management. Tested on the Scrum.org Professional Scrum Competencies: Understanding and Applying the Scrum Framework (empiricism, Scrum accountabilities, events, artifacts, and Definition of Done), Managing Products with Agility (product vision, outcome-driven value maximization, ordering and refining the Product Backlog), Forecasting and Release Planning, collaborating with self-managing cross-functional teams, and balancing stakeholder demands.",
     why: "Codified the discipline of empirical product ownership. Ensures product roadmaps are driven by measurable customer and business value rather than feature factory output metrics, enabling effective collaboration with software developers on 'what' to build while empowering engineering autonomy on 'how' to build it.",
-    topics: ["Product Value Maximization", "Empirical Process Control", "Product Backlog Management", "Release Forecasting", "Sprint Goal Alignment", "Stakeholder Collaboration"],
     link: {
       label: "View Scrum.org Certification Assessment ↗",
       url: "https://www.scrum.org/assessments/professional-scrum-product-owner-i-certification",
@@ -260,7 +243,6 @@ const learningItems: LearningItem[] = [
     category: "AI & Agentic Systems",
     what: "Completed the hands-on 4-course specialization mastering Google's structured 5-step prompt framework (Task, Context, References, Evaluate, Iterate). Key areas covered include multimodal prompting (combining text, image, and tabular inputs), advanced prompt chaining across multi-step analytical workflows, designing prompts for data analysis and slide structuring, AI roleplaying for collaborative problem-solving, and building a reusable personal prompt library.",
     why: "Elevated prompting from ad-hoc chatting into an empirical, structured engineering framework. Mastering prompt chaining, multi-step logic decomposition, and systematic context framing dramatically accelerates drafting PRDs, synthesizing complex stakeholder feedback, and designing predictable LLM feature prototypes.",
-    topics: ["5-Step Prompt Framework", "Prompt Chaining & Multi-Step Logic", "Multimodal Prompting", "Context & Persona Framing", "Reusable Prompt Libraries", "Output Evaluation & Iteration"],
     link: {
       label: "View Coursera Specialization ↗",
       url: "https://www.coursera.org/specializations/prompting-essentials-google",
@@ -277,7 +259,6 @@ const learningItems: LearningItem[] = [
     category: "AI & Agentic Systems",
     what: "Completed the foundational 5-course specialization exploring how artificial intelligence and machine learning function beneath the surface. Focuses on integrating generative AI tools (Google Gemini) into workplace workflows to automate tasks and summarize long-form documents, understanding core model mechanics and capabilities/limitations, and practicing responsible AI through bias detection, privacy protection, and hallucination fact-checking.",
     why: "Established the conceptual and operational baseline for evaluating generative AI systems. Provided a clear understanding of probabilistic model boundaries and human-in-the-loop validation, setting the foundation for responsible AI adoption in production product ecosystems.",
-    topics: ["Workplace AI Integration", "Document Summarization", "Responsible AI & Bias Mitigation", "Hallucination Fact-Checking", "AI Productivity Automation", "Machine Learning Fundamentals"],
     link: {
       label: "View Coursera Specialization ↗",
       url: "https://www.coursera.org/specializations/ai-essentials-google",
@@ -294,7 +275,6 @@ const learningItems: LearningItem[] = [
     category: "Computer Science",
     what: "Full academic degree foundation in computer science and systems engineering. Core curriculum: Data Structures & Algorithms (Big-O analysis), operating systems internals, memory management, computer architecture, network protocols, relational database design (3NF), and software engineering principles.",
     why: "Formed the foundational bedrock of technical literacy, enabling deep systems thinking, code reading fluency across multiple languages, and empathetic, high-credibility partnerships with senior engineering teams.",
-    topics: ["Algorithms & Data Structures", "Computer Architecture", "Operating Systems", "Relational Databases", "Networking Fundamentals"],
     link: {
       label: "Verified on Resume ↗",
       url: `${base}/resume`,
@@ -411,7 +391,6 @@ const counts = {
             <article
               id={item.id}
               data-phase={item.phase}
-              data-category={item.category}
               class="timeline-card relative flex items-start gap-3 sm:gap-6 transition-all duration-300"
             >
               <!-- Timeline Node Marker in Center-Aligned Rail -->
