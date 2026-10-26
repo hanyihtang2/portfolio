@@ -26,6 +26,66 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site || "https://hanyihta
 const ogImageUrl = image
   ? (image.startsWith('http') ? image : `${siteUrl}${base}${image.startsWith('/') ? image : `/${image}`}`)
   : `${siteUrl}${base}/images/og-preview.png`;
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": `${siteUrl}${base}/#person`,
+      "name": "Han-Yih Tang",
+      "jobTitle": "Technical Product Manager & Builder",
+      "url": `${siteUrl}${base}`,
+      "image": `${siteUrl}${base}/images/og-preview.png`,
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "London",
+        "addressCountry": "United Kingdom"
+      },
+      "sameAs": [
+        "https://www.linkedin.com/in/hanyih-tang",
+        "https://github.com/hanyihtang2"
+      ],
+      "alumniOf": [
+        {
+          "@type": "EducationalOrganization",
+          "name": "University of Kent"
+        }
+      ],
+      "knowsAbout": [
+        "Product Management",
+        "System Architecture",
+        "TypeScript",
+        "React",
+        "Full-Stack Development",
+        "Agile Product Delivery"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${siteUrl}${base}/#website`,
+      "url": `${siteUrl}${base}`,
+      "name": "Han-Yih Tang Portfolio",
+      "description": "CV and professional portfolio of Han-Yih Tang, Technical Product Manager & Builder",
+      "publisher": {
+        "@id": `${siteUrl}${base}/#person`
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": `${canonicalUrl}#webpage`,
+      "url": canonicalUrl,
+      "name": pageTitle,
+      "description": description,
+      "isPartOf": {
+        "@id": `${siteUrl}${base}/#website`
+      },
+      "about": {
+        "@id": `${siteUrl}${base}/#person`
+      }
+    }
+  ]
+};
 ---
 
 <!doctype html>
@@ -39,6 +99,9 @@ const ogImageUrl = image
 
     <!-- Canonical URL -->
     <link rel="canonical" href={canonicalUrl} />
+
+    <!-- Schema.org JSON-LD Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 
     <!-- Open Graph / LinkedIn / Facebook -->
     <meta property="og:type" content="website" />
