@@ -208,9 +208,17 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 
       <!-- Personal Engineering & Product Projects -->
       <section class="space-y-element">
-        <h2 class="type-eyebrow border-b border-default pb-2">
-          Personal Projects
-        </h2>
+        <div class="flex items-center justify-between border-b border-default pb-2">
+          <h2 class="type-eyebrow">
+            Personal Projects
+          </h2>
+          <a
+            href={`${base}/projects`}
+            class="print-hidden text-xs font-medium text-blue-600 dark:text-blue-400 hover:underline"
+          >
+            All Projects &amp; Concepts →
+          </a>
+        </div>
 
         <div class="space-y-entry">
           <div class="space-y-micro">
@@ -284,35 +292,11 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
               Authored the PRD and built a zero-friction TfL hybrid commute calculator (React 18, TypeScript, Vite, Tailwind CSS) comparing Contactless PAYG daily caps against Monthly Travelcards across Zones 1-6, featuring Railcard off-peak discounting, dynamic break-even rules, and URL/Slack sharing.
             </p>
           </div>
-
-          <div class="space-y-micro">
-            <div class="flex flex-wrap items-baseline justify-between gap-2">
-              <h3 class="text-sm font-bold text-zinc-900 dark:text-zinc-100">
-                <a
-                  href={`${base}/projects/pawpulse`}
-                  class="hover:underline"
-                >
-                  PawPulse - Collaborative Household Pet Care &amp; Medication Tracker (Concept)
-                </a>
-              </h3>
-              <div class="print-hidden flex items-center gap-3 text-xs font-mono">
-                <a
-                  href={`${base}/projects/pawpulse`}
-                  class="text-blue-600 dark:text-blue-400 hover:underline"
-                >
-                  Case Study ↗
-                </a>
-              </div>
-            </div>
-            <p class="text-sm text-zinc-700 dark:text-zinc-200">
-              Designing a multi-user household pet health platform with atomic anti-double-dose medication ledgers, clinical appointment reminders (wellness, dental, blood work), and future veterinary e-prescription integration.
-            </p>
-          </div>
         </div>
       </section>
 
       <!-- Education & Certifications Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 pt-2">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
         <!-- Education -->
         <section class="space-y-element">
           <h2 class="type-eyebrow border-b border-default pb-2">
@@ -338,9 +322,17 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 
         <!-- Certifications -->
         <section class="space-y-element">
-          <h2 class="type-eyebrow border-b border-default pb-2">
-            Certifications
-          </h2>
+          <div class="flex items-center justify-between border-b border-default pb-2">
+            <h2 class="type-eyebrow">
+              Certifications
+            </h2>
+            <a
+              href={`${base}/learning`}
+              class="print-hidden text-xs font-medium text-blue-600 dark:text-blue-400 hover:underline"
+            >
+              Roadmap &amp; Objectives →
+            </a>
+          </div>
           <ul class="space-y-micro text-sm">
             <li class="flex justify-between items-baseline gap-2">
               <span class="font-semibold text-zinc-900 dark:text-zinc-100">CCNA 200-301 Version 1.1</span>
@@ -371,14 +363,6 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
               <span class="text-xs font-mono text-zinc-500 dark:text-zinc-400 shrink-0">Google • Coursera, Jan 2026</span>
             </li>
           </ul>
-          <div class="print-hidden pt-2">
-            <a
-              href={`${base}/learning`}
-              class="text-xs font-medium text-blue-600 dark:text-blue-400 hover:underline inline-flex items-center gap-1"
-            >
-              <span>Explore full learning objectives &amp; future roadmap →</span>
-            </a>
-          </div>
         </section>
       </div>
   </div>
