@@ -164,7 +164,7 @@ CREATE INDEX idx_places_user_status_category ON places (user_id, status, categor
 
 ---
 
-<h2 id="repository">5. Project Status & Roadmap Overview</h2>
+<h2 id="status-roadmap">5. Project Status & Roadmap Overview</h2>
 
 **Current Stage:** `Concept` (Ideation & Spatial Architecture Designed)
 

@@ -157,7 +157,7 @@ export function mapProjectDetailFromDb(row: any): ProjectDetail {
 
 ---
 
-<h2 id="repository">5. Repository & Deployment Status</h2>
+<h2 id="quickstart">5. Deployment & Workspace Commands</h2>
 
 The MAKER web application is actively deployed to production via **Cloudflare Pages**, featuring automated Git integration and edge distribution. The monorepo codebase is maintained in a **private GitHub repository**.
 

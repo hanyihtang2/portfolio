@@ -183,7 +183,7 @@ CREATE TABLE dish_lockbox (
 
 ---
 
-<h2 id="repository">5. Project Status & Roadmap Overview</h2>
+<h2 id="status-roadmap">5. Project Status & Roadmap Overview</h2>
 
 **Current Stage:** `Concept` (Ideation & Social Mechanics Designed)
 

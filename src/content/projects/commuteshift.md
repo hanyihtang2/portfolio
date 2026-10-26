@@ -196,7 +196,7 @@ Rather than calling the external TfL Unified API on every keystroke, CommuteShif
 
 ---
 
-<h2 id="repository">5. Live Application & GitHub Repository</h2>
+<h2 id="quickstart">5. Deployment & Local Quickstart</h2>
 
 The baseline v1.0 application is deployed on **Vercel** and the source code is available on **GitHub**:
 

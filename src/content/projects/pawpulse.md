@@ -146,7 +146,7 @@ CREATE TABLE medication_dose_logs (
 
 ---
 
-<h2 id="repository">5. Project Status & Roadmap Overview</h2>
+<h2 id="status-roadmap">5. Project Status & Roadmap Overview</h2>
 
 **Current Stage:** `Concept` (Architecture & Domain Model Designed)
 

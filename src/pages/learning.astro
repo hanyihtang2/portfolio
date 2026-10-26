@@ -288,6 +288,39 @@ const counts = {
   future: learningItems.filter((i) => i.phase === 'future').length,
   past: learningItems.filter((i) => i.phase === 'past').length,
 };
+
+function getWhatLabel(category: LearningItem['category']): string {
+  switch (category) {
+    case 'Creative Writing':
+      return 'The Creative Objective (What)';
+    case 'Language Learning':
+      return 'The Language Objective (What)';
+    case 'Automotive & Mechanical':
+    case 'Home Systems & Maintenance':
+    case 'Woodworking & Carpentry':
+      return 'The Practical Objective (What)';
+    default:
+      return 'The Technical Objective (What)';
+  }
+}
+
+function getWhyLabel(category: LearningItem['category']): string {
+  switch (category) {
+    case 'Creative Writing':
+      return 'Personal Motivation & Creative Growth (Why)';
+    case 'Language Learning':
+      return 'Personal Motivation & Heritage Connection (Why)';
+    case 'Automotive & Mechanical':
+      return 'Practical Value & Systems Foundation (Why)';
+    case 'Home Systems & Maintenance':
+    case 'Woodworking & Carpentry':
+      return 'Practical Value & Self-Reliance (Why)';
+    case 'Game Development':
+      return 'Creative Curiosity & Systems Exploration (Why)';
+    default:
+      return 'Strategic Motivation & Builder Impact (Why)';
+  }
+}
 ---
 
 <PageLayout
@@ -448,7 +481,7 @@ const counts = {
                 <div class="space-y-1.5 mt-3">
                   <div class="flex items-center gap-1.5 type-eyebrow">
                     <Icon name="computer-desktop" class="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
-                    <span>{item.category === 'Creative Writing' ? 'The Creative Objective (What)' : item.category === 'Language Learning' ? 'The Language Objective (What)' : item.category === 'Automotive & Mechanical' || item.category === 'Home Systems & Maintenance' || item.category === 'Woodworking & Carpentry' ? 'The Practical Objective (What)' : 'The Technical Objective (What)'}</span>
+                    <span>{getWhatLabel(item.category)}</span>
                   </div>
                   <p class="text-sm sm:text-base text-zinc-700 dark:text-zinc-300 leading-relaxed">
                     {item.what}
@@ -459,7 +492,7 @@ const counts = {
                 <div class="card-muted p-4 mt-4 space-y-1.5">
                   <div class="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-zinc-700 dark:text-zinc-300">
                     <Icon name="bolt" class="w-3.5 h-3.5 text-amber-500" />
-                    <span>{item.category === 'Creative Writing' ? 'Personal Motivation & Creative Growth (Why)' : item.category === 'Language Learning' ? 'Personal Motivation & Heritage Connection (Why)' : item.category === 'Automotive & Mechanical' ? 'Practical Value & Systems Foundation (Why)' : item.category === 'Home Systems & Maintenance' || item.category === 'Woodworking & Carpentry' ? 'Practical Value & Self-Reliance (Why)' : item.category === 'Game Development' ? 'Creative Curiosity & Systems Exploration (Why)' : 'Strategic Motivation & Builder Impact (Why)'}</span>
+                    <span>{getWhyLabel(item.category)}</span>
                   </div>
                   <p class="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed italic">
                     "{item.why}"
