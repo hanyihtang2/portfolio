@@ -131,7 +131,7 @@ Built with a high-trust UK fintech aesthetic (inspired by Monzo and Wise) using 
 ### Functional Requirements & User Stories
 
 #### Story 1: Inputting Commute Pattern
-> **As a** London hybrid worker,  
+> **As a** London commuter,  
 > **I want to** select my starting zone, destination zone, and office days,  
 > **So that** the calculation mirrors my actual work routine.
 
@@ -141,7 +141,7 @@ Built with a high-trust UK fintech aesthetic (inspired by Monzo and Wise) using 
   - Peak/Off-peak toggles clearly display TfL peak definitions (**Peak:** `06:30–09:30` & `16:00–19:00`).
 
 #### Story 2: Calculation Engine & Comparison
-> **As a** cost-conscious commuter,  
+> **As a** London commuter,  
 > **I want to** see an itemized monthly breakdown,  
 > **So that** I understand where my money is going.
 
@@ -152,7 +152,7 @@ Built with a high-trust UK fintech aesthetic (inspired by Monzo and Wise) using 
   - Compares PAYG total against the fixed standard TfL Monthly Travelcard price.
 
 #### Story 3: High-Impact Recommendation Card
-> **As a** user,  
+> **As a** London commuter,  
 > **I want to** see an unambiguous verdict,  
 > **So that** I know exactly what action to take without analyzing raw numbers.
 
