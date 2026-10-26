@@ -4,7 +4,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 ---
 
-<BaseLayout title="Resume - Han-Yih Tang" description="CV and professional experience of Han-Yih Tang, Technical Product Manager & Builder">
+<BaseLayout
+  title="Resume - Han-Yih Tang"
+  docTitle="Han-Yih Tang - Resume"
+  description="CV and professional experience of Han-Yih Tang, Technical Product Manager & Builder"
+>
   <div>
     <!-- Top Action Bar (Hidden when printing) -->
     <div class="print-hidden flex flex-wrap items-center justify-end gap-3 mb-8 pb-4 border-b border-zinc-200 dark:border-zinc-800">
@@ -386,23 +390,12 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 
 <script is:inline>
   (function () {
-    const defaultFilename = 'Han-Yih_Tang_Resume';
-    let previousTitle = '';
-
-    window.addEventListener('beforeprint', () => {
-      previousTitle = document.title;
-      document.title = defaultFilename;
-    });
-
-    window.addEventListener('afterprint', () => {
-      if (previousTitle) {
-        document.title = previousTitle;
-      }
-    });
+    const resumeTitle = 'Han-Yih Tang - Resume';
 
     const printBtn = document.getElementById('print-resume-btn');
     if (printBtn) {
       printBtn.addEventListener('click', () => {
+        document.title = resumeTitle;
         window.print();
       });
     }
