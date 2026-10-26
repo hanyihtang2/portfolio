@@ -437,6 +437,95 @@
   }
 }
 
+/* Semantic Form & Input Tokens */
+@layer utilities {
+  .form-label {
+    display: block;
+    font-size: var(--text-sm);
+    font-weight: 500;
+    margin-bottom: 0.25rem; /* mb-1 */
+    color: var(--text-primary);
+  }
+
+  .form-input {
+    width: 100%;
+    padding: 0.5rem 0.75rem; /* px-3 py-2 */
+    font-size: var(--text-sm);
+    line-height: 1.25rem;
+    background-color: var(--surface-card);
+    color: var(--text-primary);
+    border: 1px solid var(--border-strong);
+    border-radius: 0.375rem; /* rounded-md */
+    transition-property: border-color, box-shadow;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+  }
+  .form-input::placeholder {
+    color: var(--text-muted);
+  }
+  .form-input:focus {
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+    border-color: var(--color-blue-600);
+    box-shadow: 0 0 0 2px var(--color-blue-600);
+  }
+  .form-input:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  .form-select {
+    font-size: var(--text-xs);
+    font-weight: 500;
+    padding: 0.375rem 0.625rem; /* px-2.5 py-1.5 */
+    background-color: var(--surface-card);
+    color: var(--text-primary);
+    border: 1px solid var(--border-default);
+    border-radius: 0.5rem;       /* rounded-lg */
+    cursor: pointer;
+    transition-property: border-color, box-shadow;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+  }
+  .form-select:focus {
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+    border-color: var(--color-blue-500);
+    box-shadow: 0 0 0 2px var(--color-blue-500);
+  }
+
+  .form-feedback {
+    border-radius: 0.375rem; /* rounded-md */
+    padding: 0.875rem;       /* p-3.5 */
+    font-size: var(--text-sm);
+    font-weight: 500;
+    border-width: 1px;
+    border-style: solid;
+  }
+
+  .form-feedback-success {
+    background-color: var(--color-emerald-50);
+    border-color: var(--color-emerald-200);
+    color: var(--color-emerald-800);
+  }
+  :is(.dark .form-feedback-success) {
+    background-color: color-mix(in srgb, var(--color-emerald-950) 60%, transparent);
+    border-color: var(--color-emerald-800);
+    color: var(--color-emerald-300);
+  }
+
+  .form-feedback-error {
+    background-color: var(--color-red-50);
+    border-color: var(--color-red-200);
+    color: var(--color-red-800);
+  }
+  :is(.dark .form-feedback-error) {
+    background-color: color-mix(in srgb, var(--color-red-950) 60%, transparent);
+    border-color: var(--color-red-800);
+    color: var(--color-red-300);
+  }
+}
+
 /* Base document enhancements */
 html {
   scroll-behavior: smooth;

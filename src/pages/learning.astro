@@ -375,7 +375,7 @@ const categories = Array.from(new Set(learningItems.map((i) => i.category)));
         <label for="category-select" class="text-xs font-medium text-zinc-500 dark:text-zinc-400">Domain:</label>
         <select
           id="category-select"
-          class="text-xs font-medium px-2.5 py-1.5 rounded-lg border border-default surface-card text-zinc-800 dark:text-zinc-200 focus:outline-none focus:ring-2 focus:ring-blue-500 cursor-pointer"
+          class="form-select"
         >
           <option value="all">All Domains</option>
           {categories.map((cat) => (
