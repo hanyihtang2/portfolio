@@ -11,25 +11,25 @@ const featuredProjects = (await getCollection('projects', ({ data }) => data.fea
 
 <BaseLayout title="Home" description="Product engineer portfolio">
   <section class="space-y-4">
-    <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight">
+    <h1 class="type-h1 sm:text-5xl">
       Product Engineer<span class="text-blue-500">.</span>
     </h1>
-    <p class="text-xl text-zinc-600 dark:text-zinc-400 max-w-2xl">
+    <p class="type-lead max-w-2xl">
       Currently crafting showcase systems and documenting the process.
     </p>
   </section>
 
   <section id="about" class="mt-12 space-y-8">
     <div>
-      <h2 class="text-2xl font-bold tracking-tight mb-3">About Me</h2>
-      <p class="text-zinc-600 dark:text-zinc-400 leading-relaxed max-w-2xl">
+      <h2 class="type-h2 mb-3">About Me</h2>
+      <p class="type-body max-w-2xl">
         Hi, I'm Han. I am a product engineer focused on crafting thoughtful user experiences, learning as I go.
         I value code maintainability, clean systems design, and continuous growth — explore my <a href={`${base}/learning`} class="text-blue-600 dark:text-blue-400 font-medium hover:underline">learning objectives &amp; timeline →</a>.
       </p>
     </div>
 
     <div>
-      <h3 class="text-xl font-bold tracking-tight mb-3">Core Skills</h3>
+      <h3 class="type-h3 mb-3">Core Skills</h3>
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
         <div class="p-4 border border-zinc-200 dark:border-zinc-800 rounded-lg bg-white dark:bg-zinc-900">
           <h4 class="font-semibold mb-2">Languages</h4>
@@ -45,7 +45,7 @@ const featuredProjects = (await getCollection('projects', ({ data }) => data.fea
 
   <section class="mt-16">
     <div class="flex justify-between items-center mb-6">
-      <h2 class="text-2xl font-bold tracking-tight">Featured Projects</h2>
+      <h2 class="type-h2">Featured Projects</h2>
       <a href={`${base}/projects`} class="text-sm font-medium text-blue-600 dark:text-blue-400 hover:underline">All projects →</a>
     </div>
 
