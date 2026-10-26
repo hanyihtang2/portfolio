@@ -390,6 +390,9 @@
     color: var(--color-zinc-700);
     border: 1px solid color-mix(in srgb, var(--color-zinc-200) 80%, transparent);
     white-space: nowrap;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
     transition-property: color, background-color, border-color;
     transition-duration: 150ms;
   }
@@ -412,6 +415,9 @@
     color: var(--color-blue-700);
     border: 1px solid color-mix(in srgb, var(--color-blue-200) 60%, transparent);
     white-space: nowrap;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   :is(.dark .tag-pill-accent) {
     background-color: var(--color-blue-950);

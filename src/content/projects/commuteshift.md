@@ -30,7 +30,7 @@ techStack:
   languages: ["TypeScript", "JavaScript (ES Modules)", "CSS"]
   frameworks: ["React 18", "Tailwind CSS", "Vite 5"]
   infrastructure: ["Vercel", "GitHub"]
-  tools: ["Lucide React", "Automated Fare Math Suite (test-all.mjs)", "URL Query State Sync"]
+  tools: ["Lucide React", "Fare Math Test Suite", "URL Query State Sync"]
 roadmap:
   - phase: "Phase 1"
     title: "MVP Launch & Core Fare Calculation"

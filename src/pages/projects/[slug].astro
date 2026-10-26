@@ -69,43 +69,43 @@ const sectionLinks = [
         <h3 class="type-eyebrow">
           Technology Breakdown
         </h3>
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           {data.techStack.languages && (
-            <div>
+            <div class="min-w-0">
               <span class="text-xs font-semibold text-zinc-900 dark:text-zinc-100 block mb-1.5">Languages</span>
               <div class="flex flex-wrap gap-1.5">
                 {data.techStack.languages.map((item: string) => (
-                  <span class="tag-pill">{item}</span>
+                  <span class="tag-pill" title={item}>{item}</span>
                 ))}
               </div>
             </div>
           )}
           {data.techStack.frameworks && (
-            <div>
+            <div class="min-w-0">
               <span class="text-xs font-semibold text-zinc-900 dark:text-zinc-100 block mb-1.5">Frameworks & Libs</span>
               <div class="flex flex-wrap gap-1.5">
                 {data.techStack.frameworks.map((item: string) => (
-                  <span class="tag-pill">{item}</span>
+                  <span class="tag-pill" title={item}>{item}</span>
                 ))}
               </div>
             </div>
           )}
           {data.techStack.infrastructure && (
-            <div>
+            <div class="min-w-0">
               <span class="text-xs font-semibold text-zinc-900 dark:text-zinc-100 block mb-1.5">Infrastructure</span>
               <div class="flex flex-wrap gap-1.5">
                 {data.techStack.infrastructure.map((item: string) => (
-                  <span class="tag-pill">{item}</span>
+                  <span class="tag-pill" title={item}>{item}</span>
                 ))}
               </div>
             </div>
           )}
           {data.techStack.tools && (
-            <div>
+            <div class="min-w-0">
               <span class="text-xs font-semibold text-zinc-900 dark:text-zinc-100 block mb-1.5">Tools & Testing</span>
               <div class="flex flex-wrap gap-1.5">
                 {data.techStack.tools.map((item: string) => (
-                  <span class="tag-pill">{item}</span>
+                  <span class="tag-pill" title={item}>{item}</span>
                 ))}
               </div>
             </div>
