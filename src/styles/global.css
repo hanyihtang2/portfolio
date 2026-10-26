@@ -212,6 +212,38 @@
     color: var(--color-zinc-100);
   }
 
+  .type-h4 {
+    font-size: var(--text-base);
+    line-height: 1.4;
+    font-weight: var(--font-weight-bold);
+    letter-spacing: var(--tracking-tight);
+    color: var(--color-zinc-900);
+  }
+  :is(.dark .type-h4) {
+    color: var(--color-zinc-100);
+  }
+
+  .type-subhead {
+    font-size: var(--text-lg);
+    line-height: 1.4;
+    font-weight: 600;
+    color: var(--color-zinc-700);
+  }
+  :is(.dark .type-subhead) {
+    color: var(--color-zinc-300);
+  }
+
+  .type-eyebrow {
+    font-size: var(--text-xs);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em; /* tracking-wider */
+    color: var(--color-zinc-500);
+  }
+  :is(.dark .type-eyebrow) {
+    color: var(--color-zinc-400);
+  }
+
   .type-lead {
     font-size: var(--text-base);
     line-height: var(--leading-relaxed);
