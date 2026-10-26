@@ -135,6 +135,99 @@
   }
 }
 
+/* Semantic Button Tokens */
+@layer utilities {
+  .btn-base,
+  .btn-primary,
+  .btn-secondary,
+  .btn-accent {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.375rem;
+    font-size: var(--text-xs);
+    font-weight: 600;
+    border-radius: 0.375rem; /* rounded-md */
+    padding: 0.5rem 1rem;   /* px-4 py-2 */
+    line-height: 1.25rem;
+    transition-property: color, background-color, border-color, opacity;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+    cursor: pointer;
+    white-space: nowrap;
+    text-decoration: none;
+  }
+
+  .btn-base:disabled,
+  .btn-primary:disabled,
+  .btn-secondary:disabled,
+  .btn-accent:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  .btn-primary {
+    background-color: var(--color-zinc-900);
+    color: var(--color-white);
+    border: 1px solid transparent;
+  }
+  .btn-primary:hover:not(:disabled) {
+    opacity: 0.9;
+  }
+  :is(.dark .btn-primary) {
+    background-color: var(--color-zinc-100);
+    color: var(--color-zinc-900);
+  }
+
+  .btn-secondary {
+    border: 1px solid var(--color-zinc-300);
+    background-color: transparent;
+    color: var(--color-zinc-800);
+  }
+  .btn-secondary:hover:not(:disabled) {
+    background-color: var(--color-zinc-100);
+  }
+  :is(.dark .btn-secondary) {
+    border-color: var(--color-zinc-700);
+    color: var(--color-zinc-200);
+  }
+  :is(.dark .btn-secondary:hover:not(:disabled)) {
+    background-color: var(--color-zinc-900);
+  }
+
+  .btn-accent {
+    background-color: var(--color-blue-600);
+    color: var(--color-white);
+    border: 1px solid transparent;
+  }
+  .btn-accent:hover:not(:disabled) {
+    background-color: var(--color-blue-700);
+  }
+
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.375rem;
+    border: 1px solid var(--color-zinc-200);
+    color: var(--color-zinc-600);
+    background-color: transparent;
+    transition-property: color, background-color, border-color;
+    transition-duration: 150ms;
+    cursor: pointer;
+  }
+  .btn-ghost:hover {
+    background-color: var(--color-zinc-100);
+  }
+  :is(.dark .btn-ghost) {
+    border-color: var(--color-zinc-800);
+    color: var(--color-zinc-300);
+  }
+  :is(.dark .btn-ghost:hover) {
+    background-color: var(--color-zinc-900);
+  }
+}
+
 /* Base document enhancements */
 html {
   scroll-behavior: smooth;

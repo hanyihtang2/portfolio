@@ -545,7 +545,7 @@ const categories = Array.from(new Set(learningItems.map((i) => i.category)));
         <button
           id="reset-filters-btn"
           type="button"
-          class="px-4 py-2 text-xs font-semibold rounded-md bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 cursor-pointer"
+          class="btn-primary"
         >
           Reset Filters
         </button>
@@ -563,13 +563,13 @@ const categories = Array.from(new Set(learningItems.map((i) => i.category)));
       <div class="pt-2 flex flex-wrap justify-center gap-3">
         <a
           href={`${base}/resume`}
-          class="px-4 py-2 text-xs font-semibold rounded-md border border-zinc-300 dark:border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-colors"
+          class="btn-secondary"
         >
           View Full Resume &amp; Experience →
         </a>
         <a
           href={`${base}/projects`}
-          class="px-4 py-2 text-xs font-semibold rounded-md bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 hover:opacity-90 transition-opacity"
+          class="btn-primary"
         >
           Explore Built Projects →
         </a>
