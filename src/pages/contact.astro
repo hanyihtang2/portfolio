@@ -1,17 +1,17 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+import PageLayout from '../layouts/PageLayout.astro';
 import Icon from '../components/Icon.astro';
 
 const accessKey = import.meta.env.PUBLIC_WEB3FORMS_ACCESS_KEY || 'YOUR_ACCESS_KEY_HERE';
 ---
 
-<BaseLayout title="Contact" description="Get in touch with me">
-  <section class="max-w-xl">
-    <h1 class="type-h1 mb-2">Get in Touch</h1>
-    <p class="type-lead mb-8">
-      Feel free to reach out using the form below.
-    </p>
-
+<PageLayout
+  title="Contact"
+  heading="Get in Touch"
+  lead="Feel free to reach out using the form below."
+  description="Get in touch with me"
+>
+  <div class="max-w-xl">
     <form
       id="contact-form"
       action="https://api.web3forms.com/submit"
@@ -80,8 +80,8 @@ const accessKey = import.meta.env.PUBLIC_WEB3FORMS_ACCESS_KEY || 'YOUR_ACCESS_KE
         <span id="submit-text">Send Message</span>
       </button>
     </form>
-  </section>
-</BaseLayout>
+  </div>
+</PageLayout>
 
 <script>
   const form = document.getElementById('contact-form') as HTMLFormElement | null;

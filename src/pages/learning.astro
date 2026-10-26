@@ -1,5 +1,5 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+import PageLayout from '../layouts/PageLayout.astro';
 import Icon from '../components/Icon.astro';
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
@@ -312,13 +312,12 @@ const counts = {
 const categories = Array.from(new Set(learningItems.map((i) => i.category)));
 ---
 
-<BaseLayout
+<PageLayout
   title="Learning Objectives & Timeline"
   description="Personal learning roadmap, technical objectives, and continuous growth timeline spanning past milestones, active pursuits, and future horizons."
 >
-  <div class="space-y-12">
-    <!-- Header / Mission Hero -->
-    <header class="space-y-4">
+  <Fragment slot="header">
+    <header class="mb-10 space-y-3">
       <h1 class="type-h1 sm:text-5xl">
         Learning Objectives <span class="text-blue-500">&amp;</span> Timeline
       </h1>
@@ -327,6 +326,9 @@ const categories = Array.from(new Set(learningItems.map((i) => i.category)));
         Operating at the intersection of product engineering and technical product management, I believe high-leverage software building is rooted in deep systems intuition and broad creative curiosity. This live log tracks my learning roadmap across <span class="text-zinc-900 dark:text-zinc-100 font-medium">networking</span>, <span class="text-zinc-900 dark:text-zinc-100 font-medium">agentic AI systems</span>, <span class="text-zinc-900 dark:text-zinc-100 font-medium">security</span>, <span class="text-zinc-900 dark:text-zinc-100 font-medium">product leadership</span>, <span class="text-zinc-900 dark:text-zinc-100 font-medium">game development</span>, <span class="text-zinc-900 dark:text-zinc-100 font-medium">creative writing</span>, <span class="text-zinc-900 dark:text-zinc-100 font-medium">languages</span>, and <span class="text-zinc-900 dark:text-zinc-100 font-medium">practical craft &amp; mechanical systems</span>—articulating what I learn, the motivation behind it, and the timeline of each milestone.
       </p>
     </header>
+  </Fragment>
+
+  <div class="space-y-12">
 
     <!-- Controls Bar: Phase Filters & Category Dropdown -->
     <section class="sticky top-16 z-30 py-3 bg-zinc-50/90 dark:bg-zinc-950/90 backdrop-blur-md border-y border-default flex flex-wrap items-center justify-between gap-3">
@@ -567,7 +569,7 @@ const categories = Array.from(new Set(learningItems.map((i) => i.category)));
       </div>
     </section>
   </div>
-</BaseLayout>
+</PageLayout>
 
 <script is:inline>
   (function () {
