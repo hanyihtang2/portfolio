@@ -26,7 +26,9 @@ const HeadingTag = headingLevel;
       </HeadingTag>
       <StatusBadge status={project.data.status} size="sm" />
     </div>
-    <p class="text-sm text-zinc-600 dark:text-zinc-400 mb-4">{project.data.description}</p>
+    <p class="text-sm text-zinc-600 dark:text-zinc-400 mb-4 line-clamp-3" title={project.data.description}>
+      {project.data.description}
+    </p>
     <div class="flex flex-wrap gap-2 mb-6">
       {project.data.tags.map(tag => (
         <span class="tag-pill">{tag}</span>
