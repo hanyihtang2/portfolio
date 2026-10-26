@@ -157,22 +157,11 @@ export function mapProjectDetailFromDb(row: any): ProjectDetail {
 
 ---
 
-## 5. Deployment & Workspace Commands
+## 5. Deployment & Live Application
 
 The MAKER web application is actively deployed to production via **Cloudflare Pages**, featuring automated Git integration and edge distribution. The monorepo codebase is maintained in a **private GitHub repository**.
 
 - **Live Web Application:** [maker.hanyihtang2.workers.dev ↗](https://maker.hanyihtang2.workers.dev/)
 - **Deployment Platform:** Cloudflare Pages (Continuous deployment pipeline with edge delivery)
-- **Repository Status:** Private (Code access or architecture walkthrough available upon request)
-- **Local Architecture & Workspace Commands:**
-  ```bash
-  # Install dependencies across all Turborepo workspaces
-  npm install
-
-  # Start the Next.js web application
-  npm run dev --workspace=@maker/web
-
-  # Or run all Turborepo workspaces (web, mobile, shared libraries) concurrently
-  npm run dev
-  ```
+- **Repository Status:** Private
 
