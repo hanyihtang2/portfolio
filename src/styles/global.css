@@ -299,6 +299,10 @@ html {
     text-decoration: none !important;
   }
 
+  .resume-sheet svg {
+    color: var(--color-zinc-900, #18181b) !important;
+  }
+
   .resume-sheet ul {
     margin-top: 0.12rem !important;
     margin-bottom: 0 !important;
