@@ -386,9 +386,25 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 
 <script is:inline>
   (function () {
+    const defaultFilename = 'Han-Yih_Tang_Resume';
+    let previousTitle = '';
+
+    window.addEventListener('beforeprint', () => {
+      previousTitle = document.title;
+      document.title = defaultFilename;
+    });
+
+    window.addEventListener('afterprint', () => {
+      if (previousTitle) {
+        document.title = previousTitle;
+      }
+    });
+
     const printBtn = document.getElementById('print-resume-btn');
     if (printBtn) {
-      printBtn.addEventListener('click', () => window.print());
+      printBtn.addEventListener('click', () => {
+        window.print();
+      });
     }
   })();
 </script>
