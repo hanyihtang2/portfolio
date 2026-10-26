@@ -123,26 +123,14 @@ The system is designed around a multi-tenant **Household** graph where accounts 
 
 ## 4. Technical Details
 
-### Proposed Stack & Tooling
-- **Cross-Platform Clients:** **Expo / React Native** for iOS and Android (supporting interactive lock-screen notifications for quick dose logging) paired with a **Next.js** web dashboard.
-- **Database & Real-Time Layer:** **PostgreSQL** with Row-Level Security (RLS) scoped to `household_id` memberships, plus real-time WebSocket subscriptions so household dashboards update the instant a dose or appointment is logged.
-- **Scheduling & Notification Engine:** Time-zone-aware cron/queue workers dispatching escalating reminders if a time-sensitive medication window is approaching expiration without a logged confirmation from any household member.
+### 1. Idempotent Anti-Double-Dose Locking
+To eliminate the dangerous race condition where two family members medicate a pet at the same time, dose administration is guarded by a database uniqueness constraint on `(pet_id, medication_schedule_id, scheduled_window_start)`. Once claimed, concurrent check-offs immediately fail with an optimistic warning displaying exactly *who* gave the dose and *when*.
 
-### Anti-Double-Dose Ledger Schema (Draft)
-```sql
-CREATE TABLE medication_dose_logs (
-    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    household_id UUID NOT NULL REFERENCES households(id) ON DELETE CASCADE,
-    pet_id UUID NOT NULL REFERENCES pets(id) ON DELETE CASCADE,
-    medication_schedule_id UUID NOT NULL REFERENCES medication_schedules(id),
-    scheduled_window_start TIMESTAMPTZ NOT NULL,
-    administered_by_user_id UUID NOT NULL REFERENCES users(id),
-    administered_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
-    notes TEXT,
-    -- Guarantees two household members cannot log the same scheduled dose twice
-    UNIQUE (pet_id, medication_schedule_id, scheduled_window_start)
-);
-```
+### 2. Real-Time Household State Synchronization
+Care routines require instant feedback across household members. Using PostgreSQL subscriptions and WebSockets, a medication check-off or vet note logged on one owner's phone broadcasts to all family members and pet sitters in under 500ms, immediately updating interactive mobile lock-screen widgets.
+
+### 3. Escalating Lead-Time Alert Engine
+Preventative care requires proactive compliance. Time-zone-aware queue workers calculate scheduled lead times (30-day, 7-day, and 24-hour windows) for annual wellness exams, vaccinations, and blood work panels, dispatching escalating push notifications if a critical dose window nears expiration without confirmation.
 
 ---
 

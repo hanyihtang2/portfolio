@@ -135,51 +135,14 @@ The BlindBite platform coordinates asynchronous party planning and synchronous r
 
 ## 4. Technical Details
 
-### Proposed Stack & Tooling
-- **Frontend & Presentation:** **Next.js 15 (App Router)** with **React 19**, **Tailwind CSS**, and **Framer Motion** for celebratory course reveal cards and animations.
-- **State & Real-Time Sync:** **Supabase Realtime** over WebSockets to synchronize the host's TV reveal screen instantly when guests tap "Unveil My Dish" on their phones.
-- **Serverless & Validation:** **Edge Functions** running **Zod** schema validation for strict event creation, participant intake, and allergen parsing.
-- **Theme & Recipe Prompts:** Integration with lightweight LLM endpoints for contextual culinary prompts based on the chosen party theme and guest dietary filters.
+### 1. Zero-Knowledge Semantic Duplicate Redirection
+To prevent duplicate dishes (e.g., three guests bringing hummus) without spoiling the surprise of the menu, dish submissions are processed through a private semantic conflict engine. When a guest registers a dish that overlaps with an already-locked recipe, an edge function flags the conflict *only* to the incoming guest with helpful alternatives (*"Another coffee-infused dessert is already claimed—how about a citrus tart?"*) while keeping the rest of the meal completely secret.
 
-### Draft Event & Lockbox Schema
-```sql
--- Dinner Party Event
-CREATE TABLE events (
-    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    host_user_id UUID NOT NULL REFERENCES auth.users(id),
-    title TEXT NOT NULL,
-    party_code VARCHAR(10) UNIQUE NOT NULL,
-    party_date TIMESTAMPTZ NOT NULL,
-    theme_title TEXT,
-    theme_description TEXT,
-    dietary_notes TEXT[],
-    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
-);
+### 2. Real-Time Presentation View via Supabase Realtime
+During the party, a shared big-screen view (cast to a TV or tablet) must stay perfectly synchronized with guests' mobile devices. Supabase Realtime over WebSockets broadcasts dish unveils with sub-150ms latency, triggering synchronized reveal animations (powered by Framer Motion) as each course is served.
 
--- Guest Participants
-CREATE TABLE event_participants (
-    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    event_id UUID NOT NULL REFERENCES events(id) ON DELETE CASCADE,
-    guest_name TEXT NOT NULL,
-    assigned_category TEXT NOT NULL CHECK (assigned_category IN ('starter', 'main', 'side', 'dessert', 'beverage')),
-    dietary_restrictions TEXT[],
-    has_submitted_dish BOOLEAN DEFAULT FALSE,
-    joined_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
-);
-
--- Secret Dish Lockbox (Content hidden from peers until live reveal)
-CREATE TABLE dish_lockbox (
-    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    event_id UUID NOT NULL REFERENCES events(id) ON DELETE CASCADE,
-    participant_id UUID NOT NULL REFERENCES event_participants(id) ON DELETE CASCADE,
-    dish_title TEXT NOT NULL,
-    dish_description TEXT,
-    ingredients TEXT[],
-    contains_allergens TEXT[],
-    is_revealed BOOLEAN DEFAULT FALSE,
-    revealed_at TIMESTAMPTZ
-);
-```
+### 3. Automated Allergen & Course Balance Matrix
+Potlucks often create anxiety around dietary restrictions. When dishes are locked into the vault, an automated matrix validator cross-references registered guest allergens (Celiac, nut allergies, vegan) against dish ingredient tags. The engine ensures that every course includes at least one verified safe option for each attendee before greenlighting the dinner party menu.
 
 ---
 

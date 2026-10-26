@@ -130,37 +130,14 @@ The application architecture is optimized for sub-second spatial queries, fluid 
 
 ## 4. Technical Details
 
-### Proposed Stack & Tooling
-- **Client & Mapping Canvas:** **Next.js 15** with **React 19**, **Tailwind CSS**, and **MapLibre GL** using vector map tiles (Protomaps / Stadia Maps) for clean typography and custom dark/light map styling.
-- **State & Query Management:** **TanStack Query** for asynchronous data fetching and cache invalidation, paired with **Zustand** for transient viewport bounds and filter drawer states.
-- **Database & Storage:** **PostgreSQL** with the **PostGIS** extension on Supabase, leveraging Row-Level Security so users securely control whether their personal maps are private, shared with friends, or publicly indexed.
+### 1. Sub-20ms Viewport Queries via PostGIS GIST Indexing
+Instead of calculating distances naively in client JavaScript or streaming thousands of global venue records, Platemark stores locations as `GEOMETRY(Point, 4326)` in PostgreSQL. Spatial GIST indexes evaluate viewport bounding-box queries (`ST_MakeEnvelope`) and radial proximity filters (`ST_DWithin`) in under 20ms, ensuring that panning across a dense city only fetches pins within the visible bounds.
 
-### Draft Spatial Schema
-```sql
--- Core Places Table with PostGIS Geography Point
-CREATE TABLE places (
-    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    user_id UUID NOT NULL REFERENCES auth.users(id) ON DELETE CASCADE,
-    name TEXT NOT NULL,
-    category TEXT NOT NULL CHECK (category IN ('restaurant', 'cafe', 'cocktail_bar', 'wine_bar', 'bakery', 'other')),
-    status TEXT NOT NULL CHECK (status IN ('want_to_visit', 'been_revisit', 'been_archived')),
-    coordinates GEOMETRY(Point, 4326) NOT NULL,
-    address TEXT,
-    neighborhood TEXT,
-    price_tier SMALLINT CHECK (price_tier BETWEEN 1 AND 4),
-    recommended_dishes TEXT[],
-    personal_notes TEXT,
-    source_attribution TEXT, -- e.g., "Recommended by Sarah", "Financial Times review"
-    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
-    updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
-);
+### 2. Fluid 60 FPS Clustering with Supercluster
+Rendering hundreds of unclustered vector pins degrades mobile canvas frame rates and drains battery. Platemark integrates `Supercluster` to dynamically aggregate proximate venues into interactive cluster bubbles at low zoom thresholds. As the user zooms in, clusters smoothly explode into individual venue pins with zero frame drops.
 
--- Spatial GIST index for instantaneous bounding-box viewport queries
-CREATE INDEX idx_places_coordinates ON places USING GIST (coordinates);
-
--- Compound index for fast faceted filtering
-CREATE INDEX idx_places_user_status_category ON places (user_id, status, category);
-```
+### 3. Edge Places Proxy & Zero-Friction Metadata Caching
+Calling third-party Places APIs (Google Places / OSM) directly from the client is costly and risks rate limits. An edge Cloudflare Worker proxy intercepts venue searches, caching coordinates, operating hours, and neighborhood tags in Cloudflare KV. When one user adds a venue (e.g., *"Pasticceria Marchesi"*), subsequent lookups across all users resolve instantly from the edge with zero external API fees.
 
 ---
 
