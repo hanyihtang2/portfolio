@@ -12,7 +12,7 @@ interface Props {
 
 const {
   title,
-  description = "CV and professional portfolio of Han-Yih Tang, Technical Product Manager & Builder",
+  description = "Portfolio and resume of Han-Yih Tang — Product Manager & Engineer, certified Product Owner (PSPO I), and hands-on builder open to PM, TPM, and Product Engineering IC roles.",
   docTitle,
   image,
   mainClass,
@@ -34,7 +34,7 @@ const jsonLd = {
       "@type": "Person",
       "@id": `${siteUrl}${base}/#person`,
       "name": "Han-Yih Tang",
-      "jobTitle": "Technical Product Manager & Builder",
+      "jobTitle": "Product Manager & Engineer",
       "url": `${siteUrl}${base}`,
       "image": `${siteUrl}${base}/images/og-preview.png`,
       "address": {
@@ -49,11 +49,17 @@ const jsonLd = {
       "alumniOf": [
         {
           "@type": "EducationalOrganization",
+          "name": "Kingston University"
+        },
+        {
+          "@type": "EducationalOrganization",
           "name": "University of Kent"
         }
       ],
       "knowsAbout": [
         "Product Management",
+        "Product Ownership (PSPO I)",
+        "Product Engineering",
         "System Architecture",
         "TypeScript",
         "React",
@@ -66,7 +72,7 @@ const jsonLd = {
       "@id": `${siteUrl}${base}/#website`,
       "url": `${siteUrl}${base}`,
       "name": "Han-Yih Tang Portfolio",
-      "description": "CV and professional portfolio of Han-Yih Tang, Technical Product Manager & Builder",
+      "description": "Portfolio and resume of Han-Yih Tang — Product Manager & Engineer, certified Product Owner (PSPO I), and hands-on builder.",
       "publisher": {
         "@id": `${siteUrl}${base}/#person`
       }
@@ -111,7 +117,7 @@ const jsonLd = {
     <meta property="og:image" content={ogImageUrl} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Han-Yih Tang - Technical Product Manager & Builder Portfolio" />
+    <meta property="og:image:alt" content="Han-Yih Tang - Product Manager &amp; Engineer Portfolio" />
 
     <!-- Twitter / X -->
     <meta name="twitter:card" content="summary_large_image" />

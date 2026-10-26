@@ -5,7 +5,7 @@ publishDate: 2026-10-21
 tags: ["TypeScript", "Next.js", "React 19", "Tailwind CSS", "WebSockets", "Social Dining"]
 featured: false
 status: "Concept"
-role: "Product Engineer"
+role: "Product & Systems Architect"
 timeline: "Concept Stage (Planned)"
 metrics:
   - label: "Course Balance"

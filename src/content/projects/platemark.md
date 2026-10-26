@@ -5,7 +5,7 @@ publishDate: 2026-10-22
 tags: ["TypeScript", "Next.js", "MapLibre GL", "PostGIS", "Geolocation", "Consumer Tech"]
 featured: false
 status: "Concept"
-role: "Product Engineer"
+role: "Product & Systems Architect"
 timeline: "Concept Stage (Planned)"
 metrics:
   - label: "Filtering Model"
