@@ -1,6 +1,6 @@
 ---
 title: "MAKER"
-description: "A cross-platform woodworking and DIY blueprint platform with step-by-step build plans, bills of materials, tool checklists, universal entitlements, and an offline mobile workshop mode."
+description: "A cross-platform DIY blueprint and creator platform connecting woodworkers with trusted makers—featuring creator following, step-by-step build plans, interactive bills of materials, and an offline mobile workshop mode."
 publishDate: 2026-10-23
 tags: ["Next.js", "Expo / React Native", "TypeScript", "Supabase", "PostgreSQL", "Turborepo"]
 liveUrl: "https://maker.hanyihtang2.workers.dev/"
@@ -69,9 +69,13 @@ roadmap:
 ## 1. Summary & Objectives
 
 ### Product Purpose
-Woodworkers, craftspeople, and DIY builders frequently rely on fragmented PDFs, forum threads, or long-form videos that are difficult to reference at a workbench. Furthermore, workshops located in garages or basements often suffer from poor internet connectivity.
+Woodworking and DIY making are deeply personal and stylistic. Builders don't just search for generic plans—they look for creators whose craft philosophy, aesthetic, and shop setups resonate with their own skill level and available tools.
 
-**MAKER** is a cross-platform community blueprint platform built to solve these challenges. It structures DIY and woodworking projects into actionable, verifiable blueprints complete with exact bills of materials (cut lists, dimensions, and quantities), required vs. optional shop tool checklists, step-by-step instructions with photo/video references, creator profiles, and a companion **Offline Workshop Mode** on mobile devices.
+Today, the experience is fragmented across two extremes:
+- **Inspiration without execution:** Platforms like YouTube and Instagram are great for discovering inspiring makers, but long-form video scrubbing and comment links make terrible references at the workbench.
+- **Transactions without connection:** Traditional plan marketplaces (like Etsy or Gumroad) treat blueprints as sterile, one-off PDF downloads with no creator updates, social proof, or ongoing community.
+
+**MAKER** bridges inspiration and execution. It connects DIY builders with the creators they admire—allowing users to follow favorite makers, keep up with their latest workshop builds, and access standardized, interactive blueprints. Each project pairs a creator’s signature design with verifiable bills of materials (cut lists and dimensions), tool checklists, community build photos, and a companion **Offline Workshop Mode** on mobile for seamless bench execution.
 
 ### Personal Learning Objectives
 1. **Cross-Platform Monorepo Architecture:** Architect a scalable **Turborepo** workspace sharing core TypeScript domain models (`@maker/types`), runtime **Zod** validation schemas (`@maker/validators`), and a unified database access layer (`@maker/database`) across **Next.js** (Web) and **Expo / React Native** (Mobile).
