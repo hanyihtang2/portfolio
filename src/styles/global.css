@@ -381,6 +381,11 @@ html {
     text-decoration: none !important;
   }
 
+  .resume-sheet h3 a {
+    color: var(--color-zinc-950, #09090b) !important;
+    text-decoration: none !important;
+  }
+
   .resume-sheet svg {
     color: var(--color-zinc-900, #18181b) !important;
   }
