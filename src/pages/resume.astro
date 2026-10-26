@@ -203,74 +203,70 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
       </section>
 
       <!-- Personal Engineering & Product Projects -->
-      <section class="space-y-4">
-        <div class="flex items-center justify-between border-b border-zinc-200 dark:border-zinc-800 pb-2">
-          <h2 class="text-xs font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
-            Personal Projects
-          </h2>
+      <section class="space-y-3">
+        <h2 class="text-xs font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 border-b border-zinc-200 dark:border-zinc-800 pb-2">
+          Personal Projects
+        </h2>
+
+        <div>
+          <div class="flex flex-wrap items-baseline justify-between gap-2">
+            <h3 class="text-sm font-bold text-zinc-900 dark:text-zinc-100">
+              MAKER — Cross-Platform Woodworking &amp; DIY Blueprint Platform
+            </h3>
+            <div class="flex items-center gap-3 text-xs font-mono">
+              <a
+                href="https://maker.hanyihtang2.workers.dev/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-blue-600 dark:text-blue-400 hover:underline"
+              >
+                maker.hanyihtang2.workers.dev ↗
+              </a>
+            </div>
+          </div>
+          <p class="text-sm text-zinc-700 dark:text-zinc-200 mt-1 print:mt-0.5">
+            Architected a full-stack monorepo sharing TypeScript models and Zod validators across a Next.js web app and an offline-first Expo mobile workshop app, backed by PostgreSQL Row-Level Security paywalls and automated rating triggers.
+          </p>
         </div>
 
-        <div class="space-y-3">
-          <div>
-            <div class="flex flex-wrap items-baseline justify-between gap-2">
-              <h3 class="text-sm font-bold text-zinc-900 dark:text-zinc-100">
-                MAKER — Cross-Platform Woodworking &amp; DIY Blueprint Platform
-              </h3>
-              <div class="flex items-center gap-3 text-xs font-mono">
-                <a
-                  href="https://maker.hanyihtang2.workers.dev/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="text-blue-600 dark:text-blue-400 hover:underline"
-                >
-                  maker.hanyihtang2.workers.dev ↗
-                </a>
-              </div>
+        <div>
+          <div class="flex flex-wrap items-baseline justify-between gap-2">
+            <h3 class="text-sm font-bold text-zinc-900 dark:text-zinc-100">
+              CommuteShift — London Hybrid Commute Fare Optimizer
+            </h3>
+            <div class="flex items-center gap-3 text-xs font-mono">
+              <a
+                href="https://commute-shift.vercel.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-blue-600 dark:text-blue-400 hover:underline"
+              >
+                commute-shift.vercel.app ↗
+              </a>
+              <a
+                href="https://github.com/hanyihtang2/CommuteShift"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-zinc-500 dark:text-zinc-400 hover:underline"
+              >
+                GitHub ↗
+              </a>
             </div>
-            <p class="text-sm text-zinc-700 dark:text-zinc-200 mt-1">
-              Architected a full-stack monorepo sharing TypeScript models and Zod validators across a Next.js web app and an offline-first Expo mobile workshop app, backed by PostgreSQL Row-Level Security paywalls and automated rating triggers.
-            </p>
           </div>
+          <p class="text-sm text-zinc-700 dark:text-zinc-200 mt-1 print:mt-0.5">
+            Authored the PRD and built a zero-friction TfL hybrid commute calculator (React 18, TypeScript, Vite, Tailwind CSS) comparing Contactless PAYG daily caps against Monthly Travelcards across Zones 1–6, featuring Railcard off-peak discounting, dynamic break-even rules, and URL/Slack sharing.
+          </p>
+        </div>
 
-          <div>
-            <div class="flex flex-wrap items-baseline justify-between gap-2">
-              <h3 class="text-sm font-bold text-zinc-900 dark:text-zinc-100">
-                CommuteShift — London Hybrid Commute Fare Optimizer
-              </h3>
-              <div class="flex items-center gap-3 text-xs font-mono">
-                <a
-                  href="https://commute-shift.vercel.app/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="text-blue-600 dark:text-blue-400 hover:underline"
-                >
-                  commute-shift.vercel.app ↗
-                </a>
-                <a
-                  href="https://github.com/hanyihtang2/CommuteShift"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="text-zinc-500 dark:text-zinc-400 hover:underline"
-                >
-                  GitHub ↗
-                </a>
-              </div>
-            </div>
-            <p class="text-sm text-zinc-700 dark:text-zinc-200 mt-1">
-              Authored the PRD and built a zero-friction TfL hybrid commute calculator (React 18, TypeScript, Vite, Tailwind CSS) comparing Contactless PAYG daily caps against Monthly Travelcards across Zones 1–6, featuring Railcard off-peak discounting, dynamic break-even rules, and URL/Slack sharing.
-            </p>
+        <div>
+          <div class="flex flex-wrap items-baseline justify-between gap-2">
+            <h3 class="text-sm font-bold text-zinc-900 dark:text-zinc-100">
+              PawPulse — Collaborative Household Pet Care &amp; Medication Tracker (Concept)
+            </h3>
           </div>
-
-          <div>
-            <div class="flex flex-wrap items-baseline justify-between gap-2">
-              <h3 class="text-sm font-bold text-zinc-900 dark:text-zinc-100">
-                PawPulse — Collaborative Household Pet Care &amp; Medication Tracker (Concept)
-              </h3>
-            </div>
-            <p class="text-sm text-zinc-700 dark:text-zinc-200 mt-1">
-              Designing a multi-user household pet health platform with atomic anti-double-dose medication ledgers, clinical appointment reminders (wellness, dental, blood work), and future veterinary e-prescription integration.
-            </p>
-          </div>
+          <p class="text-sm text-zinc-700 dark:text-zinc-200 mt-1 print:mt-0.5">
+            Designing a multi-user household pet health platform with atomic anti-double-dose medication ledgers, clinical appointment reminders (wellness, dental, blood work), and future veterinary e-prescription integration.
+          </p>
         </div>
       </section>
 
