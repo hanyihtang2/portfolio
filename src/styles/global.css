@@ -1,6 +1,58 @@
 @import "tailwindcss";
 @custom-variant dark (&:where(.dark, .dark *));
 
+/* Semantic Spacing Tokens (5-tier design system) */
+:root {
+  --space-page: 3.5rem;     /* 56px: hero padding, major page section breaks */
+  --space-section: 2rem;    /* 32px: between major sections, sheet padding */
+  --space-entry: 1rem;      /* 16px: between repeating cards, jobs, or projects */
+  --space-element: 0.75rem; /* 12px: internal stack (heading to body, label to input) */
+  --space-micro: 0.375rem;  /* 6px: inline badges, icon + label gaps, bullet items */
+}
+
+@theme {
+  --spacing-page: 3.5rem;
+  --spacing-section: 2rem;
+  --spacing-entry: 1rem;
+  --spacing-element: 0.75rem;
+  --spacing-micro: 0.375rem;
+}
+
+/* Semantic Spacing Stack & Gap Utilities */
+@layer utilities {
+  .space-y-page > :not(:last-child) {
+    margin-block-end: var(--space-page);
+  }
+  .space-y-section > :not(:last-child) {
+    margin-block-end: var(--space-section);
+  }
+  .space-y-entry > :not(:last-child) {
+    margin-block-end: var(--space-entry);
+  }
+  .space-y-element > :not(:last-child) {
+    margin-block-end: var(--space-element);
+  }
+  .space-y-micro > :not(:last-child) {
+    margin-block-end: var(--space-micro);
+  }
+
+  .gap-page {
+    gap: var(--space-page);
+  }
+  .gap-section {
+    gap: var(--space-section);
+  }
+  .gap-entry {
+    gap: var(--space-entry);
+  }
+  .gap-element {
+    gap: var(--space-element);
+  }
+  .gap-micro {
+    gap: var(--space-micro);
+  }
+}
+
 /* Semantic Typography Tokens */
 @layer utilities {
   .type-h1 {
@@ -401,6 +453,11 @@ html {
 
   .resume-sheet section > * + * {
     margin-top: 0.3rem !important;
+    padding-top: 0 !important;
+  }
+
+  .resume-sheet .space-y-entry > * + * {
+    margin-top: 0.28rem !important;
     padding-top: 0 !important;
   }
 

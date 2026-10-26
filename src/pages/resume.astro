@@ -31,7 +31,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
     </div>
 
     <!-- Resume Sheet -->
-    <div class="resume-sheet bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl p-6 sm:p-10 shadow-xs space-y-8">
+    <div class="resume-sheet bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl p-6 sm:p-10 shadow-xs space-y-section">
       <!-- Header -->
       <header class="pb-2 flex flex-col md:flex-row md:items-start justify-between gap-6">
         <div>
@@ -112,7 +112,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
       </header>
 
       <!-- Executive Summary -->
-      <section class="space-y-3">
+      <section class="space-y-element">
         <h2 class="text-xs font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 border-b border-zinc-200 dark:border-zinc-800 pb-2">
           Profile Summary
         </h2>
@@ -122,206 +122,210 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
       </section>
 
       <!-- Work Experience -->
-      <section class="space-y-6">
+      <section class="space-y-element">
         <h2 class="text-xs font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 border-b border-zinc-200 dark:border-zinc-800 pb-2">
           Work Experience
         </h2>
 
-        <!-- Role 1: Product Manager @ Clarion -->
-        <div class="space-y-2">
-          <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
-            <div>
-              <h3 class="text-base font-bold text-zinc-900 dark:text-zinc-100">Product Manager</h3>
-              <p class="text-sm font-medium text-zinc-700 dark:text-zinc-300">
-                Clarion Housing Group <span class="text-zinc-400 dark:text-zinc-500 font-normal">• London, UK</span>
-              </p>
-            </div>
-            <span class="text-xs font-mono text-zinc-500 dark:text-zinc-400 shrink-0">06/2024 – 03/2026</span>
-          </div>
-          <p class="text-xs sm:text-sm italic text-zinc-600 dark:text-zinc-300">
-            Responsible for strategy, roadmap, and delivery across all homeowner customer products, managing a cross-functional Product &amp; UX team post-restructure.
-          </p>
-          <ul class="list-disc pl-5 space-y-1.5 text-sm text-zinc-700 dark:text-zinc-200">
-            <li>Led the adoption of agile ways of working between Product and Software Engineering following an organisational restructure.</li>
-            <li>Directed the greenfield re-platforming of the corporate website serving <strong>~35,000 monthly viewers</strong>.</li>
-            <li>Implemented a greenfield design system in close collaboration with the Lead UX/UI Designer and website engineering pod.</li>
-            <li>Delivered a regulatory-compliant self-service product for Shared Owner customer repairs.</li>
-            <li>Delivered online staircasing customer journeys, enabling an estimated <strong>~£3m per annum</strong> in revenue.</li>
-            <li>Led initial technical and domain discovery for a new enterprise asset data model spanning <strong>~125,000 properties</strong> as part of long-term organisational strategy.</li>
-            <li>Renegotiated external agency contracts, achieving recurring cost savings of <strong>~£40,000 per month</strong> (£480k/yr).</li>
-          </ul>
-        </div>
-
-        <!-- Role 2: Digital Business Analyst @ Clarion -->
-        <div class="space-y-2 pt-2">
-          <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
-            <div>
-              <h3 class="text-base font-bold text-zinc-900 dark:text-zinc-100">Digital Business Analyst</h3>
-              <p class="text-sm font-medium text-zinc-700 dark:text-zinc-300">
-                Clarion Housing Group <span class="text-zinc-400 dark:text-zinc-500 font-normal">• London, UK</span>
-              </p>
-            </div>
-            <span class="text-xs font-mono text-zinc-500 dark:text-zinc-400 shrink-0">08/2021 – 06/2024</span>
-          </div>
-          <ul class="list-disc pl-5 space-y-1.5 text-sm text-zinc-700 dark:text-zinc-200">
-            <li>Launched the corporate website, attracting <strong>35,000 monthly viewers</strong>.</li>
-            <li>Improved the online self-service repairs product conversion from <strong>under 10% to over 25%</strong> of all eligible repairs.</li>
-            <li>Delivered automated self-service account unlock, eliminating <strong>~100 inbound support calls per month</strong>.</li>
-          </ul>
-        </div>
-
-        <!-- Role 3: Consultant @ Wipro / Lloyds Banking Group -->
-        <div class="space-y-4 pt-2">
-          <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
-            <div>
-              <h3 class="text-base font-bold text-zinc-900 dark:text-zinc-100">Consultant</h3>
-              <p class="text-sm font-medium text-zinc-700 dark:text-zinc-300">
-                Wipro <span class="text-zinc-400 dark:text-zinc-500 font-normal">• London, UK</span>
-              </p>
-            </div>
-            <span class="text-xs font-mono text-zinc-500 dark:text-zinc-400 shrink-0">09/2017 – 06/2021</span>
-          </div>
-          <p class="text-xs sm:text-sm italic text-zinc-600 dark:text-zinc-300">
-            Consulted across high-scale Financial Services digital transformation programmes with <strong>Lloyds Banking Group</strong>:
-          </p>
-
-          <div class="pl-4 border-l-2 border-zinc-200 dark:border-zinc-800 space-y-4">
-            <!-- Sub-role: BA @ Lloyds -->
-            <div class="space-y-1.5">
-              <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
-                <h4 class="text-sm font-bold text-zinc-900 dark:text-zinc-100">
-                  Business Analyst (Product Owner &amp; Scrum Master) — <span class="font-medium text-zinc-600 dark:text-zinc-300">Lloyds Banking Group</span>
-                </h4>
-                <span class="text-xs font-mono text-zinc-500 dark:text-zinc-400 shrink-0">02/2019 – 06/2021</span>
+        <div class="space-y-entry">
+          <!-- Role 1: Product Manager @ Clarion -->
+          <div class="space-y-micro">
+            <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
+              <div>
+                <h3 class="text-base font-bold text-zinc-900 dark:text-zinc-100">Product Manager</h3>
+                <p class="text-sm font-medium text-zinc-700 dark:text-zinc-300">
+                  Clarion Housing Group <span class="text-zinc-400 dark:text-zinc-500 font-normal">• London, UK</span>
+                </p>
               </div>
-              <ul class="list-disc pl-5 space-y-1 text-sm text-zinc-700 dark:text-zinc-200">
-                <li>Undertook responsibilities of Product Owner and Scrum Master across an agile delivery squad.</li>
-                <li>Delivered mobile app 2FA microservice API platform for debit cards MVP, achieving <strong>PSD2 SCA compliance</strong> and an estimated reduction of <strong>~9,000 inbound calls per month</strong>.</li>
-                <li>Delivered telephony authentication enhancements, saving <strong>~£4.5m per annum</strong> and reducing inbound call contacts by <strong>1.6m per month</strong>.</li>
-              </ul>
+              <span class="text-xs font-mono text-zinc-500 dark:text-zinc-400 shrink-0">06/2024 – 03/2026</span>
             </div>
+            <p class="text-xs sm:text-sm italic text-zinc-600 dark:text-zinc-300">
+              Responsible for strategy, roadmap, and delivery across all homeowner customer products, managing a cross-functional Product &amp; UX team post-restructure.
+            </p>
+            <ul class="list-disc pl-5 space-y-micro text-sm text-zinc-700 dark:text-zinc-200">
+              <li>Led the adoption of agile ways of working between Product and Software Engineering following an organisational restructure.</li>
+              <li>Directed the greenfield re-platforming of the corporate website serving <strong>~35,000 monthly viewers</strong>.</li>
+              <li>Implemented a greenfield design system in close collaboration with the Lead UX/UI Designer and website engineering pod.</li>
+              <li>Delivered a regulatory-compliant self-service product for Shared Owner customer repairs.</li>
+              <li>Delivered online staircasing customer journeys, enabling an estimated <strong>~£3m per annum</strong> in revenue.</li>
+              <li>Led initial technical and domain discovery for a new enterprise asset data model spanning <strong>~125,000 properties</strong> as part of long-term organisational strategy.</li>
+              <li>Renegotiated external agency contracts, achieving recurring cost savings of <strong>~£40,000 per month</strong> (£480k/yr).</li>
+            </ul>
+          </div>
 
-            <!-- Sub-role: Test Engineer @ Lloyds -->
-            <div class="space-y-1.5">
-              <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
-                <h4 class="text-sm font-bold text-zinc-900 dark:text-zinc-100">
-                  Test Engineer — <span class="font-medium text-zinc-600 dark:text-zinc-300">Lloyds Banking Group</span>
-                </h4>
-                <span class="text-xs font-mono text-zinc-500 dark:text-zinc-400 shrink-0">01/2018 – 02/2019</span>
+          <!-- Role 2: Digital Business Analyst @ Clarion -->
+          <div class="space-y-micro">
+            <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
+              <div>
+                <h3 class="text-base font-bold text-zinc-900 dark:text-zinc-100">Digital Business Analyst</h3>
+                <p class="text-sm font-medium text-zinc-700 dark:text-zinc-300">
+                  Clarion Housing Group <span class="text-zinc-400 dark:text-zinc-500 font-normal">• London, UK</span>
+                </p>
               </div>
-              <ul class="list-disc pl-5 space-y-1 text-sm text-zinc-700 dark:text-zinc-200">
-                <li>Enabled 2FA authentication via the mobile banking app for PSD2 SCA compliance, driving run-cost savings of <strong>~£2m per month</strong>.</li>
-                <li>Simplified customer payment management and internet banking access workflows, delivering call-centre efficiency improvements of <strong>~17.5 FTE</strong>.</li>
-                <li>Enabled mobile app 2FA for payment authorisation, resulting in <strong>~£150,000 per annum</strong> in savings.</li>
-              </ul>
+              <span class="text-xs font-mono text-zinc-500 dark:text-zinc-400 shrink-0">08/2021 – 06/2024</span>
+            </div>
+            <ul class="list-disc pl-5 space-y-micro text-sm text-zinc-700 dark:text-zinc-200">
+              <li>Launched the corporate website, attracting <strong>35,000 monthly viewers</strong>.</li>
+              <li>Improved the online self-service repairs product conversion from <strong>under 10% to over 25%</strong> of all eligible repairs.</li>
+              <li>Delivered automated self-service account unlock, eliminating <strong>~100 inbound support calls per month</strong>.</li>
+            </ul>
+          </div>
+
+          <!-- Role 3: Consultant @ Wipro / Lloyds Banking Group -->
+          <div class="space-y-micro">
+            <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
+              <div>
+                <h3 class="text-base font-bold text-zinc-900 dark:text-zinc-100">Consultant</h3>
+                <p class="text-sm font-medium text-zinc-700 dark:text-zinc-300">
+                  Wipro <span class="text-zinc-400 dark:text-zinc-500 font-normal">• London, UK</span>
+                </p>
+              </div>
+              <span class="text-xs font-mono text-zinc-500 dark:text-zinc-400 shrink-0">09/2017 – 06/2021</span>
+            </div>
+            <p class="text-xs sm:text-sm italic text-zinc-600 dark:text-zinc-300">
+              Consulted across high-scale Financial Services digital transformation programmes with <strong>Lloyds Banking Group</strong>:
+            </p>
+
+            <div class="pl-4 border-l-2 border-zinc-200 dark:border-zinc-800 space-y-entry">
+              <!-- Sub-role: BA @ Lloyds -->
+              <div class="space-y-micro">
+                <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
+                  <h4 class="text-sm font-bold text-zinc-900 dark:text-zinc-100">
+                    Business Analyst (Product Owner &amp; Scrum Master) — <span class="font-medium text-zinc-600 dark:text-zinc-300">Lloyds Banking Group</span>
+                  </h4>
+                  <span class="text-xs font-mono text-zinc-500 dark:text-zinc-400 shrink-0">02/2019 – 06/2021</span>
+                </div>
+                <ul class="list-disc pl-5 space-y-micro text-sm text-zinc-700 dark:text-zinc-200">
+                  <li>Undertook responsibilities of Product Owner and Scrum Master across an agile delivery squad.</li>
+                  <li>Delivered mobile app 2FA microservice API platform for debit cards MVP, achieving <strong>PSD2 SCA compliance</strong> and an estimated reduction of <strong>~9,000 inbound calls per month</strong>.</li>
+                  <li>Delivered telephony authentication enhancements, saving <strong>~£4.5m per annum</strong> and reducing inbound call contacts by <strong>1.6m per month</strong>.</li>
+                </ul>
+              </div>
+
+              <!-- Sub-role: Test Engineer @ Lloyds -->
+              <div class="space-y-micro">
+                <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
+                  <h4 class="text-sm font-bold text-zinc-900 dark:text-zinc-100">
+                    Test Engineer — <span class="font-medium text-zinc-600 dark:text-zinc-300">Lloyds Banking Group</span>
+                  </h4>
+                  <span class="text-xs font-mono text-zinc-500 dark:text-zinc-400 shrink-0">01/2018 – 02/2019</span>
+                </div>
+                <ul class="list-disc pl-5 space-y-micro text-sm text-zinc-700 dark:text-zinc-200">
+                  <li>Enabled 2FA authentication via the mobile banking app for PSD2 SCA compliance, driving run-cost savings of <strong>~£2m per month</strong>.</li>
+                  <li>Simplified customer payment management and internet banking access workflows, delivering call-centre efficiency improvements of <strong>~17.5 FTE</strong>.</li>
+                  <li>Enabled mobile app 2FA for payment authorisation, resulting in <strong>~£150,000 per annum</strong> in savings.</li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       <!-- Personal Engineering & Product Projects -->
-      <section class="space-y-3">
+      <section class="space-y-element">
         <h2 class="text-xs font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 border-b border-zinc-200 dark:border-zinc-800 pb-2">
           Personal Projects
         </h2>
 
-        <div>
-          <div class="flex flex-wrap items-baseline justify-between gap-2">
-            <h3 class="text-sm font-bold text-zinc-900 dark:text-zinc-100">
-              <a
-                href="https://maker.hanyihtang2.workers.dev/"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="hover:underline"
-              >
-                MAKER — Cross-Platform Woodworking &amp; DIY Blueprint Platform
-              </a>
-            </h3>
-            <div class="print-hidden flex items-center gap-3 text-xs font-mono">
-              <a
-                href="https://maker.hanyihtang2.workers.dev/"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="text-blue-600 dark:text-blue-400 hover:underline"
-              >
-                maker.hanyihtang2.workers.dev ↗
-              </a>
+        <div class="space-y-entry">
+          <div class="space-y-micro">
+            <div class="flex flex-wrap items-baseline justify-between gap-2">
+              <h3 class="text-sm font-bold text-zinc-900 dark:text-zinc-100">
+                <a
+                  href="https://maker.hanyihtang2.workers.dev/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="hover:underline"
+                >
+                  MAKER — Cross-Platform Woodworking &amp; DIY Blueprint Platform
+                </a>
+              </h3>
+              <div class="print-hidden flex items-center gap-3 text-xs font-mono">
+                <a
+                  href="https://maker.hanyihtang2.workers.dev/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-blue-600 dark:text-blue-400 hover:underline"
+                >
+                  maker.hanyihtang2.workers.dev ↗
+                </a>
+              </div>
             </div>
+            <p class="text-sm text-zinc-700 dark:text-zinc-200">
+              Architected a full-stack monorepo sharing TypeScript models and Zod validators across a Next.js web app and an offline-first Expo mobile workshop app, backed by PostgreSQL Row-Level Security paywalls and automated rating triggers.
+            </p>
           </div>
-          <p class="text-sm text-zinc-700 dark:text-zinc-200 mt-1 print:mt-0.5">
-            Architected a full-stack monorepo sharing TypeScript models and Zod validators across a Next.js web app and an offline-first Expo mobile workshop app, backed by PostgreSQL Row-Level Security paywalls and automated rating triggers.
-          </p>
-        </div>
 
-        <div>
-          <div class="flex flex-wrap items-baseline justify-between gap-2">
-            <h3 class="text-sm font-bold text-zinc-900 dark:text-zinc-100">
-              <a
-                href="https://commute-shift.vercel.app/"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="hover:underline"
-              >
-                CommuteShift — London Hybrid Commute Fare Optimizer
-              </a>
-            </h3>
-            <div class="print-hidden flex items-center gap-3 text-xs font-mono">
-              <a
-                href="https://commute-shift.vercel.app/"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="text-blue-600 dark:text-blue-400 hover:underline"
-              >
-                commute-shift.vercel.app ↗
-              </a>
-              <a
-                href="https://github.com/hanyihtang2/CommuteShift"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="text-zinc-500 dark:text-zinc-400 hover:underline"
-              >
-                GitHub ↗
-              </a>
+          <div class="space-y-micro">
+            <div class="flex flex-wrap items-baseline justify-between gap-2">
+              <h3 class="text-sm font-bold text-zinc-900 dark:text-zinc-100">
+                <a
+                  href="https://commute-shift.vercel.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="hover:underline"
+                >
+                  CommuteShift — London Hybrid Commute Fare Optimizer
+                </a>
+              </h3>
+              <div class="print-hidden flex items-center gap-3 text-xs font-mono">
+                <a
+                  href="https://commute-shift.vercel.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-blue-600 dark:text-blue-400 hover:underline"
+                >
+                  commute-shift.vercel.app ↗
+                </a>
+                <a
+                  href="https://github.com/hanyihtang2/CommuteShift"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-zinc-500 dark:text-zinc-400 hover:underline"
+                >
+                  GitHub ↗
+                </a>
+              </div>
             </div>
+            <p class="text-sm text-zinc-700 dark:text-zinc-200">
+              Authored the PRD and built a zero-friction TfL hybrid commute calculator (React 18, TypeScript, Vite, Tailwind CSS) comparing Contactless PAYG daily caps against Monthly Travelcards across Zones 1–6, featuring Railcard off-peak discounting, dynamic break-even rules, and URL/Slack sharing.
+            </p>
           </div>
-          <p class="text-sm text-zinc-700 dark:text-zinc-200 mt-1 print:mt-0.5">
-            Authored the PRD and built a zero-friction TfL hybrid commute calculator (React 18, TypeScript, Vite, Tailwind CSS) comparing Contactless PAYG daily caps against Monthly Travelcards across Zones 1–6, featuring Railcard off-peak discounting, dynamic break-even rules, and URL/Slack sharing.
-          </p>
-        </div>
 
-        <div>
-          <div class="flex flex-wrap items-baseline justify-between gap-2">
-            <h3 class="text-sm font-bold text-zinc-900 dark:text-zinc-100">
-              <a
-                href={`${base}/projects/pawpulse`}
-                class="hover:underline"
-              >
-                PawPulse — Collaborative Household Pet Care &amp; Medication Tracker (Concept)
-              </a>
-            </h3>
-            <div class="print-hidden flex items-center gap-3 text-xs font-mono">
-              <a
-                href={`${base}/projects/pawpulse`}
-                class="text-blue-600 dark:text-blue-400 hover:underline"
-              >
-                Case Study ↗
-              </a>
+          <div class="space-y-micro">
+            <div class="flex flex-wrap items-baseline justify-between gap-2">
+              <h3 class="text-sm font-bold text-zinc-900 dark:text-zinc-100">
+                <a
+                  href={`${base}/projects/pawpulse`}
+                  class="hover:underline"
+                >
+                  PawPulse — Collaborative Household Pet Care &amp; Medication Tracker (Concept)
+                </a>
+              </h3>
+              <div class="print-hidden flex items-center gap-3 text-xs font-mono">
+                <a
+                  href={`${base}/projects/pawpulse`}
+                  class="text-blue-600 dark:text-blue-400 hover:underline"
+                >
+                  Case Study ↗
+                </a>
+              </div>
             </div>
+            <p class="text-sm text-zinc-700 dark:text-zinc-200">
+              Designing a multi-user household pet health platform with atomic anti-double-dose medication ledgers, clinical appointment reminders (wellness, dental, blood work), and future veterinary e-prescription integration.
+            </p>
           </div>
-          <p class="text-sm text-zinc-700 dark:text-zinc-200 mt-1 print:mt-0.5">
-            Designing a multi-user household pet health platform with atomic anti-double-dose medication ledgers, clinical appointment reminders (wellness, dental, blood work), and future veterinary e-prescription integration.
-          </p>
         </div>
       </section>
 
       <!-- Education & Certifications Grid -->
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8 pt-2">
         <!-- Education -->
-        <section class="space-y-3">
+        <section class="space-y-element">
           <h2 class="text-xs font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 border-b border-zinc-200 dark:border-zinc-800 pb-2">
             Education
           </h2>
-          <div class="space-y-3">
+          <div class="space-y-entry">
             <div>
               <div class="flex justify-between items-baseline gap-2">
                 <h3 class="text-sm font-bold text-zinc-900 dark:text-zinc-100">Kingston University</h3>
@@ -340,11 +344,11 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
         </section>
 
         <!-- Certifications -->
-        <section class="space-y-3">
+        <section class="space-y-element">
           <h2 class="text-xs font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 border-b border-zinc-200 dark:border-zinc-800 pb-2">
             Certifications
           </h2>
-          <ul class="space-y-2 text-sm">
+          <ul class="space-y-micro text-sm">
             <li class="flex justify-between items-baseline gap-2">
               <span class="font-semibold text-zinc-900 dark:text-zinc-100">CCNA 200-301 Version 1.1</span>
               <span class="text-xs font-mono text-amber-600 dark:text-amber-400 shrink-0">Pearson • Coursera, In Progress</span>
