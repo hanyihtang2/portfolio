@@ -1,0 +1,45 @@
+---
+import { icons, type IconName, type IconData } from '../data/icons';
+
+interface Props {
+  name: IconName;
+  class?: string;
+  size?: number | string;
+  title?: string;
+  id?: string;
+  'aria-hidden'?: boolean | 'true' | 'false';
+}
+
+const {
+  name,
+  class: className = 'w-4 h-4',
+  size,
+  title,
+  id,
+  'aria-hidden': ariaHidden = true,
+} = Astro.props;
+
+const icon: IconData = icons[name];
+
+if (!icon) {
+  throw new Error(`[Icon.astro] Icon "${name}" does not exist in src/data/icons.ts`);
+}
+
+const viewBox = icon.viewBox || '0 0 24 24';
+const fill = icon.fill ?? 'none';
+const stroke = icon.stroke ?? (fill === 'none' ? 'currentColor' : 'none');
+const strokeWidth = icon.strokeWidth ?? (stroke !== 'none' ? 2 : undefined);
+---
+
+<svg
+  id={id}
+  class={className}
+  viewBox={viewBox}
+  fill={fill}
+  stroke={stroke}
+  stroke-width={strokeWidth}
+  width={size}
+  height={size}
+  aria-hidden={title ? undefined : ariaHidden ? 'true' : undefined}
+  set:html={title ? `<title>${title}</title>${icon.body}` : icon.body}
+/>
