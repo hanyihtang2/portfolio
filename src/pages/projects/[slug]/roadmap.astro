@@ -1,10 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
-import BaseLayout from '../../../layouts/BaseLayout.astro';
-import ProjectTabs from '../../../components/ProjectTabs.astro';
-import Breadcrumb from '../../../components/Breadcrumb.astro';
+import ProjectDetailLayout from '../../../layouts/ProjectDetailLayout.astro';
 import StatusBadge from '../../../components/StatusBadge.astro';
-import Icon from '../../../components/Icon.astro';
 
 export async function getStaticPaths() {
   const projectEntries = await getCollection('projects');
@@ -24,87 +21,7 @@ const inProgressCount = roadmapItems.filter((i) => i.status === 'In Progress').l
 const plannedCount = roadmapItems.filter((i) => i.status === 'Planned').length;
 ---
 
-<BaseLayout
-  title={`${data.title} - Product Roadmap`}
-  description={`Architecture roadmap, planned development phases, and milestone deliverables for ${data.title}.`}
->
-  <div>
-    <!-- Breadcrumb -->
-    <Breadcrumb
-      items={[
-        { label: "Projects", href: `${base}/projects` },
-        { label: data.title, href: `${base}/projects/${entry.id}` },
-        { label: "Roadmap" },
-      ]}
-    />
-
-    <!-- Project Header Hero -->
-    <header class="pb-6 border-b border-default space-y-3">
-      <!-- Status Eyebrow Badge -->
-      <div>
-        <StatusBadge status={data.status} size="md" showDot={true} />
-      </div>
-
-      <h1 class="type-h1">
-        {data.title} Roadmap
-      </h1>
-
-      <p class="type-lead max-w-3xl pt-1">
-        Planned architectural phases, key deliverables, and target milestone trajectory for {data.title}.
-      </p>
-
-      <!-- Metadata & Action Bar -->
-      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-2">
-        <div class="flex flex-wrap items-center gap-4 text-xs text-zinc-500 dark:text-zinc-400">
-          {data.role && (
-            <div>
-              <span class="font-medium text-zinc-700 dark:text-zinc-300">Role:</span> {data.role}
-            </div>
-          )}
-          {data.timeline && (
-            <div>
-              <span class="font-medium text-zinc-700 dark:text-zinc-300">Timeline:</span> {data.timeline}
-            </div>
-          )}
-          <div>
-            <span class="font-medium text-zinc-700 dark:text-zinc-300">Published:</span> {data.publishDate.toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}
-          </div>
-        </div>
-
-        <div class="flex items-center gap-3">
-          {data.githubUrl && (
-            <a
-              href={data.githubUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="btn-primary"
-            >
-              <Icon name="github" class="w-4 h-4 fill-current" />
-              GitHub Repo
-            </a>
-          )}
-          {data.liveUrl && (
-            <a
-              href={data.liveUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="btn-secondary"
-            >
-              Live Demo ↗
-            </a>
-          )}
-          {!data.githubUrl && data.status !== 'Concept' && (
-            <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 border border-zinc-200 dark:border-zinc-700">
-              <Icon name="lock" class="w-3.5 h-3.5 fill-current" />
-              Private Repository
-            </span>
-          )}
-        </div>
-      </div>
-    </header>
-
-    <!-- Sub-Navigation Tabs -->
-    <ProjectTabs slug={entry.id} activeTab="roadmap" />
+<ProjectDetailLayout entry={entry} activeTab="roadmap">
 
     <!-- Roadmap Statistics Summary -->
     {roadmapItems.length > 0 && (
@@ -238,5 +155,4 @@ const plannedCount = roadmapItems.filter((i) => i.status === 'Planned').length;
         Back to all projects →
       </a>
     </div>
-  </div>
-</BaseLayout>
+</ProjectDetailLayout>

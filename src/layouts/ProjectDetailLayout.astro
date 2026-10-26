@@ -1,0 +1,139 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import BaseLayout from './BaseLayout.astro';
+import Breadcrumb, { type BreadcrumbItem } from '../components/Breadcrumb.astro';
+import StatusBadge from '../components/StatusBadge.astro';
+import ProjectTabs from '../components/ProjectTabs.astro';
+import Icon from '../components/Icon.astro';
+
+interface Props {
+  entry: CollectionEntry<'projects'>;
+  activeTab: 'overview' | 'roadmap';
+  customTitle?: string;
+  customDescription?: string;
+  breadcrumbItems?: BreadcrumbItem[];
+}
+
+const {
+  entry,
+  activeTab,
+  customTitle,
+  customDescription,
+  breadcrumbItems,
+} = Astro.props;
+
+const { data } = entry;
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+
+const isRoadmap = activeTab === 'roadmap';
+const pageTitle = customTitle || (isRoadmap ? `${data.title} Roadmap` : data.title);
+const pageDescription = customDescription || (isRoadmap ? `Planned architectural phases, key deliverables, and target milestone trajectory for ${data.title}.` : data.description);
+
+const defaultBreadcrumbs: BreadcrumbItem[] = isRoadmap
+  ? [
+      { label: "Projects", href: `${base}/projects` },
+      { label: data.title, href: `${base}/projects/${entry.id}` },
+      { label: "Roadmap" },
+    ]
+  : [
+      { label: "Projects", href: `${base}/projects` },
+      { label: data.title },
+    ];
+
+const finalBreadcrumbs = breadcrumbItems || defaultBreadcrumbs;
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  image={data.mockupImage}
+  mainClass="max-w-5xl w-full mx-auto px-6 pt-6 sm:pt-8 pb-16"
+>
+  <div>
+    <!-- Breadcrumb -->
+    <Breadcrumb items={finalBreadcrumbs} />
+
+    <!-- Project Header Hero -->
+    <header class="pb-6 sm:pb-8 border-b border-default space-y-3">
+      <!-- Status Eyebrow Badge -->
+      <div>
+        <StatusBadge status={data.status} size="md" showDot={true} />
+      </div>
+
+      <h1 class="type-h1">
+        {pageTitle}
+      </h1>
+
+      <p class="type-lead max-w-3xl pt-1">
+        {pageDescription}
+      </p>
+
+      <!-- Metadata & Action Bar -->
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-2">
+        <div class="flex flex-wrap items-center gap-4 text-xs text-zinc-500 dark:text-zinc-400">
+          {data.role && (
+            <div>
+              <span class="font-medium text-zinc-700 dark:text-zinc-300">Role:</span> {data.role}
+            </div>
+          )}
+          {data.timeline && (
+            <div>
+              <span class="font-medium text-zinc-700 dark:text-zinc-300">Timeline:</span> {data.timeline}
+            </div>
+          )}
+          <div>
+            <span class="font-medium text-zinc-700 dark:text-zinc-300">Published:</span> {data.publishDate.toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}
+          </div>
+        </div>
+
+        <div class="flex items-center gap-3">
+          {data.githubUrl && (
+            <a
+              href={data.githubUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn-primary"
+            >
+              <Icon name="github" class="w-4 h-4 fill-current" />
+              GitHub Repo
+            </a>
+          )}
+          {data.liveUrl && (
+            <a
+              href={data.liveUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn-secondary"
+            >
+              Live Demo ↗
+            </a>
+          )}
+          {!data.githubUrl && data.status !== 'Concept' && (
+            <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 border border-zinc-200 dark:border-zinc-700">
+              <Icon name="lock" class="w-3.5 h-3.5 fill-current" />
+              Private Repository
+            </span>
+          )}
+        </div>
+      </div>
+
+      <!-- Optional Tag Badges (shown for overview by default) -->
+      <slot name="tags">
+        {!isRoadmap && data.tags && data.tags.length > 0 && (
+          <div class="flex flex-wrap gap-2 pt-2">
+            {data.tags.map((tag: string) => (
+              <span class="tag-pill">{tag}</span>
+            ))}
+          </div>
+        )}
+      </slot>
+    </header>
+
+    <!-- Sub-Navigation Tabs -->
+    <ProjectTabs slug={entry.id} activeTab={activeTab} />
+
+    <!-- Page Specific Content -->
+    <slot />
+  </div>
+</BaseLayout>
+

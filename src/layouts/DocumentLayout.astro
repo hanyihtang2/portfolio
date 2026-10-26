@@ -1,0 +1,64 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  docTitle?: string;
+  image?: string;
+  heading?: string;
+  lead?: string;
+  eyebrow?: string;
+  mainClass?: string;
+}
+
+const {
+  title,
+  description,
+  docTitle,
+  image,
+  heading,
+  lead,
+  eyebrow,
+  mainClass = "max-w-5xl w-full mx-auto px-6 pt-6 pb-16",
+} = Astro.props;
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  docTitle={docTitle}
+  image={image}
+  mainClass={mainClass}
+>
+  <div>
+    <!-- Top Action / Utility Bar (Hidden when printing) -->
+    <div class="print-hidden flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 pb-4 border-b border-default">
+      <div>
+        {eyebrow && (
+          <span class="text-xs uppercase tracking-wider font-semibold text-zinc-500 dark:text-zinc-400 block mb-1">
+            {eyebrow}
+          </span>
+        )}
+        {heading && (
+          <h1 class="text-xl sm:text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
+            {heading}
+          </h1>
+        )}
+        {lead && (
+          <p class="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 mt-0.5">
+            {lead}
+          </p>
+        )}
+      </div>
+
+      <div class="flex flex-wrap items-center gap-3 self-end sm:self-auto">
+        <slot name="actions" />
+      </div>
+    </div>
+
+    <!-- Document Sheet Content -->
+    <slot />
+  </div>
+</BaseLayout>
+

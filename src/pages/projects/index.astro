@@ -1,5 +1,5 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageLayout from '../../layouts/PageLayout.astro';
 import ProjectCard from '../../components/ProjectCard.astro';
 import { getCollection } from 'astro:content';
 
@@ -8,15 +8,15 @@ const allProjects = (await getCollection('projects')).sort(
 );
 ---
 
-<BaseLayout title="Projects" description="All past projects and open source work">
-  <div class="mb-10">
-    <h1 class="type-h1 mb-2">Projects</h1>
-    <p class="type-lead">A catalog of systems, tools, and apps I've designed and built.</p>
-  </div>
-
+<PageLayout
+  title="Projects"
+  description="All past projects and open source work"
+  heading="Projects"
+  lead="A catalog of systems, tools, and apps I've designed and built."
+>
   <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
     {allProjects.map(project => (
       <ProjectCard project={project} headingLevel="h2" />
     ))}
   </div>
-</BaseLayout>
+</PageLayout>

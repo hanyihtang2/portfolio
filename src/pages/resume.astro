@@ -1,36 +1,36 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+import DocumentLayout from '../layouts/DocumentLayout.astro';
 import Icon from '../components/Icon.astro';
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 ---
 
-<BaseLayout
+<DocumentLayout
   title="Resume - Han-Yih Tang"
   docTitle="Han-Yih Tang - Resume"
   description="CV and professional experience of Han-Yih Tang, Technical Product Manager & Builder"
+  heading="Resume"
+  lead="Curriculum Vitae & Professional Background"
 >
-  <div>
-    <!-- Top Action Bar (Hidden when printing) -->
-    <div class="print-hidden flex flex-wrap items-center justify-end gap-3 mb-8 pb-4 border-b border-default">
-      <a
-        href={`${base}/contact`}
-        class="btn-secondary"
-      >
-        Contact Me
-      </a>
-      <button
-        id="print-resume-btn"
-        type="button"
-        class="btn-primary"
-      >
-        <Icon name="print" class="w-4 h-4" />
-        <span>Print / Save as PDF</span>
-      </button>
-    </div>
+  <Fragment slot="actions">
+    <a
+      href={`${base}/contact`}
+      class="btn-secondary"
+    >
+      Contact Me
+    </a>
+    <button
+      id="print-resume-btn"
+      type="button"
+      class="btn-primary"
+    >
+      <Icon name="print" class="w-4 h-4" />
+      <span>Print / Save as PDF</span>
+    </button>
+  </Fragment>
 
-    <!-- Resume Sheet -->
-    <div class="resume-sheet card-base p-6 sm:p-10 space-y-section">
+  <!-- Resume Sheet -->
+  <div class="resume-sheet card-base p-6 sm:p-10 space-y-section">
       <!-- Header -->
       <header class="pb-2 flex flex-col md:flex-row md:items-start justify-between gap-6">
         <div>
@@ -373,9 +373,8 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
           </div>
         </section>
       </div>
-    </div>
   </div>
-</BaseLayout>
+</DocumentLayout>
 
 <script is:inline>
   (function () {

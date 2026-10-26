@@ -7,9 +7,16 @@ interface Props {
   description?: string;
   docTitle?: string;
   image?: string;
+  mainClass?: string;
 }
 
-const { title, description = "CV and professional portfolio of Han-Yih Tang, Technical Product Manager & Builder", docTitle, image } = Astro.props;
+const {
+  title,
+  description = "CV and professional portfolio of Han-Yih Tang, Technical Product Manager & Builder",
+  docTitle,
+  image,
+  mainClass,
+} = Astro.props;
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 const siteUrl = Astro.site ? Astro.site.toString().replace(/\/$/, "") : "https://hanyihtang2.github.io";
 
@@ -69,7 +76,7 @@ const ogImageUrl = image
       Skip to main content
     </a>
     <Navbar />
-    <main id="main-content" class="flex-1 max-w-5xl w-full mx-auto px-6 py-12">
+    <main id="main-content" class={`flex-1 ${mainClass ?? 'max-w-5xl w-full mx-auto px-6 py-12'}`}>
       <slot />
     </main>
     <footer class="border-t border-default py-8 text-center text-xs text-zinc-600 dark:text-zinc-400">

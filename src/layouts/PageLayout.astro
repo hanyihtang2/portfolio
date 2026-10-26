@@ -1,0 +1,57 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  docTitle?: string;
+  image?: string;
+  heading?: string;
+  lead?: string;
+  eyebrow?: string;
+  mainClass?: string;
+  headerClass?: string;
+}
+
+const {
+  title,
+  description,
+  docTitle,
+  image,
+  heading,
+  lead,
+  eyebrow,
+  mainClass = "max-w-5xl w-full mx-auto px-6 pt-8 sm:pt-10 pb-16",
+  headerClass = "mb-10 space-y-3",
+} = Astro.props;
+
+const pageHeading = heading ?? title;
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  docTitle={docTitle}
+  image={image}
+  mainClass={mainClass}
+>
+  <slot name="header">
+    {(pageHeading || lead || eyebrow) && (
+      <header class={headerClass}>
+        {eyebrow && (
+          <div>
+            <span class="tag-pill inline-block">{eyebrow}</span>
+          </div>
+        )}
+        <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-4">
+          {pageHeading && <h1 class="type-h1">{pageHeading}</h1>}
+          <slot name="actions" />
+        </div>
+        {lead && <p class="type-lead max-w-3xl">{lead}</p>}
+      </header>
+    )}
+  </slot>
+
+  <slot />
+</BaseLayout>
+

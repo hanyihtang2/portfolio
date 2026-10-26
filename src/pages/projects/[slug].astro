@@ -1,9 +1,6 @@
 ---
 import { getCollection, render } from 'astro:content';
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import ProjectTabs from '../../components/ProjectTabs.astro';
-import Breadcrumb from '../../components/Breadcrumb.astro';
-import StatusBadge from '../../components/StatusBadge.astro';
+import ProjectDetailLayout from '../../layouts/ProjectDetailLayout.astro';
 import Icon from '../../components/Icon.astro';
 
 export async function getStaticPaths() {
@@ -28,90 +25,7 @@ const sectionLinks = [
 ];
 ---
 
-<BaseLayout title={data.title} description={data.description}>
-  <div>
-    <!-- Breadcrumb -->
-    <Breadcrumb
-      items={[
-        { label: "Projects", href: `${base}/projects` },
-        { label: data.title },
-      ]}
-    />
-
-    <!-- Project Header Hero -->
-    <header class="pb-8 border-b border-default space-y-3">
-      <!-- Status Eyebrow Badge -->
-      <div>
-        <StatusBadge status={data.status} size="md" showDot={true} />
-      </div>
-
-      <h1 class="type-h1">
-        {data.title}
-      </h1>
-
-      <p class="type-lead max-w-3xl pt-1">
-        {data.description}
-      </p>
-
-      <!-- Metadata & Action Bar -->
-      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-2">
-        <div class="flex flex-wrap items-center gap-4 text-xs text-zinc-500 dark:text-zinc-400">
-          {data.role && (
-            <div>
-              <span class="font-medium text-zinc-700 dark:text-zinc-300">Role:</span> {data.role}
-            </div>
-          )}
-          {data.timeline && (
-            <div>
-              <span class="font-medium text-zinc-700 dark:text-zinc-300">Timeline:</span> {data.timeline}
-            </div>
-          )}
-          <div>
-            <span class="font-medium text-zinc-700 dark:text-zinc-300">Published:</span> {data.publishDate.toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}
-          </div>
-        </div>
-
-        <div class="flex items-center gap-3">
-          {data.githubUrl && (
-            <a
-              href={data.githubUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="btn-primary"
-            >
-              <Icon name="github" class="w-4 h-4 fill-current" />
-              GitHub Repo
-            </a>
-          )}
-          {data.liveUrl && (
-            <a
-              href={data.liveUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="btn-secondary"
-            >
-              Live Demo ↗
-            </a>
-          )}
-          {!data.githubUrl && data.status !== 'Concept' && (
-            <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 border border-zinc-200 dark:border-zinc-700">
-              <Icon name="lock" class="w-3.5 h-3.5 fill-current" />
-              Private Repository
-            </span>
-          )}
-        </div>
-      </div>
-
-      <!-- Tag badges -->
-      <div class="flex flex-wrap gap-2 pt-2">
-        {data.tags.map((tag: string) => (
-          <span class="tag-pill">{tag}</span>
-        ))}
-      </div>
-    </header>
-
-    <!-- Sub-Navigation Tabs -->
-    <ProjectTabs slug={entry.id} activeTab="overview" />
+<ProjectDetailLayout entry={entry} activeTab="overview">
 
     <!-- Sticky Single-Scroll Section Quick Navigation -->
     <div class="sticky top-16 z-40 bg-zinc-50/90 dark:bg-zinc-950/90 backdrop-blur-md py-3 border-b border-default -mx-6 px-6 sm:mx-0 sm:px-0">
@@ -387,5 +301,4 @@ const sectionLinks = [
         ↑ Back to top
       </a>
     </div>
-  </div>
-</BaseLayout>
+</ProjectDetailLayout>
