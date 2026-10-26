@@ -451,7 +451,7 @@ const categories = Array.from(new Set(learningItems.map((i) => i.category)));
               </div>
 
               <!-- Main Card Container -->
-              <div class={`flex-1 min-w-0 rounded-xl p-5 sm:p-7 border surface-card shadow-xs border-hover ${phaseTheme.borderAccent}`}>
+              <div class={`card-interactive flex-1 min-w-0 p-5 sm:p-7 ${phaseTheme.borderAccent}`}>
                 <!-- Meta Row: Period, Status, Category -->
                 <div class="flex flex-wrap items-center justify-between gap-2.5 pb-3 border-b border-subtle text-xs">
                   <div class="flex flex-wrap items-center gap-2">
@@ -498,7 +498,7 @@ const categories = Array.from(new Set(learningItems.map((i) => i.category)));
                 </div>
 
                 <!-- Content Block 2: "The Why" (Rationale & Strategic Product Impact / Personal Motivation) -->
-                <div class="mt-4 p-4 rounded-lg surface-muted border space-y-1.5">
+                <div class="card-muted p-4 mt-4 space-y-1.5">
                   <div class="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-zinc-700 dark:text-zinc-300">
                     <svg class="w-3.5 h-3.5 text-amber-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
                       <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
@@ -553,7 +553,7 @@ const categories = Array.from(new Set(learningItems.map((i) => i.category)));
     </section>
 
     <!-- Bottom Learning Philosophy Footer -->
-    <section class="mt-16 p-6 sm:p-8 rounded-xl border surface-card text-center space-y-3">
+    <section class="card-base p-6 sm:p-8 mt-16 text-center space-y-3">
       <h3 class="text-lg font-bold text-zinc-900 dark:text-zinc-100">
         Lifelong Learning as a Product Discipline
       </h3>
