@@ -170,6 +170,3 @@ CREATE INDEX idx_places_user_status_category ON places (user_id, status, categor
 
 Platemark is planned across 4 progressive engineering phases covering spatial data modeling, multi-axis filtering, API auto-enrichment, and curated guide sharing.
 
-> [!NOTE]
-> Milestone timelines, technical deliverables, and phased release targets are documented in the **[Platemark Product Roadmap Subpage](/portfolio/projects/platemark/roadmap)**.
-

@@ -152,7 +152,4 @@ CREATE TABLE medication_dose_logs (
 
 PawPulse is structured into 4 major engineering phases spanning multi-user household synchronization, preventative care scheduling, real-time medication idempotency locking, and veterinary clinic integration.
 
-> [!NOTE]
-> Detailed milestone deliverables, acceptance criteria, and target release quarters are maintained on the dedicated **[PawPulse Product Roadmap Subpage](/portfolio/projects/pawpulse/roadmap)**.
-
 

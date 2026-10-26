@@ -27,10 +27,15 @@ const navItems = [
     <!-- Desktop Navigation Links -->
     <div class="hidden md:flex items-center gap-6 text-sm font-medium">
       {navItems.map((item) => {
-        const isActive = currentPath === item.href.replace(/\/$/, "");
+        const itemPath = item.href.replace(/\/$/, "");
+        const isHome = itemPath === base;
+        const isActive = isHome
+          ? currentPath === base
+          : currentPath === itemPath || currentPath.startsWith(itemPath + '/');
         return (
           <a
             href={item.href}
+            aria-current={isActive ? "page" : undefined}
             class={`transition-colors hover:text-blue-500 ${
               isActive 
                 ? "text-blue-600 dark:text-blue-400 font-semibold" 
@@ -100,10 +105,15 @@ const navItems = [
     class="hidden md:hidden border-t border-default bg-white/95 dark:bg-zinc-950/95 backdrop-blur-md px-6 py-4 flex-col gap-2"
   >
     {navItems.map((item) => {
-      const isActive = currentPath === item.href.replace(/\/$/, "");
+      const itemPath = item.href.replace(/\/$/, "");
+      const isHome = itemPath === base;
+      const isActive = isHome
+        ? currentPath === base
+        : currentPath === itemPath || currentPath.startsWith(itemPath + '/');
       return (
         <a
           href={item.href}
+          aria-current={isActive ? "page" : undefined}
           class={`px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${
             isActive
               ? "text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-950/40 font-semibold"

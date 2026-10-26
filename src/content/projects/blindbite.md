@@ -189,6 +189,3 @@ CREATE TABLE dish_lockbox (
 
 BlindBite is planned across 4 progressive engineering phases covering event generation and blind assignments, theme inspiration tools, dish lockbox security, and live reveal party mode.
 
-> [!NOTE]
-> Detailed feature phases, engineering milestones, and roadmap release targets are available on the **[BlindBite Product Roadmap Subpage](/portfolio/projects/blindbite/roadmap)**.
-

@@ -482,26 +482,6 @@
     cursor: not-allowed;
   }
 
-  .form-select {
-    font-size: var(--text-xs);
-    font-weight: 500;
-    padding: 0.375rem 0.625rem; /* px-2.5 py-1.5 */
-    background-color: var(--surface-card);
-    color: var(--text-primary);
-    border: 1px solid var(--border-default);
-    border-radius: 0.5rem;       /* rounded-lg */
-    cursor: pointer;
-    transition-property: border-color, box-shadow;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    transition-duration: 150ms;
-  }
-  .form-select:focus {
-    outline: 2px solid transparent;
-    outline-offset: 2px;
-    border-color: var(--color-blue-500);
-    box-shadow: 0 0 0 2px var(--color-blue-500);
-  }
-
   .form-feedback {
     border-radius: 0.375rem; /* rounded-md */
     padding: 0.875rem;       /* p-3.5 */

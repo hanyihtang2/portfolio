@@ -591,18 +591,21 @@ function getWhyLabel(category: LearningItem['category']): string {
       }
     }
 
+    function setActiveTab(selectedTab) {
+      tabButtons.forEach((btn) => {
+        btn.classList.remove('active', 'bg-zinc-900', 'text-white', 'dark:bg-zinc-100', 'dark:text-zinc-900');
+        btn.classList.add('bg-white', 'dark:bg-zinc-900', 'text-zinc-700', 'dark:text-zinc-300');
+        btn.setAttribute('aria-pressed', 'false');
+      });
+
+      selectedTab.classList.add('active', 'bg-zinc-900', 'text-white', 'dark:bg-zinc-100', 'dark:text-zinc-900');
+      selectedTab.classList.remove('bg-white', 'dark:bg-zinc-900', 'text-zinc-700', 'dark:text-zinc-300');
+      selectedTab.setAttribute('aria-pressed', 'true');
+    }
+
     tabButtons.forEach((tab) => {
       tab.addEventListener('click', () => {
-        tabButtons.forEach((btn) => {
-          btn.classList.remove('active', 'bg-zinc-900', 'text-white', 'dark:bg-zinc-100', 'dark:text-zinc-900');
-          btn.classList.add('bg-white', 'dark:bg-zinc-900', 'text-zinc-700', 'dark:text-zinc-300');
-          btn.setAttribute('aria-pressed', 'false');
-        });
-
-        tab.classList.add('active', 'bg-zinc-900', 'text-white', 'dark:bg-zinc-100', 'dark:text-zinc-900');
-        tab.classList.remove('bg-white', 'dark:bg-zinc-900', 'text-zinc-700', 'dark:text-zinc-300');
-        tab.setAttribute('aria-pressed', 'true');
-
+        setActiveTab(tab);
         currentPhase = tab.getAttribute('data-filter') || 'all';
         applyFilters();
       });
@@ -611,21 +614,27 @@ function getWhyLabel(category: LearningItem['category']): string {
     if (resetBtn) {
       resetBtn.addEventListener('click', () => {
         currentPhase = 'all';
-
-        tabButtons.forEach((btn, idx) => {
-          if (idx === 0) {
-            btn.classList.add('active', 'bg-zinc-900', 'text-white', 'dark:bg-zinc-100', 'dark:text-zinc-900');
-            btn.classList.remove('bg-white', 'dark:bg-zinc-900', 'text-zinc-700', 'dark:text-zinc-300');
-            btn.setAttribute('aria-pressed', 'true');
-          } else {
-            btn.classList.remove('active', 'bg-zinc-900', 'text-white', 'dark:bg-zinc-100', 'dark:text-zinc-900');
-            btn.classList.add('bg-white', 'dark:bg-zinc-900', 'text-zinc-700', 'dark:text-zinc-300');
-            btn.setAttribute('aria-pressed', 'false');
-          }
-        });
-
+        if (tabButtons.length > 0) {
+          setActiveTab(tabButtons[0]);
+        }
         applyFilters();
       });
     }
+
+    // Support deep-linking via ?phase=current, ?phase=future, ?phase=past
+    try {
+      const urlParams = new URLSearchParams(window.location.search);
+      const paramPhase = urlParams.get('phase');
+      if (paramPhase) {
+        const matchingTab = Array.from(tabButtons).find(
+          (btn) => (btn.getAttribute('data-filter') || '').toLowerCase() === paramPhase.toLowerCase()
+        );
+        if (matchingTab) {
+          setActiveTab(matchingTab);
+          currentPhase = matchingTab.getAttribute('data-filter') || 'all';
+          applyFilters();
+        }
+      }
+    } catch (e) {}
   })();
 </script>
