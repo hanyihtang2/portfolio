@@ -8,78 +8,169 @@ const accessKey = import.meta.env.PUBLIC_WEB3FORMS_ACCESS_KEY || 'YOUR_ACCESS_KE
 <PageLayout
   title="Contact"
   heading="Get in Touch"
-  lead="Feel free to reach out using the form below."
-  description="Get in touch with me"
+  lead="Interested in working togethehr? Connect directly or send a message below."
+  description="Contact Han-Yih Tang, Technical Product Manager & Builder based in London, UK."
 >
-  <div class="max-w-xl">
-    <form
-      id="contact-form"
-      action="https://api.web3forms.com/submit"
-      method="POST"
-      class="space-y-4"
-    >
-      <input type="hidden" name="access_key" value={accessKey} />
-      <input type="hidden" name="subject" value="New Contact Message from Portfolio" />
-      <input type="checkbox" name="botcheck" class="hidden" style="display: none;" tabindex="-1" autocomplete="off" />
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+    <!-- Direct Channels Column -->
+    <div class="lg:col-span-5 space-y-6">
+      <div class="card-base p-6 sm:p-7 space-y-5">
+        <div>
+          <h2 class="type-h3">Direct Channels</h2>
+          <p class="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 mt-1">
+            Prefer direct communication over forms? Reach out through any of the channels below.
+          </p>
+        </div>
 
-      <div>
-        <label for="name" class="form-label">Your Name</label>
-        <input
-          type="text"
-          id="name"
-          name="name"
-          autocomplete="name"
-          required
-          placeholder="Jane Doe"
-          class="form-input"
-        />
+        <div class="space-y-3.5 pt-1">
+          <!-- Email -->
+          <a
+            href="mailto:hanyih.tang@gmail.com"
+            class="group flex items-start gap-3.5 p-3 rounded-lg border border-subtle hover:border-blue-500/50 hover:bg-zinc-100/60 dark:hover:bg-zinc-800/60 transition-all"
+          >
+            <div class="w-9 h-9 rounded-md bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 flex items-center justify-center shrink-0 border border-blue-200/60 dark:border-blue-900/40">
+              <Icon name="mail" class="w-4 h-4" />
+            </div>
+            <div class="min-w-0 flex-1">
+              <span class="text-[11px] font-semibold text-zinc-500 dark:text-zinc-400 block uppercase tracking-wider">Email</span>
+              <span class="text-sm font-medium text-zinc-900 dark:text-zinc-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors break-all">
+                hanyih.tang@gmail.com
+              </span>
+            </div>
+          </a>
+
+          <!-- LinkedIn -->
+          <a
+            href="https://www.linkedin.com/in/hanyih-tang"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group flex items-start gap-3.5 p-3 rounded-lg border border-subtle hover:border-blue-500/50 hover:bg-zinc-100/60 dark:hover:bg-zinc-800/60 transition-all"
+          >
+            <div class="w-9 h-9 rounded-md bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 flex items-center justify-center shrink-0 border border-blue-200/60 dark:border-blue-900/40">
+              <Icon name="linkedin" class="w-4 h-4 fill-current" />
+            </div>
+            <div class="min-w-0 flex-1">
+              <span class="text-[11px] font-semibold text-zinc-500 dark:text-zinc-400 block uppercase tracking-wider">LinkedIn</span>
+              <span class="text-sm font-medium text-zinc-900 dark:text-zinc-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors flex items-center gap-1">
+                <span>linkedin.com/in/hanyih-tang</span>
+                <span class="text-xs">↗</span>
+              </span>
+            </div>
+          </a>
+
+          <!-- GitHub -->
+          <a
+            href="https://github.com/hanyihtang2"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group flex items-start gap-3.5 p-3 rounded-lg border border-subtle hover:border-blue-500/50 hover:bg-zinc-100/60 dark:hover:bg-zinc-800/60 transition-all"
+          >
+            <div class="w-9 h-9 rounded-md bg-zinc-100 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 flex items-center justify-center shrink-0 border border-default">
+              <Icon name="github" class="w-4 h-4 fill-current" />
+            </div>
+            <div class="min-w-0 flex-1">
+              <span class="text-[11px] font-semibold text-zinc-500 dark:text-zinc-400 block uppercase tracking-wider">GitHub</span>
+              <span class="text-sm font-medium text-zinc-900 dark:text-zinc-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors flex items-center gap-1">
+                <span>github.com/hanyihtang2</span>
+                <span class="text-xs">↗</span>
+              </span>
+            </div>
+          </a>
+
+          <!-- Location -->
+          <div class="flex items-start gap-3.5 p-3 rounded-lg border border-subtle surface-muted">
+            <div class="w-9 h-9 rounded-md bg-zinc-200/60 dark:bg-zinc-800/80 text-zinc-600 dark:text-zinc-400 flex items-center justify-center shrink-0">
+              <Icon name="location" class="w-4 h-4" />
+            </div>
+            <div class="min-w-0 flex-1">
+              <span class="text-[11px] font-semibold text-zinc-500 dark:text-zinc-400 block uppercase tracking-wider">Location</span>
+              <span class="text-sm font-medium text-zinc-900 dark:text-zinc-100">London, United Kingdom</span>
+            </div>
+          </div>
+        </div>
       </div>
+    </div>
 
-      <div>
-        <label for="email" class="form-label">Your Email</label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          autocomplete="email"
-          required
-          placeholder="jane@example.com"
-          class="form-input"
-        />
+    <!-- Contact Form Column -->
+    <div class="lg:col-span-7">
+      <div class="card-base p-6 sm:p-8 space-y-5">
+        <div>
+          <h2 class="type-h3">Send a Message</h2>
+          <p class="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 mt-1">
+            Fill out the form below and your message will land directly in my inbox.
+          </p>
+        </div>
+
+        <form
+          id="contact-form"
+          action="https://api.web3forms.com/submit"
+          method="POST"
+          class="space-y-4 pt-1"
+        >
+          <input type="hidden" name="access_key" value={accessKey} />
+          <input type="hidden" name="subject" value="New Contact Message from Portfolio" />
+          <input type="checkbox" name="botcheck" class="hidden" style="display: none;" tabindex="-1" autocomplete="off" />
+
+          <div>
+            <label for="name" class="form-label">Your Name</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              autocomplete="name"
+              required
+              placeholder="Jane Doe"
+              class="form-input"
+            />
+          </div>
+
+          <div>
+            <label for="email" class="form-label">Your Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              autocomplete="email"
+              required
+              placeholder="jane@example.com"
+              class="form-input"
+            />
+          </div>
+
+          <div>
+            <label for="message" class="form-label">Message</label>
+            <textarea
+              id="message"
+              name="message"
+              rows="5"
+              required
+              placeholder="How can we work together?"
+              class="form-input"
+            ></textarea>
+          </div>
+
+          <div
+            id="form-feedback"
+            role="status"
+            aria-live="polite"
+            class="hidden form-feedback"
+          ></div>
+
+          <button
+            id="submit-btn"
+            type="submit"
+            class="btn-primary w-full py-2.5 text-sm"
+          >
+            <Icon
+              name="spinner"
+              id="submit-spinner"
+              class="hidden w-4 h-4 animate-spin"
+            />
+            <span id="submit-text">Send Message</span>
+          </button>
+        </form>
       </div>
-
-      <div>
-        <label for="message" class="form-label">Message</label>
-        <textarea
-          id="message"
-          name="message"
-          rows="5"
-          required
-          placeholder="How can we work together?"
-          class="form-input"
-        ></textarea>
-      </div>
-
-      <div
-        id="form-feedback"
-        role="status"
-        aria-live="polite"
-        class="hidden form-feedback"
-      ></div>
-
-      <button
-        id="submit-btn"
-        type="submit"
-        class="btn-primary w-full py-2.5 text-sm"
-      >
-        <Icon
-          name="spinner"
-          id="submit-spinner"
-          class="hidden w-4 h-4 animate-spin"
-        />
-        <span id="submit-text">Send Message</span>
-      </button>
-    </form>
+    </div>
   </div>
 </PageLayout>
 
