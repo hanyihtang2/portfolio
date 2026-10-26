@@ -38,7 +38,7 @@ const plannedCount = roadmapItems.filter((i) => i.status === 'Planned').length;
     />
 
     <!-- Project Header Hero -->
-    <header class="pb-6 border-b border-zinc-200 dark:border-zinc-800 space-y-3">
+    <header class="pb-6 border-b border-default space-y-3">
       <!-- Status Eyebrow Badge -->
       <div>
         <StatusBadge status={data.status} size="md" showDot={true} />
@@ -112,7 +112,7 @@ const plannedCount = roadmapItems.filter((i) => i.status === 'Planned').length;
     <!-- Roadmap Statistics Summary -->
     {roadmapItems.length > 0 && (
       <div class="my-8 grid grid-cols-2 sm:grid-cols-4 gap-4">
-        <div class="p-4 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900">
+        <div class="p-4 rounded-lg border surface-card">
           <div class="text-2xl sm:text-3xl font-extrabold text-blue-600 dark:text-blue-400 tracking-tight">
             {roadmapItems.length}
           </div>
@@ -124,7 +124,7 @@ const plannedCount = roadmapItems.filter((i) => i.status === 'Planned').length;
           </div>
         </div>
 
-        <div class="p-4 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900">
+        <div class="p-4 rounded-lg border surface-card">
           <div class="text-2xl sm:text-3xl font-extrabold text-emerald-600 dark:text-emerald-400 tracking-tight">
             {completedCount}
           </div>
@@ -136,7 +136,7 @@ const plannedCount = roadmapItems.filter((i) => i.status === 'Planned').length;
           </div>
         </div>
 
-        <div class="p-4 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900">
+        <div class="p-4 rounded-lg border surface-card">
           <div class="text-2xl sm:text-3xl font-extrabold text-amber-600 dark:text-amber-400 tracking-tight">
             {inProgressCount}
           </div>
@@ -148,7 +148,7 @@ const plannedCount = roadmapItems.filter((i) => i.status === 'Planned').length;
           </div>
         </div>
 
-        <div class="p-4 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900">
+        <div class="p-4 rounded-lg border surface-card">
           <div class="text-2xl sm:text-3xl font-extrabold text-zinc-600 dark:text-zinc-400 tracking-tight">
             {plannedCount}
           </div>
@@ -166,8 +166,8 @@ const plannedCount = roadmapItems.filter((i) => i.status === 'Planned').length;
     {roadmapItems.length > 0 ? (
       <div class="mt-8 space-y-6">
         {roadmapItems.map((milestone) => (
-          <article class="p-6 sm:p-7 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 transition-colors shadow-xs">
-            <div class="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-zinc-100 dark:border-zinc-800">
+          <article class="p-6 sm:p-7 rounded-xl border surface-card shadow-xs">
+            <div class="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-subtle">
               <div class="flex items-center gap-2.5">
                 <span class="tag-pill-accent">
                   {milestone.phase}
@@ -192,7 +192,7 @@ const plannedCount = roadmapItems.filter((i) => i.status === 'Planned').length;
             </div>
 
             {milestone.deliverables && milestone.deliverables.length > 0 && (
-              <div class="mt-5 pt-4 border-t border-zinc-100 dark:border-zinc-800/80">
+              <div class="mt-5 pt-4 border-t border-subtle">
                 <span class="text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 block mb-2.5">
                   Milestone Deliverables & Acceptance Criteria
                 </span>
@@ -218,7 +218,7 @@ const plannedCount = roadmapItems.filter((i) => i.status === 'Planned').length;
         ))}
       </div>
     ) : (
-      <div class="my-16 text-center p-12 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900">
+      <div class="my-16 text-center p-12 rounded-xl border surface-card">
         <h3 class="text-lg font-bold text-zinc-900 dark:text-zinc-100">Roadmap In Formulation</h3>
         <p class="text-sm text-zinc-500 dark:text-zinc-400 mt-2 max-w-md mx-auto">
           The milestone breakdown and technical phases for this project are currently being drafted. Check back soon!
@@ -233,7 +233,7 @@ const plannedCount = roadmapItems.filter((i) => i.status === 'Planned').length;
     )}
 
     <!-- Bottom Navigation Footer -->
-    <div class="mt-12 pt-6 border-t border-zinc-200 dark:border-zinc-800 flex justify-between items-center text-sm font-medium">
+    <div class="mt-12 pt-6 border-t border-default flex justify-between items-center text-sm font-medium">
       <a href={`${base}/projects/${entry.id}`} class="text-blue-600 dark:text-blue-400 hover:underline">
         ← Back to {data.title} Case Study
       </a>

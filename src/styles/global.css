@@ -8,6 +8,44 @@
   --space-entry: 1rem;      /* 16px: between repeating cards, jobs, or projects */
   --space-element: 0.75rem; /* 12px: internal stack (heading to body, label to input) */
   --space-micro: 0.375rem;  /* 6px: inline badges, icon + label gaps, bullet items */
+
+  /* Semantic Surface Tokens (Light mode) */
+  --surface-base: var(--color-white, #ffffff);
+  --surface-card: var(--color-white, #ffffff);
+  --surface-muted: var(--color-zinc-50, #fafafa);
+  --surface-elevated: var(--color-zinc-100, #f4f4f5);
+
+  /* Semantic Border Tokens (Light mode) */
+  --border-default: var(--color-zinc-200, #e4e4e7);
+  --border-subtle: color-mix(in srgb, var(--color-zinc-200, #e4e4e7) 60%, transparent);
+  --border-muted: var(--color-zinc-300, #d4d4d8);
+  --border-strong: var(--color-zinc-400, #a1a1aa);
+  --border-hover: var(--color-zinc-400, #a1a1aa);
+
+  /* Semantic Text Contrast Tokens (Light mode) */
+  --text-primary: var(--color-zinc-900, #18181b);
+  --text-secondary: var(--color-zinc-700, #3f3f46);
+  --text-muted: var(--color-zinc-500, #71717a);
+}
+
+.dark {
+  /* Semantic Surface Tokens (Dark mode) */
+  --surface-base: var(--color-zinc-950, #09090b);
+  --surface-card: var(--color-zinc-900, #18181b);
+  --surface-muted: color-mix(in srgb, var(--color-zinc-950, #09090b) 60%, transparent);
+  --surface-elevated: var(--color-zinc-800, #27272a);
+
+  /* Semantic Border Tokens (Dark mode) */
+  --border-default: var(--color-zinc-800, #27272a);
+  --border-subtle: color-mix(in srgb, var(--color-zinc-800, #27272a) 60%, transparent);
+  --border-muted: var(--color-zinc-700, #3f3f46);
+  --border-strong: var(--color-zinc-600, #52525b);
+  --border-hover: var(--color-zinc-600, #52525b);
+
+  /* Semantic Text Contrast Tokens (Dark mode) */
+  --text-primary: var(--color-zinc-100, #f4f4f5);
+  --text-secondary: var(--color-zinc-300, #d4d4d8);
+  --text-muted: var(--color-zinc-400, #a1a1aa);
 }
 
 @theme {
@@ -50,6 +88,48 @@
   }
   .gap-micro {
     gap: var(--space-micro);
+  }
+
+  /* Semantic Surface Utilities */
+  .surface-card {
+    background-color: var(--surface-card);
+    border-color: var(--border-default);
+  }
+
+  .surface-muted {
+    background-color: var(--surface-muted);
+    border-color: var(--border-default);
+  }
+
+  /* Semantic Border Utilities */
+  .border-default {
+    border-color: var(--border-default);
+  }
+
+  .border-subtle {
+    border-color: var(--border-subtle);
+  }
+
+  .border-hover {
+    transition-property: border-color;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+  }
+  .border-hover:hover {
+    border-color: var(--border-hover);
+  }
+
+  /* Semantic Text Color Utilities */
+  .text-primary {
+    color: var(--text-primary);
+  }
+
+  .text-secondary {
+    color: var(--text-secondary);
+  }
+
+  .text-muted {
+    color: var(--text-muted);
   }
 }
 
