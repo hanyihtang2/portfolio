@@ -6,10 +6,19 @@ interface Props {
   title: string;
   description?: string;
   docTitle?: string;
+  image?: string;
 }
 
-const { title, description = "Professional Portfolio", docTitle } = Astro.props;
+const { title, description = "CV and professional portfolio of Han-Yih Tang, Technical Product Manager & Builder", docTitle, image } = Astro.props;
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+const siteUrl = Astro.site ? Astro.site.toString().replace(/\/$/, "") : "https://hanyihtang2.github.io";
+
+const pageTitle = docTitle || `${title} - Han-Yih Tang`;
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site || "https://hanyihtang2.github.io").href;
+
+const ogImageUrl = image
+  ? (image.startsWith('http') ? image : `${siteUrl}${base}${image.startsWith('/') ? image : `/${image}`}`)
+  : `${siteUrl}${base}/images/og-preview.png`;
 ---
 
 <!doctype html>
@@ -19,7 +28,27 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <link rel="icon" type="image/svg+xml" href={`${base}/favicon.svg`} />
-    <title>{docTitle || `${title} - Portfolio`}</title>
+    <title>{pageTitle}</title>
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href={canonicalUrl} />
+
+    <!-- Open Graph / LinkedIn / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Han-Yih Tang - Technical Product Manager & Builder Portfolio" />
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonicalUrl} />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl} />
     <script is:inline>
       (function () {
         try {
