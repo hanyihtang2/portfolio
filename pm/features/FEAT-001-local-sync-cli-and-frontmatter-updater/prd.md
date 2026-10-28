@@ -1,7 +1,7 @@
 ---
 id: FEAT-001
 title: "Local Sync CLI and Safe Frontmatter Updater"
-status: ready
+status: completed
 priority: P0
 target_release: v0.1.0
 lead: human
@@ -85,17 +85,17 @@ Done in 0.42s. Run `git diff` to review changes before committing.
 ---
 
 ## 6. Acceptance Criteria
-- [ ] Running `npm run sync:projects` updates frontmatter without modifying case-study markdown body.
-- [ ] Supports `--dry-run` and targeted `--project <slug>` flags.
-- [ ] Sibling project extractors accurately parse `PlateMark`, `MAKER`, and `CommuteShift`.
-- [ ] `npm run build` passes with zero diagnostics errors after sync.
+- [x] Running `npm run sync:projects` updates frontmatter without modifying case-study markdown body.
+- [x] Supports `--dry-run` and targeted `--project <slug>` flags.
+- [x] Sibling project extractors accurately parse `PlateMark`, `MAKER`, and `CommuteShift`.
+- [x] `npm run build` passes with zero diagnostics errors after sync.
 
 ---
 
 ## 7. Task Breakdown Index
-- [ ] `TASK-001`: Build AST-safe Markdown frontmatter parser & updater utility
-- [ ] `TASK-002`: Implement PlateMark repository extractor (`pm/` and `package.json`)
-- [ ] `TASK-003`: Implement MAKER Turborepo monorepo extractor
-- [ ] `TASK-004`: Implement CommuteShift SPA extractor
-- [ ] `TASK-005`: Build unified sync CLI orchestrator and npm scripts
+- [x] `TASK-001`: Build AST-safe Markdown frontmatter parser & updater utility
+- [x] `TASK-002`: Implement PlateMark repository extractor (`pm/` and `package.json`)
+- [x] `TASK-003`: Implement MAKER Turborepo monorepo extractor
+- [x] `TASK-004`: Implement CommuteShift SPA extractor
+- [x] `TASK-005`: Build unified sync CLI orchestrator and npm scripts
 

@@ -1,8 +1,8 @@
 ---
 id: TASK-001
 parent_feature: FEAT-001
-title: "Build AST-safe Markdown frontmatter parser and updater"
-status: backlog
+title: Build AST-safe Markdown frontmatter parser and updater
+status: done
 priority: P0
 areas:
   - sync/cli
@@ -35,10 +35,10 @@ Create a rock-solid, zero-dependency TypeScript helper module (`scripts/lib/fron
   - Re-attaches verbatim markdown body.
 
 ## 4. Acceptance Criteria
-- [ ] Correctly parses nested objects (`techStack`, `metrics`, `roadmap`).
-- [ ] Preserves multiline strings, markdown tables, and code snippets in the body.
-- [ ] Supports `--dry-run` without modifying the target file.
-- [ ] Handles CRLF and LF line endings seamlessly.
+- [x] Correctly parses nested objects (`techStack`, `metrics`, `roadmap`).
+- [x] Preserves multiline strings, markdown tables, and code snippets in the body.
+- [x] Supports `--dry-run` without modifying the target file.
+- [x] Handles CRLF and LF line endings seamlessly.
 
 ## 5. Agent Run Notes & Prompt Guidance
 > **Agent Instructions:**

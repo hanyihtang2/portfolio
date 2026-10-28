@@ -10,7 +10,12 @@
     "astro": "astro",
     "pm": "node --experimental-strip-types scripts/pm.ts",
     "pm:status": "node --experimental-strip-types scripts/pm.ts status",
-    "pm:roadmap": "node --experimental-strip-types scripts/pm.ts generate-roadmap"
+    "pm:roadmap": "node --experimental-strip-types scripts/pm.ts generate-roadmap",
+    "sync:projects": "node --experimental-strip-types scripts/sync-projects.ts",
+    "sync:dry": "node --experimental-strip-types scripts/sync-projects.ts --dry-run",
+    "sync:platemark": "node --experimental-strip-types scripts/sync-projects.ts --project platemark",
+    "sync:maker": "node --experimental-strip-types scripts/sync-projects.ts --project maker",
+    "sync:commuteshift": "node --experimental-strip-types scripts/sync-projects.ts --project commuteshift"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.12",

@@ -1,8 +1,8 @@
 ---
 id: TASK-002
 parent_feature: FEAT-001
-title: "Implement PlateMark repository extractor"
-status: backlog
+title: Implement PlateMark repository extractor
+status: done
 priority: P0
 areas:
   - sync/cli
@@ -41,9 +41,9 @@ Develop a dedicated extractor module (`scripts/extractors/platemark.ts`) that in
   - `timeline`: `"2026 – Present (Active Development)"`
 
 ## 4. Acceptance Criteria
-- [ ] Successfully extracts PlateMark metadata without throwing when files are missing.
-- [ ] Correctly identifies Neon, Netlify, Better Auth, and Drizzle ORM.
-- [ ] Returns properly formatted schema object compatible with `TASK-001`.
+- [x] Successfully extracts PlateMark metadata without throwing when files are missing.
+- [x] Correctly identifies Neon, Netlify, Better Auth, and Drizzle ORM.
+- [x] Returns properly formatted schema object compatible with `TASK-001`.
 
 ## 5. Agent Run Notes & Prompt Guidance
 > **Agent Instructions:**

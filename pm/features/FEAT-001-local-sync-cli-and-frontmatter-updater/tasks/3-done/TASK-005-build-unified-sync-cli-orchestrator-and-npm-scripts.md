@@ -1,8 +1,8 @@
 ---
 id: TASK-005
 parent_feature: FEAT-001
-title: "Build unified sync CLI orchestrator and npm scripts"
-status: backlog
+title: Build unified sync CLI orchestrator and npm scripts
+status: done
 priority: P0
 areas:
   - sync/cli
@@ -44,9 +44,9 @@ Create the main CLI entrypoint (`scripts/sync-projects.ts`) and wire npm scripts
   - `"sync:platemark": "node --experimental-strip-types scripts/sync-projects.ts --project platemark"`
 
 ## 4. Acceptance Criteria
-- [ ] Running `npm run sync:projects` executes cleanly with Node 26.
-- [ ] Terminal outputs an aesthetic summary of scanned repositories and changes.
-- [ ] `npm run build` passes with zero errors following a sync run.
+- [x] Running `npm run sync:projects` executes cleanly with Node 26.
+- [x] Terminal outputs an aesthetic summary of scanned repositories and changes.
+- [x] `npm run build` passes with zero errors following a sync run.
 
 ## 5. Agent Run Notes & Prompt Guidance
 > **Agent Instructions:**

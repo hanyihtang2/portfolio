@@ -1,8 +1,8 @@
 ---
 id: TASK-003
 parent_feature: FEAT-001
-title: "Implement MAKER Turborepo monorepo extractor"
-status: backlog
+title: Implement MAKER Turborepo monorepo extractor
+status: done
 priority: P1
 areas:
   - sync/cli
@@ -35,9 +35,9 @@ Develop an extractor module (`scripts/extractors/maker.ts`) that traverses `../M
 - Output metrics: total monorepo packages, shared Zod schemas.
 
 ## 4. Acceptance Criteria
-- [ ] Correctly identifies Next.js, Expo, Supabase, Turborepo, and Cloudflare Pages.
-- [ ] Returns valid partial frontmatter for `src/content/projects/maker.md`.
-- [ ] Handles missing sub-packages without throwing errors.
+- [x] Correctly identifies Next.js, Expo, Supabase, Turborepo, and Cloudflare Pages.
+- [x] Returns valid partial frontmatter for `src/content/projects/maker.md`.
+- [x] Handles missing sub-packages without throwing errors.
 
 ## 5. Agent Run Notes & Prompt Guidance
 > **Agent Instructions:**

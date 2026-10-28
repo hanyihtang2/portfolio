@@ -1,8 +1,8 @@
 ---
 id: TASK-004
 parent_feature: FEAT-001
-title: "Implement CommuteShift SPA extractor"
-status: backlog
+title: Implement CommuteShift SPA extractor
+status: done
 priority: P1
 areas:
   - sync/cli
@@ -34,9 +34,9 @@ Develop an extractor module (`scripts/extractors/commuteshift.ts`) that inspects
 - Verify git release tags or branch state.
 
 ## 4. Acceptance Criteria
-- [ ] Correctly identifies React 18, Vite 5, Tailwind CSS, and Vercel infrastructure.
-- [ ] Returns valid partial frontmatter conforming to `src/content.config.ts`.
-- [ ] Safe fallback when run on machines where CommuteShift is not locally present.
+- [x] Correctly identifies React 18, Vite 5, Tailwind CSS, and Vercel infrastructure.
+- [x] Returns valid partial frontmatter conforming to `src/content.config.ts`.
+- [x] Safe fallback when run on machines where CommuteShift is not locally present.
 
 ## 5. Agent Run Notes & Prompt Guidance
 > **Agent Instructions:**
