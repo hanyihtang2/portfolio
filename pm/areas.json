@@ -1,0 +1,56 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "version": "1.0.0",
+  "areas": {
+    "content/projects": {
+      "title": "Project Content & Case Studies",
+      "description": "Astro Content Collections markdown case studies, frontmatter schemas, metrics, and roadmaps.",
+      "paths": [
+        "src/content/projects/",
+        "src/content.config.ts"
+      ],
+      "techStack": ["astro", "zod", "markdown"]
+    },
+    "pages/core": {
+      "title": "Core Pages & Layouts",
+      "description": "Top-level portfolio routes, layout shells, project detail views, roadmap tabs, and resume.",
+      "paths": [
+        "src/pages/",
+        "src/layouts/"
+      ],
+      "techStack": ["astro", "html5"]
+    },
+    "components/ui": {
+      "title": "UI Components & Badges",
+      "description": "Navigation bars, status badges, project tabs, breadcrumbs, and SVG icons.",
+      "paths": [
+        "src/components/"
+      ],
+      "techStack": ["astro", "tailwind-css"]
+    },
+    "styles/theme": {
+      "title": "Global Theme & Design Tokens",
+      "description": "Tailwind CSS v4 global styling, typography scale, dark/light mode surface tokens, and responsive utilities.",
+      "paths": [
+        "src/styles/global.css"
+      ],
+      "techStack": ["tailwindcss"]
+    },
+    "sync/cli": {
+      "title": "Cross-Repo Synchronization CLI",
+      "description": "TypeScript extractors, safe frontmatter updaters, and sibling repository connectors (PlateMark, MAKER, CommuteShift).",
+      "paths": [
+        "scripts/"
+      ],
+      "techStack": ["typescript", "nodejs"]
+    },
+    "automation/ci": {
+      "title": "CI/CD & GitHub Actions",
+      "description": "GitHub Pages deployment pipelines, repository_dispatch listeners, and automated sync PR workflows.",
+      "paths": [
+        ".github/workflows/"
+      ],
+      "techStack": ["github-actions", "yaml"]
+    }
+  }
+}
