@@ -1,8 +1,8 @@
 ---
 id: TASK-009
 parent_feature: FEAT-002
-title: "Calculate live repository operational metrics"
-status: backlog
+title: Calculate live repository operational metrics
+status: done
 priority: P2
 areas:
   - sync/cli
@@ -35,9 +35,9 @@ Build a metrics calculator (`scripts/adapters/metrics-calculator.ts`) that extra
   - Fare matrix test suite verification rate (e.g. `100% Passing`).
 
 ## 4. Acceptance Criteria
-- [ ] Outputs four structured metrics `{ label, value, description }` per project.
-- [ ] Values reflect real numbers discovered in the repositories.
-- [ ] Gracefully falls back to existing values if tests/features cannot be counted.
+- [x] Outputs four structured metrics `{ label, value, description }` per project.
+- [x] Values reflect real numbers discovered in the repositories.
+- [x] Gracefully falls back to existing values if tests/features cannot be counted.
 
 ## 5. Agent Run Notes & Prompt Guidance
 > **Agent Instructions:**

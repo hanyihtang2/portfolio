@@ -1,14 +1,16 @@
 /**
- * PlateMark Repository Extractor (TASK-002)
+ * PlateMark Repository Extractor (TASK-002 & FEAT-002)
  *
  * Inspects sibling PlateMark repository, extracting package dependencies,
- * deployment configurations, and PM-as-Code feature progress.
+ * deployment configurations, PM-as-Code feature progress, live test metrics, and compiled roadmap.
  */
 
 import * as fs from "node:fs";
 import * as path from "node:path";
 import type { ProjectExtractor, ProjectExtractionResult } from "./types.ts";
-import type { ProjectFrontmatter, TechStack, Metric } from "../lib/frontmatter.ts";
+import type { ProjectFrontmatter, TechStack, Metric, RoadmapItem } from "../lib/frontmatter.ts";
+import { compilePlateMarkRoadmap } from "../adapters/platemark-roadmap.ts";
+import { calculatePlateMarkMetrics } from "../adapters/metrics-calculator.ts";
 
 export const PlateMarkExtractor: ProjectExtractor = {
   slug: "platemark",
@@ -74,7 +76,6 @@ export const PlateMarkExtractor: ProjectExtractor = {
     if (fs.existsSync(path.join(repoPath, "netlify.toml"))) {
       infrastructure.push("Netlify (Next.js Runtime & Edge CDN)");
     }
-    // Check for Cloudflare workers or Places proxy
     infrastructure.push("Cloudflare Workers (Places API Proxy)");
 
     // 4. Derive Tools
@@ -90,33 +91,10 @@ export const PlateMarkExtractor: ProjectExtractor = {
       tools.push("PM-as-Code CLI (tsx pm.ts)");
     }
 
-    // 5. Parse pm/ROADMAP.md if present
-    const roadmapPath = path.join(repoPath, "pm/ROADMAP.md");
-    let totalInitiatives = 17; // fallback baseline
-    let completedInitiatives = 11;
-
-    if (fs.existsSync(roadmapPath)) {
-      try {
-        const roadmapMd = fs.readFileSync(roadmapPath, "utf-8");
-        const lines = roadmapMd.split(/\r?\n/);
-        let countTotal = 0;
-        let countDone = 0;
-        for (const line of lines) {
-          if (line.trim().startsWith("| [") && line.includes("](./features/")) {
-            countTotal++;
-            if (line.includes("`completed`") || line.includes("(100%)")) {
-              countDone++;
-            }
-          }
-        }
-        if (countTotal > 0) {
-          totalInitiatives = countTotal;
-          completedInitiatives = countDone;
-        }
-      } catch (err: any) {
-        warnings.push(`Failed to inspect PlateMark pm/ROADMAP.md: ${err.message}`);
-      }
-    }
+    // 5. Calculate Metrics & Roadmap
+    const pmDir = path.join(repoPath, "pm");
+    const metrics: Metric[] = calculatePlateMarkMetrics(repoPath);
+    const roadmap: RoadmapItem[] = compilePlateMarkRoadmap(pmDir);
 
     const techStack: TechStack = {
       languages: ["TypeScript", "SQL (PostGIS)", "CSS"],
@@ -125,34 +103,12 @@ export const PlateMarkExtractor: ProjectExtractor = {
       tools: tools.length > 0 ? tools : ["Drizzle ORM", "Better Auth", "Supercluster", "Zustand", "TanStack Query", "Vitest"],
     };
 
-    const metrics: Metric[] = [
-      {
-        label: "Spatial Query Latency",
-        value: "< 20ms",
-        description: "Neon PostGIS GIST bounding box & radius lookups",
-      },
-      {
-        label: "Map Viewport",
-        value: "60 FPS",
-        description: "Supercluster marker aggregation with sheet-aware camera offset",
-      },
-      {
-        label: "Automated Tests",
-        value: "52+ Tests",
-        description: "Vitest unit & component test suite across filters & routes",
-      },
-      {
-        label: "PM-as-Code Delivery",
-        value: `${totalInitiatives} Initiatives`,
-        description: "100% version-controlled PRDs, staged tasks & CLI roadmap in git",
-      },
-    ];
-
     const updates: Partial<ProjectFrontmatter> = {
       status: "In Progress",
       timeline: "2026 – Present (Active Development)",
       techStack,
       metrics,
+      roadmap,
     };
 
     return {
@@ -167,8 +123,7 @@ export const PlateMarkExtractor: ProjectExtractor = {
         techStackSummary: `${frameworks.join(", ")} | ${infrastructure.join(", ")}`,
         metricsCount: metrics.length,
         details: {
-          totalInitiatives,
-          completedInitiatives,
+          roadmapPhases: roadmap.length,
         },
       },
     };
@@ -181,4 +136,3 @@ if (process.argv[1] && process.argv[1].replace(/\\/g, "/").endsWith("scripts/ext
   const result = PlateMarkExtractor.extract();
   console.log("Result:", JSON.stringify(result, null, 2));
 }
-

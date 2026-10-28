@@ -1,8 +1,8 @@
 ---
 id: TASK-007
 parent_feature: FEAT-002
-title: "Extract task deliverables from completed tasks"
-status: backlog
+title: Extract task deliverables from completed tasks
+status: done
 priority: P1
 areas:
   - sync/cli
@@ -32,9 +32,9 @@ Create a function that scans `pm/features/<FEAT-ID>/tasks/3-done/` across PlateM
 - Fallback gracefully to `prd.md` scope items if a feature has zero completed tasks yet.
 
 ## 4. Acceptance Criteria
-- [ ] Finished tasks in PlateMark appear as deliverables in the portfolio roadmap.
-- [ ] Deliverable titles read clearly for external visitors and recruiters.
-- [ ] No empty bullet points or unparsed template tags.
+- [x] Finished tasks in PlateMark appear as deliverables in the portfolio roadmap.
+- [x] Deliverable titles read clearly for external visitors and recruiters.
+- [x] No empty bullet points or unparsed template tags.
 
 ## 5. Agent Run Notes & Prompt Guidance
 > **Agent Instructions:**

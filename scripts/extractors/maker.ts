@@ -1,14 +1,16 @@
 /**
- * MAKER Turborepo Monorepo Extractor (TASK-003)
+ * MAKER Turborepo Monorepo Extractor (TASK-003 & FEAT-002)
  *
  * Traverses sibling MAKER repository, analyzing Turborepo workspace configs,
- * Next.js web app, Expo mobile app, shared packages, and Cloudflare Pages hosting.
+ * Next.js web app, Expo mobile app, shared packages, Cloudflare Pages hosting,
+ * and live topology metrics.
  */
 
 import * as fs from "node:fs";
 import * as path from "node:path";
 import type { ProjectExtractor, ProjectExtractionResult } from "./types.ts";
 import type { ProjectFrontmatter, TechStack, Metric } from "../lib/frontmatter.ts";
+import { calculateMakerMetrics } from "../adapters/metrics-calculator.ts";
 
 export const MakerExtractor: ProjectExtractor = {
   slug: "maker",
@@ -134,28 +136,7 @@ export const MakerExtractor: ProjectExtractor = {
       tools: tools.length > 0 ? tools : ["Turborepo", "Zod", "Lucide Icons", "npm Workspaces"],
     };
 
-    const metrics: Metric[] = [
-      {
-        label: "Activation Target",
-        value: "> 60%",
-        description: "Material & tool checklist check",
-      },
-      {
-        label: "Workshop Adoption",
-        value: "> 50%",
-        description: "Mobile workshop mode usage",
-      },
-      {
-        label: "Reliability",
-        value: "100%",
-        description: "Offline cached step resilience",
-      },
-      {
-        label: "Unlock Conversion",
-        value: "> 4.5%",
-        description: "Paid blueprint purchase rate",
-      },
-    ];
+    const metrics: Metric[] = calculateMakerMetrics(repoPath);
 
     const updates: Partial<ProjectFrontmatter> = {
       status: "In Progress",
@@ -193,4 +174,3 @@ if (process.argv[1] && process.argv[1].replace(/\\/g, "/").endsWith("scripts/ext
   const result = MakerExtractor.extract();
   console.log("Result:", JSON.stringify(result, null, 2));
 }
-

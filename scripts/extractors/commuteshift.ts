@@ -1,14 +1,15 @@
 /**
- * CommuteShift SPA Extractor (TASK-004)
+ * CommuteShift SPA Extractor (TASK-004 & FEAT-002)
  *
  * Inspects sibling CommuteShift repository, extracting Vite build configurations,
- * React/Tailwind versions, Vercel deployment status, and fare matrix test coverage.
+ * React/Tailwind versions, Vercel deployment status, and test suite verification metrics.
  */
 
 import * as fs from "node:fs";
 import * as path from "node:path";
 import type { ProjectExtractor, ProjectExtractionResult } from "./types.ts";
 import type { ProjectFrontmatter, TechStack, Metric } from "../lib/frontmatter.ts";
+import { calculateCommuteShiftMetrics } from "../adapters/metrics-calculator.ts";
 
 export const CommuteShiftExtractor: ProjectExtractor = {
   slug: "commuteshift",
@@ -95,28 +96,7 @@ export const CommuteShiftExtractor: ProjectExtractor = {
       tools,
     };
 
-    const metrics: Metric[] = [
-      {
-        label: "Activation Target",
-        value: "> 75%",
-        description: "Calculator completion rate",
-      },
-      {
-        label: "Time to Insight",
-        value: "< 45s",
-        description: "Zero-signup reactive calculation",
-      },
-      {
-        label: "Zone Coverage",
-        value: "Zones 1–6",
-        description: "Peak, Off-Peak, Daily Cap & Railcard",
-      },
-      {
-        label: "Viral Share Rate",
-        value: "> 8%",
-        description: "URL state link & Slack report copy",
-      },
-    ];
+    const metrics: Metric[] = calculateCommuteShiftMetrics(repoPath);
 
     const updates: Partial<ProjectFrontmatter> = {
       status: "Completed",
@@ -152,4 +132,3 @@ if (process.argv[1] && process.argv[1].replace(/\\/g, "/").endsWith("scripts/ext
   const result = CommuteShiftExtractor.extract();
   console.log("Result:", JSON.stringify(result, null, 2));
 }
-

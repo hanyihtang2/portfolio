@@ -1,0 +1,78 @@
+{
+  "$schema": "../../scripts/schemas/portfolio-meta.schema.json",
+  "slug": "maker",
+  "title": "MAKER",
+  "description": "A cross-platform DIY blueprint and creator platform connecting woodworkers with trusted makers.",
+  "status": "In Progress",
+  "role": "Product Engineer",
+  "timeline": "2026 – Present",
+  "liveUrl": "https://maker.hanyihtang2.workers.dev/",
+  "techStack": {
+    "languages": ["TypeScript", "SQL (PL/pgSQL)", "CSS"],
+    "frameworks": ["Next.js", "React 19", "Expo / React Native", "Tailwind CSS"],
+    "infrastructure": ["Cloudflare Pages", "Supabase (PostgreSQL & Auth)", "GitHub Actions"],
+    "tools": ["Turborepo", "Zod", "Lucide Icons", "npm Workspaces"]
+  },
+  "metrics": [
+    {
+      "label": "Activation Target",
+      "value": "> 60%",
+      "description": "Material & tool checklist check"
+    },
+    {
+      "label": "Workshop Adoption",
+      "value": "> 50%",
+      "description": "Mobile workshop mode usage"
+    },
+    {
+      "label": "Reliability",
+      "value": "100%",
+      "description": "Offline cached step resilience"
+    },
+    {
+      "label": "Unlock Conversion",
+      "value": "> 4.5%",
+      "description": "Paid blueprint purchase rate"
+    }
+  ],
+  "roadmap": [
+    {
+      "phase": "Phase 1",
+      "title": "Turborepo Scaffolding & Unified Domain Models",
+      "status": "Completed",
+      "targetQuarter": "Q3 2026",
+      "summary": "Monorepo architecture sharing core TypeScript types, Zod validators, and Supabase database clients across web and mobile.",
+      "deliverables": [
+        "Turborepo setup with 5 packages (2 apps + 3 shared libraries)",
+        "Relational Supabase PostgreSQL schema with RLS security policies",
+        "Shared Zod blueprint schemas and PL/pgSQL rating triggers"
+      ]
+    },
+    {
+      "phase": "Phase 2",
+      "title": "Next.js Web Blueprint Discovery & Creator Studio",
+      "status": "In Progress",
+      "targetQuarter": "Q4 2026",
+      "summary": "Web-based blueprint authoring, video step embedding, cut list calculators, and community reviews.",
+      "deliverables": [
+        "Cloudflare Pages production deployment & continuous delivery pipeline",
+        "Interactive cut list optimizer and lumber yield calculator",
+        "Creator dashboard with draft/publish workflow",
+        "User reviews, build photos, and community question threads"
+      ]
+    },
+    {
+      "phase": "Phase 3",
+      "title": "Expo Mobile Offline Workshop Mode",
+      "status": "Planned",
+      "targetQuarter": "Q1 2027",
+      "summary": "High-contrast workshop mode, offline step caching, and hardware bluetooth tool pairing.",
+      "deliverables": [
+        "Offline-first SQLite local plan synchronizer",
+        "Hands-free voice step advancement in sawdust environments",
+        "Interactive bill-of-materials tool checklist with store deep links"
+      ]
+    }
+  ]
+}
+

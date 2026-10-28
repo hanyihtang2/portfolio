@@ -1,0 +1,135 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://portfolio.local/schemas/portfolio-meta.schema.json",
+  "title": "PortfolioProjectMeta",
+  "description": "Standardized project metadata and roadmap export contract for portfolio synchronization",
+  "type": "object",
+  "required": ["slug", "status", "timeline", "techStack"],
+  "properties": {
+    "slug": {
+      "type": "string",
+      "description": "Unique identifier slug matching portfolio content/projects filename",
+      "pattern": "^[a-z0-9-]+$"
+    },
+    "title": {
+      "type": "string",
+      "description": "Display name of the project"
+    },
+    "description": {
+      "type": "string",
+      "description": "One-line executive summary or project description"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["Completed", "In Progress", "Concept"],
+      "description": "Current overarching lifecycle status of the project"
+    },
+    "role": {
+      "type": "string",
+      "description": "Author or engineering role on this project"
+    },
+    "timeline": {
+      "type": "string",
+      "description": "Active timeline or milestone duration (e.g. '2026 – Present')"
+    },
+    "githubUrl": {
+      "type": "string",
+      "format": "uri",
+      "description": "Public or private GitHub repository URL"
+    },
+    "liveUrl": {
+      "type": "string",
+      "format": "uri",
+      "description": "Production deployed application URL"
+    },
+    "techStack": {
+      "type": "object",
+      "description": "Categorized technology stack breakdown",
+      "properties": {
+        "languages": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Primary programming languages used"
+        },
+        "frameworks": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Web, mobile, or UI frameworks used"
+        },
+        "tools": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Libraries, utilities, ORMs, and state management tools"
+        },
+        "infrastructure": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Cloud hosting, databases, CDNs, and serverless infrastructure"
+        }
+      },
+      "additionalProperties": false
+    },
+    "metrics": {
+      "type": "array",
+      "description": "Key quantifiable operational, technical, or business metrics",
+      "items": {
+        "type": "object",
+        "required": ["label", "value"],
+        "properties": {
+          "label": {
+            "type": "string",
+            "description": "Display title of the metric"
+          },
+          "value": {
+            "type": "string",
+            "description": "Quantified value or rate (e.g. '< 20ms', '60 FPS', '52+ Tests')"
+          },
+          "description": {
+            "type": "string",
+            "description": "Short explanatory footnote or engineering context"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "roadmap": {
+      "type": "array",
+      "description": "Sequential milestone phases of the product roadmap",
+      "items": {
+        "type": "object",
+        "required": ["phase", "title", "status", "summary", "deliverables"],
+        "properties": {
+          "phase": {
+            "type": "string",
+            "description": "Phase identifier (e.g. 'Phase 1', 'Phase 2')"
+          },
+          "title": {
+            "type": "string",
+            "description": "Descriptive title of the milestone phase"
+          },
+          "status": {
+            "type": "string",
+            "enum": ["Completed", "In Progress", "Planned"],
+            "description": "Current execution status of this phase"
+          },
+          "targetQuarter": {
+            "type": "string",
+            "description": "Target completion quarter or year (e.g. 'Q4 2026', 'Q1 2027')"
+          },
+          "summary": {
+            "type": "string",
+            "description": "Brief narrative summary of this phase's scope and purpose"
+          },
+          "deliverables": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "List of key delivered capabilities or merged milestone features"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}
+

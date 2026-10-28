@@ -22,7 +22,7 @@ metrics:
     description: "Zero-signup reactive calculation"
   - label: "Zone Coverage"
     value: "Zones 1–6"
-    description: "Peak, Off-Peak, Daily Cap & Railcard"
+    description: "Peak, Off-Peak, Daily Cap & Railcard (10 scenarios tested)"
   - label: "Viral Share Rate"
     value: "> 8%"
     description: "URL state link & Slack report copy"

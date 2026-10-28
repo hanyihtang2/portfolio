@@ -1,8 +1,8 @@
 ---
 id: TASK-006
 parent_feature: FEAT-002
-title: "Build PlateMark feature-to-phase roadmap compiler"
-status: backlog
+title: Build PlateMark feature-to-phase roadmap compiler
+status: done
 priority: P1
 areas:
   - sync/cli
@@ -37,9 +37,9 @@ Build an adapter (`scripts/adapters/platemark-roadmap.ts`) that reads PlateMark'
   - If all are `ready` or `draft` $\rightarrow$ `status: "Planned"`
 
 ## 4. Acceptance Criteria
-- [ ] Returns 5 correctly structured phases matching the portfolio roadmap layout.
-- [ ] Status correctly shifts as features complete in PlateMark.
-- [ ] Type-checked against the `projects` collection schema.
+- [x] Returns 5 correctly structured phases matching the portfolio roadmap layout.
+- [x] Status correctly shifts as features complete in PlateMark.
+- [x] Type-checked against the `projects` collection schema.
 
 ## 5. Agent Run Notes & Prompt Guidance
 > **Agent Instructions:**

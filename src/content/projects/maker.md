@@ -17,7 +17,7 @@ metrics:
     description: "Mobile workshop mode usage"
   - label: "Reliability"
     value: "100%"
-    description: "Offline cached step resilience"
+    description: "Offline cached step resilience across 5 Turborepo packages"
   - label: "Unlock Conversion"
     value: "> 4.5%"
     description: "Paid blueprint purchase rate"

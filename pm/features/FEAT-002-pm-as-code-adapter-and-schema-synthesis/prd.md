@@ -1,7 +1,7 @@
 ---
 id: FEAT-002
 title: "PM-as-Code Adapter and Dynamic Roadmap Synthesizer"
-status: ready
+status: completed
 priority: P1
 target_release: v0.2.0
 lead: human
@@ -59,16 +59,16 @@ PlateMark pioneers repository-native PM-as-Code with 17 features and 40+ granula
 ---
 
 ## 5. Acceptance Criteria
-- [ ] Portfolio roadmap items for PlateMark match `pm/ROADMAP.md` task execution counts.
-- [ ] Deliverable bullet points reflect actual merged tasks in `tasks/3-done/`.
-- [ ] `portfolio-meta.json` schema is documented with a valid JSON schema draft-07.
-- [ ] `npm run build` succeeds cleanly with the generated roadmap data.
+- [x] Portfolio roadmap items for PlateMark match `pm/ROADMAP.md` task execution counts.
+- [x] Deliverable bullet points reflect actual merged tasks in `tasks/3-done/`.
+- [x] `portfolio-meta.json` schema is documented with a valid JSON schema draft-07.
+- [x] `npm run build` succeeds cleanly with the generated roadmap data.
 
 ---
 
 ## 6. Task Breakdown Index
-- [ ] `TASK-006`: Build PlateMark feature-to-phase roadmap compiler
-- [ ] `TASK-007`: Extract task deliverables from completed tasks (`tasks/3-done/`)
-- [ ] `TASK-008`: Design standardized `portfolio-meta.json` export schema
-- [ ] `TASK-009`: Calculate live repository operational metrics
+- [x] `TASK-006`: Build PlateMark feature-to-phase roadmap compiler
+- [x] `TASK-007`: Extract task deliverables from completed tasks (`tasks/3-done/`)
+- [x] `TASK-008`: Design standardized `portfolio-meta.json` export schema
+- [x] `TASK-009`: Calculate live repository operational metrics
 

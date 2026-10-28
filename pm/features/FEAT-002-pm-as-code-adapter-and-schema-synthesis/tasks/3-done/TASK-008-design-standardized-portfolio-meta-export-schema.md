@@ -1,8 +1,8 @@
 ---
 id: TASK-008
 parent_feature: FEAT-002
-title: "Design standardized portfolio-meta export schema"
-status: backlog
+title: Design standardized portfolio-meta export schema
+status: done
 priority: P1
 areas:
   - sync/cli
@@ -36,9 +36,9 @@ Author a universal JSON Schema specification (`scripts/schemas/portfolio-meta.sc
 - Provide `pm/templates/portfolio-meta.example.json` for easy bootstrapping in MAKER.
 
 ## 4. Acceptance Criteria
-- [ ] Valid JSON Schema draft-07 specification.
-- [ ] Conforms exactly to Astro `src/content.config.ts` collection requirements.
-- [ ] Includes clear field documentation and validation rules.
+- [x] Valid JSON Schema draft-07 specification.
+- [x] Conforms exactly to Astro `src/content.config.ts` collection requirements.
+- [x] Includes clear field documentation and validation rules.
 
 ## 5. Agent Run Notes & Prompt Guidance
 > **Agent Instructions:**
