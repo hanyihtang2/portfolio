@@ -51,6 +51,18 @@
         ".github/workflows/"
       ],
       "techStack": ["github-actions", "yaml"]
+    },
+    "review/agentic": {
+      "title": "Agentic Review & Quality Gates",
+      "description": "Two-tier reviewer contracts, pre-review verification scripts, PR evidence templates, and GitHub Actions quality gates.",
+      "paths": [
+        "scripts/review/",
+        ".github/workflows/agent-*.yml",
+        ".github/pull_request_template.md",
+        "pm/standards/",
+        "docs/guides/"
+      ],
+      "techStack": ["typescript", "github-actions", "markdown"]
     }
   }
 }

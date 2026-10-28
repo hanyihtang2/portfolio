@@ -2,7 +2,7 @@
 title: "PlateMark"
 description: "An interactive geospatial hospitality atlas and personal discovery notebook for food & drink enthusiasts—built with Next.js 16, MapLibre GL, Neon PostGIS, Drizzle ORM, and repository-native PM-as-Code delivery."
 publishDate: 2026-10-28
-tags: ["Product Management", "Next.js 16", "React 19", "MapLibre GL", "PostGIS", "Neon Postgres", "Drizzle ORM", "Netlify", "PM-as-Code", "Better Auth", "Tailwind CSS"]
+tags: ["Next.js 16", "React 19", "MapLibre GL", "PostGIS", "Neon Postgres", "Drizzle ORM", "Netlify", "Better Auth", "Tailwind CSS"]
 githubUrl: "https://github.com/hanyihtang2/PlateMark"
 liveUrl: "https://platemark.netlify.app"
 featured: true
