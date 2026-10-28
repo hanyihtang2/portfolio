@@ -7,7 +7,10 @@
     "start": "astro dev",
     "build": "astro check && astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "pm": "node --experimental-strip-types scripts/pm.ts",
+    "pm:status": "node --experimental-strip-types scripts/pm.ts status",
+    "pm:roadmap": "node --experimental-strip-types scripts/pm.ts generate-roadmap"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.12",

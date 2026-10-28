@@ -9,7 +9,7 @@ mockupImage: "/images/projects/commuteshift-mockup.png"
 mockupCaption: "Two-column interactive layout pairing 3-step commute routine inputs (Left) with an instant, zero-signup PAYG vs. Travelcard savings verdict and Slack/link viral sharing actions (Right)."
 mobileMockupImage: "/images/projects/commuteshift-mobile-mockup.png"
 mobileMockupCaption: "Single-column progressive disclosure optimized for the 60%+ mobile traffic arriving from Slack and LinkedIn shares, stacking From/To Zone inputs and thumb-friendly day toggles."
-featured: true
+featured: false
 status: "Completed"
 role: "Product Manager & Engineer"
 timeline: "2026 (v1.0 MVP Live)"
