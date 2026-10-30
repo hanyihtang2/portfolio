@@ -48,12 +48,36 @@ function parseFrontmatter(content: string): { data: Record<string, unknown>; bod
       const key = line.slice(0, colonIndex).trim();
       let value = line.slice(colonIndex + 1).trim();
 
-      const commentIdx = value.indexOf("#");
+      // Quote-aware comment stripping (F-002)
+      let inDouble = false;
+      let inSingle = false;
+      let commentIdx = -1;
+      for (let i = 0; i < value.length; i++) {
+        const ch = value[i];
+        if (ch === '"' && !inSingle) inDouble = !inDouble;
+        else if (ch === "'" && !inDouble) inSingle = !inSingle;
+        else if (ch === "#" && !inDouble && !inSingle) {
+          if (i === 0 || /\s/.test(value[i - 1])) {
+            commentIdx = i;
+            break;
+          }
+        }
+      }
       if (commentIdx >= 0) value = value.slice(0, commentIdx).trim();
-      value = value.replace(/^["']|["']$/g, "");
 
       currentKey = key;
-      data[key] = value === "" ? [] : value;
+
+      // Parse inline flow array [a, b, c] (F-008)
+      if (value.startsWith("[") && value.endsWith("]")) {
+        data[key] = value
+          .slice(1, -1)
+          .split(",")
+          .map((s) => s.trim().replace(/^["']|["']$/g, ""))
+          .filter(Boolean);
+      } else {
+        value = value.replace(/^["']|["']$/g, "");
+        data[key] = value === "" ? [] : value;
+      }
     }
   }
 
@@ -68,7 +92,9 @@ function findTaskFile(taskIdOrKeyword: string): string | null {
     .map((d) => d.name);
 
   const stages = ["1-in-progress", "2-review", "0-backlog", "3-done"];
+  const lowerTarget = taskIdOrKeyword.toLowerCase();
 
+  // Primary pass: anchored match (F-007: prevents TASK-1 matching TASK-10)
   for (const feat of features) {
     const tasksBase = path.join(FEATURES_DIR, feat, "tasks");
     for (const stage of stages) {
@@ -77,7 +103,29 @@ function findTaskFile(taskIdOrKeyword: string): string | null {
 
       const files = fs.readdirSync(stageDir).filter((f) => f.endsWith(".md"));
       for (const file of files) {
-        if (file.toLowerCase().includes(taskIdOrKeyword.toLowerCase())) {
+        const lowerFile = file.toLowerCase();
+        if (
+          lowerFile.startsWith(`${lowerTarget}-`) ||
+          lowerFile.startsWith(`${lowerTarget}.`) ||
+          lowerFile === `${lowerTarget}.md` ||
+          lowerFile === lowerTarget
+        ) {
+          return path.join(stageDir, file);
+        }
+      }
+    }
+  }
+
+  // Secondary fallback: only if no anchored match was found, allow substring search
+  for (const feat of features) {
+    const tasksBase = path.join(FEATURES_DIR, feat, "tasks");
+    for (const stage of stages) {
+      const stageDir = path.join(tasksBase, stage);
+      if (!fs.existsSync(stageDir)) continue;
+
+      const files = fs.readdirSync(stageDir).filter((f) => f.endsWith(".md"));
+      for (const file of files) {
+        if (file.toLowerCase().includes(lowerTarget)) {
           return path.join(stageDir, file);
         }
       }
@@ -196,6 +244,11 @@ function getGitContext(baseBranch: string): {
   changedFiles: string[];
   gitDiff: string;
 } {
+  // Validate baseBranch to prevent shell injection (F-001)
+  if (!/^[a-zA-Z0-9_\-\./]+$/.test(baseBranch)) {
+    throw new Error(`Security error: Invalid base branch name "${baseBranch}".`);
+  }
+
   let currentBranch = "main";
   try {
     currentBranch = execSync("git rev-parse --abbrev-ref HEAD", {
@@ -212,10 +265,11 @@ function getGitContext(baseBranch: string): {
   const changedFilesSet = new Set<string>();
 
   try {
-    const committedDiff = execSync(`git diff --name-only ${baseBranch}...HEAD`, {
+    const res = spawnSync("git", ["diff", "--name-only", `${baseBranch}...HEAD`], {
       cwd: ROOT_DIR,
       encoding: "utf-8",
-    }).trim();
+    });
+    const committedDiff = (res.stdout || "").trim();
     if (committedDiff) {
       committedDiff.split(/\r?\n/).forEach((f) => f.trim() && changedFilesSet.add(f.trim().replace(/\\/g, "/")));
     }
@@ -252,11 +306,12 @@ function getGitContext(baseBranch: string): {
   // Full unified diff
   let gitDiff = "";
   try {
-    const branchDiff = execSync(`git diff ${baseBranch}...HEAD`, {
+    const res = spawnSync("git", ["diff", `${baseBranch}...HEAD`], {
       cwd: ROOT_DIR,
       encoding: "utf-8",
       maxBuffer: 10 * 1024 * 1024,
-    }).trim();
+    });
+    const branchDiff = (res.stdout || "").trim();
     if (branchDiff) gitDiff += branchDiff + "\n";
   } catch {
     // fallback

@@ -2,7 +2,7 @@
 id: TASK-023
 parent_feature: FEAT-006
 title: Integrate PostHog Analytics and Recruiter Event Tracking
-status: review
+status: done
 priority: P1
 areas:
   - analytics/posthog

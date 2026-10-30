@@ -77,20 +77,41 @@ function parseFrontmatter(content: string): { data: Frontmatter; body: string } 
       const key = line.slice(0, colonIndex).trim();
       let value = line.slice(colonIndex + 1).trim();
 
-      // Strip trailing comment
-      const commentIdx = value.indexOf("#");
+      // Quote-aware comment stripping (F-002)
+      let inDouble = false;
+      let inSingle = false;
+      let commentIdx = -1;
+      for (let i = 0; i < value.length; i++) {
+        const ch = value[i];
+        if (ch === '"' && !inSingle) inDouble = !inDouble;
+        else if (ch === "'" && !inDouble) inSingle = !inSingle;
+        else if (ch === "#" && !inDouble && !inSingle) {
+          if (i === 0 || /\s/.test(value[i - 1])) {
+            commentIdx = i;
+            break;
+          }
+        }
+      }
       if (commentIdx >= 0) {
         value = value.slice(0, commentIdx).trim();
       }
 
-      // Strip quotes
-      value = value.replace(/^["']|["']$/g, "");
-
       currentKey = key;
-      if (value === "") {
-        data[key] = [];
+
+      // Handle inline flow array [a, b, c]
+      if (value.startsWith("[") && value.endsWith("]")) {
+        data[key] = value
+          .slice(1, -1)
+          .split(",")
+          .map((s) => s.trim().replace(/^["']|["']$/g, ""))
+          .filter(Boolean);
       } else {
-        data[key] = value;
+        value = value.replace(/^["']|["']$/g, "");
+        if (value === "") {
+          data[key] = [];
+        } else {
+          data[key] = value;
+        }
       }
     }
   }
@@ -514,12 +535,32 @@ function moveTaskCommand(taskTarget: string, targetStageRaw: string) {
     for (const stage of ["0-backlog", "1-in-progress", "2-review", "3-done"]) {
       const sDir = path.join(tasksBase, stage);
       if (fs.existsSync(sDir)) {
-        for (const file of fs.readdirSync(sDir)) {
-          if (file.toLowerCase().includes(taskTarget.toLowerCase())) {
+        const lowerTarget = taskTarget.toLowerCase();
+        const files = fs.readdirSync(sDir);
+        // Primary pass: anchored match (F-007)
+        for (const file of files) {
+          const lowerFile = file.toLowerCase();
+          if (
+            lowerFile.startsWith(`${lowerTarget}-`) ||
+            lowerFile.startsWith(`${lowerTarget}.`) ||
+            lowerFile === `${lowerTarget}.md` ||
+            lowerFile === lowerTarget
+          ) {
             foundFilePath = path.join(sDir, file);
             foundFeature = f;
             currentStageFolder = stage;
             break;
+          }
+        }
+        // Secondary fallback pass: substring search
+        if (!foundFilePath) {
+          for (const file of files) {
+            if (file.toLowerCase().includes(lowerTarget)) {
+              foundFilePath = path.join(sDir, file);
+              foundFeature = f;
+              currentStageFolder = stage;
+              break;
+            }
           }
         }
       }
