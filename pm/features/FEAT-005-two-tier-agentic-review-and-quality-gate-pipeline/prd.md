@@ -1,7 +1,7 @@
 ---
 id: FEAT-005
 title: Two-Tier Agentic Review and Quality Gate Pipeline
-status: ready
+status: completed
 priority: P1
 target_release: v0.5.0
 lead: human
@@ -102,19 +102,19 @@ This initiative implements the complete two-tier pipeline in this portfolio repo
 
 ## 6. Acceptance Criteria
 
-- [ ] `pm/standards/AGENT_REVIEW_CONTRACT.md` is authored with P0/P1/P2 definitions, evidence requirements, and exit criteria.
-- [ ] `npm run agent:review-pack` (or equivalent CLI) produces a self-contained markdown evidence pack for any git branch.
-- [ ] Tier 1 reviewer subagent prompt and Antigravity rule/instruction set is documented and validated against a sample diff.
-- [ ] `.github/pull_request_template.md` and `.github/workflows/agent-quality-gate.yml` are created and operational.
-- [ ] `docs/guides/two-tier-agentic-review.md` is authored with concrete instructions for porting to sibling repos.
-- [ ] Astro static build (`npm run build`) passes cleanly with zero regressions.
+- [x] `pm/standards/AGENT_REVIEW_CONTRACT.md` is authored with P0/P1/P2 definitions, evidence requirements, and exit criteria.
+- [x] `npm run agent:review-pack` (or equivalent CLI) produces a self-contained markdown evidence pack for any git branch.
+- [x] Tier 1 reviewer subagent prompt and Antigravity rule/instruction set is documented and validated against a sample diff.
+- [x] `.github/pull_request_template.md` and `.github/workflows/agent-quality-gate.yml` are created and operational.
+- [x] `docs/guides/two-tier-agentic-review.md` is authored with concrete instructions for porting to sibling repos.
+- [x] Astro static build (`npm run build`) passes cleanly with zero regressions.
 
 ---
 
 ## 7. Task Breakdown Index
 
-- [ ] `TASK-018`: Define Review Contract and Severity Taxonomy Specification
-- [ ] `TASK-019`: Build In-Loop Evidence Pack and Pre-Review CLI Orchestrator
-- [ ] `TASK-020`: Configure Tier 1 Fresh Context Reviewer Subagent Specification and Rules
-- [ ] `TASK-021`: Build Tier 2 GitHub Actions Quality Gate and PR Evidence Template
-- [ ] `TASK-022`: Create Cross-Repository Agentic Review Reference Guide and Rollout Kit
+- [x] `TASK-018`: Define Review Contract and Severity Taxonomy Specification
+- [x] `TASK-019`: Build In-Loop Evidence Pack and Pre-Review CLI Orchestrator
+- [x] `TASK-020`: Configure Tier 1 Fresh Context Reviewer Subagent Specification and Rules
+- [x] `TASK-021`: Build Tier 2 GitHub Actions Quality Gate and PR Evidence Template
+- [x] `TASK-022`: Create Cross-Repository Agentic Review Reference Guide and Rollout Kit

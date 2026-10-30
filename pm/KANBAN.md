@@ -5,7 +5,7 @@
 
 | Total Tasks | 🚀 In Progress | 🔍 In Review | 📋 Backlog | ✅ Done | Progress |
 | :---: | :---: | :---: | :---: | :---: | :---: |
-| **22** | **0** | **0** | **9** | **13** | **59%** |
+| **22** | **0** | **0** | **4** | **18** | **82%** |
 
 ---
 
@@ -17,24 +17,19 @@ _No tasks currently in progress._
 
 _No tasks currently in review._
 
-## 📋 Backlog (9)
+## 📋 Backlog (4)
 
 | Task | Feature | Priority | Area | Target Release |
 | :--- | :--- | :---: | :--- | :---: |
 | [TASK-010: Create sibling repository dispatch workflow template](./features/FEAT-003-github-actions-event-bus-and-automated-prs/tasks/0-backlog/TASK-010-create-sibling-repository-dispatch-workflow-template.md) | [FEAT-003](./features/FEAT-003-github-actions-event-bus-and-automated-prs/prd.md) | `P1` | `automation/ci` | v0.3.0 |
 | [TASK-011: Build portfolio receiver workflow for repository_dispatch](./features/FEAT-003-github-actions-event-bus-and-automated-prs/tasks/0-backlog/TASK-011-build-portfolio-receiver-workflow-for-repository-dispatch.md) | [FEAT-003](./features/FEAT-003-github-actions-event-bus-and-automated-prs/prd.md) | `P1` | `automation/ci` | v0.3.0 |
 | [TASK-012: Configure automated Pull Request creation and change summary](./features/FEAT-003-github-actions-event-bus-and-automated-prs/tasks/0-backlog/TASK-012-configure-automated-pull-request-creation-and-summary.md) | [FEAT-003](./features/FEAT-003-github-actions-event-bus-and-automated-prs/prd.md) | `P1` | `automation/ci` | v0.3.0 |
-| [TASK-018: Define Review Contract and Severity Taxonomy Specification](./features/FEAT-005-two-tier-agentic-review-and-quality-gate-pipeline/tasks/0-backlog/TASK-018-define-review-contract-and-severity-taxonomy-specification.md) | [FEAT-005](./features/FEAT-005-two-tier-agentic-review-and-quality-gate-pipeline/prd.md) | `P1` | `review/agentic` | v0.5.0 |
-| [TASK-019: Build In-Loop Evidence Pack and Pre-Review CLI Orchestrator](./features/FEAT-005-two-tier-agentic-review-and-quality-gate-pipeline/tasks/0-backlog/TASK-019-build-in-loop-evidence-pack-and-pre-review-cli-orchestrator.md) | [FEAT-005](./features/FEAT-005-two-tier-agentic-review-and-quality-gate-pipeline/prd.md) | `P1` | `review/agentic`, `sync/cli` | v0.5.0 |
-| [TASK-020: Configure Tier 1 Fresh Context Reviewer Subagent Specification and Rules](./features/FEAT-005-two-tier-agentic-review-and-quality-gate-pipeline/tasks/0-backlog/TASK-020-configure-tier-1-fresh-context-reviewer-subagent-specification-and-rules.md) | [FEAT-005](./features/FEAT-005-two-tier-agentic-review-and-quality-gate-pipeline/prd.md) | `P1` | `review/agentic` | v0.5.0 |
-| [TASK-021: Build Tier 2 GitHub Actions Quality Gate and PR Evidence Template](./features/FEAT-005-two-tier-agentic-review-and-quality-gate-pipeline/tasks/0-backlog/TASK-021-build-tier-2-github-actions-quality-gate-and-pr-evidence-template.md) | [FEAT-005](./features/FEAT-005-two-tier-agentic-review-and-quality-gate-pipeline/prd.md) | `P1` | `automation/ci`, `review/agentic` | v0.5.0 |
-| [TASK-022: Create Cross-Repository Agentic Review Reference Guide and Rollout Kit](./features/FEAT-005-two-tier-agentic-review-and-quality-gate-pipeline/tasks/0-backlog/TASK-022-create-cross-repository-agentic-review-reference-guide-and-rollout-kit.md) | [FEAT-005](./features/FEAT-005-two-tier-agentic-review-and-quality-gate-pipeline/prd.md) | `P1` | `review/agentic` | v0.5.0 |
 | [TASK-013: Document token security, PAT permissions, and repository secrets](./features/FEAT-003-github-actions-event-bus-and-automated-prs/tasks/0-backlog/TASK-013-document-token-security-pat-permissions-and-secrets.md) | [FEAT-003](./features/FEAT-003-github-actions-event-bus-and-automated-prs/prd.md) | `P2` | `automation/ci` | v0.3.0 |
 
-## ✅ Completed (13)
+## ✅ Completed (18)
 
 <details>
-<summary><b>Click to expand completed tasks (13)</b></summary>
+<summary><b>Click to expand completed tasks (18)</b></summary>
 
 | Task | Feature | Priority | Assignee | Completed Date |
 | :--- | :--- | :---: | :--- | :---: |
@@ -49,6 +44,11 @@ _No tasks currently in review._
 | [TASK-014: Design Antigravity sync agent prompt and slash command specification](./features/FEAT-004-ai-agentic-sync-and-case-study-copilot/tasks/3-done/TASK-014-design-antigravity-sync-agent-prompt-and-slash-command.md) | [FEAT-004](./features/FEAT-004-ai-agentic-sync-and-case-study-copilot/prd.md) | `P1` | `human` | 2026-10-30 |
 | [TASK-015: Build Git diff and commit synthesizer for narrative drafting](./features/FEAT-004-ai-agentic-sync-and-case-study-copilot/tasks/3-done/TASK-015-build-git-diff-and-commit-synthesizer-for-narrative-drafting.md) | [FEAT-004](./features/FEAT-004-ai-agentic-sync-and-case-study-copilot/prd.md) | `P1` | `human` | 2026-10-30 |
 | [TASK-016: Implement interactive review workflow and Astro build gate](./features/FEAT-004-ai-agentic-sync-and-case-study-copilot/tasks/3-done/TASK-016-implement-interactive-review-workflow-and-astro-build-gate.md) | [FEAT-004](./features/FEAT-004-ai-agentic-sync-and-case-study-copilot/prd.md) | `P1` | `human` | 2026-10-30 |
+| [TASK-018: Define Review Contract and Severity Taxonomy Specification](./features/FEAT-005-two-tier-agentic-review-and-quality-gate-pipeline/tasks/3-done/TASK-018-define-review-contract-and-severity-taxonomy-specification.md) | [FEAT-005](./features/FEAT-005-two-tier-agentic-review-and-quality-gate-pipeline/prd.md) | `P1` | `human` | 2026-10-30 |
+| [TASK-019: Build In-Loop Evidence Pack and Pre-Review CLI Orchestrator](./features/FEAT-005-two-tier-agentic-review-and-quality-gate-pipeline/tasks/3-done/TASK-019-build-in-loop-evidence-pack-and-pre-review-cli-orchestrator.md) | [FEAT-005](./features/FEAT-005-two-tier-agentic-review-and-quality-gate-pipeline/prd.md) | `P1` | `human` | 2026-10-30 |
+| [TASK-020: Configure Tier 1 Fresh Context Reviewer Subagent Specification and Rules](./features/FEAT-005-two-tier-agentic-review-and-quality-gate-pipeline/tasks/3-done/TASK-020-configure-tier-1-fresh-context-reviewer-subagent-specification-and-rules.md) | [FEAT-005](./features/FEAT-005-two-tier-agentic-review-and-quality-gate-pipeline/prd.md) | `P1` | `human` | 2026-10-30 |
+| [TASK-021: Build Tier 2 GitHub Actions Quality Gate and PR Evidence Template](./features/FEAT-005-two-tier-agentic-review-and-quality-gate-pipeline/tasks/3-done/TASK-021-build-tier-2-github-actions-quality-gate-and-pr-evidence-template.md) | [FEAT-005](./features/FEAT-005-two-tier-agentic-review-and-quality-gate-pipeline/prd.md) | `P1` | `human` | 2026-10-30 |
+| [TASK-022: Create Cross-Repository Agentic Review Reference Guide and Rollout Kit](./features/FEAT-005-two-tier-agentic-review-and-quality-gate-pipeline/tasks/3-done/TASK-022-create-cross-repository-agentic-review-reference-guide-and-rollout-kit.md) | [FEAT-005](./features/FEAT-005-two-tier-agentic-review-and-quality-gate-pipeline/prd.md) | `P1` | `human` | 2026-10-30 |
 | [TASK-009: Calculate live repository operational metrics](./features/FEAT-002-pm-as-code-adapter-and-schema-synthesis/tasks/3-done/TASK-009-calculate-live-repository-operational-metrics.md) | [FEAT-002](./features/FEAT-002-pm-as-code-adapter-and-schema-synthesis/prd.md) | `P2` | `human` | 2026-10-28 |
 | [TASK-017: Build UI mockup and diagram asset synchronization helper](./features/FEAT-004-ai-agentic-sync-and-case-study-copilot/tasks/3-done/TASK-017-build-ui-mockup-and-diagram-asset-synchronization-helper.md) | [FEAT-004](./features/FEAT-004-ai-agentic-sync-and-case-study-copilot/prd.md) | `P2` | `human` | 2026-10-30 |
 

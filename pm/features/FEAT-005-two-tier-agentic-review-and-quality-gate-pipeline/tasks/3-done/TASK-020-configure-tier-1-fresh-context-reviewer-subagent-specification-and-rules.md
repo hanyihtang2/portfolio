@@ -1,9 +1,9 @@
 ---
 id: TASK-020
 parent_feature: FEAT-005
-title: "Configure Tier 1 Fresh Context Reviewer Subagent Specification and Rules"
-status: backlog           # backlog | in-progress | review | done
-priority: P1              # P0 (Critical) | P1 (High) | P2 (Medium) | P3 (Low)
+title: Configure Tier 1 Fresh Context Reviewer Subagent Specification and Rules
+status: done
+priority: P1
 areas:
   - review/agentic
 target_paths:
@@ -14,9 +14,9 @@ branch: feat/feat-005-configure-tier-1-fresh-context-reviewer-subagent-specifica
 dependencies:
   - TASK-018
   - TASK-019
-assigned_to: human        # human | agent:coder | agent:research
+assigned_to: human
 created_at: 2026-10-28
-updated_at: 2026-10-28
+updated_at: 2026-10-30
 ---
 
 # TASK-020: Configure Tier 1 Fresh Context Reviewer Subagent Specification and Rules
@@ -56,14 +56,17 @@ Define the operational specification, system prompt, tool constraints, and orche
    - Documented rules for Antigravity agents so any agent in this workspace knows how and when to invoke the reviewer subagent.
 
 ## 4. Acceptance Criteria
-- [ ] `pm/standards/TIER_1_REVIEWER_SPEC.md` authored detailing lifecycle, tool permissions, and escalation rules.
-- [ ] `scripts/review/reviewer-prompt-template.md` created with tested prompt instructions.
-- [ ] Workspace rule `.gemini/rules/reviewer-subagent.md` documented and verified.
-- [ ] Static build passes cleanly (`npm run build`).
+- [x] `pm/standards/TIER_1_REVIEWER_SPEC.md` authored detailing lifecycle, tool permissions, and escalation rules.
+- [x] `scripts/review/reviewer-prompt-template.md` created with tested prompt instructions.
+- [x] Workspace rule `.gemini/rules/reviewer-subagent.md` documented and verified.
+- [x] Static build passes cleanly (`npm run build`).
 
 ## 5. Agent Run Notes & Prompt Guidance
 > **Agent Instructions:**
 > - Ensure the prompt template explicitly bans vague advice like "consider refactoring for modularity." Every finding must be an actionable defect or missing test.
 
 ### Execution Log / Decisions
-*(Leave blank for agent to fill during task execution)*
+- Created `pm/standards/TIER_1_REVIEWER_SPEC.md` defining fresh-context isolation, read-only permissions, and 4 audit axes.
+- Authored `scripts/review/reviewer-prompt-template.md` with explicit anti-bikeshedding rules, proof-of-defect requirements, and structured JSON output.
+- Configured workspace agent rule `.gemini/rules/reviewer-subagent.md` detailing the 2-iteration loop and escalation protocol.
+- Verified zero build regressions with `npm.cmd run build`.

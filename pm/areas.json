@@ -63,6 +63,16 @@
         "docs/guides/"
       ],
       "techStack": ["typescript", "github-actions", "markdown"]
+    },
+    "analytics/posthog": {
+      "title": "PostHog Analytics & Recruiter Tracking",
+      "description": "PostHog client snippet, session recording configuration, declarative event attributes, and recruiter journey tracking.",
+      "paths": [
+        "src/layouts/BaseLayout.astro",
+        "src/components/Analytics.astro",
+        "src/lib/analytics.ts"
+      ],
+      "techStack": ["astro", "typescript", "posthog-js"]
     }
   }
 }

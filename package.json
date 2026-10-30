@@ -19,7 +19,8 @@
     "sync:commuteshift": "node --experimental-strip-types scripts/sync-projects.ts --project commuteshift",
     "agent:synthesize": "node --experimental-strip-types scripts/agent/synthesize-commits.ts",
     "agent:verify": "node --experimental-strip-types scripts/agent/verify-case-study.ts",
-    "agent:mockups": "node --experimental-strip-types scripts/agent/sync-mockups.ts"
+    "agent:mockups": "node --experimental-strip-types scripts/agent/sync-mockups.ts",
+    "agent:review-pack": "node --experimental-strip-types scripts/review/prepare-evidence.ts"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.12",

@@ -9,7 +9,7 @@
 | [FEAT-002](./features/FEAT-002-pm-as-code-adapter-and-schema-synthesis/prd.md) | **PM-as-Code Adapter and Dynamic Roadmap Synthesizer** | `P1` | `completed` | v0.2.0 | 4/4 (100%) |
 | [FEAT-003](./features/FEAT-003-github-actions-event-bus-and-automated-prs/prd.md) | **GitHub Actions Event Bus and Automated Sync PRs** | `P3` | `deferred` | v0.3.0 | 0/4 (0%) |
 | [FEAT-004](./features/FEAT-004-ai-agentic-sync-and-case-study-copilot/prd.md) | **AI Agentic Sync and Case Study Co-Pilot** | `P0` | `completed` | v0.4.0 | 4/4 (100%) |
-| [FEAT-005](./features/FEAT-005-two-tier-agentic-review-and-quality-gate-pipeline/prd.md) | **Two-Tier Agentic Review and Quality Gate Pipeline** | `P1` | `ready` | v0.5.0 | 0/5 (0%) |
+| [FEAT-005](./features/FEAT-005-two-tier-agentic-review-and-quality-gate-pipeline/prd.md) | **Two-Tier Agentic Review and Quality Gate Pipeline** | `P1` | `completed` | v0.5.0 | 5/5 (100%) |
 
 ---
 
