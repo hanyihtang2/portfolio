@@ -2,7 +2,7 @@
 id: TASK-024
 parent_feature: FEAT-005
 title: Harden Review Pipeline with Automated PR Generator and Token-Bomb Protection
-status: review
+status: done
 priority: P1
 areas:
   - review/agentic
