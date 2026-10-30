@@ -5,7 +5,7 @@
 
 | Total Tasks | 🚀 In Progress | 🔍 In Review | 📋 Backlog | ✅ Done | Progress |
 | :---: | :---: | :---: | :---: | :---: | :---: |
-| **19** | **0** | **0** | **0** | **19** | **100%** |
+| **20** | **0** | **1** | **0** | **19** | **95%** |
 
 ---
 
@@ -13,9 +13,11 @@
 
 _No tasks currently in progress._
 
-## 🔍 In Review (0)
+## 🔍 In Review (1)
 
-_No tasks currently in review._
+| Task | Feature | Priority | Assignee | Branch | Updated |
+| :--- | :--- | :---: | :--- | :--- | :---: |
+| [TASK-024: Harden Review Pipeline with Automated PR Generator and Token-Bomb Protection](./features/FEAT-005-two-tier-agentic-review-and-quality-gate-pipeline/tasks/2-review/TASK-024-harden-review-pipeline-with-automated-pr-generator-and-token-bomb-protection.md) | [FEAT-005](./features/FEAT-005-two-tier-agentic-review-and-quality-gate-pipeline/prd.md) | `P1` | `human` | `feat/feat-005-harden-review-pipeline-and-pr-generator` | 2026-10-30 |
 
 ## 📋 Backlog (0)
 

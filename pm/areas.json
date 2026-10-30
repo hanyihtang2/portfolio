@@ -60,7 +60,8 @@
         ".github/workflows/agent-*.yml",
         ".github/pull_request_template.md",
         "pm/standards/",
-        "docs/guides/"
+        "docs/guides/",
+        "AGENTS.md"
       ],
       "techStack": ["typescript", "github-actions", "markdown"]
     },
@@ -76,4 +77,3 @@
     }
   }
 }
-

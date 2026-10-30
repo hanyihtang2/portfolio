@@ -8,7 +8,7 @@
 | [FEAT-001](./features/FEAT-001-local-sync-cli-and-frontmatter-updater/prd.md) | **Local Sync CLI and Safe Frontmatter Updater** | `P0` | `completed` | v0.1.0 | 5/5 (100%) |
 | [FEAT-002](./features/FEAT-002-pm-as-code-adapter-and-schema-synthesis/prd.md) | **PM-as-Code Adapter and Dynamic Roadmap Synthesizer** | `P1` | `completed` | v0.2.0 | 4/4 (100%) |
 | [FEAT-004](./features/FEAT-004-ai-agentic-sync-and-case-study-copilot/prd.md) | **AI Agentic Sync and Case Study Co-Pilot** | `P0` | `completed` | v0.4.0 | 4/4 (100%) |
-| [FEAT-005](./features/FEAT-005-two-tier-agentic-review-and-quality-gate-pipeline/prd.md) | **Two-Tier Agentic Review and Quality Gate Pipeline** | `P1` | `completed` | v0.5.0 | 5/5 (100%) |
+| [FEAT-005](./features/FEAT-005-two-tier-agentic-review-and-quality-gate-pipeline/prd.md) | **Two-Tier Agentic Review and Quality Gate Pipeline** | `P1` | `completed` | v0.5.0 | 5/6 (83%) |
 | [FEAT-006](./features/FEAT-006-posthog-analytics-and-recruiter-journey-tracking/prd.md) | **PostHog Analytics and Recruiter Journey Tracking** | `P1` | `completed` | v0.6.0 | 1/1 (100%) |
 
 ---
