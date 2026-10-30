@@ -5,7 +5,7 @@
 
 | Total Tasks | 🚀 In Progress | 🔍 In Review | 📋 Backlog | ✅ Done | Progress |
 | :---: | :---: | :---: | :---: | :---: | :---: |
-| **22** | **0** | **0** | **4** | **18** | **82%** |
+| **23** | **0** | **1** | **4** | **18** | **78%** |
 
 ---
 
@@ -13,9 +13,11 @@
 
 _No tasks currently in progress._
 
-## 🔍 In Review (0)
+## 🔍 In Review (1)
 
-_No tasks currently in review._
+| Task | Feature | Priority | Assignee | Branch | Updated |
+| :--- | :--- | :---: | :--- | :--- | :---: |
+| [TASK-023: Integrate PostHog Analytics and Recruiter Event Tracking](./features/FEAT-006-posthog-analytics-and-recruiter-journey-tracking/tasks/2-review/TASK-023-integrate-posthog-analytics-and-recruiter-event-tracking.md) | [FEAT-006](./features/FEAT-006-posthog-analytics-and-recruiter-journey-tracking/prd.md) | `P1` | `human` | `feat/feat-006-integrate-posthog-analytics-and-recruiter-event-tracking` | 2026-10-30 |
 
 ## 📋 Backlog (4)
 

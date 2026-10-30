@@ -37,7 +37,13 @@ const featuredProjects = (await getCollection('projects', ({ data }) => data.fea
             Bridging strategic product ownership with hands-on technical architecture.
           </p>
         </div>
-        <a href={`${base}/resume`} class="text-xs font-medium text-blue-600 dark:text-blue-400 hover:underline">
+        <a
+          href={`${base}/resume`}
+          data-analytics-event="resume_click"
+          data-analytics-location="home_dual_track_matrix"
+          data-analytics-format="html"
+          class="text-xs font-medium text-blue-600 dark:text-blue-400 hover:underline"
+        >
           Full CV &amp; Career History →
         </a>
       </div>

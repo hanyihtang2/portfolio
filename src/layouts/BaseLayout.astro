@@ -1,5 +1,6 @@
 ---
 import Navbar from '../components/Navbar.astro';
+import Analytics from '../components/Analytics.astro';
 import '../styles/global.css';
 
 interface Props {
@@ -135,6 +136,7 @@ const jsonLd = {
         } catch (e) {}
       })();
     </script>
+    <Analytics />
   </head>
   <body class="bg-zinc-50 dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 min-h-screen flex flex-col font-sans antialiased">
     <!-- Accessible Skip to Content Link (WCAG 2.4.1) -->

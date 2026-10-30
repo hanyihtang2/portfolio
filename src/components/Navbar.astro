@@ -71,12 +71,18 @@ const navItems = [
         rel="noopener noreferrer"
         aria-label="GitHub Profile"
         title="GitHub Profile"
+        data-analytics-event="contact_click"
+        data-analytics-channel="github"
+        data-analytics-location="navbar_desktop"
         class="btn-ghost hidden md:inline-flex w-9 h-9"
       >
         <Icon name="github" class="w-4 h-4 fill-current" />
       </a>
       <a
         href={`${base}/resume`}
+        data-analytics-event="resume_click"
+        data-analytics-location="navbar_desktop"
+        data-analytics-format="html"
         class="btn-primary hidden md:inline-flex h-9 px-3.5"
       >
         Resume
@@ -131,6 +137,9 @@ const navItems = [
         href="https://github.com/hanyihtang2"
         target="_blank"
         rel="noopener noreferrer"
+        data-analytics-event="contact_click"
+        data-analytics-channel="github"
+        data-analytics-location="navbar_mobile"
         class="flex-1 inline-flex items-center justify-center gap-2 py-2 px-3 text-xs font-medium rounded-lg border border-default text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-colors"
       >
         <Icon name="github" class="w-4 h-4 fill-current" />
@@ -138,6 +147,9 @@ const navItems = [
       </a>
       <a
         href={`${base}/resume`}
+        data-analytics-event="resume_click"
+        data-analytics-location="navbar_mobile"
+        data-analytics-format="html"
         class="flex-1 inline-flex items-center justify-center py-2 px-3 text-xs font-semibold rounded-lg bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 hover:opacity-90 transition-opacity"
       >
         Resume
