@@ -9,7 +9,7 @@
 import * as fs from "node:fs";
 import * as path from "node:path";
 import type { ProjectExtractor, ProjectExtractionResult } from "./types.ts";
-import type { ProjectFrontmatter, TechStack, Metric } from "../lib/frontmatter.ts";
+import type { ProjectFrontmatter, TechStack, Metric, RoadmapItem } from "../lib/frontmatter.ts";
 import { calculateMakerMetrics } from "../adapters/metrics-calculator.ts";
 
 export const MakerExtractor: ProjectExtractor = {
@@ -30,6 +30,48 @@ export const MakerExtractor: ProjectExtractor = {
         updates: {},
         summary: {},
       };
+    }
+
+    // 0. Check for standardized portfolio-meta.json export contract (TASK-008)
+    const metaPath = path.join(repoPath, "portfolio-meta.json");
+    if (fs.existsSync(metaPath)) {
+      try {
+        const meta = JSON.parse(fs.readFileSync(metaPath, "utf-8"));
+        if (meta.slug === this.slug && meta.techStack && meta.roadmap) {
+          const updates: Partial<ProjectFrontmatter> = {
+            status: meta.status || "In Progress",
+            timeline: meta.timeline || "2026 – Present",
+            liveUrl: meta.liveUrl,
+            techStack: meta.techStack,
+            metrics: meta.metrics,
+            roadmap: meta.roadmap,
+          };
+
+          const frameworks = meta.techStack.frameworks || [];
+          const infrastructure = meta.techStack.infrastructure || [];
+
+          return {
+            slug: this.slug,
+            repoPath,
+            found: true,
+            warnings,
+            updates,
+            summary: {
+              status: updates.status,
+              timeline: updates.timeline,
+              techStackSummary: `${frameworks.join(", ")} | ${infrastructure.join(", ")}`,
+              metricsCount: updates.metrics?.length ?? 0,
+              details: {
+                contractSource: "portfolio-meta.json",
+                roadmapPhases: updates.roadmap?.length ?? 0,
+                metricsCount: updates.metrics?.length ?? 0,
+              },
+            },
+          };
+        }
+      } catch (err: any) {
+        warnings.push(`Failed to parse portfolio-meta.json, falling back to heuristics: ${err.message}`);
+      }
     }
 
     // 1. Read root package.json and turbo.json
