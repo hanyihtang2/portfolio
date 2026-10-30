@@ -1,8 +1,8 @@
 ---
 id: FEAT-004
 title: "AI Agentic Sync and Case Study Co-Pilot"
-status: ready
-priority: P1
+status: completed
+priority: P0
 target_release: v0.4.0
 lead: human
 created_at: 2026-10-28

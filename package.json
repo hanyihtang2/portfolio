@@ -16,7 +16,10 @@
     "sync:dry": "node --experimental-strip-types scripts/sync-projects.ts --dry-run",
     "sync:platemark": "node --experimental-strip-types scripts/sync-projects.ts --project platemark",
     "sync:maker": "node --experimental-strip-types scripts/sync-projects.ts --project maker",
-    "sync:commuteshift": "node --experimental-strip-types scripts/sync-projects.ts --project commuteshift"
+    "sync:commuteshift": "node --experimental-strip-types scripts/sync-projects.ts --project commuteshift",
+    "agent:synthesize": "node --experimental-strip-types scripts/agent/synthesize-commits.ts",
+    "agent:verify": "node --experimental-strip-types scripts/agent/verify-case-study.ts",
+    "agent:mockups": "node --experimental-strip-types scripts/agent/sync-mockups.ts"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.12",

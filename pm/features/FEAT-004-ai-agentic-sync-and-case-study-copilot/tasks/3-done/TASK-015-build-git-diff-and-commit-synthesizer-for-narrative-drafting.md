@@ -1,8 +1,8 @@
 ---
 id: TASK-015
 parent_feature: FEAT-004
-title: "Build Git diff and commit synthesizer for narrative drafting"
-status: backlog
+title: Build Git diff and commit synthesizer for narrative drafting
+status: done
 priority: P1
 areas:
   - sync/cli
@@ -13,7 +13,7 @@ dependencies:
   - TASK-014
 assigned_to: human
 created_at: 2026-10-28
-updated_at: 2026-10-28
+updated_at: 2026-10-30
 ---
 
 # TASK-015: Build Git Diff and Commit Synthesizer for Narrative Drafting
@@ -33,11 +33,18 @@ Create a helper script (`scripts/agent/synthesize-commits.ts`) that extracts com
 - Output a compact Markdown summary ready for AI contextual consumption.
 
 ## 4. Acceptance Criteria
-- [ ] Successfully queries git history across sibling directories.
-- [ ] Filters out noise (e.g. formatting and lint fix commits).
-- [ ] Produces clean summary under 1,000 tokens for efficient LLM context loading.
+- [x] Successfully queries git history across sibling directories.
+- [x] Filters out noise (e.g. formatting and lint fix commits).
+- [x] Produces clean summary under 1,000 tokens for efficient LLM context loading.
 
 ## 5. Agent Run Notes & Prompt Guidance
 > **Agent Instructions:**
 > Ensure script runs via child_process without requiring external git libraries.
+
+### Execution Log / Decisions
+- Implemented `scripts/agent/synthesize-commits.ts` with zero external dependencies using `node:child_process` and `node:fs`.
+- Supported `--project <slug>`, `--limit <n>`, `--since <date>`, and `--all` flags.
+- Added conventional commit parsing and categorization (`feat`, `perf`, `refactor`, `fix`, `docs`).
+- Added deep integration with `pm/features/` to inspect closed PRDs and finished task deliverables.
+- Verified live execution against `../PlateMark`, generating a structured synthesis summary.
 

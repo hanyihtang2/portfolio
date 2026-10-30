@@ -1,8 +1,8 @@
 ---
 id: FEAT-003
 title: "GitHub Actions Event Bus and Automated Sync PRs"
-status: ready
-priority: P1
+status: deferred
+priority: P3
 target_release: v0.3.0
 lead: human
 created_at: 2026-10-28
@@ -12,7 +12,11 @@ areas:
   - sync/cli
 ---
 
-# PRD: GitHub Actions Event Bus and Automated Sync PRs (Phase 3)
+# PRD: GitHub Actions Event Bus and Automated Sync PRs (Phase 3 - Deferred)
+
+> [!NOTE]
+> **Status: Deferred / Skipped**
+> This headless webhook / `repository_dispatch` pipeline has been deferred. Sibling repository metadata is standardized via `portfolio-meta.json` (Phase 2), and narrative + technical updates are driven interactively by the **AI Agentic Co-Pilot (Phase 4 / FEAT-004)**, which avoids cross-repository PAT token management while supporting rich case-study prose drafting.
 
 ## 1. Executive Summary & Problem Statement
 Running local CLI scripts (`npm run sync:projects`) relies on the author remembering to run commands manually. To achieve hands-free portfolio maintenance, we need an automated event-driven pipeline: whenever a sibling repository cuts a release tag (e.g. `v0.5.0`) or merges a milestone PR to `main`, it notifies the portfolio repository via GitHub's `repository_dispatch` API.
