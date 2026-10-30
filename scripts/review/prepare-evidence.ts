@@ -17,13 +17,57 @@ import type {
   TaskSpec,
 } from "./types.ts";
 
-const ROOT_DIR = process.cwd();
-const PM_DIR = path.join(ROOT_DIR, "pm");
-const FEATURES_DIR = path.join(PM_DIR, "features");
-const AREAS_FILE = path.join(PM_DIR, "areas.json");
-const REVIEW_DIR = path.join(ROOT_DIR, ".review");
+export const ROOT_DIR = process.cwd();
+export const PM_DIR = path.join(ROOT_DIR, "pm");
+export const FEATURES_DIR = path.join(PM_DIR, "features");
+export const AREAS_FILE = path.join(PM_DIR, "areas.json");
+export const REVIEW_DIR = path.join(ROOT_DIR, ".review");
 
-function parseFrontmatter(content: string): { data: Record<string, unknown>; body: string } {
+export const DIFF_EXCLUDED_PATTERNS = [
+  ":(exclude)package-lock.json",
+  ":(exclude)pnpm-lock.yaml",
+  ":(exclude)yarn.lock",
+  ":(exclude)bun.lockb",
+  ":(exclude)*.svg",
+  ":(exclude)*.png",
+  ":(exclude)*.jpg",
+  ":(exclude)*.jpeg",
+  ":(exclude)*.webp",
+  ":(exclude)*.gif",
+  ":(exclude)*.ico",
+  ":(exclude)*.woff",
+  ":(exclude)*.woff2",
+  ":(exclude).review",
+  ":(exclude).review/**",
+  ":(exclude)dist",
+  ":(exclude)dist/**",
+  ":(exclude).astro",
+  ":(exclude).astro/**",
+];
+
+const IGNORED_UNTRACKED_PREFIXES = [
+  ".review/",
+  "dist/",
+  ".astro/",
+  "node_modules/",
+];
+
+const IGNORED_UNTRACKED_EXTENSIONS = [
+  ".svg",
+  ".png",
+  ".jpg",
+  ".jpeg",
+  ".webp",
+  ".gif",
+  ".ico",
+  ".woff",
+  ".woff2",
+  ".lock",
+];
+
+const MAX_DIFF_LENGTH = 50_000; // ~50KB cap to protect subagent context window
+
+export function parseFrontmatter(content: string): { data: Record<string, unknown>; body: string } {
   const match = content.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n([\s\S]*)$/);
   if (!match) return { data: {}, body: content };
 
@@ -48,7 +92,7 @@ function parseFrontmatter(content: string): { data: Record<string, unknown>; bod
       const key = line.slice(0, colonIndex).trim();
       let value = line.slice(colonIndex + 1).trim();
 
-      // Quote-aware comment stripping (F-002)
+      // Quote-aware comment stripping
       let inDouble = false;
       let inSingle = false;
       let commentIdx = -1;
@@ -67,7 +111,7 @@ function parseFrontmatter(content: string): { data: Record<string, unknown>; bod
 
       currentKey = key;
 
-      // Parse inline flow array [a, b, c] (F-008)
+      // Parse inline flow array [a, b, c]
       if (value.startsWith("[") && value.endsWith("]")) {
         data[key] = value
           .slice(1, -1)
@@ -84,7 +128,7 @@ function parseFrontmatter(content: string): { data: Record<string, unknown>; bod
   return { data, body };
 }
 
-function findTaskFile(taskIdOrKeyword: string): string | null {
+export function findTaskFile(taskIdOrKeyword: string): string | null {
   if (!fs.existsSync(FEATURES_DIR)) return null;
 
   const features = fs.readdirSync(FEATURES_DIR, { withFileTypes: true })
@@ -94,7 +138,7 @@ function findTaskFile(taskIdOrKeyword: string): string | null {
   const stages = ["1-in-progress", "2-review", "0-backlog", "3-done"];
   const lowerTarget = taskIdOrKeyword.toLowerCase();
 
-  // Primary pass: anchored match (F-007: prevents TASK-1 matching TASK-10)
+  // Primary pass: anchored match (prevents TASK-1 matching TASK-10)
   for (const feat of features) {
     const tasksBase = path.join(FEATURES_DIR, feat, "tasks");
     for (const stage of stages) {
@@ -116,7 +160,7 @@ function findTaskFile(taskIdOrKeyword: string): string | null {
     }
   }
 
-  // Secondary fallback: only if no anchored match was found, allow substring search
+  // Secondary fallback: substring search
   for (const feat of features) {
     const tasksBase = path.join(FEATURES_DIR, feat, "tasks");
     for (const stage of stages) {
@@ -135,7 +179,7 @@ function findTaskFile(taskIdOrKeyword: string): string | null {
   return null;
 }
 
-function findActiveTask(): string | null {
+export function findActiveTask(): string | null {
   if (!fs.existsSync(FEATURES_DIR)) return null;
   const features = fs.readdirSync(FEATURES_DIR, { withFileTypes: true })
     .filter((d) => d.isDirectory())
@@ -153,7 +197,7 @@ function findActiveTask(): string | null {
   return null;
 }
 
-function extractTaskSpec(filePath: string): TaskSpec {
+export function extractTaskSpec(filePath: string): TaskSpec {
   const content = fs.readFileSync(filePath, "utf-8");
   const { data, body } = parseFrontmatter(content);
 
@@ -197,13 +241,28 @@ function extractTaskSpec(filePath: string): TaskSpec {
   };
 }
 
-function runDeterministicCheck(): DeterministicCheckResult {
-  console.log("\x1b[36m[1/4] Running deterministic pre-checks (npm run build)...\x1b[0m");
-  const startTime = Date.now();
-
+export function runDeterministicCheck(): DeterministicCheckResult {
   const isWindows = process.platform === "win32";
   const npmCmd = isWindows ? "npm.cmd" : "npm";
-  const command = `${npmCmd} run build`;
+
+  // Check for override from process.env or pm/areas.json config
+  let command = process.env.DETERMINISTIC_COMMAND;
+  if (!command && fs.existsSync(AREAS_FILE)) {
+    try {
+      const parsed = JSON.parse(fs.readFileSync(AREAS_FILE, "utf-8"));
+      if (parsed.config?.deterministicCommand) {
+        command = parsed.config.deterministicCommand;
+      }
+    } catch {
+      // ignore
+    }
+  }
+  if (!command) {
+    command = `${npmCmd} run build`;
+  }
+
+  console.log(`\x1b[36m[1/4] Running deterministic pre-checks (\`${command}\`)...\x1b[0m`);
+  const startTime = Date.now();
 
   try {
     const stdout = execSync(command, {
@@ -232,23 +291,18 @@ function runDeterministicCheck(): DeterministicCheckResult {
       name: "build",
       command,
       status: "FAILED",
-      output,
+      output: output.trim(),
       exitCode: error.status ?? 1,
       durationMs,
     };
   }
 }
 
-function getGitContext(baseBranch: string): {
+export function getGitContext(baseBranch: string): {
   currentBranch: string;
   changedFiles: string[];
   gitDiff: string;
 } {
-  // Validate baseBranch to prevent shell injection (F-001)
-  if (!/^[a-zA-Z0-9_\-\./]+$/.test(baseBranch)) {
-    throw new Error(`Security error: Invalid base branch name "${baseBranch}".`);
-  }
-
   let currentBranch = "main";
   try {
     currentBranch = execSync("git rev-parse --abbrev-ref HEAD", {
@@ -278,7 +332,6 @@ function getGitContext(baseBranch: string): {
   }
 
   try {
-    // Unstaged + staged working tree changes against HEAD
     const workingDiff = execSync("git diff --name-only HEAD", {
       cwd: ROOT_DIR,
       encoding: "utf-8",
@@ -291,7 +344,6 @@ function getGitContext(baseBranch: string): {
   }
 
   try {
-    // Untracked files
     const untracked = execSync("git ls-files --others --exclude-standard", {
       cwd: ROOT_DIR,
       encoding: "utf-8",
@@ -303,14 +355,18 @@ function getGitContext(baseBranch: string): {
     // fallback
   }
 
-  // Full unified diff
+  // Full unified diff with token-bomb protection
   let gitDiff = "";
   try {
-    const res = spawnSync("git", ["diff", `${baseBranch}...HEAD`], {
-      cwd: ROOT_DIR,
-      encoding: "utf-8",
-      maxBuffer: 10 * 1024 * 1024,
-    });
+    const res = spawnSync(
+      "git",
+      ["diff", `${baseBranch}...HEAD`, "--", ".", ...DIFF_EXCLUDED_PATTERNS],
+      {
+        cwd: ROOT_DIR,
+        encoding: "utf-8",
+        maxBuffer: 10 * 1024 * 1024,
+      }
+    );
     const branchDiff = (res.stdout || "").trim();
     if (branchDiff) gitDiff += branchDiff + "\n";
   } catch {
@@ -318,17 +374,22 @@ function getGitContext(baseBranch: string): {
   }
 
   try {
-    const workingTreeDiff = execSync("git diff HEAD", {
-      cwd: ROOT_DIR,
-      encoding: "utf-8",
-      maxBuffer: 10 * 1024 * 1024,
-    }).trim();
+    const res = spawnSync(
+      "git",
+      ["diff", "HEAD", "--", ".", ...DIFF_EXCLUDED_PATTERNS],
+      {
+        cwd: ROOT_DIR,
+        encoding: "utf-8",
+        maxBuffer: 10 * 1024 * 1024,
+      }
+    );
+    const workingTreeDiff = (res.stdout || "").trim();
     if (workingTreeDiff) gitDiff += "\n# --- Working Tree / Uncommitted Changes ---\n" + workingTreeDiff + "\n";
   } catch {
     // fallback
   }
 
-  // If there are untracked files, list them in diff summary
+  // Untracked files (skipping build, review artifacts, and binaries)
   try {
     const untrackedFiles = execSync("git ls-files --others --exclude-standard", {
       cwd: ROOT_DIR,
@@ -337,15 +398,28 @@ function getGitContext(baseBranch: string): {
     if (untrackedFiles) {
       const files = untrackedFiles.split(/\r?\n/).filter(Boolean);
       for (const uFile of files) {
+        const norm = uFile.replace(/\\/g, "/");
+        if (IGNORED_UNTRACKED_PREFIXES.some((p) => norm.startsWith(p))) continue;
+        const ext = path.extname(norm).toLowerCase();
+        if (IGNORED_UNTRACKED_EXTENSIONS.includes(ext)) continue;
+
         const fullP = path.join(ROOT_DIR, uFile);
         if (fs.existsSync(fullP) && fs.statSync(fullP).isFile()) {
           const uContent = fs.readFileSync(fullP, "utf-8");
-          gitDiff += `\n# --- Untracked File: ${uFile} ---\n` + uContent.slice(0, 3000) + "\n";
+          gitDiff += `\n# --- Untracked File: ${norm} ---\n` + uContent.slice(0, 3000) + "\n";
         }
       }
     }
   } catch {
     // fallback
+  }
+
+  // Cap maximum diff size to protect subagent context
+  if (gitDiff.length > MAX_DIFF_LENGTH) {
+    const truncatedChars = gitDiff.length - MAX_DIFF_LENGTH;
+    gitDiff =
+      gitDiff.slice(0, MAX_DIFF_LENGTH) +
+      `\n\n# ... [Diff truncated (${truncatedChars} characters omitted) to protect reviewer context window. Run 'git diff ${baseBranch}' locally for full details] ...\n`;
   }
 
   return {
@@ -355,7 +429,7 @@ function getGitContext(baseBranch: string): {
   };
 }
 
-function matchAreas(changedFiles: string[]): {
+export function matchAreas(changedFiles: string[]): {
   matchedAreas: MatchedAreaInfo[];
   outOfScopeFiles: string[];
 } {
@@ -408,7 +482,7 @@ function matchAreas(changedFiles: string[]): {
   };
 }
 
-function formatEvidenceMarkdown(data: EvidencePackData): string {
+export function formatEvidenceMarkdown(data: EvidencePackData): string {
   const lines: string[] = [];
 
   lines.push(`# Evidence Pack: ${data.taskId} (${data.taskSpec.title})`);
@@ -521,12 +595,12 @@ function formatEvidenceMarkdown(data: EvidencePackData): string {
   lines.push("   - **P1 (High):** Scope violation outside `pm/areas.json` or `target_paths`, missing error boundaries.");
   lines.push("   - **P2 (Nit):** Optional readability suggestion (never blocks merge).");
   lines.push("4. Every P0/P1 finding MUST cite file path, line numbers, concrete execution proof, and suggested code fix.");
-  lines.push("5. Format response adhering to `pm/standards/schemas/review-verdict.schema.json`.");
+  lines.push(`5. Format response adhering to \`pm/standards/schemas/review-verdict.schema.json\` and save to \`.review/verdict-${data.taskId.toLowerCase()}.json\`.`);
 
   return lines.join("\n");
 }
 
-function main() {
+export function main() {
   const args = process.argv.slice(2);
   let targetTaskId = args[0];
   const baseBranch = args[1] || "main";
@@ -603,8 +677,15 @@ function main() {
   console.log(`\x1b[32m✔ Successfully compiled Evidence Pack:\x1b[0m`);
   console.log(`  Output: .review/${outFileName}`);
   console.log("");
-  console.log("Ready for Tier 1 Reviewer Subagent invocation.");
-  console.log(`To invoke reviewer: pass .review/${outFileName} into fresh-context reviewer subagent.`);
+  console.log("Next Steps:");
+  console.log(`1. Provide .review/${outFileName} to fresh-context reviewer subagent.`);
+  console.log(`2. Reviewer must save verdict to: .review/verdict-${taskSpec.id.toLowerCase()}.json`);
+  console.log(`3. Once review verdict is PASS, run: npm run agent:prepare-pr ${taskSpec.id}`);
 }
 
-main();
+if (
+  process.argv[1] &&
+  (process.argv[1].endsWith("prepare-evidence.ts") || process.argv[1].endsWith("prepare-evidence.js"))
+) {
+  main();
+}

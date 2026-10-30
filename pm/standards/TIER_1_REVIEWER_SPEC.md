@@ -165,3 +165,26 @@ The reviewer subagent must format its response as pure JSON conforming to `pm/st
 }
 ```
 
+
+### Verdict Output & PR Preparation Pipeline
+
+To automate the transition from Tier 1 local approval to Tier 2 GitHub pull requests:
+
+1. **Save Verdict:** The reviewer subagent outputs or saves its verdict JSON to:
+   ```text
+   .review/verdict-<task-id>.json
+   ```
+2. **Validate Verdict:** The verdict is validated against `pm/standards/schemas/review-verdict.schema.json` via:
+   ```bash
+   npm run agent:verdict <task-id>
+   ```
+3. **Automate PR Preparation:** Once the verdict is `PASS` with 0 blocking defects, prepare the PR:
+   ```bash
+   npm run agent:prepare-pr <task-id>
+   ```
+   This command automatically:
+   - Validates deterministic pass (`npm run build`).
+   - Verifies the review verdict.
+   - Moves the task from `1-in-progress/` to `2-review/`.
+   - Regenerates `pm/KANBAN.md` and `pm/ROADMAP.md`.
+   - Compiles `.review/pr-body-<task-id>.md` with all 5 sections required by the Tier 2 CI Quality Gate.
