@@ -85,8 +85,10 @@ const isEnabled = isProd && Boolean(apiKey);
   </script>
 )}
 
-<!-- Global Declarative Event Listener -->
-<script>
-  import { initDeclarativeAnalytics } from '../lib/analytics';
-  initDeclarativeAnalytics();
-</script>
+<!-- Global Declarative Event Listener (gated to active analytics or local dev) -->
+{(isEnabled || !isProd) && (
+  <script>
+    import { initDeclarativeAnalytics } from '../lib/analytics';
+    initDeclarativeAnalytics();
+  </script>
+)}

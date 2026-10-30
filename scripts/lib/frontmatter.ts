@@ -205,16 +205,17 @@ function parseYamlLines(
       // Check if item is an object with multiple properties:
       // e.g. - label: "foo"
       //        value: "bar"
-      const colonIdx = itemRaw.indexOf(":");
+      // F-003: Only treat as sub-object if valid identifier followed by colon and whitespace (not URLs like https://)
+      const subObjectMatch = itemRaw.match(/^([a-zA-Z0-9_\-]+):(?:\s+(.*)|\s*)$/);
       const isSubObject =
-        colonIdx > 0 &&
+        Boolean(subObjectMatch) &&
         !itemRaw.startsWith("[") &&
         !itemRaw.startsWith('"') &&
         !itemRaw.startsWith("'");
 
-      if (isSubObject) {
-        const firstKey = itemRaw.slice(0, colonIdx).trim();
-        const firstValRaw = itemRaw.slice(colonIdx + 1).trim();
+      if (isSubObject && subObjectMatch) {
+        const firstKey = subObjectMatch[1].trim();
+        const firstValRaw = (subObjectMatch[2] || "").trim();
         const obj: Record<string, any> = {};
 
         if (firstValRaw === "") {
@@ -482,6 +483,21 @@ export function stringifyProjectFrontmatter(
       lines.push(`${k}: ${v}`);
     } else if (typeof v === "string") {
       lines.push(`${k}: ${quoteString(v)}`);
+    } else if (v === null || v === undefined) {
+      lines.push(`${k}: null`);
+    } else if (typeof v === "object") {
+      lines.push(`${k}:`);
+      for (const [subK, subV] of Object.entries(v)) {
+        if (typeof subV === "string") {
+          lines.push(`  ${subK}: ${quoteString(subV)}`);
+        } else if (typeof subV === "number" || typeof subV === "boolean") {
+          lines.push(`  ${subK}: ${subV}`);
+        } else if (subV === null || subV === undefined) {
+          lines.push(`  ${subK}: null`);
+        } else if (Array.isArray(subV)) {
+          lines.push(`  ${subK}: [${subV.map((x) => quoteString(String(x))).join(", ")}]`);
+        }
+      }
     }
   }
 

@@ -90,7 +90,10 @@ export function initDeclarativeAnalytics(): void {
     const rawProps = el.getAttribute('data-analytics-props');
     if (rawProps) {
       try {
-        props = JSON.parse(rawProps);
+        const parsed = JSON.parse(rawProps);
+        if (parsed && typeof parsed === 'object' && !Array.isArray(parsed)) {
+          props = parsed as Record<string, unknown>;
+        }
       } catch (err) {
         console.warn('[Analytics] Invalid JSON in data-analytics-props', rawProps, err);
       }

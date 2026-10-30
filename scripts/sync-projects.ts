@@ -138,8 +138,17 @@ async function run() {
     const stepLabel = `[${idx + 1}/${targets.length}]`;
     console.log(`${stepLabel} Scanning ${mapping.name} (${mapping.repoPath})...`);
 
-    // Extract live repository metadata
-    const extraction = await mapping.extractor.extract(mapping.repoPath);
+    // Extract live repository metadata with error boundary (F-006)
+    let extraction;
+    try {
+      extraction = await mapping.extractor.extract(mapping.repoPath);
+    } catch (err: unknown) {
+      const msg = err instanceof Error ? err.message : String(err);
+      console.log(`      \x1b[31m[ERROR]\x1b[0m Extraction failed for ${mapping.name}: ${msg}`);
+      totalSkipped++;
+      console.log("");
+      continue;
+    }
 
     if (!extraction.found) {
       console.log(`      \x1b[33m[SKIP]\x1b[0m Repository not found or inaccessible.`);

@@ -19,26 +19,30 @@ export function countTestCasesInDir(dirPath: string): { testFiles: number; testC
   }
 
   function walk(current: string) {
-    const entries = fs.readdirSync(current, { withFileTypes: true });
-    for (const entry of entries) {
-      if (entry.name === "node_modules" || entry.name === ".next" || entry.name === ".turbo" || entry.name === "dist") {
-        continue;
-      }
-      const full = path.join(current, entry.name);
-      if (entry.isDirectory()) {
-        walk(full);
-      } else if (/\.(test|spec)\.[jt]sx?$/.test(entry.name)) {
-        testFiles++;
-        try {
-          const content = fs.readFileSync(full, "utf-8");
-          const matches = content.match(/^\s*(it|test)\s*\(/gm);
-          if (matches) {
-            testCases += matches.length;
+    try {
+      const entries = fs.readdirSync(current, { withFileTypes: true });
+      for (const entry of entries) {
+        if (entry.name === "node_modules" || entry.name === ".next" || entry.name === ".turbo" || entry.name === "dist") {
+          continue;
+        }
+        const full = path.join(current, entry.name);
+        if (entry.isDirectory()) {
+          walk(full);
+        } else if (/\.(test|spec)\.[jt]sx?$/.test(entry.name)) {
+          testFiles++;
+          try {
+            const content = fs.readFileSync(full, "utf-8");
+            const matches = content.match(/^\s*(it|test)\s*\(/gm);
+            if (matches) {
+              testCases += matches.length;
+            }
+          } catch {
+            // ignore
           }
-        } catch {
-          // ignore
         }
       }
+    } catch {
+      // ignore unreadable/permission-denied subdirectories (F-006)
     }
   }
 

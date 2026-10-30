@@ -1,7 +1,7 @@
 ---
 id: FEAT-006
 title: PostHog Analytics and Recruiter Journey Tracking
-status: ready
+status: completed
 priority: P1
 target_release: v0.6.0
 lead: human
