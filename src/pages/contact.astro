@@ -26,6 +26,9 @@ const accessKey = import.meta.env.PUBLIC_WEB3FORMS_ACCESS_KEY || 'YOUR_ACCESS_KE
           <!-- Email -->
           <a
             href="mailto:hanyih.tang@gmail.com"
+            data-analytics-event="contact_click"
+            data-analytics-channel="email"
+            data-analytics-location="contact_direct_channels"
             class="group flex items-start gap-3.5 p-3 rounded-lg border border-subtle hover:border-blue-500/50 hover:bg-zinc-100/60 dark:hover:bg-zinc-800/60 transition-all"
           >
             <div class="w-9 h-9 rounded-md bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 flex items-center justify-center shrink-0 border border-blue-200/60 dark:border-blue-900/40">
@@ -44,6 +47,9 @@ const accessKey = import.meta.env.PUBLIC_WEB3FORMS_ACCESS_KEY || 'YOUR_ACCESS_KE
             href="https://www.linkedin.com/in/hanyih-tang"
             target="_blank"
             rel="noopener noreferrer"
+            data-analytics-event="contact_click"
+            data-analytics-channel="linkedin"
+            data-analytics-location="contact_direct_channels"
             class="group flex items-start gap-3.5 p-3 rounded-lg border border-subtle hover:border-blue-500/50 hover:bg-zinc-100/60 dark:hover:bg-zinc-800/60 transition-all"
           >
             <div class="w-9 h-9 rounded-md bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 flex items-center justify-center shrink-0 border border-blue-200/60 dark:border-blue-900/40">
@@ -63,6 +69,9 @@ const accessKey = import.meta.env.PUBLIC_WEB3FORMS_ACCESS_KEY || 'YOUR_ACCESS_KE
             href="https://github.com/hanyihtang2"
             target="_blank"
             rel="noopener noreferrer"
+            data-analytics-event="contact_click"
+            data-analytics-channel="github"
+            data-analytics-location="contact_direct_channels"
             class="group flex items-start gap-3.5 p-3 rounded-lg border border-subtle hover:border-blue-500/50 hover:bg-zinc-100/60 dark:hover:bg-zinc-800/60 transition-all"
           >
             <div class="w-9 h-9 rounded-md bg-zinc-100 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 flex items-center justify-center shrink-0 border border-default">
@@ -175,6 +184,8 @@ const accessKey = import.meta.env.PUBLIC_WEB3FORMS_ACCESS_KEY || 'YOUR_ACCESS_KE
 </PageLayout>
 
 <script>
+  import { trackEvent } from '../lib/analytics';
+
   const form = document.getElementById('contact-form') as HTMLFormElement | null;
   const feedback = document.getElementById('form-feedback');
   const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement | null;
@@ -188,7 +199,7 @@ const accessKey = import.meta.env.PUBLIC_WEB3FORMS_ACCESS_KEY || 'YOUR_ACCESS_KE
   }
 
   function setLoading(isLoading: boolean) {
-    if (! form || !submitBtn || !submitSpinner || !submitText) return;
+    if (!form || !submitBtn || !submitSpinner || !submitText) return;
     submitBtn.disabled = isLoading;
     const fields = form.querySelectorAll<HTMLInputElement | HTMLTextAreaElement>('input, textarea');
     fields.forEach((field) => {
@@ -234,6 +245,7 @@ const accessKey = import.meta.env.PUBLIC_WEB3FORMS_ACCESS_KEY || 'YOUR_ACCESS_KE
         if (response.ok && result.success) {
           showFeedback('success', 'Thank you! Your message has been sent successfully.');
           form.reset();
+          trackEvent('contact_click', { channel: 'form', location: 'contact_page_form' });
         } else {
           showFeedback('error', result.message || 'Something went wrong. Please try again.');
         }

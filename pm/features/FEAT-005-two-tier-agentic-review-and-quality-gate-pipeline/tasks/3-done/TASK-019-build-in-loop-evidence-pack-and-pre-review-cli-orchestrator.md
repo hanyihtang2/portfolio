@@ -1,9 +1,9 @@
 ---
 id: TASK-019
 parent_feature: FEAT-005
-title: "Build In-Loop Evidence Pack and Pre-Review CLI Orchestrator"
-status: backlog           # backlog | in-progress | review | done
-priority: P1              # P0 (Critical) | P1 (High) | P2 (Medium) | P3 (Low)
+title: Build In-Loop Evidence Pack and Pre-Review CLI Orchestrator
+status: done
+priority: P1
 areas:
   - review/agentic
   - sync/cli
@@ -14,9 +14,9 @@ target_paths:
 branch: feat/feat-005-build-in-loop-evidence-pack-and-pre-review-cli-orchestrator
 dependencies:
   - TASK-018
-assigned_to: human        # human | agent:coder | agent:research
+assigned_to: human
 created_at: 2026-10-28
-updated_at: 2026-10-28
+updated_at: 2026-10-30
 ---
 
 # TASK-019: Build In-Loop Evidence Pack and Pre-Review CLI Orchestrator
@@ -57,12 +57,12 @@ Build an automated CLI tool that generates a self-contained "Evidence Pack" (Pro
    - Formats the pack so it is ready to be directly consumed by a fresh-context reviewer subagent.
 
 ## 4. Acceptance Criteria
-- [ ] `scripts/review/prepare-evidence.ts` implemented in TypeScript using native node APIs.
-- [ ] Script handles both committed branch diffs and staged working-tree changes cleanly.
-- [ ] Added `npm run agent:review-pack` script to `package.json`.
-- [ ] Generates well-formed markdown evidence pack in `.review/` directory (gitignored).
-- [ ] Deterministic failure halts the process with actionable error reporting.
-- [ ] Astro static build (`npm run build`) succeeds cleanly.
+- [x] `scripts/review/prepare-evidence.ts` implemented in TypeScript using native node APIs.
+- [x] Script handles both committed branch diffs and staged working-tree changes cleanly.
+- [x] Added `npm run agent:review-pack` script to `package.json`.
+- [x] Generates well-formed markdown evidence pack in `.review/` directory (gitignored).
+- [x] Deterministic failure halts the process with actionable error reporting.
+- [x] Astro static build (`npm run build`) succeeds cleanly.
 
 ## 5. Agent Run Notes & Prompt Guidance
 > **Agent Instructions:**
@@ -70,4 +70,9 @@ Build an automated CLI tool that generates a self-contained "Evidence Pack" (Pro
 > - Ensure `.review/` is added to `.gitignore` so generated evidence packs do not pollute git history.
 
 ### Execution Log / Decisions
-*(Leave blank for agent to fill during task execution)*
+- Implemented `scripts/review/prepare-evidence.ts` and `scripts/review/types.ts` using native Node APIs.
+- Added deterministic pre-verification gate (`npm run build`) with immediate halt on failure.
+- Implemented robust git diff handling for committed, staged, and working-tree changes.
+- Integrated progressive disclosure matching against `pm/areas.json`.
+- Added `agent:review-pack` script to `package.json` and added `.review/` to `.gitignore`.
+- Validated generation of `.review/evidence-pack-task-019.md`.

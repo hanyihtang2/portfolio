@@ -1,9 +1,9 @@
 ---
 id: TASK-018
 parent_feature: FEAT-005
-title: "Define Review Contract and Severity Taxonomy Specification"
-status: backlog           # backlog | in-progress | review | done
-priority: P1              # P0 (Critical) | P1 (High) | P2 (Medium) | P3 (Low)
+title: Define Review Contract and Severity Taxonomy Specification
+status: done
+priority: P1
 areas:
   - review/agentic
 target_paths:
@@ -11,9 +11,9 @@ target_paths:
   - pm/standards/schemas/review-verdict.schema.json
 branch: feat/feat-005-define-review-contract-and-severity-taxonomy-specification
 dependencies: []
-assigned_to: human        # human | agent:coder | agent:research
+assigned_to: human
 created_at: 2026-10-28
-updated_at: 2026-10-28
+updated_at: 2026-10-30
 ---
 
 # TASK-018: Define Review Contract and Severity Taxonomy Specification
@@ -50,10 +50,10 @@ Establish the foundational specification, severity classification rules, and mac
    - Iteration Limit: Hard ceiling of 2 iterations. If blockers persist after 2 passes, status transitions to `ESCALATED_TO_HUMAN` with a structured blocker breakdown.
 
 ## 4. Acceptance Criteria
-- [ ] `pm/standards/AGENT_REVIEW_CONTRACT.md` authored with clear explanations, concrete examples, and anti-patterns.
-- [ ] `pm/standards/schemas/review-verdict.schema.json` created and valid against Draft-07 JSON Schema.
-- [ ] Zero build regressions (`npm run build` succeeds).
-- [ ] Preserves all existing code and documentation integrity.
+- [x] `pm/standards/AGENT_REVIEW_CONTRACT.md` authored with clear explanations, concrete examples, and anti-patterns.
+- [x] `pm/standards/schemas/review-verdict.schema.json` created and valid against Draft-07 JSON Schema.
+- [x] Zero build regressions (`npm run build` succeeds).
+- [x] Preserves all existing code and documentation integrity.
 
 ## 5. Agent Run Notes & Prompt Guidance
 > **Agent Instructions:**
@@ -61,4 +61,6 @@ Establish the foundational specification, severity classification rules, and mac
 > - Focus on strict, unambiguous rules rather than vague prose.
 
 ### Execution Log / Decisions
-*(Leave blank for agent to fill during task execution)*
+- Created `pm/standards/AGENT_REVIEW_CONTRACT.md` defining the P0/P1/P2 severity taxonomy, proof-of-defect requirements, and 2-pass loop termination protocol.
+- Authored Draft-07 JSON Schema in `pm/standards/schemas/review-verdict.schema.json` enforcing structured verdicts (`PASS`, `CHANGES_REQUESTED`, `ESCALATED_TO_HUMAN`).
+- Validated static build cleanly with `npm.cmd run build`.

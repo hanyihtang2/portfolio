@@ -4,6 +4,9 @@ dist/
 # generated types
 .astro/
 
+# review evidence packs
+.review/
+
 # dependencies
 node_modules/
 

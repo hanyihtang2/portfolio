@@ -92,6 +92,9 @@ const finalBreadcrumbs = breadcrumbItems || defaultBreadcrumbs;
               href={data.githubUrl}
               target="_blank"
               rel="noopener noreferrer"
+              data-analytics-event="outbound_github_click"
+              data-analytics-project={entry.id}
+              data-analytics-url={data.githubUrl}
               class="btn-primary"
             >
               <Icon name="github" class="w-4 h-4 fill-current" />
@@ -103,6 +106,9 @@ const finalBreadcrumbs = breadcrumbItems || defaultBreadcrumbs;
               href={data.liveUrl}
               target="_blank"
               rel="noopener noreferrer"
+              data-analytics-event="outbound_demo_click"
+              data-analytics-project={entry.id}
+              data-analytics-url={data.liveUrl}
               class="btn-secondary"
             >
               Live Demo ↗

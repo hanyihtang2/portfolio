@@ -60,6 +60,9 @@ const HeadingTag = headingLevel;
         href={project.data.githubUrl}
         target="_blank"
         rel="noopener noreferrer"
+        data-analytics-event="outbound_github_click"
+        data-analytics-project={project.id}
+        data-analytics-url={project.data.githubUrl}
         class="relative z-10 py-1 text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 hover:underline"
         aria-label={`GitHub repository for ${project.data.title}`}
       >
@@ -71,6 +74,9 @@ const HeadingTag = headingLevel;
         href={project.data.liveUrl}
         target="_blank"
         rel="noopener noreferrer"
+        data-analytics-event="outbound_demo_click"
+        data-analytics-project={project.id}
+        data-analytics-url={project.data.liveUrl}
         class="relative z-10 py-1 text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 hover:underline"
         aria-label={`Live demo for ${project.data.title}`}
       >
