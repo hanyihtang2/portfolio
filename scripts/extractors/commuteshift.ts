@@ -31,7 +31,48 @@ export const CommuteShiftExtractor: ProjectExtractor = {
       };
     }
 
-    // 1. Read package.json
+    // 1. Check for Standardized portfolio-meta.json Contract (TASK-008)
+    const metaPath = path.join(repoPath, "portfolio-meta.json");
+    if (fs.existsSync(metaPath)) {
+      try {
+        const metaContent = fs.readFileSync(metaPath, "utf-8");
+        const meta = JSON.parse(metaContent);
+
+        const updates: Partial<ProjectFrontmatter> = {};
+        if (meta.status) updates.status = meta.status;
+        if (meta.timeline) updates.timeline = meta.timeline;
+        if (meta.role) updates.role = meta.role;
+        if (meta.techStack) updates.techStack = meta.techStack;
+        if (meta.metrics) updates.metrics = meta.metrics;
+        if (meta.roadmap) updates.roadmap = meta.roadmap;
+
+        const frameworks = meta.techStack?.frameworks || [];
+        const infrastructure = meta.techStack?.infrastructure || [];
+
+        return {
+          slug: this.slug,
+          repoPath,
+          found: true,
+          warnings,
+          updates,
+          summary: {
+            status: updates.status,
+            timeline: updates.timeline,
+            techStackSummary: `${frameworks.join(", ")} | ${infrastructure.join(", ")}`,
+            metricsCount: updates.metrics?.length || 0,
+            details: {
+              source: "portfolio-meta.json (Standard Contract)",
+              roadmapPhases: updates.roadmap?.length || 0,
+              metricsCount: updates.metrics?.length || 0,
+            },
+          },
+        };
+      } catch (err: any) {
+        warnings.push(`Failed to parse portfolio-meta.json: ${err.message}. Falling back to heuristic extraction.`);
+      }
+    }
+
+    // 2. Fallback: Read package.json
     const pkgPath = path.join(repoPath, "package.json");
     let pkg: Record<string, any> = {};
     if (fs.existsSync(pkgPath)) {

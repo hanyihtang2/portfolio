@@ -43,23 +43,23 @@ roadmap:
       - "Railcard 1/3 off-peak discount integration"
       - "URL query state persistence and Slack report viral share generator"
   - phase: "Phase 2"
-    title: "Multi-Modal Transit & National Rail Integration (Placeholder)"
+    title: "Multi-Modal Transit & National Rail Integration"
     status: "Planned"
     targetQuarter: "Q1 2027"
     summary: "Planned expansion covering Elizabeth line special fare structures, DLR, London Overground, and National Rail boundary extensions."
     deliverables:
-      - "[Placeholder] National Rail boundary zone extension models"
-      - "[Placeholder] Off-peak Friday fare adjustments and weekend travel additions"
-      - "[Placeholder] Employer hybrid policy preset configurations"
+      - "National Rail boundary zone extension models"
+      - "Off-peak Friday fare adjustments and weekend travel additions"
+      - "Employer hybrid policy preset configurations"
   - phase: "Phase 3"
-    title: "Commute Intelligence & Annual Season Card Analytics (Placeholder)"
+    title: "Commute Intelligence & Annual Season Card Analytics"
     status: "Planned"
     targetQuarter: "Q2 2027"
     summary: "Planned milestone for annual holiday calendar adjustments, bank holiday deductions, and corporate benefits analysis."
     deliverables:
-      - "[Placeholder] Bank holiday and annual leave deduction simulator"
-      - "[Placeholder] Annual vs. Monthly Travelcard cash-flow break-even analysis"
-      - "[Placeholder] CSV / PDF expense report export for corporate reimbursement"
+      - "Bank holiday and annual leave deduction simulator"
+      - "Annual vs. Monthly Travelcard cash-flow break-even analysis"
+      - "CSV / PDF expense report export for corporate reimbursement"
 ---
 
 ## 1. Executive Summary
